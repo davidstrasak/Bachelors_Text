@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  20 APR 2025 22:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  20 APR 2025 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1479,56 +1479,165 @@ Package biblatex Info: ... file '_MAIN.bbl' found.
 Package biblatex Info: Reference section=0 on input line 33.
 Package biblatex Info: Reference segment=0 on input line 33.
 
+
+pdfTeX warning: pdflatex.exe (file ./introPages/TitulniList.pdf): PDF inclusion
+: found PDF version <1.7>, but at most version <1.5> allowed
+<introPages/TitulniList.pdf, id=178, 597.51233pt x 845.0471pt>
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf>
+Package pdftex.def Info: introPages/TitulniList.pdf  used on input line 36.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./introPages/TitulniList.pdf): PDF inclusion
+: found PDF version <1.7>, but at most version <1.5> allowed
+
+
+pdfTeX warning: pdflatex.exe (file ./introPages/TitulniList.pdf): PDF inclusion
+: found PDF version <1.7>, but at most version <1.5> allowed
+<introPages/TitulniList.pdf, id=180, page=1, 597.51233pt x 845.0471pt>
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf, page 1>
+Package pdftex.def Info: introPages/TitulniList.pdf , page1 used on input line 
+36.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf, page 1>
+Package pdftex.def Info: introPages/TitulniList.pdf , page1 used on input line 
+36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf, page 1>
+Package pdftex.def Info: introPages/TitulniList.pdf , page1 used on input line 
+36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf, page 1>
+Package pdftex.def Info: introPages/TitulniList.pdf , page1 used on input line 
+36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+
+File: introPages/TitulniList.pdf Graphic file (type pdf)
+<use introPages/TitulniList.pdf, page 1>
+Package pdftex.def Info: introPages/TitulniList.pdf , page1 used on input line 
+36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+[1
+
+
+ <./introPages/TitulniList.pdf>]
+
+pdfTeX warning: pdflatex.exe (file ./introPages/Zadani.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<introPages/Zadani.pdf, id=195, 597.51233pt x 845.0471pt>
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf>
+Package pdftex.def Info: introPages/Zadani.pdf  used on input line 36.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./introPages/Zadani.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+
+
+pdfTeX warning: pdflatex.exe (file ./introPages/Zadani.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<introPages/Zadani.pdf, id=197, page=1, 597.51233pt x 845.0471pt>
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 1>
+Package pdftex.def Info: introPages/Zadani.pdf , page1 used on input line 36.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 1>
+Package pdftex.def Info: introPages/Zadani.pdf , page1 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 1>
+Package pdftex.def Info: introPages/Zadani.pdf , page1 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 1>
+Package pdftex.def Info: introPages/Zadani.pdf , page1 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 1>
+Package pdftex.def Info: introPages/Zadani.pdf , page1 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+[2
+
+ <./introPages/Zadani.pdf>]
+
+pdfTeX warning: pdflatex.exe (file ./introPages/Zadani.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<introPages/Zadani.pdf, id=218, page=2, 597.51233pt x 845.0471pt>
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 2>
+Package pdftex.def Info: introPages/Zadani.pdf , page2 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 2>
+Package pdftex.def Info: introPages/Zadani.pdf , page2 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+
+File: introPages/Zadani.pdf Graphic file (type pdf)
+<use introPages/Zadani.pdf, page 2>
+Package pdftex.def Info: introPages/Zadani.pdf , page2 used on input line 36.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+[3
+
+ <./introPages/Zadani.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 48--48
 
  []
 
 
 
-[1
+[4{C:/Users/David/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Da
+vid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 
-{C:/Users/David/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Davi
-d/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+[5]
 
-[2]
-
-[3] (_MAIN.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
+[6] (_MAIN.toc
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
 .
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
 .
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-3.
+4.
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-3.
+4.
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+(Font)              <6> on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1543,7 +1652,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-[8] (chapters/2_Re≈°er≈°e.tex
+[8] (chapters/1_Uvod.tex) (chapters/2_Re≈°er≈°e.tex
+
+[9
+
+]
 Kapitola 1.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1590,7 +1703,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<images/Sinamics_G120D.png, id=241, 4336.2pt x 2439.1125pt>
+<images/Sinamics_G120D.png, id=300, 4336.2pt x 2439.1125pt>
 File: images/Sinamics_G120D.png Graphic file (type png)
 <use images/Sinamics_G120D.png>
 Package pdftex.def Info: images/Sinamics_G120D.png  used on input line 22.
@@ -1600,7 +1713,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[9
+[10
 
 {C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 
@@ -1613,7 +1726,7 @@ Package fancyhdr Warning: \headheight is too small (16.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.85403pt}.
 
-[10 <./images/Sinamics_G120D.png>]
+[11 <./images/Sinamics_G120D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 67.
@@ -1634,13 +1747,13 @@ t-rollery ESP32 nebo ESP8266
 
 
 
-[11]
-<images/WEMOS_D1_Mini_Pro.jpg, id=269, 770.88pt x 578.16pt>
+[12]
+<images/WEMOS_D1_Mini_Pro.jpg, id=327, 770.88pt x 578.16pt>
 File: images/WEMOS_D1_Mini_Pro.jpg Graphic file (type jpg)
 <use images/WEMOS_D1_Mini_Pro.jpg>
 Package pdftex.def Info: images/WEMOS_D1_Mini_Pro.jpg  used on input line 91.
 (pdftex.def)             Requested size: 227.62206pt x 170.71451pt.
-<images/Platformio_Ukazka.png, id=272, 822.07124pt x 557.83406pt>
+<images/Platformio_Ukazka.png, id=330, 822.07124pt x 557.83406pt>
 File: images/Platformio_Ukazka.png Graphic file (type png)
 <use images/Platformio_Ukazka.png>
 Package pdftex.def Info: images/Platformio_Ukazka.png  used on input line 111.
@@ -1650,7 +1763,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[12 <./images/WEMOS_D1_Mini_Pro.jpg>]
+[13 <./images/WEMOS_D1_Mini_Pro.jpg>]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 24.
 
@@ -1658,7 +1771,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-[13 <./images/Platformio_Ukazka.png>]
+[14 <./images/Platformio_Ukazka.png>]
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
@@ -1676,7 +1789,7 @@ LaTeX Font Info:    Trying to load font information for T1+pcr on input line 13
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<images/nodeMCUlandingPage.png, id=298, 405.76593pt x 431.36156pt>
+<images/nodeMCUlandingPage.png, id=357, 405.76593pt x 431.36156pt>
 File: images/nodeMCUlandingPage.png Graphic file (type png)
 <use images/nodeMCUlandingPage.png>
 Package pdftex.def Info: images/nodeMCUlandingPage.png  used on input line 145.
@@ -1687,10 +1800,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[14{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}])
+[15{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}])
 (chapters/3_N√°vrh za≈ô√≠zen√≠.tex
 
-[15 <./images/nodeMCUlandingPage.png>]
+[16 <./images/nodeMCUlandingPage.png>]
 Kapitola 2.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1720,13 +1833,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 3.
 
-<images/FunkcniSchema_DvaOvladace.png, id=317, 1079.4729pt x 597.6729pt>
+<images/FunkcniSchema_DvaOvladace.png, id=376, 1079.4729pt x 597.6729pt>
 File: images/FunkcniSchema_DvaOvladace.png Graphic file (type png)
 <use images/FunkcniSchema_DvaOvladace.png>
 Package pdftex.def Info: images/FunkcniSchema_DvaOvladace.png  used on input li
 ne 12.
 (pdftex.def)             Requested size: 455.24411pt x 252.05144pt.
-<images/obrazekKrabicky_annot.png, id=318, 3083.52pt x 4111.36pt>
+<images/obrazekKrabicky_annot.png, id=377, 3083.52pt x 4111.36pt>
 File: images/obrazekKrabicky_annot.png Graphic file (type png)
 <use images/obrazekKrabicky_annot.png>
 Package pdftex.def Info: images/obrazekKrabicky_annot.png  used on input line 2
@@ -1737,20 +1850,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[16
+[17
 
  <./images/FunkcniSchema_DvaOvladace.png (PNG copy)>]
-<images/MobilniLanding.png, id=325, 279.29344pt x 592.46344pt>
+<images/MobilniLanding.png, id=383, 279.29344pt x 592.46344pt>
 File: images/MobilniLanding.png Graphic file (type png)
 <use images/MobilniLanding.png>
 Package pdftex.def Info: images/MobilniLanding.png  used on input line 29.
 (pdftex.def)             Requested size: 136.57797pt x 291.09613pt.
-<images/MobilniSetup.png, id=326, 401.5pt x 846.16125pt>
+<images/MobilniSetup.png, id=384, 401.5pt x 846.16125pt>
 File: images/MobilniSetup.png Graphic file (type png)
 <use images/MobilniSetup.png>
 Package pdftex.def Info: images/MobilniSetup.png  used on input line 34.
 (pdftex.def)             Requested size: 136.57558pt x 291.08672pt.
-<images/MobilniHelp.png, id=327, 401.5pt x 846.16125pt>
+<images/MobilniHelp.png, id=385, 401.5pt x 846.16125pt>
 File: images/MobilniHelp.png Graphic file (type png)
 <use images/MobilniHelp.png>
 Package pdftex.def Info: images/MobilniHelp.png  used on input line 39.
@@ -1760,7 +1873,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[17 <./images/obrazekKrabicky_annot.png> <./images/MobilniLanding.png> <./image
+[18 <./images/obrazekKrabicky_annot.png> <./images/MobilniLanding.png> <./image
 s/MobilniSetup.png> <./images/MobilniHelp.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1778,7 +1891,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 pdfTeX warning: pdflatex.exe (file ./images/Electrical_Schematic_V2.drawio.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/Electrical_Schematic_V2.drawio.pdf, id=338, 587.3142pt x 346.4142pt>
+<images/Electrical_Schematic_V2.drawio.pdf, id=396, 587.3142pt x 346.4142pt>
 File: images/Electrical_Schematic_V2.drawio.pdf Graphic file (type pdf)
 <use images/Electrical_Schematic_V2.drawio.pdf>
 Package pdftex.def Info: images/Electrical_Schematic_V2.drawio.pdf  used on inp
@@ -1786,14 +1899,14 @@ ut line 69.
 (pdftex.def)             Requested size: 455.24411pt x 268.51051pt.
 
 
-[18{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+[19{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
 nc} <./images/Electrical_Schematic_V2.drawio.pdf>]
-<images/PCBfront.png, id=364, 382.42876pt x 682.04813pt>
+<images/PCBfront.png, id=423, 382.42876pt x 682.04813pt>
 File: images/PCBfront.png Graphic file (type png)
 <use images/PCBfront.png>
 Package pdftex.def Info: images/PCBfront.png  used on input line 79.
 (pdftex.def)             Requested size: 218.51521pt x 389.71852pt.
-<images/PCBback.png, id=365, 381.67593pt x 683.55376pt>
+<images/PCBback.png, id=424, 381.67593pt x 683.55376pt>
 File: images/PCBback.png Graphic file (type png)
 <use images/PCBback.png>
 Package pdftex.def Info: images/PCBback.png  used on input line 85.
@@ -1803,13 +1916,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[19 <./images/PCBfront.png> <./images/PCBback.png>]
-<images/predni_LCD_s_I2C.jpg, id=373, 770.88pt x 578.16pt>
+[20 <./images/PCBfront.png> <./images/PCBback.png>]
+<images/predni_LCD_s_I2C.jpg, id=432, 770.88pt x 578.16pt>
 File: images/predni_LCD_s_I2C.jpg Graphic file (type jpg)
 <use images/predni_LCD_s_I2C.jpg>
 Package pdftex.def Info: images/predni_LCD_s_I2C.jpg  used on input line 112.
 (pdftex.def)             Requested size: 218.51521pt x 163.88629pt.
-<images/zadni_LCD_s_I2C.jpg, id=374, 770.88pt x 578.16pt>
+<images/zadni_LCD_s_I2C.jpg, id=433, 770.88pt x 578.16pt>
 File: images/zadni_LCD_s_I2C.jpg Graphic file (type jpg)
 <use images/zadni_LCD_s_I2C.jpg>
 Package pdftex.def Info: images/zadni_LCD_s_I2C.jpg  used on input line 118.
@@ -1832,7 +1945,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[20 <./images/predni_LCD_s_I2C.jpg> <./images/zadni_LCD_s_I2C.jpg>]
+[21 <./images/predni_LCD_s_I2C.jpg> <./images/zadni_LCD_s_I2C.jpg>]
 (codes/ConveyorControllerHeader.tex
 LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 1
 6.
@@ -1844,12 +1957,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[21]
+[22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[22])
+[23])
 Overfull \hbox (6.72841pt too wide) in paragraph at lines 170--171
 []\T1/lmr/m/n/12 TÌmto zp∑-so-bem je Con-veyor-Con-t-roller ob-jekt za-im-ple-m
 en-to-v·n uvnit∞ hlav-nÌho skriptu
@@ -1857,12 +1970,12 @@ en-to-v·n uvnit∞ hlav-nÌho skriptu
 
 (codes/main.tex
 
-[23])
+[24])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[24]
+[25]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 185.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1877,7 +1990,7 @@ ob-sa-huje pod-tr-∫Ìtka jako t∞eba
 
 pdfTeX warning: pdflatex.exe (file ./images/StateFlow_Firmwaru_top.drawio.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/StateFlow_Firmwaru_top.drawio.pdf, id=502, 587.3142pt x 274.1442pt>
+<images/StateFlow_Firmwaru_top.drawio.pdf, id=561, 587.3142pt x 274.1442pt>
 File: images/StateFlow_Firmwaru_top.drawio.pdf Graphic file (type pdf)
 <use images/StateFlow_Firmwaru_top.drawio.pdf>
 Package pdftex.def Info: images/StateFlow_Firmwaru_top.drawio.pdf  used on inpu
@@ -1887,7 +2000,7 @@ t line 189.
 
 pdfTeX warning: pdflatex.exe (file ./images/StateFlow_Firmwaru_left.drawio.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/StateFlow_Firmwaru_left.drawio.pdf, id=503, 536.0025pt x 270.0489pt>
+<images/StateFlow_Firmwaru_left.drawio.pdf, id=562, 536.0025pt x 270.0489pt>
 File: images/StateFlow_Firmwaru_left.drawio.pdf Graphic file (type pdf)
 <use images/StateFlow_Firmwaru_left.drawio.pdf>
 Package pdftex.def Info: images/StateFlow_Firmwaru_left.drawio.pdf  used on inp
@@ -1898,7 +2011,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[25 <./images/StateFlow_Firmwaru_top.drawio.pdf>]
+[26 <./images/StateFlow_Firmwaru_top.drawio.pdf>]
 Overfull \hbox (20.02231pt too wide) in paragraph at lines 204--205
 []\T1/lmr/m/n/12 Ve stavu Lo-cal_Controlled se nejd∞Ìv na-stavÌ v˝-stupnÌ pin P
 IN_OUT_LOCALREMOTE.
@@ -1908,7 +2021,7 @@ IN_OUT_LOCALREMOTE.
 
 pdfTeX warning: pdflatex.exe (file ./images/StateFlow_Firmwaru_right.drawio.pdf
 ): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<images/StateFlow_Firmwaru_right.drawio.pdf, id=532, 570.21031pt x 349.305pt>
+<images/StateFlow_Firmwaru_right.drawio.pdf, id=591, 570.21031pt x 349.305pt>
 File: images/StateFlow_Firmwaru_right.drawio.pdf Graphic file (type pdf)
 <use images/StateFlow_Firmwaru_right.drawio.pdf>
 Package pdftex.def Info: images/StateFlow_Firmwaru_right.drawio.pdf  used on in
@@ -1919,9 +2032,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[26 <./images/StateFlow_Firmwaru_left.drawio.pdf>]
+[27 <./images/StateFlow_Firmwaru_left.drawio.pdf>]
 
-[27 <./images/StateFlow_Firmwaru_right.drawio.pdf>]
+[28 <./images/StateFlow_Firmwaru_right.drawio.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 229.
@@ -1936,9 +2049,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-[28]
-
 [29]
+
+[30]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
             Default family used instead on input line 298.
@@ -1950,7 +2063,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[30]
+[31]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
             Default family used instead on input line 328.
@@ -1970,10 +2083,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[31]
-
 [32]
-<images/LandingPage_Annot.png, id=666, 1003.75pt x 789.95125pt>
+
+[33]
+<images/LandingPage_Annot.png, id=725, 1003.75pt x 789.95125pt>
 File: images/LandingPage_Annot.png Graphic file (type png)
 <use images/LandingPage_Annot.png>
 Package pdftex.def Info: images/LandingPage_Annot.png  used on input line 381.
@@ -1983,20 +2096,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[33]
+[34]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[34 <./images/LandingPage_Annot.png>]
+[35 <./images/LandingPage_Annot.png>]
 
-[35]
-<images/krabickaTop.png, id=686, 950.04938pt x 606.76688pt>
+[36]
+<images/krabickaTop.png, id=744, 950.04938pt x 606.76688pt>
 File: images/krabickaTop.png Graphic file (type png)
 <use images/krabickaTop.png>
 Package pdftex.def Info: images/krabickaTop.png  used on input line 440.
 (pdftex.def)             Requested size: 218.51521pt x 139.55344pt.
-<images/KrabickaZBoku.png, id=687, 956.82469pt x 607.51968pt>
+<images/KrabickaZBoku.png, id=745, 956.82469pt x 607.51968pt>
 File: images/KrabickaZBoku.png Graphic file (type png)
 <use images/KrabickaZBoku.png>
 Package pdftex.def Info: images/KrabickaZBoku.png  used on input line 446.
@@ -2006,8 +2119,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[36 <./images/krabickaTop.png> <./images/KrabickaZBoku.png>]
-<images/PCB_Final_annotated.jpg, id=695, 3011.25pt x 3794.175pt>
+[37 <./images/krabickaTop.png> <./images/KrabickaZBoku.png>]
+<images/PCB_Final_annotated.jpg, id=754, 3011.25pt x 3794.175pt>
 File: images/PCB_Final_annotated.jpg Graphic file (type jpg)
 <use images/PCB_Final_annotated.jpg>
 Package pdftex.def Info: images/PCB_Final_annotated.jpg  used on input line 463
@@ -2018,10 +2131,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[37 <./images/PCB_Final_annotated.jpg>])
+[38 <./images/PCB_Final_annotated.jpg>])
 (chapters/4_Ovƒõ≈ôen√≠ funkƒçnosti n√°vrhu.tex
 
-[38{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
+[39{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
 nc}]
 Kapitola 3.
 
@@ -2036,18 +2149,18 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2.
 
-<images/BrnenskaHoneywellHala.png, id=707, 1606.0pt x 903.375pt>
+<images/BrnenskaHoneywellHala.png, id=766, 1606.0pt x 903.375pt>
 File: images/BrnenskaHoneywellHala.png Graphic file (type png)
 <use images/BrnenskaHoneywellHala.png>
 Package pdftex.def Info: images/BrnenskaHoneywellHala.png  used on input line 1
 1.
-(pdftex.def)             Requested size: 341.43307pt x 192.0577pt.
+(pdftex.def)             Requested size: 455.24411pt x 256.07233pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[39
+[40
 
 ]
 Overfull \hbox (6.42874pt too wide) in paragraph at lines 30--30
@@ -2060,11 +2173,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[40 <./images/BrnenskaHoneywellHala.png (PNG copy)>]) (chapters/seznamy.tex
+[41 <./images/BrnenskaHoneywellHala.png (PNG copy)>]) (chapters/5_Z√°vƒõr.tex
 
-[41]
+[42]) (chapters/seznamy.tex
 
-[42
+[43
+
+]
+
+[44
 
 ]
 Overfull \hbox (3.47354pt too wide) in paragraph at lines 14--14
@@ -2080,7 +2197,7 @@ Overfull \hbox (2.65895pt too wide) in paragraph at lines 14--14
 
 
 
-[43
+[45
 
 ] (_MAIN.lof)
 \tf@lof=\write8
@@ -2088,7 +2205,7 @@ Overfull \hbox (2.65895pt too wide) in paragraph at lines 14--14
 
 
 
-[44
+[46
 
 ] (_MAIN.lot)
 \tf@lot=\write9
@@ -2096,11 +2213,11 @@ Overfull \hbox (2.65895pt too wide) in paragraph at lines 14--14
 
 
 
-[45
+[47
 
 ])
 
-[46
+[48
 
 ] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -2110,19 +2227,19 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `_MAIN.out' has not changed.
-(rerunfilecheck)             Checksum: 5C881D0EF2DCCF62551F312BBA5E3660;10503.
+(rerunfilecheck)             Checksum: C8DBDC008C1DA84B7542DEE845AF3C9C;10981.
 Package logreq Info: Writing requests to '_MAIN.run.xml'.
 \openout1 = `_MAIN.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38794 strings out of 473523
- 728538 string characters out of 5714630
- 1810895 words of memory out of 5000000
- 61039 multiletter control sequences out of 15000+600000
+ 38848 strings out of 473523
+ 730059 string characters out of 5714630
+ 1812022 words of memory out of 5000000
+ 61080 multiletter control sequences out of 15000+600000
  676510 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,14n,98p,1080b,3114s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,17n,98p,1080b,3114s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\David\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmb
 x12.pfb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lme
@@ -2139,9 +2256,9 @@ fb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb
 ><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.p
 fb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a
 .pfb>
-Output written on _MAIN.pdf (43 pages, 15070103 bytes).
+Output written on _MAIN.pdf (48 pages, 15147017 bytes).
 PDF statistics:
- 923 PDF objects out of 1000 (max. 8388607)
- 284 named destinations out of 1000 (max. 500000)
- 451 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 987 PDF objects out of 1000 (max. 8388607)
+ 291 named destinations out of 1000 (max. 500000)
+ 502 words of extra memory for PDF output out of 10000 (max. 10000000)
 

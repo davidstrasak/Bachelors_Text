@@ -1,0 +1,58 @@
+\usepackage{pdflscape}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\definecolor{comment}{rgb}{0, 0, 1} % comment barva
+\newcommand{\comment}[1]{\textcolor{comment}{Otázka: #1}}
+\definecolor{purpose}{rgb}{0, 0.7, 0} % meaning barva
+\newcommand{\purpose}[1]{\textcolor{purpose}{Cíl: #1}}
+\definecolor{source}{rgb}{1, 0, 0} % meaning barva
+\newcommand{\source}[1]{\textcolor{source}{Zdroje: #1}}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta} % For better arrow tips
+\usepackage{float} % Přidá mi H jako možnost ve figure místo hptb
+
+
+
+% listings setup
+\usepackage{listings}
+\usepackage[czech]{babel}
+\renewcommand{\lstlistingname}{Ukázka kódu} % Nastavení českého překladu
+
+% JS jazykova definice a pozadi do listings
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+
+

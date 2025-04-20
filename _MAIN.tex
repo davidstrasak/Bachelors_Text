@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper,twoside,openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% DULEZITE PRIKAZY, PRECTETE SI KOMENTARE A DOPLNTE JMENA %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{settings/my_packages}
+
+\input{settings/layout_commands.tex} % nacteni novych prikazu
+\thesislanguage{czech} % prace bude v cestine, (diakritiku v nazvech sekci, kapitol, jmenu autora, nazvu prace atp. doporucuju psat pomoci specialnich znaku)
+%\thesislanguage{english} % prace bude v anglictine
+
+%\visualmode{print} % print mode - vhodne pro tisk, prazdne stranky na zacatku aby dulezite casti byly na liche strane, asymetricke okraje pro vazbu, cisla stranek v rozich
+\visualmode{screen} % screen mode - vhodne pro elektronickou verzi, zadne prazdne stranky, symetricke okraje, cisla stranek uprostred
+
+
+
+\thesisauthor{David Strašák} % jmeno autora prace, l
+\thesissupervisor{Ing. Martin Formánek} % jmeno vedouciho
+\thesistitle{Návrh systému pro dálkové spouštění dopravníků} % nazev prace
+
+
+\input{settings/vut_style.tex} % nastaveni stylu dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{csquotes}
+\usepackage[backend=biber,style=iso-numeric,sorting=none]{biblatex} % https://github.com/michal-h21/biblatex-iso690
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\addbibresource{chapters/bibtex_references.bib}
+
+
+
+\begin{document}
+	
+%% titulni list + zadani - oba dokumenty lze stahnout ve studisu, zadani muzete naskenovat a prilozit podepsane (v PDF)
+% \VUTtitle{introPages/TitulniList.pdf}{introPages/Zadani.pdf} % vlozi pdf do dokument
+% \VUTtitle{pages/titulni_color.pdf}{blank} % vlozi prazdne misto pro originalni zadani a podepsanou kopii pri tisku (pouzit ve verzi print)
+
+
+\abstract{ % abstrakt cesky
+	...Abstrakt...
+	}{ % abstrakt anglicky
+	...anglicky...
+	}{ % klicova slova česky
+	...klíčová slova...
+	}{ % klicova slova anglicky
+	...anglicky...
+    } % vyrobi i citaci
+
+\acknowledgements{
+	Prohlašuji, že předložená bakalářská práce je původní a zpracoval jsem ji samostatně. Prohlašuji, že citace použitých pramenů je úplná, že jsem ve své práci neporušil autorská práce (ve smyslu Zákona č. 121/2000 Sb., o právu autorském a o právech souvisejících s právem autorským).
+	}{
+    Tímto bych chtěl poděkovat všem, kteří se radou nebo jakoukoliv pomocí podíleli na vzniku této bakalářské práce. Především panu Ing. Martinu Formánkovi, za odborné vedení, odpovědi na mé dotazy a za cennou zpětnou vazbu při návrhu a tvoření této bakalářské práce. Velké díky za podporu také patří mé partnerce, rodině a všem přátelům.
+    } % vlozi prohlaseni a podekovani
+
+
+\vutpagestyle % prepise styl stranky, vlozi obsah
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% PROSTOR PRO KAPITOLY PRACE %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \input{chapters/1_Uvod}
+\input{chapters/2_Rešerše}
+\input{chapters/3_Návrh zařízení}
+\input{chapters/4_Ověření funkčnosti návrhu}
+% \input{chapters/5_Závěr}
+\input{chapters/seznamy}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,11 @@
+{
+  "name": "bachelors-text",
+  "version": "1.0.0",
+  "description": "Text of my bachelors file. If you are asking why is there a package.json file then it's because of running npm scripts.",
+  "scripts": {
+    "git": "git add . && git commit && git push origin main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

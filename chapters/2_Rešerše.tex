@@ -6,8 +6,8 @@ Dopravníkové systémy byly kdysi pouze robustní mechanické konstrukce s jedn
 
 Dopravníkové systémy, které společnost Honeywell vytváří jsou přesně takové inteligentní dopravníkové systémy. Cílem těchto systémů je pro zákazníky (většinou dopravní společnosti nebo například supermarkety) vytvořit systém, na který stačí vložit balík na jednom místě a tento balík už doputuje na místo kde má skončit. Řídící systém se postará o zbytek činností jako je třeba naskenování QR kódu na balíku, identifikace koncového bodu a řízení všech linek tak, aby nedošlo ke kolizím nebo nebezpečným událostem.
 
-V současné době jsou tyhle jednotlivé dopravníky poháněné třífázovými asynchronními motory, které pomocí složitých převodů roztáčí celý dopravník (všechny jeho válečky nebo pás). Tyhle asynchronní motory jsou poháněné frekvenčními měniči a ty jsou pro většinu Honeywell dopravníkových systémů v dnešní době model G120D od značky Sinamics. Frekvenční měnič poskytuje výstup do asynchronního motoru, ale jedná se pouze o výkonovou část. Aby bylo možné frekvenční měnič řídit, je potřeba na něj připojit i ovládací panel, které je v běžné sestavě Honeywell dopravníkových systémů model CU240D-2 od značky Sinamics. Při běžném provozu je na tenhle ovládací panel připojená komunikační sběrnice PROFINET, která dává frekvenčnímu měniči ovládací příkazy. PROFINET je naprogramovaný přes Siemens Tiaportal, což je prostředí vyvinuté od Siemens právě pro řízení různých frekvenčních měničů pomocí Siemens programovatelných logických automatů (PLC). V tomto programu je modelovaný tok na lince a pomocí toho PLC automaticky řídí dopravníkový systém.
-\cite{SinamicsG120Dpage}
+V současné době jsou tyhle jednotlivé dopravníky poháněné třífázovými asynchronními motory, které pomocí složitých převodů roztáčí celý dopravník (všechny jeho válečky nebo pás). Tyhle asynchronní motory jsou poháněné frekvenčními měniči a ty jsou pro většinu Honeywell dopravníkových systémů v dnešní době model G120D od značky Sinamics. Frekvenční měnič poskytuje výstup do asynchronního motoru, ale jedná se pouze o výkonovou část. Aby bylo možné frekvenční měnič řídit, je potřeba na něj připojit i ovládací panel, které je v běžné sestavě Honeywell dopravníkových systémů model CU240D-2 od značky Sinamics. Při běžném provozu je na tenhle ovládací panel připojená komunikační sběrnice PROFINET, která dává frekvenčnímu měniči ovládací příkazy. PROFINET je naprogramovaný přes Siemens TIA Portal (Total Integrated Automation Portal), což je prostředí vyvinuté od Siemens právě pro řízení různých frekvenčních měničů pomocí Siemens programovatelných logických automatů (PLC). V tomto programu je modelovaný tok na lince a pomocí toho PLC automaticky řídí dopravníkový systém.
+\cite{SinamicsG120D}
 
 Zařízení, které v je v této bakalářské práci navrženo se ale nekoncipuje pro standardní provoz dopravníkových systémů, protože tam je systém už řízený PLC. Tento systém je navrhovaný pro zjednodušení procesu kontroly kvality instalace a funkčnosti dopravníků, který je konaný hned po instalaci dopravníků (které instaluje externí firma) v prostorách zákazníků. Jedná se hlavně o dynamické kontroly kvality mechanické instalace, kdy se na každém dopravníku musí zkontrolovat, že je schopný pohybu bez přílišného házení nebo vibrací kvůli špatné instalaci.
 
@@ -39,7 +39,7 @@ kde $U_S$ je napětí na statoru, $U_{max}$ je amplituda statorového napětí a
 
 Pokud zanedbáme statorový odpor a budeme tedy uvažovat, že celé statorové napětí $u_L$ bude na indukčnosti motoru, bude maximum spřaženého magnetického toku ve statoru rovné: \cite{SkriptaRizeniOtacekAM}
 \begin{equation}
-	\psi_S = \int_0^{T/2} u_L \, dt
+	\Psi_S = \int_0^{T/2} u_L \, dt
 	\label{eq:PodminkaKonstantnihoSyceni}
 \end{equation}
 
@@ -67,8 +67,28 @@ Je také dobré podotknout, že levá část grafu nemůže jít takto od nulov�
 
 V pravé části grafu je oblast konstantního výkonu ve kterém se motor odbuzuje. Zde už není splněna podmínka z rovnice \ref{eq:PodminkaKonstantnihoSyceni} a tak motoru klesá moment. Vzhledem k tomu, že frekvence statorového napětí stále roste, tak rostou stále i otáčky rotoru.
 
-\subsection{Detailnější popis Sinamics G120D}
+\subsection{Frekvenční měnič Sinamics G120D}
 \purpose{Popsat hlavní parametry frekvenčního měniče - rozsah napájecího napětí, maximální proud, podporovaný komunikační protokoly (Profinet) - nějaký basic info o Sinamics G120D. Tady přidat i to že Sinamics G120D pracuje s asynchronními motory - jaké jsou od Siemens třeba nejčastější?}
+
+Sinamics G120D je decentralizovaný frekvenční měnič designovaný pro buzení motorů od dopravníkových systémů po elektrické monoraily. Slovo decentralizovaný zde znamená, že frekvenční měnič není jeden centralizovaný, ale že je víc menších frekvenčních měničů blízko u motorů, které ovládají. Kvůli tomu má i certifikaci IP65, která zaručuje dostatečnou kvalitu zpracování, aby bylo možné mít tento frekvenční měnič v náročných prostředí skladů zákazníků firmy Honeywell.
+\cite{SinamicsG120D}
+
+Frekvenční měnič obsahuje funkce jako je přesné nastavení polohy motoru, bezpečnostní funkce a dobře konfigurovatelné digitální a analogové vstupy a výstupy. Je to standardní frekvenční měnič který je používán v různých aplikacích hlavně firmami které fungují jako systémoví integrátoři. Běžná podoba tohoto frekvenčního měniče (s kontrolním panelem CU240D-2) je na obrázku \ref{fig:sinamics_G120D}.
+\cite{SinamicsG120D}
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/Sinamics_G120D.png}
+	\caption{Frekvenční měnič Sinamics G120D \cite{SinamicsG120D}}
+	\label{fig:sinamics_G120D}
+\end{figure}
+
+Sinamics G120D se v rámci systémů společnosti Siemens dá používat s třífázovými asynchronními motory řad Simotics GP (General Purpose) a Simotics SD (Severe Duty). Jak už název napovídá tak v případě společnosti Honeywell je jako motor nejčastěji používán Simotics GP. Napájecí napětí frekvenčního měniče je také třífázové od $380V$ do  $500V$ dle konfigurace motoru a frekvenční měniče se vyrábí s výkonem $0,75kW$ až $7,5kW$.
+
+Tento frekvenční měnič je tvořen dvěma hlavními částmi - výkonová část a ovládací panel. Ovládací panel ovládá a monitoruje výkonovou část frekvenčního měniče pomocí několika kontrolních systémů na bází uzavřených smyček a díky tomu může kontrolovat bezpečný stav frekvenčního měniče a taky znemožnit ovládání, pokud by s měničem bylo něco v nepořádku. Také je schopný rekuperace energie z brždění linek a vracet ji do sítě, což zákazníkům snižuje náklady na provoz.
+\cite{SinamicsG120D}
+
+Všechny tyto funkcionality je možné ovládat přes průmyslové sběrnice PROFINET, PROFIBUS anebo běžnou sběrnicí EtherNet. Tímto způsobem dává PLC příkazy frekvenčnímu měniči v běžném režimu ovládání dopravníků.
 
 \oldtext
 
@@ -83,12 +103,7 @@ V rámci rešerše se přišlo na to, že ovládací panel frekvenčního měni�
 	\item Frekvenční měnič, který ovládám: Sinamics G120D
 	\item Tenhle frekvenční měnič má ovládací panel: CU240D-2 \cite{SiemensG120DGettingStarted}
 \end{itemize}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth]{images/Sinamics_G120D.png}
-	\caption{Frekvenční měnič Sinamics G120D \cite{SinamicsG120D}}
-	\label{fig:sinamics_G120D}
-\end{figure}
+
 
 Ovládací panel se může nastavit pomocí Siemens Tiaportal anebo pomocí Sinamics IOP‑2 Intelligent Operator Panel, kterej se připojí přes optický kabel. Zde je postup nastavení:\cite{SiemensG120DGettingStarted}
 \begin{itemize}

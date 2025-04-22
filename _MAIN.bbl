@@ -19,7 +19,7 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
-    \entry{SinamicsG120Dpage}{misc}{}{}
+    \entry{SinamicsG120D}{misc}{}{}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
@@ -99,38 +99,14 @@
       \strng{authornamehash}{74993f42c49b81f3a77103bcbb247c2b}
       \strng{authorfullhash}{74993f42c49b81f3a77103bcbb247c2b}
       \strng{authorfullhashraw}{74993f42c49b81f3a77103bcbb247c2b}
-      \field{extraname}{1}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://cache.industry.siemens.com/dl/files/509/109757509/att_951176/v1/G120D_getting_started_0418_en-US.pdf}}
       \field{note}{Datum přístupu: 2025-02-24}
       \field{title}{SINAMICS G120D Getting Started}
       \field{year}{2018}
-    \endentry
-    \entry{SinamicsG120D}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=74993f42c49b81f3a77103bcbb247c2b}{%
-           family={{Siemens}},
-           familyi={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{fullhash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{fullhashraw}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{bibnamehash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{authorbibnamehash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{authornamehash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{authorfullhash}{74993f42c49b81f3a77103bcbb247c2b}
-      \strng{authorfullhashraw}{74993f42c49b81f3a77103bcbb247c2b}
-      \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.siemens.com/global/en/products/drives/sinamics/low-voltage-converters/distributed-converters/sinamics-g120d.html}}
-      \field{note}{Datum přístupu: 2025-02-24}
-      \field{title}{SINAMICS G120D Distributed converters}
     \endentry
     \entry{NavodNaESPWebServerDratek}{misc}{}{}
       \name{author}{1}{}{%
@@ -204,8 +180,8 @@
       \strng{authornamehash}{09f157197deaf77c32321d61b7ded4f6}
       \strng{authorfullhash}{09f157197deaf77c32321d61b7ded4f6}
       \strng{authorfullhashraw}{09f157197deaf77c32321d61b7ded4f6}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{8}
@@ -219,8 +195,8 @@
       \endverb
     \endentry
     \entry{TickerGitHubPage}{misc}{}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{month}{4}
       \field{title}{sstaub/Ticker: Ticker library for Arduino}
@@ -247,8 +223,8 @@
       \strng{authorfullhash}{f81c95a62c084f8829648af51235a3bb}
       \strng{authorfullhashraw}{f81c95a62c084f8829648af51235a3bb}
       \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Datum přístupu: 2025-03-09}

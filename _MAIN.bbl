@@ -33,6 +33,58 @@
       \verb https://www.siemens.com/global/en/products/drives/sinamics/low-voltage-converters/distributed-converters/sinamics-g120d.html
       \endverb
     \endentry
+    \entry{FrekvencniMeniceZeSkriptElektrickeRegulovanePohony}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=980e278e2e1bd4d78f1ba9f301ecac8d}{%
+           family={Skalický},
+           familyi={S\bibinitperiod},
+           given={CSc.\bibnamedelimi Prof.\bibnamedelimi Ing.\bibnamedelimi Jiří},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Fakulta Elektrotechniky a Komunikačních Technologií, Vysoké Učení Technické v Brně}%
+      }
+      \strng{namehash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{fullhash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{fullhashraw}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{bibnamehash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{authorbibnamehash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{authornamehash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{authorfullhash}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \strng{authorfullhashraw}{980e278e2e1bd4d78f1ba9f301ecac8d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Elektrické regulované pohony}
+      \field{year}{2007}
+      \field{pages}{100\bibrangedash 111}
+      \range{pages}{12}
+    \endentry
+    \entry{SkriptaRizeniOtacekAM}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b9c89d5be4a0ef349d27bf55cf2fe7f9}{%
+           family={Červinka},
+           familyi={Č\bibinitperiod},
+           given={Ph.D.\bibnamedelimi Ing.\bibnamedelimi Dalibor},
+           giveni={P\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{fullhash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{fullhashraw}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{bibnamehash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{authorbibnamehash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{authornamehash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{authorfullhash}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \strng{authorfullhashraw}{b9c89d5be4a0ef349d27bf55cf2fe7f9}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{Řízení otáček asynchronních motorů Učební text do předmětu Elektrické pohony}
+      \field{year}{2025}
+    \endentry
     \entry{SiemensG120DGettingStarted}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=74993f42c49b81f3a77103bcbb247c2b}{%
@@ -48,8 +100,8 @@
       \strng{authorfullhash}{74993f42c49b81f3a77103bcbb247c2b}
       \strng{authorfullhashraw}{74993f42c49b81f3a77103bcbb247c2b}
       \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://cache.industry.siemens.com/dl/files/509/109757509/att_951176/v1/G120D_getting_started_0418_en-US.pdf}}
@@ -72,8 +124,8 @@
       \strng{authorfullhash}{74993f42c49b81f3a77103bcbb247c2b}
       \strng{authorfullhashraw}{74993f42c49b81f3a77103bcbb247c2b}
       \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.siemens.com/global/en/products/drives/sinamics/low-voltage-converters/distributed-converters/sinamics-g120d.html}}
@@ -94,8 +146,8 @@
       \strng{authornamehash}{b78111442e80a97dbd0fcd1d581f6436}
       \strng{authorfullhash}{b78111442e80a97dbd0fcd1d581f6436}
       \strng{authorfullhashraw}{b78111442e80a97dbd0fcd1d581f6436}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}
@@ -123,8 +175,8 @@
       \strng{authorfullhash}{f81c95a62c084f8829648af51235a3bb}
       \strng{authorfullhashraw}{f81c95a62c084f8829648af51235a3bb}
       \field{extraname}{1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Datum přístupu: 2025-03-09}
@@ -152,8 +204,8 @@
       \strng{authornamehash}{09f157197deaf77c32321d61b7ded4f6}
       \strng{authorfullhash}{09f157197deaf77c32321d61b7ded4f6}
       \strng{authorfullhashraw}{09f157197deaf77c32321d61b7ded4f6}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{8}
@@ -222,8 +274,8 @@
       \strng{authornamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhashraw}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}
@@ -252,8 +304,8 @@
       \strng{authornamehash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhashraw}{e6f60ca6c699bf2730946bc0494c5cbe}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}

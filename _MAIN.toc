@@ -2,61 +2,61 @@
 \babel@toc {czech}{}\relax 
 \contentsline {chapter}{Úvod \textcolor {comment}{(co znamenají jednotlivé barvy v osnově plus)}}{9}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Rešerše ($\DOTSB \sum@ \slimits@ $ = 16 stran)}{10}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Frekvenční měniče a jejich role v řízení dopravníků ($\DOTSB \sum@ \slimits@ $ = 3 strany)}{10}{section.1.1}%
+\contentsline {section}{\numberline {1.1}Frekvenční měniče a jejich role v řízení dopravníků (6,5 stran)}{10}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Jak frekvenční měniče fungují}{11}{subsection.1.1.1}%
 \contentsline {subsubsection}{Režimy funkce frekvenčního měniče}{12}{subsubsection*.3}%
 \contentsline {subsection}{\numberline {1.1.2}Sinamics G120D}{13}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Nastavení ovládacího panelu (1.5 strany)}{14}{subsection.1.1.3}%
-\contentsline {subsubsection}{Možnosti dalších default nastavení ovládacího panelu}{14}{subsubsection*.6}%
-\contentsline {subsection}{\numberline {1.1.4}Bezpečnostní aspekty práce s ovládacím panelem}{15}{subsection.1.1.4}%
-\contentsline {section}{\numberline {1.2}Open source vývojové desky ($\Sigma $ = 6 stran)}{15}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Proč WEMOS vývojové desky (1.5 strany)}{16}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Technické specifikace WEMOS D1 Mini Pro}{16}{subsection.1.2.2}%
-\contentsline {subsubsection}{Architektura ESP8266 a srovnání s ESP32}{16}{subsubsection*.8}%
-\contentsline {subsection}{\numberline {1.2.3}Arduino jazyk a Platformio (3 strany)}{16}{subsection.1.2.3}%
-\contentsline {subsubsection}{Objekty v arduino C++ jazyce}{17}{subsubsection*.10}%
-\contentsline {subsubsection}{Ticker knihovna}{17}{subsubsection*.11}%
-\contentsline {subsection}{\numberline {1.2.4}NodeMCU (1.5 strany)}{18}{subsection.1.2.4}%
-\contentsline {chapter}{\numberline {2}Návrh zařízení ($\Sigma $ = 22 stran)}{20}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Popis funkce systému ($\DOTSB \sum@ \slimits@ $ = 3 strany)}{20}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Požadavky na systém (0.5 strany)}{22}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Hardware ($\Sigma $ = 3 strany)}{22}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Převodník napětí 24V-5V (1 strana)}{23}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}LC Filtr napájecího napětí (1 strana)}{24}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}LCD display s I2C převodníkem (1 strana)}{24}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Ochrana relé pomocí diody (0.5 strany)}{24}{subsection.2.2.4}%
-\contentsline {section}{\numberline {2.3}Firmware ve vývojové desce ($\Sigma $ = 8 stran)}{24}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}ConveyorController objekt (4 strany)}{25}{subsection.2.3.1}%
-\contentsline {subsubsection}{Implementace ConveyorController v hlavním skriptu}{27}{subsubsection*.19}%
-\contentsline {subsection}{\numberline {2.3.2}Stavový diagram logiky systému (5 stran)}{28}{subsection.2.3.2}%
-\contentsline {subsubsection}{Jak aplikace aproximuje rychlost dopravníku}{31}{subsubsection*.23}%
-\contentsline {section}{\numberline {2.4}Software v mobilní aplikaci ($\Sigma $ = 5 stran)}{32}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Architektura aplikace}{32}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Použité knihovny a technologie v aplikaci (0.5 strany)}{33}{subsection.2.4.2}%
-\contentsline {subsubsection}{HTML, CSS a JS}{33}{subsubsection*.24}%
-\contentsline {subsubsection}{TypeScript}{33}{subsubsection*.25}%
-\contentsline {subsubsection}{Tailwind}{33}{subsubsection*.26}%
-\contentsline {subsubsection}{DaisyUI}{33}{subsubsection*.27}%
-\contentsline {subsubsection}{Lucide for React}{33}{subsubsection*.28}%
-\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s NodeMCU servery}{33}{subsection.2.4.3}%
-\contentsline {subsubsection}{Co je to GET požadavek }{33}{subsubsection*.29}%
-\contentsline {subsubsection}{Implementování GET requestů do aplikace}{35}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {2.4.4}Funkčnost aplikace (hodně stran)}{36}{subsection.2.4.4}%
-\contentsline {subsubsection}{Co funkci sendCommand používá}{37}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {2.4.5}Design aplikace (1 strana)}{37}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace (0.5 strany)}{38}{subsection.2.4.6}%
-\contentsline {subsubsection}{Požadavky na React aplikaci aby se dala konvertovat}{39}{subsubsection*.33}%
-\contentsline {subsubsection}{Postup konvertování webové aplikace}{39}{subsubsection*.34}%
-\contentsline {section}{\numberline {2.5}Vytvoření schránky pro desku (1 strana)}{39}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Kompletace řešení (2 strany)}{40}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Ověření funkčnosti návrhu ($\Sigma $ = 4 strany)}{43}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Ověření funkčnosti lokálního ovládání (0.5 strany)}{43}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Ověření funkčnosti mobilní aplikace (1 strana)}{43}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Ověření funkčnosti zapojení více desek (0.5 strany)}{44}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Posouzení z hlediska bezpečnosti (1 strana)}{44}{section.3.4}%
-\contentsline {chapter}{Závěr (1 strana)}{46}{chapter*.38}%
-\contentsline {chapter}{Seznam zkratek a symbolů}{47}{chapter*.39}%
-\contentsline {chapter}{Seznam zdrojů}{48}{chapter*.40}%
+\contentsline {subsection}{\numberline {1.1.3}Nastavení ovládacího panelu}{14}{subsection.1.1.3}%
+\contentsline {subsubsection}{Alternativní výchozí nastavení ovládacího panelu}{15}{subsubsection*.7}%
+\contentsline {subsection}{\numberline {1.1.4}Bezpečnostní aspekty práce s ovládacím panelem}{16}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}Open-source vývojové desky ($\Sigma $ = 6 stran)}{16}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Proč WEMOS vývojové desky (1.5 strany)}{17}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Technické specifikace WEMOS D1 Mini Pro}{17}{subsection.1.2.2}%
+\contentsline {subsubsection}{Architektura ESP8266 a srovnání s ESP32}{17}{subsubsection*.9}%
+\contentsline {subsection}{\numberline {1.2.3}Arduino jazyk a Platformio (3 strany)}{18}{subsection.1.2.3}%
+\contentsline {subsubsection}{Objekty v arduino C++ jazyce}{18}{subsubsection*.11}%
+\contentsline {subsubsection}{Ticker knihovna}{18}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {1.2.4}NodeMCU (1.5 strany)}{19}{subsection.1.2.4}%
+\contentsline {chapter}{\numberline {2}Návrh zařízení ($\Sigma $ = 22 stran)}{21}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Popis funkce systému ($\DOTSB \sum@ \slimits@ $ = 3 strany)}{21}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Požadavky na systém (0.5 strany)}{23}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Hardware ($\Sigma $ = 3 strany)}{23}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Převodník napětí 24V-5V (1 strana)}{24}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}LC Filtr napájecího napětí (1 strana)}{25}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}LCD display s I2C převodníkem (1 strana)}{25}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Ochrana relé pomocí diody (0.5 strany)}{25}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Firmware ve vývojové desce ($\Sigma $ = 8 stran)}{25}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}ConveyorController objekt (4 strany)}{26}{subsection.2.3.1}%
+\contentsline {subsubsection}{Implementace ConveyorController v hlavním skriptu}{28}{subsubsection*.20}%
+\contentsline {subsection}{\numberline {2.3.2}Stavový diagram logiky systému (5 stran)}{29}{subsection.2.3.2}%
+\contentsline {subsubsection}{Jak aplikace aproximuje rychlost dopravníku}{32}{subsubsection*.24}%
+\contentsline {section}{\numberline {2.4}Software v mobilní aplikaci ($\Sigma $ = 5 stran)}{33}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Architektura aplikace}{33}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Použité knihovny a technologie v aplikaci (0.5 strany)}{34}{subsection.2.4.2}%
+\contentsline {subsubsection}{HTML, CSS a JS}{34}{subsubsection*.25}%
+\contentsline {subsubsection}{TypeScript}{34}{subsubsection*.26}%
+\contentsline {subsubsection}{Tailwind}{34}{subsubsection*.27}%
+\contentsline {subsubsection}{DaisyUI}{34}{subsubsection*.28}%
+\contentsline {subsubsection}{Lucide for React}{34}{subsubsection*.29}%
+\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s NodeMCU servery}{34}{subsection.2.4.3}%
+\contentsline {subsubsection}{Co je to GET požadavek }{34}{subsubsection*.30}%
+\contentsline {subsubsection}{Implementování GET requestů do aplikace}{36}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {2.4.4}Funkčnost aplikace (hodně stran)}{37}{subsection.2.4.4}%
+\contentsline {subsubsection}{Co funkci sendCommand používá}{38}{subsubsection*.32}%
+\contentsline {subsection}{\numberline {2.4.5}Design aplikace (1 strana)}{38}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace (0.5 strany)}{39}{subsection.2.4.6}%
+\contentsline {subsubsection}{Požadavky na React aplikaci aby se dala konvertovat}{40}{subsubsection*.34}%
+\contentsline {subsubsection}{Postup konvertování webové aplikace}{40}{subsubsection*.35}%
+\contentsline {section}{\numberline {2.5}Vytvoření schránky pro desku (1 strana)}{40}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Kompletace řešení (2 strany)}{41}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Ověření funkčnosti návrhu ($\Sigma $ = 4 strany)}{44}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Ověření funkčnosti lokálního ovládání (0.5 strany)}{44}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Ověření funkčnosti mobilní aplikace (1 strana)}{44}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Ověření funkčnosti zapojení více desek (0.5 strany)}{45}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Posouzení z hlediska bezpečnosti (1 strana)}{45}{section.3.4}%
+\contentsline {chapter}{Závěr (1 strana)}{47}{chapter*.39}%
+\contentsline {chapter}{Seznam zkratek a symbolů}{48}{chapter*.40}%
+\contentsline {chapter}{Seznam zdrojů}{49}{chapter*.41}%
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
@@ -73,6 +73,6 @@
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
-\contentsline {chapter}{Seznam obr\'azk\r {u}}{50}{chapter*.41}%
-\contentsline {chapter}{Seznam tabulek}{51}{chapter*.42}%
-\contentsline {chapter}{Seznam příloh}{52}{chapter*.43}%
+\contentsline {chapter}{Seznam obr\'azk\r {u}}{51}{chapter*.42}%
+\contentsline {chapter}{Seznam tabulek}{52}{chapter*.43}%
+\contentsline {chapter}{Seznam příloh}{53}{chapter*.44}%

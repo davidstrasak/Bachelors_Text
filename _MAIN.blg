@@ -1,14 +1,14 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is '_MAIN.blg'
-[95] biber:340> INFO - === Wed Apr 23, 2025, 15:26:51
-[113] Biber.pm:420> INFO - Reading '_MAIN.bcf'
-[197] Biber.pm:994> INFO - Found 12 citekeys in bib section 0
-[214] Biber.pm:4463> INFO - Processing section 0
-[229] Biber.pm:4654> INFO - Looking for bibtex file 'chapters/bibtex_references.bib' for section 0
-[230] bibtex.pm:1713> INFO - LaTeX decoding ...
-[244] bibtex.pm:1519> INFO - Found BibTeX data source 'chapters/bibtex_references.bib'
-[347] UCollate.pm:68> INFO - Overriding locale 'cs-CZ' defaults 'variable = shifted' with 'variable = non-ignorable'
-[347] UCollate.pm:68> INFO - Overriding locale 'cs-CZ' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[347] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'cs-CZ'
-[358] bbl.pm:676> INFO - Writing '_MAIN.bbl' with encoding 'UTF-8'
-[363] bbl.pm:779> INFO - Output to _MAIN.bbl
+[166] biber-MSWIN64:340> INFO - === 
+[221] Biber.pm:420> INFO - Reading '_MAIN.bcf'
+[387] Biber.pm:994> INFO - Found 12 citekeys in bib section 0
+[406] Biber.pm:4463> INFO - Processing section 0
+[423] Biber.pm:4654> INFO - Looking for bibtex file 'chapters/bibtex_references.bib' for section 0
+[505] bibtex.pm:1713> INFO - LaTeX decoding ...
+[525] bibtex.pm:1519> INFO - Found BibTeX data source 'chapters/bibtex_references.bib'
+[631] UCollate.pm:68> INFO - Overriding locale 'cs-CZ' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[631] UCollate.pm:68> INFO - Overriding locale 'cs-CZ' defaults 'variable = shifted' with 'variable = non-ignorable'
+[631] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'cs-CZ'
+[645] bbl.pm:676> INFO - Writing '_MAIN.bbl' with encoding 'UTF-8'
+[650] bbl.pm:779> INFO - Output to _MAIN.bbl

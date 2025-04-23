@@ -1,6 +1,7 @@
 % Co udělal někdo jinej
 \chapter{Rešerše ($\sum$ = 16 stran)} \label{chap:Rešerše}
-\section{Frekvenční měniče a jejich role v řízení dopravníků ($\sum$ = 3 strany)}\label{sec:FrekvencniMeniceAJejichRole}\purpose{Vysvětlit s jakým systémem už pracuji}
+\section{Frekvenční měniče a jejich role v řízení dopravníků (6,5 stran)}\label{sec:FrekvencniMeniceAJejichRole}
+%\purpose{Vysvětlit s jakým systémem už pracuji}
 
 Dopravníkové systémy byly kdysi pouze robustní mechanické konstrukce s jednoduchým asynchronním motorem napojený na jednu hodnotu síťového napětí a s nemotornou regulací rychlosti například pomocí přidáním odporu do sekundárního vinutí. V dnešní době jsme v éře průmyslu 4.0. a s tím je v každém mechatronickém systému důraz na automatizaci a digitalizaci spojených procesů. Díky velkému pokroku v oblasti výkonové elektrotechniky a řídících systémů vznikly nové možnosti precizního řízení otáček asynchronních motorů. Důležitým prvkem této transformace se staly frekvenční měniče - zařízení které umí na vstupu brát síťové napětí a na výstupu poskytovat jinou amplitudu a frekvenci napětí, což umožňuje efektivně řídit otáčky jakýchkoliv asynchronních motorů. Tohle umožnilo vznik dopravníkových systémů u kterých je možné přesně a efektivně řídit otáčky. Když se k tomuto systému přidají ještě řídící systémy, je možné znát v každé chvíli polohu balíků na lince a inteligentně tento tok balíků řídit.
 
@@ -13,7 +14,8 @@ Zařízení, které v je v této bakalářské práci navrženo se ale nekoncipu
 
 V kontextu těchto zkoušek není nezbytné, aby frekvenční měniče komunikovaly prostřednictvím řídicího systému Siemens PLC. Opak je pravdou - zde je inicializace PLC sítě mezi dopravníky spíše extra úkol, což jsou schopnosti které často zaměstnanci kontrolující mechanickou instalaci dopravníků nemají. Při těchto zkouškách se stává prioritní mít kontrolu nad individuálními dopravníky a mít možnost je ovládat a nastavovat na nich rychlost dle libosti. Výhodou by zde při takovém ovládání byla i možnost implementace dálkového ovládání dopravníků.
 
-\subsection{Jak frekvenční měniče fungují}\label{sec:JakFungujiFrekvencniMenice}\purpose{Vysvětlit jak vlastně ten frekvenční měnič funguje a proč ho používáme v dopravnících}
+\subsection{Jak frekvenční měniče fungují}\label{sec:JakFungujiFrekvencniMenice}
+%\purpose{Vysvětlit jak vlastně ten frekvenční měnič funguje a proč ho používáme v dopravnících}
 
 Jak již bylo naznačeno v kapitole \ref{sec:FrekvencniMeniceAJejichRole}, frekvenční měniče se pro řízení asynchronních motorů teoreticky používat nemusí, ale poté by měl dopravník jenom omezený výběr z nastavitelných rychlostí a celé řízení by bylo mnohem složitější. V dnešní době jsou frekvenční měniče technicky nejvýhodnější způsob regulace motorů jak z hlediska technických parametrů (regulační rozsah a přesnost), tak i z energetického hlediska (regulace je bezeztrátová). Kvůli těmto důvodům jsou frekvenční měniče tak časté.  \cite{FrekvencniMeniceZeSkriptElektrickeRegulovanePohony}
 
@@ -68,7 +70,7 @@ Je také dobré podotknout, že levá část grafu nemůže jít takto od nulov�
 V pravé části grafu je oblast konstantního výkonu ve kterém se motor odbuzuje. Zde už není splněna podmínka z rovnice \ref{eq:PodminkaKonstantnihoSyceni} a tak motoru klesá moment. Vzhledem k tomu, že frekvence statorového napětí stále roste, tak rostou stále i otáčky rotoru.
 
 \subsection{Sinamics G120D}
-\purpose{Popsat hlavní parametry frekvenčního měniče - rozsah napájecího napětí, maximální proud, podporovaný komunikační protokoly (Profinet) - nějaký basic info o Sinamics G120D. Tady přidat i to že Sinamics G120D pracuje s asynchronními motory - jaké jsou od Siemens třeba nejčastější?}
+%\purpose{Popsat hlavní parametry frekvenčního měniče - rozsah napájecího napětí, maximální proud, podporovaný komunikační protokoly (Profinet) - nějaký basic info o Sinamics G120D. Tady přidat i to že Sinamics G120D pracuje s asynchronními motory - jaké jsou od Siemens třeba nejčastější?}
 
 Sinamics G120D je decentralizovaný frekvenční měnič designovaný pro buzení motorů od dopravníkových systémů po elektrické monoraily. Slovo decentralizovaný zde znamená, že frekvenční měnič není jeden centralizovaný, ale že je víc menších frekvenčních měničů blízko u motorů, které ovládají. Kvůli tomu má i certifikaci IP65, která zaručuje dostatečnou kvalitu zpracování, aby bylo možné mít tento frekvenční měnič v náročných prostředí skladů zákazníků firmy Honeywell.
 \cite{SinamicsG120D}
@@ -90,64 +92,93 @@ Tento frekvenční měnič je tvořen dvěma hlavními částmi - výkonová č�
 
 Všechny tyto funkcionality je možné ovládat přes průmyslové sběrnice PROFINET, PROFIBUS anebo běžnou sběrnicí EtherNet. Tímto způsobem dává PLC příkazy frekvenčnímu měniči v běžném režimu ovládání dopravníků.
 
-\oldtext
+\subsection{Nastavení ovládacího panelu}\label{sec:NastaveniOvladacihoPanelu}
+%\purpose{Vysvětlit jak se dají dopravníky nastavit aby fungovaly s mým systémem}
 
-\subsection{Nastavení ovládacího panelu (1.5 strany)}\label{sec:NastaveniOvladacihoPanelu}
-\purpose{Vysvětlit jak se dají dopravníky nastavit aby fungovaly s mým systémem}
-
-V rámci rešerše se přišlo na to, že ovládací panel frekvenčního měniče lze resetovat do různých defaultních nastavení. Jedno z těchto nastavení je "Default setting no. 9", které umožňuje ovládat frekvenční měnič přes vstupy, které jsou na ovládacím panelu. Tenhle reset ovládacího panelu je navíc možný pomocí Siemens Intelligent Operator Panel 2 (IOP-2), což je zařízení které existuje právě aby bez inicializace Profinetu umožnilo změny nastavení ovládacího panelu frekvenčního měniče.
-
-\source{Tady mám jako zdroje siemens web a datasheety}
-
+Jak bylo dříve zmíněné frekvenční měnič má vždy nějaký ovládací panel. V případě Honeywell instalací je ovládací panel většinou typu Sinamics CU240D-2. Ovládací panely tohoto typu lze za chodu seřizovat třemi způsoby (zobrazené i v obrázku \ref{fig:cu240comissioning}):
 \begin{itemize}
-	\item Frekvenční měnič, který ovládám: Sinamics G120D
-	\item Tenhle frekvenční měnič má ovládací panel: CU240D-2 \cite{SiemensG120DGettingStarted}
+	\item Připojení USB z notebooku
+	\item Použití PROFINET nebo PROFIBUS
+	\item Použití zařízení IOP-2 Handheld
 \end{itemize}
 
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/CU240comissioning}
+	\caption{Způsoby seřizování ovládacího panelu frekvenčního měniče \cite{SiemensG120DGettingStarted}}
+	\label{fig:cu240comissioning}
+\end{figure}
 
-Ovládací panel se může nastavit pomocí Siemens Tiaportal anebo pomocí Sinamics IOP‑2 Intelligent Operator Panel, kterej se připojí přes optický kabel. Zde je postup nastavení:\cite{SiemensG120DGettingStarted}
+Vzhledem k předpokladu, že navrhovaný systém mají používat osoby, které nejsou inženýři specializovaní na kontrolní systémy, je nejvhodnější způsob jak seřizovat ovládací panel použít zařízení IOP-2 Handheld. Ostatní dvě metody vyžadují specializovaný software pro který by bylo zapotřebí instalovat a udržovat si pro něj licence. Naproti tomu IOP-2 Handheld představuje samostatné zařízení schopné provést veškerá potřebná nastavení a je dodáváno s optickým kabelem pro přímé připojení k ovládacímu panelu.
+
+Pro účely navrhovaného systému je potřeba ovládací panel vyresetovat a nastavit do jednoho z  možných výchozích nastavení. Zvolené výchozí nastavení ovlivňuje celý systém, protože ten ovládá dopravník tím, že pomocí relé spíná digitální vstupy ovládacího panelu frekvenčního měniče - tímto způsobem dává systém příkazy na spuštění dopravníku, zrychlení a zpomalení. Nesprávné nastavení ovládacího panelu by vedlo k tomu, že ačkoliv by systém generoval správné signály na digitálních vstupech, panel by je interpretoval chybně.
+
+Navržený systém je optimalizován pro výchozí nastavení číslo 9, ve kterém jsou funkce digitálních vstupů definovány tímto způsobem:
 \begin{itemize}
-    \item IOP-2 se připojí na kontrolní panel pomocí optického kabelu
-    \item V IOP-2 se zresetuje nastavení VFD
-    \item Vybere se nastavení Default setting 9: "Standard I/O with MOP"
-    \item Zbytek nastavení je možné nechat na defaultních nastaveních
-    \item Nyní je možné IOP-2 odpojit od frekvenčního měniče
+	\item Digitální vstup 0: ON/OFF dopravníku
+	\item Digitální vstup 1: Zrychlení dopravníku
+	\item Digitální vstup 2: Zpomalení dopravníku
+	\item Digitální vstup 3: Kvitování chyby
 \end{itemize}
+Systém bude konektory připojený k ovládacímu panelu a pomocí relé na desce plošných spojů bude ovládat dopravník rozpojování a zkratováním těchto digitálních vstupů. Digitální vstup č. 3 nebude v rámci systému využíván, protože kvitování případných chyb je vyžadováno pouze jednorázově při resetování do výchozích nastavení a lze jej provést přímo pomocí zařízení IOP-2 Handheld.
+\cite{SiemensG120DGettingStarted}.
 
-Díky tomuto je nyní ovládací panel frekvenčního měniče nastaven tak, aby bylo možné ho ovládat těmito digitálními signály na jeho vstupy:
+Resetování ovládacího panelu do tohoto výchozího nastavení je možné provést přímo na místě pomocí zařízení Sinamics IOP-2 Handheld. Pro resetování stačí pouze připojit IOP-2 k ovládacímu panelu frekvenčního měniče, vybrat možnost pro zresetování nastavení ovládacího panelu a vybrat výchozí nastavení číslo 9. Zbytek hodnot na ovládacím panelu, jako je například zrychlující rampa, může zůstat na výchozích hodnotách, protože je není potřeba v rámci testování kvality instalace mít na správných hodnotách (frekvenční měnič funguje i tak). Poté je možné odpojit IOP-2 od ovládacího panelu, který tímto způsobem zůstane nastavený nadále.
+
+
+
+\subsubsection{Alternativní výchozí nastavení ovládacího panelu}
+%\purpose{popsat nastavení default with potentiometer a default MOP with E-STOP}
+
+Při návrhu systému byla kromě výchozího nastavení číslo 9 zvažována i další relevantní výchozí nastavení, konkrétně nastavení č. 8 a č. 12.
+
+Výchozí nastavení č. 8 by definovalo chování systému následovně:
 \begin{itemize}
-    \item Pokud je DI0 HIGH, frekvenční měnič je zapnutý.
-    \item Pokud je DI1 HIGH, bude růst rychlost dopravníku.
-    \item Pokud je DI2 HIGH, bude rychlost dopravníku zpomalovat.
+	\item Digitální vstup 0: ON/OFF dopravníku
+	\item Digitální vstup 1: Zrychlení dopravníku
+	\item Digitální vstup 2: Zpomalení dopravníku
+	\item Digitální vstup 3: Kvitování chyby
+	\item Digitální vstup 4: Při přerušení nouzově zastaví (E-STOP)
+	\item Digitální vstup 5: Při přerušení nouzově zastaví (E-STOP)
 \end{itemize}
+Tohle výchozí nastavení nabízí stejnou funkcionalitu jako zvolené nastavení č. 9, ale vyžaduje připojení dalšího kabelu na kterém bude v obvodu umístěné bezpečnostní tlačítko E-STOP, které by také muselo mít dostatek místa ve schránce systému. Tohle výchozí nastavení bylo zamítnuto právě kvůli tomu, že E-STOP tlačítko vyžaduje neúměrně příliš mnoho místa a tak by to výrazně zvětšilo rozměry systému, což by zmenšovalo přenositelnost a jednoduchost používání. Bezpečnost systému je přitom zajištěna jinými bezpečnostními prvky přímo u dopravníků, jak je podrobněji popsáno v kapitole \ref{sec:PosouzeniZHlediskaBezpecnosti}.
+\cite{SiemensG120DGettingStarted}
 
-\subsubsection{Možnosti dalších default nastavení ovládacího panelu}
-\purpose{popsat nastavení default with potentiometer a default MOP with E-STOP}
+Další zvažovanou alternativou bylo výchozí nastavení č. 12, které by definovalo funkce vstupů takto:
+\begin{itemize}
+	\item Digitální vstup 0: ON/OFF dopravníku
+	\item Digitální vstup 1: Reverzace směru otáčení
+	\item Digitální vstup 2: Kvitování chyby
+	\item Analogový vstup: Nastavení rychlosti
+\end{itemize}
+Toto nastavení by umožnilo připojení potenciometru k analogovému vstupu ovládacího panelu pro přímé nastavení rychlosti. Díky tomuto by bylo o jedno tlačítko méně na schránce systému, ale zároveň by to vyžadovalo speciální kabely pro připojení (vzhledem k tomu, že se analogové vstupy ovládacích panelů v instalacích Honeywell běžně nevyužívají) a také by to zahrnovalo modifikaci desky plošných spojů, například s využitím integrovaného obvodu digitálně řízeného potenciometru.
+\cite{SiemensG120DGettingStarted}
 
-V rámci návrhu systému je možné použít defaultní nastavení které umožňuje připojení potenciometru k analogovému portu ovládacího panelu. V takovém případě by se rychlost mohla nastavovat přímo potenciometrem. Schránka na desku by tak neměla dvě tlačítka na zrychlení a zpomalení, ale jen jedno, ale zároveň by to zhoršovalo dálkové ovládání, protože to se dělá jednodušeji pokud posílám pouze digitální výstupy.
-
-také je možné použít ještě možnost defaultního nastavení s E-STOP. To by nastavilo nějaký digitální vstupy jako E-STOP vstupy, které by musely být napojený na E-STOP který má sepnuté kontakty pokud není zmáčknutý. Tohle byla původní možnost návrhu, ale tenhle E-STOP by zabíral hodně místa na fyzické schránce systému a tento bezpečnostní prvek je stejně rozmístěný všude kolem dopravníků a už i v commisioning fázi je funkční a schopný dopravník okamžitě zastavit.
-
-S tímto je tedy nejjednodušší použít setting který jsem si zvolil.
+Po zhodnocení těchto možností bylo vybráno výchozí nastavení č. 9.
 
 \subsection{Bezpečnostní aspekty práce s ovládacím panelem}
-\purpose{Zmínit že když pracuji s takovýmto výkonovým zařízením, musím si dát pozor na bezpečnost. Vysoký napětí který vystupuje z frekvenčního měniče se dá vypnout přepínačem který je umístěný nad ovládacím panelem. Potom už člověk pracuje jen s 24V které jsou na všech portech ovládacího panelu a kvůli tomu všechny porty zakrývají šroubovací gumové kryty, které je potřeba oddělat předtím než se můžou připoji kabely ze systému co navrhuji.}
+%\purpose{Zmínit že když pracuji s takovýmto výkonovým zařízením, musím si dát pozor na bezpečnost. Vysoký napětí který vystupuje z frekvenčního měniče se dá vypnout přepínačem který je umístěný nad ovládacím panelem. Potom už člověk pracuje jen s 24V které jsou na všech portech ovládacího panelu a kvůli tomu všechny porty zakrývají šroubovací gumové kryty, které je potřeba oddělat předtím než se můžou připoji kabely ze systému co navrhuji.}
+
+Vzhledem k tomu, že frekvenční měnič pracuje ve výkonové části s usměrněným trojfázovým napětím, je velmi důležité dbát na bezpečnost při práci s frekvenčním měničem. Z tohoto důvodu je vedle každé instalace frekvenčního měniče v Honeywell umístěn bezpečnostní vypínač, který vypojuje napájení výkonové části frekvenčního měniče. Pro bezpečné zacházení s frekvenčním měničem je potřebné mít tento vypínač ve stavu rozpojeno.
+
+Po rozpojení napájení výkonové části zůstává na ovládacím panelu napětí $24V$. Tohle nízké napětí je ale chráněno šroubovacími gumovými krytkami, které zakrývají veškeré digitální vstupy a výstupy ovládacího panelu kde se toto napětí nachází.
 
 \section{Open-source vývojové desky ($\Sigma$ = 6 stran)}
 \purpose{Zde bude úvod do open source vývojových desek.}
 
 Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
 
-Myšlenka vývojových desek jako jsou Arduino desky začala myšlenkou minimalismu - desky nebyly nikdy převratné, ale obsahovaly přesně to, co je potřeba.
-Na jedné vývojové desce je obsažený mikrokontroller, převodník z USB do sériové komunikace a dle desky obsahuje další užitečné součástky. Je zde možné tedy nejenom využívat periferie použitého mikrokontrolleru, ale i další hardware, jako jsou externí krystaly, napájení mimo USB kabel a další na základě specifického návrhu vývojové desky.
+Myšlenka vývojových desek jako jsou Arduino desky začala myšlenkou minimalismu - desky nebyly nikdy převratné, ale obsahovaly přesně to, co je potřeba. Na jedné vývojové desce je obsažený mikrokontroller, převodník z USB do sériové komunikace a dle desky obsahuje další užitečné součástky. Je zde možné tedy nejenom využívat periferie použitého mikrokontrolleru, ale i další hardware, jako jsou externí krystaly, napájení mimo USB kabel a další na základě specifického návrhu vývojové desky.
 \cite{KnihaOArduinu}
 
-Rychlou adaptaci veřejností umožnil nejenom kvalitní design desek, ale i software pro programování Arduino desek na počítači. Na rozdíl od předchozího proprietárního softwaru, který nebyl dostupný pro všechny operační systémy, je programovací prostředí Arduina open-source a spustitelné na všech systémech s podporou Java aplikací. 
+Rychlou adaptaci veřejností umožnil nejenom kvalitní design desek, ale i software pro programování Arduino desek na počítači. Na rozdíl od předchozího proprietárního softwaru, který nebyl dostupný pro všechny operační systémy, je programovací prostředí Arduina open-source a spustitelné na všech systémech s podporou Java aplikací.
 \cite{KnihaOArduinu}
 
-Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotových vývojových desek namísto přímé integrace mikrokontrolleru v prototypování a vývoji. Mezi hlavní výhody patří možnost připojení pomocí kolíkových lišt, což umožňuje snadné vyjmutí pro přeprogramování nebo výměnu. Přímá integrace by v případě poruchy vyžadovala odpájení. Díky tomu vývojová deska celkově usnadňuje prototypování a opravitelnost.
+Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotových vývojových desek namísto přímé integrace mikrokontrolleru v prototypování a vývoji. Mezi hlavní výhody patří možnost připojení vývojové desky pomocí kolíkových lišt, což umožňuje snadné vyjmutí pro přeprogramování nebo výměnu. Přímá integrace by v případě poruchy vyžadovala odpájení. Díky tomu vývojová deska celkově usnadňuje prototypování a opravitelnost.
 
 Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
+
+\oldtext
 
 \subsection{Proč WEMOS vývojové desky (1.5 strany)}
 \purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}

@@ -67,7 +67,7 @@ Je také dobré podotknout, že levá část grafu nemůže jít takto od nulov�
 
 V pravé části grafu je oblast konstantního výkonu ve kterém se motor odbuzuje. Zde už není splněna podmínka z rovnice \ref{eq:PodminkaKonstantnihoSyceni} a tak motoru klesá moment. Vzhledem k tomu, že frekvence statorového napětí stále roste, tak rostou stále i otáčky rotoru.
 
-\subsection{Frekvenční měnič Sinamics G120D}
+\subsection{Sinamics G120D}
 \purpose{Popsat hlavní parametry frekvenčního měniče - rozsah napájecího napětí, maximální proud, podporovaný komunikační protokoly (Profinet) - nějaký basic info o Sinamics G120D. Tady přidat i to že Sinamics G120D pracuje s asynchronními motory - jaké jsou od Siemens třeba nejčastější?}
 
 Sinamics G120D je decentralizovaný frekvenční měnič designovaný pro buzení motorů od dopravníkových systémů po elektrické monoraily. Slovo decentralizovaný zde znamená, že frekvenční měnič není jeden centralizovaný, ale že je víc menších frekvenčních měničů blízko u motorů, které ovládají. Kvůli tomu má i certifikaci IP65, která zaručuje dostatečnou kvalitu zpracování, aby bylo možné mít tento frekvenční měnič v náročných prostředí skladů zákazníků firmy Honeywell.
@@ -133,19 +133,28 @@ S tímto je tedy nejjednodušší použít setting který jsem si zvolil.
 \subsection{Bezpečnostní aspekty práce s ovládacím panelem}
 \purpose{Zmínit že když pracuji s takovýmto výkonovým zařízením, musím si dát pozor na bezpečnost. Vysoký napětí který vystupuje z frekvenčního měniče se dá vypnout přepínačem který je umístěný nad ovládacím panelem. Potom už člověk pracuje jen s 24V které jsou na všech portech ovládacího panelu a kvůli tomu všechny porty zakrývají šroubovací gumové kryty, které je potřeba oddělat předtím než se můžou připoji kabely ze systému co navrhuji.}
 
-\section{Open source vývojové desky ($\Sigma$ = 6 stran)}
+\section{Open-source vývojové desky ($\Sigma$ = 6 stran)}
 \purpose{Zde bude úvod do open source vývojových desek.}
 
-Nejznámnější návrhář těchto desek je Arduino, já ale používám WEMOS.
+Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
 
-Jejich velká výhoda jsou integrované USB porty a extra rozhraní a specifikace, díky čemuž je můžu používat bez toho, abych si musel integrovat vlastní obvod s mikrokontrollerem do desky. Navíc pokud do desky pouze napájím kolíkovou lištu a ne rovnou celou vývojovou desku, můžu vývojovou desku v případě poruchy rychle vyměnit.
+Myšlenka vývojových desek jako jsou Arduino desky začala myšlenkou minimalismu - desky nebyly nikdy převratné, ale obsahovaly přesně to, co je potřeba.
+Na jedné vývojové desce je obsažený mikrokontroller, převodník z USB do sériové komunikace a dle desky obsahuje další užitečné součástky. Je zde možné tedy nejenom využívat periferie použitého mikrokontrolleru, ale i další hardware, jako jsou externí krystaly, napájení mimo USB kabel a další na základě specifického návrhu vývojové desky.
+\cite{KnihaOArduinu}
 
-Proč jsem se rozhodl pro open source vývojové desky? Dostupnost, flexibilita a že se přesně můžu podívat na to jak ta deska funguje - což se hodí při návrhu desky plošných spojů, protože přesně vím jak ta deska funguje jelikož se můžu podívat na schematic. Navíc jelikož jsou tyhle systémy open source, mám možnost využívat již existujících balíčků pro rozšíření funkčností mikrokontrollerů co jsou na desce uloženy - knihovny jako třeba Ticker která je popsána v sekci \ref{sec:TickerKnihovna} anebo kód pro jednoduché používání koupeného LCD displeje bez nutnosti programovat jeho ovládání pomocí I2C od základu.
+Rychlou adaptaci veřejností umožnil nejenom kvalitní design desek, ale i software pro programování Arduino desek na počítači. Na rozdíl od předchozího proprietárního softwaru, který nebyl dostupný pro všechny operační systémy, je programovací prostředí Arduina open-source a spustitelné na všech systémech s podporou Java aplikací. 
+\cite{KnihaOArduinu}
 
-\source{Tady zkusím najít nějaký zdroj z knihovny - nějaká knížka o arduinu}
+Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotových vývojových desek namísto přímé integrace mikrokontrolleru v prototypování a vývoji. Mezi hlavní výhody patří možnost připojení pomocí kolíkových lišt, což umožňuje snadné vyjmutí pro přeprogramování nebo výměnu. Přímá integrace by v případě poruchy vyžadovala odpájení. Díky tomu vývojová deska celkově usnadňuje prototypování a opravitelnost.
+
+Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
 
 \subsection{Proč WEMOS vývojové desky (1.5 strany)}
 \purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
+
+Arduino v dnešní době není jediná firma, která vyrábí open source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS hlavně kvůli tomu, že využívá mikrokontrollery ESP8266, které mají dostupnou WiFi. Mají také dostupný NodeMCU díky čemuž je možné využít WiFi protokol pro řízení ovládacího panelu frekvenčního měniče.
+
+\oldtext
 
 WEMOS desky jsou vývojové desky co používají mikrokontrollery ESP32 nebo ESP8266 a mají v sobě integrované i WiFi moduly, což běžné arduino vývojové desky většinou nemají. Jsou také open source stejně jako arduino a tak jsou lehce dostupné, protože mohou firmy vytvářet svoje vlastní klony.
 

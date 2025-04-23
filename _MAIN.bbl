@@ -108,6 +108,35 @@
       \field{title}{SINAMICS G120D Getting Started}
       \field{year}{2018}
     \endentry
+    \entry{KnihaOArduinu}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=466f4957b8fff061199587f24333466a}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
+      \strng{namehash}{466f4957b8fff061199587f24333466a}
+      \strng{fullhash}{466f4957b8fff061199587f24333466a}
+      \strng{fullhashraw}{466f4957b8fff061199587f24333466a}
+      \strng{bibnamehash}{466f4957b8fff061199587f24333466a}
+      \strng{authorbibnamehash}{466f4957b8fff061199587f24333466a}
+      \strng{authornamehash}{466f4957b8fff061199587f24333466a}
+      \strng{authorfullhash}{466f4957b8fff061199587f24333466a}
+      \strng{authorfullhashraw}{466f4957b8fff061199587f24333466a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-4302-3777-8}
+      \field{title}{Beginning arduino programming}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+    \endentry
     \entry{NavodNaESPWebServerDratek}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=b78111442e80a97dbd0fcd1d581f6436}{%

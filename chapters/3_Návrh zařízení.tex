@@ -61,7 +61,7 @@ Vzhledem k tomu, že vývojová deska WEMOS D1 Mini Pro je k hotspotu připojen�
     Systém by měl být uživatelsky přívětivý a jeho nastavení by mělo být jednoduše dostupné pro uživatele spolu se všemi informacemi jak s ním pracovat.
 \end{itemize}
 
-\section{Hardware ($\Sigma$ = 3 strany)}
+\section{Hardware ($\Sigma$ = 3 strany)}\label{sec:Hardware}
 \purpose{Jak jsem postupoval při návrhu a jak ta finální verze vypadá}
 
 \begin{figure}[H]
@@ -133,7 +133,7 @@ Další problém který bylo potřeba vyřešit v rámci návrhu desky je...
 
 
 \section{Firmware ve vývojové desce ($\Sigma$ = 8 stran)}
-\purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.} 
+\purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.}
 
 Software je anglicky protože Honeywell je anglická firma.
 
@@ -171,7 +171,7 @@ Tímto způsobem je ConveyorController objekt zaimplementován uvnitř hlavního
 
 \input{codes/main}
 
-Proměnná conveyorController je globální instance objektu ConveyorController a díky tomu je možné jeho funkce volat i ze setup i z loop funkce. Jinak je uvnitř setup funkce inicializovaný objekt a všechny jeho metody související s inicializací. 
+Proměnná conveyorController je globální instance objektu ConveyorController a díky tomu je možné jeho funkce volat i ze setup i z loop funkce. Jinak je uvnitř setup funkce inicializovaný objekt a všechny jeho metody související s inicializací.
 
 V rámci loop funkce je volaná metoda handleClient, která odpovídá na webové požadavky na adresách které hostuje nodeMCU. Tohle je jediná funkce co v loopu provádí a díky tomu je mikokontroller schopný velmi rychle odpovídat na veškeré webové požadavky.
 
@@ -281,7 +281,7 @@ Aplikace ještě používá TypeScript, což je nadstavba JavaScriptu, která um
 
 Aplikace bude ovládat nodeMCU servery přes posílání webových GET požadavků. GET požadavek je typicky například když do prohlížeče na PC zadám do URL adresy jakýkoliv název webu - tak to provádím GET požadavek na server, který je na IP adrese hostován. V tomhle případě jsou servery moje nodeMCU servery a místo PC zadávám požadavky přes webovou aplikaci.
 
-V rámci nodeMCU se nastavují adresy na kterých server nějakým způsobem odpovídá. Během tohoto nastavení můžu nejenom určit jaká stránka se ukáže po zadání požadavku na získání informací z webové adresy, ale můžu tím spouštět i jakýkoliv jiný kód. 
+V rámci nodeMCU se nastavují adresy na kterých server nějakým způsobem odpovídá. Během tohoto nastavení můžu nejenom určit jaká stránka se ukáže po zadání požadavku na získání informací z webové adresy, ale můžu tím spouštět i jakýkoliv jiný kód.
 
 Typický test této funkce je pomocí GET požadavku na IP adresu rozsvítit LED diodu, která přes breadboard zapojená do výstupního pinu vývojové desky WEMOS D1 mini pro. Pokud je deska připojená ke stejné WiFi síti jako můj počítač, můžu na počítači zadat například adresu 192.168.0.144/ledON. NodeMCU server na tuto adresu odpoví tím, že změní stav LED diody v desce a až poté pošle zpátky HTML kód, který se mi zobrazí v prohlížeči. Takto je možné provádět jakýkoliv kód, který je nastaven aby se prováděl v rámci GET požadavků na jakoukoliv adresu.
 
@@ -314,13 +314,13 @@ async function getData() {
 GET požadavky není kvůli capacitoru možné posílat běžným způsbem, protože v android aplikaci nefunguje fetch funkce tak, jak se od ní očekává. Je ale možné použít balíček vytvořený komunitou capacitoru který se jmenuje CapacitorHttp (což bylo nedávno přidané do základního capacitor balíčku). je to balíček, který zjednodušuje posílání GET požadavků na servery v rámci Capacitor aplikací tím, že má metodu GET, která funguje jako běžný fetch požadavek typu GET, ale je upravený aby fungoval ve WebView mobilním prostředí.
 
 Tímto způsobem se v aplikaci posílají GET požadavky:
-\begin{lstlisting}[language=JavaScript, caption={Funkce sendCommand dostupná uvnitř vstupní stránky aplikace}, label={lst:SendCommandFunkce}]   
+\begin{lstlisting}[language=JavaScript, caption={Funkce sendCommand dostupná uvnitř vstupní stránky aplikace}, label={lst:SendCommandFunkce}]
     // pred zacatkem komponentu:
     import { CapacitorHttp } from "@capacitor/core";
     import { HttpOptions } from "@capacitor/core/types/core-plugins";
 
     // uvnitr komponentu se strankou aplikace:
-      
+
       // Send a command to a specific conveyor and update its status
   const sendCommand = async (ip: string, command: string) => {
     try {
@@ -365,7 +365,7 @@ Základ hlavní stránky je využívání reaktivnosti Reactu. Jelikož je aplik
 \subsubsection{Co funkci sendCommand používá}
 \purpose{Vysvětlit proč je funkce sendCommand tak důležitá}
 
-Funkci sendCommand používají všechny tlačítka aplikace, které je možné vidět na obrázku \ref{fig:MobilniAppScreenshots} (tlačítka ON/OFF, zrychlení a zpomalení dopravníku). 
+Funkci sendCommand používají všechny tlačítka aplikace, které je možné vidět na obrázku \ref{fig:MobilniAppScreenshots} (tlačítka ON/OFF, zrychlení a zpomalení dopravníku).
 
 Funkce sendCommand se ale navíc sama provádí každé 2 sekundy pro každý dopravník přidaný do vstupní stránky aplikace. Provádí se tam GET požadavek na adresu /getData na adrese každého nodeMCU serveru. Tato adresa odpovídá s aktuální (aproximovanou) rychlostí dopravníku a s aktuálním stavem jestli je dopravník ovládaný lokálně nebo dálkově. Tato adresa už odpovídá pouze json souborem a díky tomu je důležité se i v rámci sendCommand pokoušet o přeložení odpovědi do javascript objektu pomocí příkazu $response.json()$. V případě těchto požadavků už program neselže s chybou a díky tomu uživatelské rozhraní aplikace získává informaci o rychlosti a stavu dopravníků, kterou může zobrazovat ve vstupní stránce jak je vidět na obrázku \ref{fig:MobilniAppScreenshots}.
 
@@ -430,9 +430,9 @@ Aplikace nevyžaduje žádné další nastavování.
 
 Myšlenka při návrhu schránek pro desku byla taková abych ji mohl vytisknout v běžných podmínkách pomocí 3D tiskárny Bambu Lab A1 Mini, kterou mám doma. Hlavní důvod proč jsem zvolil 3D tisk jako technologii bylo, že těchto schránek bude ve finále vytisknutých asi 5 kusů a tak není potřeba zajišťovat sériovou výrobu. Navíc je to pro schránky na desky plošných spojů levné řešení, které dosahuje dostatečné kvality provedení. Nároky na schránku jsou základní - je důležité mít možnost ji rozdělat aby byla možná údržba desky, ale jinak nemá zvláštní nároky, vzhledem k tomu, že bude vytažená pár týdnů do roku.
 
-Modelovací software pro návrh schránky pro desku jsem zvolil online CAD Onshape. Do toho jsem si nahrál 3D model desky plošných spojů v .STL formátu který mi vygeneroval KiCAD pomocí 3D prohlížeče a na základě tohoto modelu jsem začal modelovat schránku na míru pro moji desku. Rozhodl jsem se, že schránka bude vytvořena ze dvou hlavních částí a že bude bez šroubů, aby bylo možné na ni jednodušeji prototypovat zařízení, ale zároveň bylo cílem aby stále držela dohromady během používání, pokud zrovna není potřeba ji otevírat. 
+Modelovací software pro návrh schránky pro desku jsem zvolil online CAD Onshape. Do toho jsem si nahrál 3D model desky plošných spojů v .STL formátu který mi vygeneroval KiCAD pomocí 3D prohlížeče a na základě tohoto modelu jsem začal modelovat schránku na míru pro moji desku. Rozhodl jsem se, že schránka bude vytvořena ze dvou hlavních částí a že bude bez šroubů, aby bylo možné na ni jednodušeji prototypovat zařízení, ale zároveň bylo cílem aby stále držela dohromady během používání, pokud zrovna není potřeba ji otevírat.
 
-To se mi povedlo pomocí dvou částí. Do dolní části je možné zajet desku plošných spojů a díky tomu deska ve schránce dobře drží. V dolní části je také otvor na kabely které jsou uchycené v desce plošných spojů. poté je možné vzít celou dolní část a zajet ji do horní části schránky, která obsahuje prostor pro tlačítka, LCD display a díru na našroubování antény pro zlepšení připojení k WiFI. Nakonec schránka obsahuje ještě jednu část a to je brána, který dolní část desky zajistí aby nevyjížděla z horní části. 
+To se mi povedlo pomocí dvou částí. Do dolní části je možné zajet desku plošných spojů a díky tomu deska ve schránce dobře drží. V dolní části je také otvor na kabely které jsou uchycené v desce plošných spojů. poté je možné vzít celou dolní část a zajet ji do horní části schránky, která obsahuje prostor pro tlačítka, LCD display a díru na našroubování antény pro zlepšení připojení k WiFI. Nakonec schránka obsahuje ještě jednu část a to je brána, který dolní část desky zajistí aby nevyjížděla z horní části.
 
 \begin{figure}[H]
     \centering

@@ -164,7 +164,7 @@ Vzhledem k tomu, že frekvenční měnič pracuje ve výkonové části s usměr
 Po rozpojení napájení výkonové části zůstává na ovládacím panelu napětí $24V$. Tohle nízké napětí je ale chráněno šroubovacími gumovými krytkami, které zakrývají veškeré digitální vstupy a výstupy ovládacího panelu kde se toto napětí nachází.
 
 \section{Open-source vývojové desky ($\Sigma$ = 6 stran)}
-\purpose{Zde bude úvod do open source vývojových desek.}
+%\purpose{Zde bude úvod do open source vývojových desek.}
 
 Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
 
@@ -178,35 +178,67 @@ Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotov�
 
 Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
 
-\oldtext
-
 \subsection{Proč WEMOS vývojové desky (1.5 strany)}
-\purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
+%\purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
 
-Arduino v dnešní době není jediná firma, která vyrábí open source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS hlavně kvůli tomu, že využívá mikrokontrollery ESP8266, které mají dostupnou WiFi. Mají také dostupný NodeMCU díky čemuž je možné využít WiFi protokol pro řízení ovládacího panelu frekvenčního měniče.
+Arduino v dnešní době není jediná firma, která vyrábí open-source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS, která je výrobce vývojových desek které jsou podobné Arduino deskám, ale jejich zaměření je specificky ve vytváření kompaktních desek které mají integrovanou bezdrátovou konektivitu (WiFi a bluetooth) pomocí populárních mikrokontrolérů ESP32 a ESP8266 od společnosti Espressif Systems.
 
-\oldtext
+Mít možnost používat WiFi je důležitý požadavek, který musí vývojová deska splňovat. Pokud bude systém možné ovládat přes WiFi, je možné pro ovládání použít jakékoliv zařízení, které má WiFi technologii, což je v dnešní době většina chytrých zařízení. Kvůli tomu lze dopravník ovládat širokým spektrem chytrých zařízení a tak není potřeba aby s sebou uživatelé nosili dedikovaný vysílač.
 
-WEMOS desky jsou vývojové desky co používají mikrokontrollery ESP32 nebo ESP8266 a mají v sobě integrované i WiFi moduly, což běžné arduino vývojové desky většinou nemají. Jsou také open source stejně jako arduino a tak jsou lehce dostupné, protože mohou firmy vytvářet svoje vlastní klony.
+Společnost WEMOS nabízí několik modelů vývojových desek s různými mikrokontroléry a periferiemi. Mezi známé varianty patří například:
+\begin{itemize}
+	\item \textbf{WEMOS D1 Mini:} Kompaktní deska postavená na mikrokontroléru ESP8266EX. Poskytuje 11 digitálních GPIO pinů (z toho 10] s podporou PWM a podporou přerušení), 1 analogový vstup, I2C rozhraní, 4MB Flash paměti a integrovanou PCB anténu pro WiFi. Napájení a programování se provádí přes USB-C konektor. Deska je oblíbená pro své malé rozměry a širokou podporu, ale omezuje ji malý počet GPIO pinů, což desku nedělá dobrou pro prototypování nebo rozsáhlejší aplikace.
+	\item \textbf{WEMOS C3 Mini:} Novější varianta využívající mikrokontrolér ESP32-C3. Tento čip integruje WiFi i Bluetooth konektivitu. Deska disponuje USB-C konektorem, 4 MB Flash paměti a 12 GPIO pinů.
+\end{itemize}
 
-Je možné je programovat pomocí arduino IDE a arduino jazyka (variace na C++). Já je programuji skrz alternativu Arduino IDE jménem Platformio.
+Tenhle systém je ale navrhován pro industriální prostředí a je velmi důležité aby byla bezdrátová komunikace co nejspolehlivější. Proto je potřebné mít na vývojové desce k dispozici externí anténu, která významně zvýší dosah WiFi komunikace díky lepšímu umístění antény. Proto byla do systému vybrána vývojová deska WEMOS D1 Mini Pro kterou lze vidět na obrázku \ref{fig:WEMOSD1MiniPro}. Tato deska sdílí většinu vlastností s modelem D1 Mini, ale narozdíl od levnějšího modelu má 16MB Flash paměti, které jsou také velmi důležité vzhledem k tomu, že na kód pro systém by 4MB Flash paměti nestačilo.
 
-můžu ukázat wemos d1 mini základní web script tam kde bude zmíněný \cite{NavodNaESPWebServerDratek}
+Všechny vývojové desky WEMOS s mikrokontroléry ESP8266 a EPS32 lze programovat pomocí prostředí Arduino IDE (nebo alternativy jako PlatformIO) s využitím Arduino jazyka založeného na C++, nebo alternativně pomocí MicroPython. Webové ovládání je prováděno pomocí open-source firmwaru NodeMCU, který umožňuje běh skriptů v jazyce Lua, což je vhodné pro nenáročné síťové aplikace (více je popsaný v kapitole \ref{sec:NodeMCU}).
 
-\source{Tady budou zase online zdroje, protože jsem zase neviděl moc knížek co by nějak vysvětlovali co jsou WEMOS desky}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/WEMOS_D1_Mini_Pro.jpg}
-    \caption{Použitá varianta vývojové desky WEMOS D1 Mini Pro \cite{WEMOSD1MiniPro}}
-    \label{fig:WEMOSD1MiniPro}
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/WEMOS_D1_Mini_Pro.png}
+	\caption{Použitá varianta vývojové desky WEMOS D1 Mini Pro \cite{WEMOSD1MiniPro}}
+	\label{fig:WEMOSD1MiniPro}
 \end{figure}
 
 \subsection{Technické specifikace WEMOS D1 Mini Pro}
-\purpose{Rozvinout co jsou specifikace D1 Mini Pro a co ty jednotlivé věci znamenají - počet GPIO, I2C, PWM, paměť, typ mikrokontrolleru, atd. - nějaký základní basic informace}
+% \purpose{Rozvinout co jsou specifikace D1 Mini Pro a co ty jednotlivé věci znamenají - počet GPIO, I2C, PWM, paměť, typ mikrokontrolleru, atd. - nějaký základní basic informace}
 
-\subsubsection{Architektura ESP8266 a srovnání s ESP32}
-\purpose{Vysvětlit jak se liší ESP32 a ESP8266 a proč se ESP8266 víc hodí pro tento projekt - ESP32 má wifi i bluetooth a ESP8266 má jen wifi. Zdroj needed.}
+Na základě požadavků projektu a srovnání s alternativami je pro realizaci hardwarového návrhu nejefektivnější vývojová deska WEMOS D1 Mini Pro. Tato sekce popisuje její technické parametry s jejich využitím v návrhu. Samotná deska je postavena na mikrokontroléru ESP-8266EX a je velmi kompaktní, zatímco ale stále poskytuje dost funkcionalit a vstupních a výstupních pinů pro provoz zařízení.
+
+Technické specifikace této vývojové desky jsou následující: \cite{ESP8266EXDatasheet, D1MiniProDokumentace}
+\begin{itemize}
+	\item Mikrokontrolér: ESP-8266EX
+	\item Napájecí napětí: $5V$
+	\item Provozní napětí: $3,3V$
+	\item Počet digitálních I/O pinů (GPIO): 11. Tyto piny slouží pro digitální vstupní a výstupní signály které budou ovládat dopravník a na základě kterých se bude aproximovat rychlost dopravníku.
+	\item Podpora periferií na GPIO pinech: Většina digitálních pinů podporuje funkce jako:
+	\begin{itemize}
+		\item Přerušení (Interrupt): Umožňuje reakci mikrokontroléru na externí události.
+		\item PWM (Pulse Width Modulation): Pro generování semi-analogového signálu nebo snížení střední hodnoty napětí. Až 10 pinů má podporu PWM.
+		\item I2C: Dvouvodičová sériová sběrnice používaná pro komunikaci s periferiemi, jako je v tomto projektu použitý LCD displej. Deska disponuje dedikovanými piny pro tuto sběrnici na pinech D1 a D2.
+		\item One-wire: Sériová sběrnice pro komunikaci s některými typy senzorů.
+	\end{itemize}
+	\item Analogový vstupní pin: 1. Tento pin umožňuje měřit analogové napětí, například z některých typů senzorů. Maximální vstupní napětí pro tento pin je 3.2V.
+	\item Paměť:
+	\begin{itemize}
+		\item Flash paměť: 16 MB. Tato velká kapacita Flash paměti je důležitá pro uložení aplikačního kódu, rozšiřujících knihoven jako nodeMCU a webových souborů co jsou hostované na serveru.
+		\item RAM: 50 kB. RAM slouží pro běh programu a ukládání proměnných.
+	\end{itemize}
+	\item Bezdrátová konektivita: Integrovaná WiFi na frekvenci 2.4 GHz.
+	\item Anténa: Možnost připojení externí antény prostřednictvím IPEX1 / SMA konektoru nebo využití vestavěné keramické antény pro testování. Pro zvýšení spolehlivosti a dosahu v industriálním prostředí je využita možnost externí antény.
+	\item Napájení a programování: Micro USB konektor. Deska může být napájena přes USB nebo přes 5V pin.
+	\item Napájení z baterie: Rozhraní pro připojení lithiové baterie s nabíjecím proudem až 500mA. Toto rozhraní ale v tomto projektu není využíváno a navržená deska plošných spojů není pro používání baterie uspořádána.
+	\item Kompatibilita: Deska je kompatibilní s vývojovými prostředími a firmwary jako Arduino, MicroPython a NodeMCU, což poskytuje flexibilitu při vývoji firmwaru.
+\end{itemize}
+
+Zapojení této vývojové desky do navrhnuté desky plošných spojů je popsáno v kapitole \ref{sec:Hardware}.
+
+\oldtext
+
+\subsubsection{Architektura ESP8266}
+\purpose{Vysvětlit jaké jsou parametry ESP8266 a proč se ESP8266 víc hodí pro tento projekt než ESP32.  ESP32 má wifi i bluetooth a ESP8266 má jen wifi. Zdroj needed.}
 
 \subsection{Arduino jazyk a Platformio (3 strany)}
 \purpose{Vysvětlení že existuje arduino jazyk a na čem je založen, zmínění že existuje Arduino IDE a vysvětlení základu jak funguje platformio a jak se liší od Arduino IDE.}
@@ -242,8 +274,10 @@ tickerObject.start(); //Spusti Ticker.
 \end{lstlisting}
 kde je \texttt{callbackFunction} je funkce která bude provedena při každém spuštění Ticker objektu.
 
-\subsection{NodeMCU (1.5 strany)}
+\subsection{NodeMCU (1.5 strany)}\label{sec:NodeMCU}
 \purpose{Tady vysvětlím jak funguje hostování webové aplikace na vývojové desce pomocí nodeMCU.}
+
+můžu ukázat wemos d1 mini základní web script tam kde bude zmíněný \cite{NavodNaESPWebServerDratek}
 
 Můžu zmínit, že využívám toho, že nodeMCU umí hostovat server na vlastní IP adrese a to i když je připojený na hotspotu. Díky tomu jsem schopný mít hotspotu v prohlížeči dostupnou IP adresu z nodeMCU. Mobilní aplikace teda teoreticky není potřeba - dalo by se to řídit přes prohlížeč kde si najdu tu IP adresu nodeMCU serveru. Mobilní aplikace ale všechno dělá jednodušší pro koncovýho zákazníka (mechanici v Honeywellu) a umožňuje mi do aplikace přidat i další informace jako třeba setup a help při nastavování kontrolního panelu.
 

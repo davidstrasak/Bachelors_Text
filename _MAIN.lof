@@ -4,24 +4,28 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Závislost napětí, momentu a výkonu na frekvenci \blx@tocontentsinit {0}\cite {SkriptaRizeniOtacekAM}}}{12}{figure.caption.4}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Frekvenční měnič Sinamics G120D \blx@tocontentsinit {0}\cite {SinamicsG120D}}}{13}{figure.caption.5}%
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Způsoby seřizování ovládacího panelu frekvenčního měniče \blx@tocontentsinit {0}\cite {SiemensG120DGettingStarted}}}{14}{figure.caption.6}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Použitá varianta vývojové desky WEMOS D1 Mini Pro \blx@tocontentsinit {0}\cite {WEMOSD1MiniPro}}}{17}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Ukázka rozhraní vývojového prostředí Platformio}}{18}{figure.caption.10}%
-\contentsline {figure}{\numberline {1.6}{\ignorespaces Placeholder: Jak vypadá stránka co se objeví pokud zadám IP adresu nodeMCU do prohlížeče}}{20}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Použitá varianta vývojové desky WEMOS D1 Mini Pro \blx@tocontentsinit {0}\cite {WEMOSD1MiniPro}}}{18}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Ukázka rozhraní vývojového prostředí Platformio}}{20}{figure.caption.10}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Placeholder: Jak vypadá stránka co se objeví pokud zadám IP adresu nodeMCU do prohlížeče}}{22}{figure.caption.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Schéma principu jak navržený systém funguje}}{21}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Popis zařízení co ovládá dopravník}}{22}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Vysílat příkazy zařízení bude mobilní aplikace připojená přes hotspot}}{22}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Blokové schéma desky plošných spojů}}{23}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Návrh desky plošných spojů v KiCAD}}{24}{figure.caption.18}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces LCD displej s I2C převodníkem \blx@tocontentsinit {0}\cite {laskakit_16x2_lcd}}}{25}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Začátek stavového diagramu}}{30}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Strana stavového diagramu s lokálního ovládáním}}{31}{figure.caption.22}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Strana stavového diagramu s dálkovým ovládáním}}{32}{figure.caption.23}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Popis designu hlavní stránky aplikace}}{39}{figure.caption.33}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Model schránky pro desku plošných spojů}}{41}{figure.caption.36}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Finální podoba desky plošných spojů}}{42}{figure.caption.37}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Schéma principu jak navržený systém funguje}}{23}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Popis zařízení co ovládá dopravník}}{24}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Vysílat příkazy zařízení bude mobilní aplikace připojená přes hotspot}}{24}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Blokové schéma desky plošných spojů}}{25}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Návrh desky plošných spojů v KiCAD}}{26}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces LCD displej s I2C převodníkem \blx@tocontentsinit {0}\cite {laskakit_16x2_lcd}}}{27}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Začátek stavového diagramu}}{32}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Strana stavového diagramu s lokálního ovládáním}}{33}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Strana stavového diagramu s dálkovým ovládáním}}{34}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Popis designu hlavní stránky aplikace}}{41}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Model schránky pro desku plošných spojů}}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Finální podoba desky plošných spojů}}{44}{figure.caption.37}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ukázka Brněnské haly pro testování dopravníků společnosti Honeywell \blx@tocontentsinit {0}\cite {HoneywellHala}}}{45}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ukázka Brněnské haly pro testování dopravníků společnosti Honeywell \blx@tocontentsinit {0}\cite {HoneywellHala}}}{47}{figure.caption.38}%
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 

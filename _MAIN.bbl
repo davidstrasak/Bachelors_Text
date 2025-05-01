@@ -209,78 +209,6 @@
       \verb https://www.wemos.cc/en/latest/d1/d1_mini_pro.html
       \endverb
     \endentry
-    \entry{TickerKnihovna}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=09f157197deaf77c32321d61b7ded4f6}{%
-           family={Staub},
-           familyi={S\bibinitperiod},
-           given={Stefan},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{fullhash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{fullhashraw}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{bibnamehash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{authorbibnamehash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{authornamehash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{authorfullhash}{09f157197deaf77c32321d61b7ded4f6}
-      \strng{authorfullhashraw}{09f157197deaf77c32321d61b7ded4f6}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{8}
-      \field{title}{Ticker | Arduino Documentation}
-      \field{year}{2021}
-      \verb{urlraw}
-      \verb https://docs.arduino.cc/libraries/ticker/#Compatibility
-      \endverb
-      \verb{url}
-      \verb https://docs.arduino.cc/libraries/ticker/#Compatibility
-      \endverb
-    \endentry
-    \entry{TickerGitHubPage}{misc}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{month}{4}
-      \field{title}{sstaub/Ticker: Ticker library for Arduino}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://github.com/sstaub/Ticker
-      \endverb
-      \verb{url}
-      \verb https://github.com/sstaub/Ticker
-      \endverb
-    \endentry
-    \entry{NavodNaESPWebServerDratek}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=b78111442e80a97dbd0fcd1d581f6436}{%
-           family={Dratek},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{fullhash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{fullhashraw}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{bibnamehash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{authorbibnamehash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{authornamehash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{authorfullhash}{b78111442e80a97dbd0fcd1d581f6436}
-      \strng{authorfullhashraw}{b78111442e80a97dbd0fcd1d581f6436}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{4}
-      \field{title}{ESP WiFi Webserver | Návody Drátek}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://navody.dratek.cz/navody-k-produktum/esp-wifi-webserver.html
-      \endverb
-      \verb{url}
-      \verb https://navody.dratek.cz/navody-k-produktum/esp-wifi-webserver.html
-      \endverb
-    \endentry
     \entry{laskakit_16x2_lcd}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=f81c95a62c084f8829648af51235a3bb}{%
@@ -323,8 +251,8 @@
       \strng{authornamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhashraw}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}
@@ -353,8 +281,8 @@
       \strng{authornamehash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhashraw}{e6f60ca6c699bf2730946bc0494c5cbe}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}

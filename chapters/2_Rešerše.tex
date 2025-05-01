@@ -1,5 +1,5 @@
 % Co udělal někdo jinej
-\chapter{Rešerše ($\sum$ = 16 stran)} \label{chap:Rešerše}
+\chapter{Rešerše ($\sum$ = 9 stran)} \label{chap:Rešerše}
 \section{Frekvenční měniče a jejich role v řízení dopravníků (6,5 stran)}\label{sec:FrekvencniMeniceAJejichRole}
 %\purpose{Vysvětlit s jakým systémem už pracuji}
 
@@ -163,7 +163,7 @@ Vzhledem k tomu, že frekvenční měnič pracuje ve výkonové části s usměr
 
 Po rozpojení napájení výkonové části zůstává na ovládacím panelu napětí $24V$. Tohle nízké napětí je ale chráněno šroubovacími gumovými krytkami, které zakrývají veškeré digitální vstupy a výstupy ovládacího panelu kde se toto napětí nachází.
 
-\section{Open-source vývojové desky ($\Sigma$ = 6 stran)}
+\section{Open-source vývojové desky ($\Sigma$ = 2.5 strany)}
 %\purpose{Zde bude úvod do open source vývojových desek.}
 
 Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
@@ -178,7 +178,7 @@ Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotov�
 
 Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
 
-\subsection{Proč WEMOS vývojové desky (1.5 strany)}
+\subsection{Proč WEMOS vývojové desky (1 strana)}
 %\purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
 
 Arduino v dnešní době není jediná firma, která vyrábí open-source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS, která je výrobce vývojových desek které jsou podobné Arduino deskám, ale jejich zaměření je specificky ve vytváření kompaktních desek které mají integrovanou bezdrátovou konektivitu (WiFi a bluetooth) pomocí populárních mikrokontrolérů ESP32 a ESP8266 od společnosti Espressif Systems.
@@ -193,7 +193,7 @@ Společnost WEMOS nabízí několik modelů vývojových desek s různými mikro
 
 Tenhle systém je ale navrhován pro industriální prostředí a je velmi důležité aby byla bezdrátová komunikace co nejspolehlivější. Proto je potřebné mít na vývojové desce k dispozici externí anténu, která významně zvýší dosah WiFi komunikace díky lepšímu umístění antény. Proto byla do systému vybrána vývojová deska WEMOS D1 Mini Pro kterou lze vidět na obrázku \ref{fig:WEMOSD1MiniPro}. Tato deska sdílí většinu vlastností s modelem D1 Mini, ale narozdíl od levnějšího modelu má 16MB Flash paměti, které jsou také velmi důležité vzhledem k tomu, že na kód pro systém by 4MB Flash paměti nestačilo.
 
-Všechny vývojové desky WEMOS s mikrokontroléry ESP8266 a EPS32 lze programovat pomocí prostředí Arduino IDE (nebo alternativy jako PlatformIO) s využitím Arduino jazyka založeného na C++, nebo alternativně pomocí MicroPython. Webové ovládání je prováděno pomocí open-source firmwaru NodeMCU, který umožňuje běh skriptů v jazyce Lua, což je vhodné pro nenáročné síťové aplikace (více je popsaný v kapitole \ref{sec:NodeMCU}).
+Všechny vývojové desky WEMOS s mikrokontroléry ESP8266 a EPS32 lze programovat pomocí prostředí Arduino IDE (nebo alternativy jako PlatformIO) s využitím Arduino jazyka založeného na C++, nebo alternativně pomocí MicroPython. Celá aplikace je programována pomocí Arduino framework pro ESP8266. Webové ovládání je prováděno pomocí knihovny WebServer, která umožňuje běh nenáročných síťových aplikací (více je popsané v kapitole \ref{sec:ArduinoFrameworkForESP8266}).
 
 \begin{figure}[hptb]
 	\centering
@@ -202,7 +202,7 @@ Všechny vývojové desky WEMOS s mikrokontroléry ESP8266 a EPS32 lze programov
 	\label{fig:WEMOSD1MiniPro}
 \end{figure}
 
-\subsection{Technické specifikace WEMOS D1 Mini Pro}
+\subsection{Technické specifikace WEMOS D1 Mini Pro (1.5 strany)}
 % \purpose{Rozvinout co jsou specifikace D1 Mini Pro a co ty jednotlivé věci znamenají - počet GPIO, I2C, PWM, paměť, typ mikrokontrolleru, atd. - nějaký základní basic informace}
 
 Na základě požadavků projektu a srovnání s alternativami je pro realizaci hardwarového návrhu nejefektivnější vývojová deska WEMOS D1 Mini Pro. Tato sekce popisuje její technické parametry s jejich využitím v návrhu. Samotná deska je postavena na mikrokontroléru ESP-8266EX a je velmi kompaktní, zatímco ale stále poskytuje dost funkcionalit a vstupních a výstupních pinů pro provoz zařízení.
@@ -223,8 +223,8 @@ Technické specifikace této vývojové desky jsou následující: \cite{ESP8266
 	\item Analogový vstupní pin: 1. Tento pin umožňuje měřit analogové napětí, například z některých typů senzorů. Maximální vstupní napětí pro tento pin je 3.2V.
 	\item Paměť:
 	\begin{itemize}
-		\item Flash paměť: 16 MB. Tato velká kapacita Flash paměti je důležitá pro uložení aplikačního kódu, rozšiřujících knihoven jako nodeMCU a webových souborů co jsou hostované na serveru.
-		\item RAM: 50 kB. RAM slouží pro běh programu a ukládání proměnných.
+		\item Flash paměť: 16 MB. Tato velká kapacita Flash paměti je důležitá pro uložení aplikačního kódu, rozšiřujících knihoven (jako je WebServer) a webových souborů co jsou hostované na serveru.
+		\item RAM: 50 kB. Slouží pro běh programu a ukládání proměnných.
 	\end{itemize}
 	\item Bezdrátová konektivita: Integrovaná WiFi na frekvenci 2.4 GHz.
 	\item Anténa: Možnost připojení externí antény prostřednictvím IPEX1 / SMA konektoru nebo využití vestavěné keramické antény pro testování. Pro zvýšení spolehlivosti a dosahu v industriálním prostředí je využita možnost externí antény.
@@ -233,49 +233,18 @@ Technické specifikace této vývojové desky jsou následující: \cite{ESP8266
 	\item Kompatibilita: Deska je kompatibilní s vývojovými prostředími a firmwary jako Arduino, MicroPython a NodeMCU, což poskytuje flexibilitu při vývoji firmwaru.
 \end{itemize}
 
-Zapojení této vývojové desky do navrhnuté desky plošných spojů je popsáno v kapitole \ref{sec:Hardware}.
+Zapojení vývojové desky do navrhnuté desky plošných spojů je popsáno v kapitole \ref{sec:Hardware}.
 
+\subsection{Arduino framework pro ESP8266}\label{sec:ArduinoFrameworkForESP8266}
+% \purpose{Trochu uvést do kontextu jak funguje arduino framework for esp8266 a jak specificky řeším provozování webserveru na mým MCU.}
+
+% Tyvole já si celou dobu myslel že používám nodeMCU ale ono se to jmenuje úplně jinak :D.
 \oldtext
 
-\subsubsection{Architektura ESP8266}
-\purpose{Vysvětlit jaké jsou parametry ESP8266 a proč se ESP8266 víc hodí pro tento projekt než ESP32.  ESP32 má wifi i bluetooth a ESP8266 má jen wifi. Zdroj needed.}
-
-\subsection{Arduino jazyk a Platformio (3 strany)}
-\purpose{Vysvětlení že existuje arduino jazyk a na čem je založen, zmínění že existuje Arduino IDE a vysvětlení základu jak funguje platformio a jak se liší od Arduino IDE.}
-
-\purpose{Vysvětlení že existují soubory funkcí a hlavičkové soubory.}
-
-\source{Tady možná budu muset mít internetový zdroje, protože jsem nenašel žádnou publikaci co by mluvila o Platformio.}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{images/Platformio_Ukazka.png}
-    \caption{Ukázka rozhraní vývojového prostředí Platformio}
-    \label{fig:PlatformioUkazka}
-\end{figure}
-
-\subsubsection{Objekty v arduino C++ jazyce}
-\purpose{Tady bych rád vysvětlil jak fungují objekty v arduino C++ jazyce jelikož je využívám uvnitř kapitoly \ref{sec:ConveyorController}. }
-
-U objektů jde obecně jde hlavně o to, že si můžu vytvořit globální instanci objektu a tam si zadefinovat public metody a public proměnné (které můžu zavolat a získat přímo z objektu a používat v main kódu) a private metody a private proměnné (které jsou dostupné jenom uvnitř objektu, takže je můžu získat jen vevnitř jiných metod a proměnných).
-
-\subsubsection{Ticker knihovna}\label{sec:TickerKnihovna}
-\purpose{Podobně jako existuje timer u microchip MCU existuje i timer knihovna zvaná Ticker u MCU co se programují v arduino jazyce. Tuhle knihovnu já používám a zmiňuju v sekci \ref{sec:ImplementaceConveyorControllerVeMainCpp} a tak se hodí ji trochu vysvětlit.}
-
-Vývojové desky kompatibilní s platformou Arduino umožňují integraci knihovny Ticker, která poskytuje mechanismus načasování funkcí v definovaných intervalech bez blokování provádění zbytku kódu. Pokud by byla použita funkce \texttt{delay()}, mohlo by to vést ke dvěma problémům. Prvním je různý čas délky vykonávání kódu, které by zesložiťovala spolehlivé nastavení přesných časových intervalů. Druhým problémem je blokující povaha funkce \texttt{delay()}, která by znemožnila časově kritické operace, jako je například reakce na síťové požadavky na serveru nodeMCU běžícím na mikrokontrolrru, což by mohlo zpomalit funkčnost celého systému. \cite{TickerKnihovna}
-
-Je tedy možné se spolehnout na to, že se bude prováděná funkce spouštět přesně ve stanovený čas, což umožňuje aproximaci rychlosti dopravníku která je popsána v kapitole \ref{sec:AproximaceRychlostiDopravniku}.
-
-Pro použití Ticker knihovny je potřebné si knihovnu nejdříve importovat pomocí příkazu \texttt{\#include "Ticker.h"} v záhlaví souboru a následně je možné ji nastavit v \texttt{setup()} funkci hlavního skriptu.
-
-\begin{lstlisting}[language=C++, caption={Použití ticker knihovny uvnitř \texttt{setup()} funkce \cite{TickerGitHubPage}}, label={lst:TickerUkazka}]
-Ticker tickerObject(callbackFunction, 1000); // Zadefinuje ticker objekt
-tickerObject.start(); //Spusti Ticker.
-\end{lstlisting}
-kde je \texttt{callbackFunction} je funkce která bude provedena při každém spuštění Ticker objektu.
-
 \subsection{NodeMCU (1.5 strany)}\label{sec:NodeMCU}
-\purpose{Tady vysvětlím jak funguje hostování webové aplikace na vývojové desce pomocí nodeMCU.}
+% \purpose{Tady vysvětlím jak funguje hostování webové aplikace na vývojové desce pomocí nodeMCU.}
+
+Pro využití bezdrátové WiFi komunikace ve zvolené vývojové desce byla použita platforma NodeMCU.
 
 můžu ukázat wemos d1 mini základní web script tam kde bude zmíněný \cite{NavodNaESPWebServerDratek}
 
@@ -293,3 +262,44 @@ Např. pokud má vývojová deska IP adresu 192.168.0.207, pak skrz zadání do 
 
 \source{Vzhledem k tomu, že NodeMCU je open source a mají vlastní dokumentaci tak bych zdroje hledal na jejich webu.}
 
+
+
+% Na doporučení vedoucího tyhle kapitoly už nedělám, protože se budu moct lépe vyřádit v té praktické části
+%\subsubsection{Architektura ESP8266EX}
+%\purpose{Vysvětlit jaké jsou parametry ESP8266 a proč se ESP8266 víc hodí pro tento projekt než ESP32.  ESP32 má wifi i bluetooth a ESP8266 má jen wifi. Zdroj needed.}
+% Myslím si že je to navíc. Až tak dohloubky jsem to neřešil, protože mě hlavně zajímaly ty parametry mojí vývojové desky.
+
+%\subsection{Arduino jazyk a Platformio (3 strany)}
+%\purpose{Vysvětlení že existuje arduino jazyk a na čem je založen, zmínění že existuje Arduino IDE a vysvětlení základu jak funguje platformio a jak se liší od Arduino IDE.}
+%
+%\purpose{Vysvětlení že existují soubory funkcí a hlavičkové soubory.}
+%
+%\source{Tady možná budu muset mít internetový zdroje, protože jsem nenašel žádnou publikaci co by mluvila o Platformio.}
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Platformio_Ukazka.png}
+%    \caption{Ukázka rozhraní vývojového prostředí Platformio}
+%    \label{fig:PlatformioUkazka}
+%\end{figure}
+%
+%\subsubsection{Objekty v arduino C++ jazyce}
+%\purpose{Tady bych rád vysvětlil jak fungují objekty v arduino C++ jazyce jelikož je využívám uvnitř kapitoly \ref{sec:ConveyorController}. }
+%
+%U objektů jde obecně jde hlavně o to, že si můžu vytvořit globální instanci objektu a tam si zadefinovat public metody a public proměnné (které můžu zavolat a získat přímo z objektu a používat v main kódu) a private metody a private proměnné (které jsou dostupné jenom uvnitř objektu, takže je můžu získat jen vevnitř jiných metod a proměnných).
+%
+%\subsubsection{Ticker knihovna}\label{sec:TickerKnihovna}
+%\purpose{Podobně jako existuje timer u microchip MCU existuje i timer knihovna zvaná Ticker u MCU co se programují v arduino jazyce. Tuhle knihovnu já používám a zmiňuju v sekci \ref{sec:ImplementaceConveyorControllerVeMainCpp} a tak se hodí ji trochu vysvětlit.}
+%
+%Vývojové desky kompatibilní s platformou Arduino umožňují integraci knihovny Ticker, která poskytuje mechanismus načasování funkcí v definovaných intervalech bez blokování provádění zbytku kódu. Pokud by byla použita funkce \texttt{delay()}, mohlo by to vést ke dvěma problémům. Prvním je různý čas délky vykonávání kódu, které by zesložiťovala spolehlivé nastavení přesných časových intervalů. Druhým problémem je blokující povaha funkce \texttt{delay()}, která by znemožnila časově kritické operace, jako je například reakce na síťové požadavky na serveru nodeMCU běžícím na mikrokontrolrru, což by mohlo zpomalit funkčnost celého systému. \cite{TickerKnihovna}
+%
+%Je tedy možné se spolehnout na to, že se bude prováděná funkce spouštět přesně ve stanovený čas, což umožňuje aproximaci rychlosti dopravníku která je popsána v kapitole \ref{sec:AproximaceRychlostiDopravniku}.
+%
+%Pro použití Ticker knihovny je potřebné si knihovnu nejdříve importovat pomocí příkazu \texttt{\#include "Ticker.h"} v záhlaví souboru a následně je možné ji nastavit v \texttt{setup()} funkci hlavního skriptu.
+%
+%\begin{lstlisting}[language=C++, caption={Použití ticker knihovny uvnitř \texttt{setup()} funkce \cite{TickerGitHubPage}}, label={lst:TickerUkazka}]
+%Ticker tickerObject(callbackFunction, 1000); // Zadefinuje ticker objekt
+%tickerObject.start(); //Spusti Ticker.
+%\end{lstlisting}
+%kde je \texttt{callbackFunction} je funkce která bude provedena při každém spuštění Ticker objektu.
+%

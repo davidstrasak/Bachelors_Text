@@ -1,51 +1,64 @@
 % Co jsem udělal já
 \chapter{Návrh zařízení ($\Sigma$ = 22 stran)}
 \section{Popis funkce systému ($\sum$ = 3 strany)}\label{sec:PopisFunkceSystemu}
-\purpose{Tady bych rád popsal, jak to bude celé fungovat.}
+% \purpose{Tady bych rád popsal, jak to bude celé fungovat.}
 
-Mám mobilní hotspot s aplikací. Hotspot komunikuje s nodeMCU serverem na vývojové desce WEMOS D1 Mini Pro, která je připojena na mojí desku plošných spojů. Moje deska plošných spojů přepíná digitální vstupy na ovládacím panelu frekvenčního měniče. Frekvenční měnič ovládá asynchronní motory jednoho nebo více dopravníků. Při psaní tohoto textu si dát referenci na \ref{sec:NastaveniOvladacihoPanelu}.
+Celý systém je od základu navržen kolem mobilní aplikace, jelikož požadavek na dálkové řízení dopravníků je jeden ze základních požadavků navrženého systému.
 
-Zde je schéma základního principu:
+Aplikace bude obsahovat stránku, kterou lze pomocí WiFi plynule komunikovat s vývojovou deskou WEMOS D1 Mini Pro. Vývojová deska bude připevněná k desce plošných spojů, která bude pomocí tří kabelů připojena na ovládací panel (2 datové kabely a 1 napájecí). Tímto způsobem může deska nastavovat takové digitální vstupy, aby bylo možné dopravník ovládat.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/FunkcniSchema_DvaOvladace.png}
-    \caption{Schéma principu jak navržený systém funguje}
-    \label{fig:PrincipFunkceZarizeni}
+Ovládací panel frekvenčního měniče si následně dle jeho nastavení sám přeloží jak má nastavit jeho výkonovou část tak, aby ovládal asynchronní motory.
+
+Na obrázku \ref{fig:PrincipFunkceZarizeni} je schéma základního principu.
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=1\linewidth]{images/FunkcniSchema_DvaOvladace.png}
+	\caption{Schéma principu jak navržený systém funguje}
+	\label{fig:PrincipFunkceZarizeni}
 \end{figure}
 
-Vzhledem k tomu, že vývojová deska WEMOS D1 Mini Pro je k hotspotu připojená skrz WiFi, je možné na mobilním zařízení s hotspotem pomocí aplikace postupně komunikovat s více nodeMCU servery. NodeMCU servery se nesnaží provádět žádné requesty přes internet a jsou dostupné jenom na lokální síti na lokálních IP adresách, takže nijak nezatěžují připojení k internetu. Jediná limitace která tedy existuje na počet zařízení, které je možné připojit, jsou hardwarové limitace jednotlivých mobilních telefonů.
+Jelikož mobilní aplikace komunikuje s vývojovými deskami pomocí WiFi, je potřebné aby se buďto mobilní zařízení připojilo na přístupové místo vývojové desky, anebo se může vývojová deska připojit na hotspot mobilního zařízení. NodeMCU umožňuje obě varianty. Pro účely tohoto systému se více hodí ta druhá možnost, protože přirozeně umožňuje mít jeden hotspot na mobilním zařízení a na ten se může připojit více vývojových desek. Tohle umožňuje jednoduše ovládat více dopravníků zároveň. Další výhoda je, že vývojové desky připojené na hotspot vůbec nevyužívají toho, že je mobilní telefon připojený k internetu a tak nijak nezatěžují rychlost připojení - jediná limitace počtu takto připojených vývojových desek je tedy limitace maximálního počtu co může mít mobilní telefon připojené přes hotspot. Nevýhoda tohoto způsobu komunikace je ovšem taková, že se musí nastavit jednotné jméno a heslo WiFi komunikace, které bude zadané přímo ve firmwaru vývojové desky a pokud bude potřebné tyhle údaje změnit, bude se muset přehrát kód všech vývojových desek (pro všech pět používaných zařízení).
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/obrazekKrabicky_annot.png}
-    \caption{Popis zařízení co ovládá dopravník}
-    \label{fig:PopisZarizeniCoOvladaDopravnik}
+Díky tomu, že je tento systém navržený tak, aby přes 5-pinové kabely spínal digitální vstupy ovládacího panelu, je tento systém možné použít i na frekvenční měniče jiných značek než je Sinamics. Kabely, které se používají pro komunikaci s ovládacím panelem frekvenčního měniče (M12 5-pinové kabely) jsou v dnešní době u frekvenčních měničů časté. Jediné co je tedy potřeba pro používání systému s jiným frekvenčním měničem jsou správné konektory a dále aby bylo možné vyresetovat ovládací panel do podobného výchozího nastavení jako má Sinamics CU240-2.
+
+Na obrázku \ref{fig:PopisZarizeniCoOvladaDopravnik}  je finální vzhled schránky na desku plošných spojů s tlačítky, LCD displejem a dalšími funkcemi. Deska je dále popsaná v kapitole \ref{sec:Hardware}.
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/obrazekKrabicky_annot.png}
+	\caption{Popis zařízení co ovládá dopravník}
+	\label{fig:PopisZarizeniCoOvladaDopravnik}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \includegraphics[width=\textwidth, height=290px]{images/MobilniLanding.png}
-        \caption{Vstupní stránka aplikace}
-        \label{fig:MobilniLanding}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \includegraphics[width=\textwidth, height=290px]{images/MobilniSetup.png}
-        \caption{Část stránky nastavení}
-        \label{fig:MobilniSetup}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \includegraphics[width=\textwidth, height=290px]{images/MobilniHelp.png}
-        \caption{Část stránky s častými chybami}
-        \label{fig:MobilniHelp}
-    \end{subfigure}
-    \caption{Vysílat příkazy zařízení bude mobilní aplikace připojená přes hotspot}
-    \label{fig:MobilniAppScreenshots}
+Na obrázku \ref{fig:MobilniAppScreenshots} je finální vzhled mobilní aplikace. Jsou zde vidět tři hlavní strany aplikace - Nastavení, Pomoc a Ovládání. Ovládání komunikuje s vývojovou deskou tím že posílá příkazy pro ovládání dopravníku, ale také získává průběrná data o rychlosti dopravníku a typu ovládání (lokální nebo dálkové). Aplikace je dále popsaná v kapitole \ref{sec:SoftwareVMobilniAplikaci}.
+
+\begin{figure}[hptb]
+	\centering
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\textwidth, height=290px]{images/MobilniLanding.png}
+		\caption{Vstupní stránka aplikace}
+		\label{fig:MobilniLanding}
+	\end{subfigure}%
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\textwidth, height=290px]{images/MobilniSetup.png}
+		\caption{Část stránky nastavení}
+		\label{fig:MobilniSetup}
+	\end{subfigure}%
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\textwidth, height=290px]{images/MobilniHelp.png}
+		\caption{Část stránky s častými chybami}
+		\label{fig:MobilniHelp}
+	\end{subfigure}
+	\caption{Vysílat příkazy zařízení bude mobilní aplikace připojená přes hotspot}
+	\label{fig:MobilniAppScreenshots}
 \end{figure}
 
 \subsection{Požadavky na systém (0.5 strany)}\label{sec:PozadavkyNaSystem}
-\comment{Jsou tyto požadavky na systém vpořádku? (mimo formátování)}
+Aby návrh dával smysl a aby to byl dobrý funkční systém, je potřebné si stanovit některé požadavky, které by systém měl splňovat. Tyto požadavky reflektují nejenom požadavky od společnosti Honeywell, ale i požadavky na základní spolehlivost, jednoduchost a bezpečnost ovládání dopravníků tímto způsobem.
+
+Zde jsou požadavky, které by implementace navrženého zařízení měla splňovat:
+
 \begin{itemize}
     \item \textbf{Lokální a dálkové ovládání}\\
     Systém bude schopný ovládat dopravníky nejenom lokálně ale i bezdrátově.
@@ -56,10 +69,12 @@ Vzhledem k tomu, že vývojová deska WEMOS D1 Mini Pro je k hotspotu připojen�
     \item \textbf{Napájení z ovládacího panelu}\\
     Systém musí být navržený tak aby jeho rozšířené funkce bylo možné napájet připojením na $24V$ výstupní port v ovládacím panelu.
     \item \textbf{Systém musí mít ovládání které je čistě analogové}\\
-    Systém by měl být navržen tak, aby bylo stále možné dopravníky ovládat i pokud by něco zamezovalo napájení dopravníku.
+    Systém by měl být navržen tak, aby bylo stále možné dopravníky ovládat i pokud by něco zamezovalo napájení vývojové desky.
     \item \textbf{Uživatelská přívětivost systému}\\
     Systém by měl být uživatelsky přívětivý a jeho nastavení by mělo být jednoduše dostupné pro uživatele spolu se všemi informacemi jak s ním pracovat.
 \end{itemize}
+
+\oldtext
 
 \section{Hardware ($\Sigma$ = 3 strany)}\label{sec:Hardware}
 \purpose{Jak jsem postupoval při návrhu a jak ta finální verze vypadá}
@@ -226,7 +241,7 @@ Funkce updateState se volá zaokrouhleně 3x za sekundu a takové rozlišení by
 
 Tahle funkcionalita dává inženýrům co kontrolují dopravníky důležité informace o rychlosti i bez toho aby k dopravníku museli mít připojené zařízení jako BOP-2 z kapitoly \ref{sec:NastaveniOvladacihoPanelu} vysvětlující nastavení ovládacího panelu dopravníku.
 
-\section{Software v mobilní aplikaci ($\Sigma$ = 5 stran)}
+\section{Software v mobilní aplikaci ($\Sigma$ = 5 stran)}\label{sec:SoftwareVMobilniAplikaci}
 \purpose{V téhle sekci popíšu jak přesně funguje mobilní aplikace kterou jsem vytvořil a poznatky s tím spojené.}
 
 Jak už jsem nastínil v \ref{sec:PopisFunkceSystemu} tak hlavní motivace proč navrhuji mobilní aplikaci je kvůli tomu aby nebylo potřeba mít extra zařízení pro ovládání dopravníků. Díky mobilní aplikaci můžu vytvořit zařízení které umožní dopravníky ovládat na vzdálenost 10-100 metrů (vzdálenost WiFi protokolu - \source{zdroj needed}) a stačí mi navrhnovat jenom zařízení které se připojí na dopravník a už nemusím navrhovat zařízení, které signály vysílá. To zmenšuje počet krabiček co musí zaměstnanci software tahat s sebou.

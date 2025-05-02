@@ -238,31 +238,104 @@ Zapojení vývojové desky do navrhnuté desky plošných spojů je popsáno v k
 \subsection{Arduino framework pro ESP8266}\label{sec:ArduinoFrameworkForESP8266}
 % \purpose{Trochu uvést do kontextu jak funguje arduino framework for esp8266 a jak specificky řeším provozování webserveru na mým MCU.}
 
-% Tyvole já si celou dobu myslel že používám nodeMCU ale ono se to jmenuje úplně jinak :D.
-\oldtext
+Pro programování mikrokontrolerů z řad EPS8266 je možné využít jejich nativního software development kitu (SDK) anebo takzvaný "Arduino framework" pro tuto platformu. Tato knihovna je portace SDK pro platformu Arduino a díky tomu je možné používat prostředí jako je Arduino IDE nebo Platformio pro programování ESP8266 mikrokontrolerů. Tohle všechno je možné i přesto, že mají ESP8266 i Arduino přirozeně různé základy, které spolu ve výchozím stavu nejsou kompatibilní. Tato podpora umožňuje velkému množství hobby i profesionálním programátorům programovat ESP8266 mikrokontrolery ve stejném prostředí jako ve kterém programovali své Arduino projekty. To všechno bez ztráty hardwarových nebo síťových periferií.
 
-\subsection{NodeMCU (1.5 strany)}\label{sec:NodeMCU}
-% \purpose{Tady vysvětlím jak funguje hostování webové aplikace na vývojové desce pomocí nodeMCU.}
+"Arduino framework pro ESP8266 je podpora ESP8266 mikrokontroleru pro Arduino prostředí. To vývojářům umožňuje používat známé Arduino funkce a knihovny, které je možné spouštět přímo na ESP8266 mikrokontrolleru." \cite{ESP8266ArduinoFrameworkGithub}
 
-Pro využití bezdrátové WiFi komunikace ve zvolené vývojové desce byla použita platforma NodeMCU.
+V této práci byl kód mikrokontroleru programován uvnitř programovacího prostředí PlatformIO (ukázané na obrázku \ref{fig:PlatformioUkazka}) ve kterém byl Arduino framework pro ESP8266 využitý. Byla využitá i kompatibilita s existujícími Arduino knihovnami, jako v případě knihovny Ticker. To je knihovna, která v rámci Arduino zařízení umožňuje nastavit časovač, který spouští některou funkci pravidelně přesné časové intervaly.
 
-můžu ukázat wemos d1 mini základní web script tam kde bude zmíněný \cite{NavodNaESPWebServerDratek}
-
-Můžu zmínit, že využívám toho, že nodeMCU umí hostovat server na vlastní IP adrese a to i když je připojený na hotspotu. Díky tomu jsem schopný mít hotspotu v prohlížeči dostupnou IP adresu z nodeMCU. Mobilní aplikace teda teoreticky není potřeba - dalo by se to řídit přes prohlížeč kde si najdu tu IP adresu nodeMCU serveru. Mobilní aplikace ale všechno dělá jednodušší pro koncovýho zákazníka (mechanici v Honeywellu) a umožňuje mi do aplikace přidat i další informace jako třeba setup a help při nastavování kontrolního panelu.
-
-Např. pokud má vývojová deska IP adresu 192.168.0.207, pak skrz zadání do prohlížeče 192.168.0.207/conveyorON se mi zapne dopravník. Takhle to může ovládat kdokoliv v lokální síti ke které je připojena vývojová deska.
-
-\begin{figure}[H]
+\begin{figure}[hptb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/nodeMCUlandingPage.png}
-    \caption{Placeholder: Jak vypadá stránka co se objeví pokud zadám IP adresu nodeMCU do prohlížeče}
-    \label{fig:NodeMCUlandingPage}
+    \includegraphics[width=0.9\linewidth]{images/Platformio_Ukazka.png}
+    \caption{Ukázka rozhraní vývojového prostředí Platformio}
+    \label{fig:PlatformioUkazka}
 \end{figure}
 
+\subsubsection{Knihovny pro webové funkce}
+%\purpose{Popsat co dělají knihovny ESP8266WiFi, WiFiClient, ESP8266WebServer a ESP8266mDNS}
 
-\source{Vzhledem k tomu, že NodeMCU je open source a mají vlastní dokumentaci tak bych zdroje hledal na jejich webu.}
+Využití Arduino frameworku pro ESP8266 plně umožňuje využít i WiFi funkcionality tohoto mikrokontroleru. Knihovny co jsou využité jsou knihovny ESP8266WiFi, ESP8266WebServer a ESP8266mDNS.
 
+Knihovna \textbf{ESP8266WiFi} je základní stavební kámen veškeré síťové komunikace. Bez této knihovny by se mikrokontroler nemohl připojit k existující bezdrátové síti nebo si vytvořit vlastní hotspot. V kódu se implementuje pomocí příkazů jako je \textit{WiFi.begin(jmeno,heslo)}.
 
+Funkcionalitu web serveru, která je velmi důležitá pro tento projekt implementuje knihovna \textbf{ESP8266WebServer}. Tato knihovna poskytuje funkce pro definování plně funkčního HTTP serveru a odpovědi na jeho webové požadavky (např. GET pro získání dat, POST pro doesílání dat a další). Tento webový server umí servírovat statické webové stránky, ale umí v rámci jejich provádění i spouštět jakékoliv další funkce mikrokontroleru. Tohle umožňuje ovládat mikrokontroler skrz odpovědi na webové adresy.
+
+Knihovna \textbf{ESP8266mDNS} neboli ESP8266 multicast DNS je knihovna, který umožňuje ukládat IP adresu mikrokontroleru na jakýchkoliv předem definovaných adresách která stačí zadat do prohlížeče na zařízení, které má server mikrokontroleru k dispozici.
+
+Tyto tři knihovny se dohromady dají nastavit například tak, aby se pomocí jedné webové stránky dostupné na IP adrese \textit{espwebserver} dala ovládala LED dioda na mikrokontroleru.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/ESPWebserverUkazka}
+	\caption{Ukázka nastavení WebServeru pro ovládání LED diody \cite{NavodNaESPWebServerDratek}}
+	\label{fig:espwebserverukazka}
+\end{figure}
+
+\begin{lstlisting}[language=C++, caption={Nastavení ESP8266 WebServeru pro ovládání LED diody \cite{NavodNaESPWebServerDratek}}, label={lst:NastaveniWebServeru}]
+	#include <ESP8266WiFi.h>
+	#include <ESP8266WebServer.h>
+	#include <ESP8266mDNS.h>
+
+	const char* nazevWifi = "Ardwifi";
+	const char* hesloWifi = "arduino1234";
+
+	ESP8266WebServer server(80);
+
+	#define LEDka LED_BUILTIN
+	#define analogPin A0
+
+	void zpravaHlavni() {
+		String analog = String(analogRead(analogPin));
+		String cas = String(millis() / 1000);
+		String ledStatus = digitalRead(LEDka) ? "ZAPNUTO" : "VYPNUTO";
+
+		String zprava =
+		"<h1>ESP8266 WebServer</h1>"
+		"Hodnota analogoveho pinu A0: " + analog + "<br>"
+		"Cas od spusteni: " + cas + " vterin.<br><br>"
+		"Stav LED (pin " + String(LEDka) + "): " + ledStatus + "<br><br>"
+		"<a href=\"/ledON\">Zapni LEDku</a><br>"
+		"<a href=\"/ledOFF\">Vypni LEDku</a>";
+
+		server.send(200, "text/html", zprava);
+	}
+
+	void setup() {
+		pinMode(LEDka, OUTPUT);
+		digitalWrite(LEDka, LOW);
+
+		WiFi.begin(nazevWifi, hesloWifi);
+
+		while (WiFi.status() != WL_CONNECTED) {
+			delay(50);
+		}
+
+		MDNS.begin("espwebserver");
+
+		server.on("/", zpravaHlavni);
+		server.on("/ledON", []() {
+			digitalWrite(LEDka, HIGH);
+			zpravaHlavni();
+		});
+		server.on("/ledOFF", []() {
+			digitalWrite(LEDka, LOW);
+			zpravaHlavni();
+		});
+
+		server.begin();
+	}
+
+	void loop() {
+		server.handleClient();
+		\delay(10)
+	}
+\end{lstlisting}
+
+V ukázce kódu \ref{lst:NastaveniWebServeru} lze z webových funkcionalit vidět hlavně globální objekt typu ESP8266WebServer s názvem server, pomocí kterého lze odpovídat na webové požadavky definované ve funkci \textit{setup()}. Funkce \textit{zpravaHlavni} je funkce kterou se odpovídá na většinu webových GET požadavků a tak je lépe definovaná a obsahuje dodatečné informace o stavu LED diody a času od spuštění. Tato funkce také rovnou obsahuje kód v jazyce HTML, ve kterém se píšou webové stránky.
+
+Kód dále obsahuje připojení na WiFi pod zadaným názvem a heslem s tím že čeká na připojení a až poté bude provádět zbytek kódu. Zbytek \textit{setup()} funkce obsahuje odpovědi na webové požadavky. Každá odpověď na webový požadavek odpoví tím, že zpět pošle HTML kód z funkce \textit{zpravaHlavni} (který zobrazuje informace jako jsou v obrázku \ref{fig:espwebserverukazka}), ale v případě adres \textit{/ledON} a \textit{/ledOFF} stránka ještě nastaví vysokou nebo nízkou hodnotu na LED diodu na vývojové desce.
+
+Nakonec je zde funkce \textit{loop()}, která se každých 10 milisekund snaží odpovídat na webové požadavky. Na základě zadaných adres odpovídá prováděním bloků kódu které byly nastaveny v \textit{setup()} funkci.
 
 % Na doporučení vedoucího tyhle kapitoly už nedělám, protože se budu moct lépe vyřádit v té praktické části
 %\subsubsection{Architektura ESP8266EX}
@@ -276,12 +349,6 @@ Např. pokud má vývojová deska IP adresu 192.168.0.207, pak skrz zadání do 
 %
 %\source{Tady možná budu muset mít internetový zdroje, protože jsem nenašel žádnou publikaci co by mluvila o Platformio.}
 %
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Platformio_Ukazka.png}
-%    \caption{Ukázka rozhraní vývojového prostředí Platformio}
-%    \label{fig:PlatformioUkazka}
-%\end{figure}
 %
 %\subsubsection{Objekty v arduino C++ jazyce}
 %\purpose{Tady bych rád vysvětlil jak fungují objekty v arduino C++ jazyce jelikož je využívám uvnitř kapitoly \ref{sec:ConveyorController}. }

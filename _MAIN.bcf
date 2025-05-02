@@ -2417,11 +2417,16 @@
     <bcf:citekey order="22" intorder="1">WEMOSD1MiniPro</bcf:citekey>
     <bcf:citekey order="23" intorder="1">ESP8266EXDatasheet</bcf:citekey>
     <bcf:citekey order="23" intorder="2">D1MiniProDokumentace</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">laskakit_16x2_lcd</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">laskakit_16x2_lcd</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">HoneywellHala</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">ESP8266ArduinoFrameworkGithub</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">NavodNaESPWebServerDratek</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">NavodNaESPWebServerDratek</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">NavodNaESPWebServerDratek</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">NavodNaESPWebServerDratek</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">laskakit_16x2_lcd</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">laskakit_16x2_lcd</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">HoneywellHala</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

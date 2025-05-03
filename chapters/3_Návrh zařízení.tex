@@ -1,13 +1,13 @@
 % Co jsem udělal já
 \chapter{Návrh zařízení ($\Sigma$ = 22 stran)}
-\section{Popis funkce systému ($\sum$ = 3 strany)}\label{sec:PopisFunkceSystemu}
+\section{Princip funkce navrženého systému ($\sum$ = 3 strany)}\label{sec:PopisFunkceSystemu}
 % \purpose{Tady bych rád popsal, jak to bude celé fungovat.}
 
-Celý systém je od základu navržen kolem mobilní aplikace, jelikož požadavek na dálkové řízení dopravníků je jeden ze základních požadavků navrženého systému.
+Celý systém je primárně navržen kolem mobilní aplikace, jelikož požadavek na dálkové řízení dopravníků je jeden ze základních požadavků navrženého systému.
 
-Aplikace bude obsahovat stránku, kterou lze pomocí WiFi plynule komunikovat s vývojovou deskou WEMOS D1 Mini Pro. Vývojová deska bude připevněná k desce plošných spojů, která bude pomocí tří kabelů připojena na ovládací panel (2 datové kabely a 1 napájecí). Tímto způsobem může deska nastavovat takové digitální vstupy, aby bylo možné dopravník ovládat.
+Aplikace bude obsahovat stránku pro plynulou WiFi komunikaci s vývojovou deskou WEMOS D1 Mini Pro. Vývojová deska je připevněna k desce plošných spojů, která je třemi kabely připojena na ovládací panel (2 datové kabely a 1 napájecí). Tímto způsobem může deska nastavovat takové digitální vstupy, k ovládání dopravníku.
 
-Ovládací panel frekvenčního měniče si následně dle jeho nastavení sám přeloží jak má nastavit jeho výkonovou část tak, aby ovládal asynchronní motory.
+Ovládací panel frekvenčního měniče si následně dle jeho nastavení podle své konfigurace interpretuje tyto příkazy a řídí výkonovou část frekvenčního měniče pro ovládání asynchronních motorů.
 
 Na obrázku \ref{fig:PrincipFunkceZarizeni} je schéma základního principu.
 
@@ -18,7 +18,7 @@ Na obrázku \ref{fig:PrincipFunkceZarizeni} je schéma základního principu.
 	\label{fig:PrincipFunkceZarizeni}
 \end{figure}
 
-Jelikož mobilní aplikace komunikuje s vývojovými deskami pomocí WiFi, je potřebné aby se buďto mobilní zařízení připojilo na přístupové místo vývojové desky, anebo se může vývojová deska připojit na hotspot mobilního zařízení. NodeMCU umožňuje obě varianty. Pro účely tohoto systému se více hodí ta druhá možnost, protože přirozeně umožňuje mít jeden hotspot na mobilním zařízení a na ten se může připojit více vývojových desek. Tohle umožňuje jednoduše ovládat více dopravníků zároveň. Další výhoda je, že vývojové desky připojené na hotspot vůbec nevyužívají toho, že je mobilní telefon připojený k internetu a tak nijak nezatěžují rychlost připojení - jediná limitace počtu takto připojených vývojových desek je tedy limitace maximálního počtu co může mít mobilní telefon připojené přes hotspot. Nevýhoda tohoto způsobu komunikace je ovšem taková, že se musí nastavit jednotné jméno a heslo WiFi komunikace, které bude zadané přímo ve firmwaru vývojové desky a pokud bude potřebné tyhle údaje změnit, bude se muset přehrát kód všech vývojových desek (pro všech pět používaných zařízení).
+Jelikož mobilní aplikace komunikuje s vývojovými deskami pomocí WiFi, je potřebné aby se buďto mobilní zařízení připojilo na přístupové místo vývojové desky, anebo se může vývojová deska připojit na hotspot mobilního zařízení. WebServer umožňuje obě varianty. Pro účely tohoto systému se více hodí ta druhá možnost, protože přirozeně umožňuje mít jeden hotspot na mobilním zařízení a na ten se může připojit více vývojových desek. Tohle umožňuje jednoduše ovládat více dopravníků zároveň. Další výhoda je, že vývojové desky připojené na hotspot vůbec nevyužívají toho, že je mobilní telefon připojený k internetu a tak nijak nezatěžují rychlost připojení - jediná limitace počtu takto připojených vývojových desek je tedy limitace maximálního počtu co může mít mobilní telefon připojené přes hotspot. Nevýhoda tohoto způsobu komunikace je ovšem taková, že se musí nastavit jednotné jméno a heslo WiFi komunikace, které bude zadané přímo ve firmwaru vývojové desky a pokud bude potřebné tyhle údaje změnit, bude se muset přehrát kód všech vývojových desek (pro všech pět používaných zařízení).
 
 Díky tomu, že je tento systém navržený tak, aby přes 5-pinové kabely spínal digitální vstupy ovládacího panelu, je tento systém možné použít i na frekvenční měniče jiných značek než je Sinamics. Kabely, které se používají pro komunikaci s ovládacím panelem frekvenčního měniče (M12 5-pinové kabely) jsou v dnešní době u frekvenčních měničů časté. Jediné co je tedy potřeba pro používání systému s jiným frekvenčním měničem jsou správné konektory a dále aby bylo možné vyresetovat ovládací panel do podobného výchozího nastavení jako má Sinamics CU240-2.
 
@@ -55,7 +55,7 @@ Na obrázku \ref{fig:MobilniAppScreenshots} je finální vzhled mobilní aplikac
 \end{figure}
 
 \subsection{Požadavky na systém (0.5 strany)}\label{sec:PozadavkyNaSystem}
-Aby návrh dával smysl a aby to byl dobrý funkční systém, je potřebné si stanovit některé požadavky, které by systém měl splňovat. Tyto požadavky reflektují nejenom požadavky od společnosti Honeywell, ale i požadavky na základní spolehlivost, jednoduchost a bezpečnost ovládání dopravníků tímto způsobem.
+Pro zajištění funkčnosti a smysluplnosti návrhu je nutné si stanovit některé požadavky, které by systém měl splňovat. Tyto požadavky reflektují nejenom požadavky od společnosti Honeywell, ale i požadavky na základní spolehlivost, jednoduchost a bezpečnost ovládání dopravníků tímto způsobem.
 
 Zde jsou požadavky, které by implementace navrženého zařízení měla splňovat:
 
@@ -74,78 +74,113 @@ Zde jsou požadavky, které by implementace navrženého zařízení měla splň
     Systém by měl být uživatelsky přívětivý a jeho nastavení by mělo být jednoduše dostupné pro uživatele spolu se všemi informacemi jak s ním pracovat.
 \end{itemize}
 
-\oldtext
-
 \section{Hardware ($\Sigma$ = 3 strany)}\label{sec:Hardware}
-\purpose{Jak jsem postupoval při návrhu a jak ta finální verze vypadá}
+% \purpose{Jak jsem postupoval při návrhu a jak ta finální verze vypadá}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/Electrical_Schematic_V2.drawio.pdf}
-    \caption{Blokové schéma desky plošných spojů}
-    \label{fig:SchemaDesky}
+Základní stavební kámen celého systému je jeho hardware společně s deskou plošných spojů (DPS) ve které je umístěn. Celé zapojení bylo nejdříve navržené jako elektrické schéma. To bylo postupně vylepšováno, později předěláno do schématu v programu pro tvorbu DPS a nakonec bylo vytvořené rozložení komponentů přímo na desce. Pozdější verze návrhu byly provedeny v počítačovém programu na návrh desek plošných spojů jménem KiCAD. Blokové schéma funkčnosti desky lze vidět na obrázku \ref{fig:SchemaDesky}.
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=1\linewidth]{images/Electrical_Schematic_V2.drawio.pdf}
+	\caption{Blokové schéma desky plošných spojů}
+	\label{fig:SchemaDesky}
 \end{figure}
 
-Pro návrh DPS jsem použil program KiCAD kde jsem nejdříve vytvořil schéma zapojení a přiřadil pouzdra součástkám. Na tohle následovalo rozmístění součástek po návrhu samotné fyzické desky. Součástky jsem rozmisťoval aby se deska vlezla do co nejmenší krabičky a zároveň jsem se zaměřoval na to aby trasy byly co nejkratší a aby obsahovaly co nejméně vias (cest kolmých na povrch desky) protože přebytek těchto kolmých cest zvyšuje parazitní efekty desky. Navíc jsem se z praktického hlediska zaměřil na to, aby byly všechny součástky na jedné straně desky, aby se dobře pájela.
+Při tvorbě desky se vycházelo z požadavků na systém. Nejdřív se vycházelo z toho, že desku musí být možné napájet z ovládacího panelu, který má výstupní port na kterém je $24V$ a který je schopný dodat maximálně $8A$. Ze začátku se tedy počítalo s $24V$ napětím, pro které bylo potřeba zvolit dobrý převodník napětí co je schopný napětí přeměnit na $5V$ kterým se napájí vývojová deska. Nakonec byl zvolený převodník napětí s galvanicky oddělenou zemí aby se minimalizovala šance, že by kvůli nějaké chybě v návrhu desky byl zničený ovládací panel frekvenčního měniče.
+\cite{SiemensG120DGettingStarted}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/PCBfront.png}
-        \caption{Přední strana DPS}
-        \label{fig:PCBfront}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/PCBback.png}
-        \caption{Zadní strana DPS}
-        \label{fig:PCBback}
-    \end{subfigure}
-    \caption{Návrh desky plošných spojů v KiCAD}
-    \label{fig:PCBbothSides}
+Dále se při návrhu vycházelo z myšlenky že systém musí mít i lokální i dálkové ovládání, s tím, že lokální ovládání musí být dostupné i bez napájení mikrokontroleru. Tohle bylo vyřešeno návrhem dvou přepínačů. \textit{Relé pro lokální a dálkové ovládání} je přepínač, který je normálně v poloze lokálního ovládání (aby byl splněný požadavek čistě analogového ovládání), ale pokud se na něj přidá napětí, přepne se do stavu dálkového ovládání. Následně je v desce \textit{Relé pro dálkové ovládání}, což je běžné SPST relé které sepne kontakty pokud je na něj přivedeno napětí.
+
+Po dokončení schématu se přešlo na návrh umístění součástek na DPS. Finální návrh lze vidět v obrázku \ref{fig:PCBbothSides}. Při rozmisťování součástek po desce byl kladen důraz na několik kritérií:
+\begin{itemize}
+	\item Aby měla deska co nejmenší rozměry a měla jen dvě vrstvy
+	\item Aby byly všechny součástky na jedné straně desky (jednodušší pájení komponentů na desku)
+	\item Aby byly trasy co nejkratší
+	\item Aby měla deska co nejméně vertikálních cest (pro zmenšení efektů parazitní kapacity a parazitní indukčnosti)
+	\item Aby byly filtrační kondenzátory co nejblíž filtrovaných napájecích vstupů
+\end{itemize}
+
+\begin{figure}[hptb]
+	\centering
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{images/PCBfront.png}
+		\caption{Přední strana DPS}
+		\label{fig:PCBfront}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{images/PCBback.png}
+		\caption{Zadní strana DPS}
+		\label{fig:PCBback}
+	\end{subfigure}
+	\caption{Návrh desky plošných spojů v KiCAD}
+	\label{fig:PCBbothSides}
 \end{figure}
 
-\purpose{Tady bude popis co za součásti tahle deska má a proč tam jsou. Např: proč jsem zvolil galvanicky oddělený převodník napětí, návrh LC filtru a že se relé spouští přes piny vývojové desky pomocí N-channel MOSFET tranzistoru}
+\subsection{Ovládání relé}
+Jedna z věcí které bylo potřeba vyřešit při návrhu schématu elektrického obvodu je taková, že bylo cílem ovládat relé pomocí výstupních pinů vývojové desky. Pro spuštění relé je ovšem potřeba brát na paměť, že vyžaduje nejenom napětí $5V$ na ovládacím pinu, ale také vyžaduje proud do cívky $133mA$. Vývojová deska je schopná svými výstupními piny poskytnout napětí $5V$, ale její výstupní proud je pouze $10mA$. Tento problém je možné vyřešit pomocí tranzistorů.
 
-\subsection{Převodník napětí 24V-5V (1 strana)}
-\purpose{Tady vysvětlím že používám tenhle převodník napětí, nějaký jeho specifikace, podle kterých jsem si ho zvolil. }
-\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
+Nejjednodušší řešení pro navrženou desku je řešení s N kanálovým NPN tranzistorem MOSFET, jelikož v případě MOSFET tranzistorů obecně stačí aby signál byl napěťový (nemusíme tedy řešit malý proud vycházející z vývojové desky). Nejdřív se relé zapojí tak, aby cívka měla na jedné straně $5V$ napětí a na druhé straně zem. Následně se MOSFET tranzistor dá mezi zem a cívku a na bázi tranzistoru se přivede signál z mikrokontroleru. V tomto zapojení bude skrz relé téct nominální proud, pokud je výstup vývojové desky vysoký, anebo bude obvod rozpojený pokud bude výstup z vývojové desky na nízké hodnotě napětí.
 
-\subsection{LC Filtr napájecího napětí (1 strana)}
-\purpose{Sem napsat jak jsem navrhoval LC filtr za napájecím napětí, proč jsem se rozhodl použít LC filtr a třeba by se sem mohl hodit nějakej grafík přenosové funkce kdybych se nudil. Zvolil jsem si cutoff aby byl alespoň 1/10 hodnoty na které měnič dělá šum a díky tomu by měla hodnota tohoto šumu být o 20dB menší.}
-\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
+Dále je potřeba ještě paralelně s relé zapojit diodu kvůli ochraně tranzistoru od vybíjecího proudu co cívka generuje po rozpojení obvodu. Tato dioda musí mít v závěrném směru hodnotu napětí vyšší než je $5V$ napětí zdroje a musí se zapojit tak, aby byla otevřená když se otočí polarita napětí na cívce v relé. Pro tuto desku byla zvolena Schottkyho dioda kvůli její rychlosti přepínání a kvůli malému napětí které se na diodě v otevřeném stavu nachází.
+
+Na obrázku \ref{fig:OvladaniRele} je schéma zapojení tohoto způsobu ovládání relé pomocí vývojové desky.
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/OvladaniRele.drawio.pdf}
+	\caption{Elektrické schéma ovládání relé}
+	\label{fig:OvladaniRele}
+\end{figure}
 
 \subsection{LCD display s I2C převodníkem (1 strana)}
-\purpose{Tohle bude krátce popisovat jak funguje LCD display s I2C převodníkem kterej jsem koupil na LaskaKitu. Není potřeba vysvětlovat jak funguje I2C, stačí když jenom vysvětlím že to ovládám pomocí knihovny z toho shopu.}
-\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
+Aby bylo možné celý systém ovládat přes ESP8266 WebServer, je potřebné nějakým způsobem komunikovat s uživatelem IP adresu, kterou má vývojová deska připojená na hotspot mobilního zařízení. Tohle by bylo možné udělat například skrz nastavení multicast DNS na specifickou adresu a tu potom fyzicky napsat na schránku desky. Toto řešení by sice umožnilo přístup k WebServeru, ale neposkytovalo by to další funkce jako systém může mít se zabudovaným LCD displejem do desky plošných spojů.
 
-\source{Zde jsou zdroje LaskaKit a odtam budu mít stáhnutej i kód pro ovládání LCD}
+Použití LCD displeje v systému může uživateli dodávat tyto informace:
+\begin{itemize}
+	\item Stav připojení mikrokontroleru k hotspotu (před navázáním spojení systém nemůže reagovat na požadavky přes WebServer).
+	\item Název (SSID) a heslo hotspotu, které mikrokontroler očekává.
+	\item Aktuální rychlost dopravníku.
+	\item IP adresu pro přístup k WebServeru.
+\end{itemize}
 
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=1\textwidth]{images/predni_LCD_s_I2C.jpg}
-    \caption{Přední strana}
-    \label{fig:PredniLCDDisplej}
-  \end{subfigure}
-  \hfill % Mezera mezi obrázky
-  \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=1\textwidth]{images/zadni_LCD_s_I2C.jpg}
-    \caption{Zadní strana}
-    \label{fig:ZadniLCDDisplej}
-  \end{subfigure}
-  \caption{LCD displej s I2C převodníkem \cite{laskakit_16x2_lcd}}
-  \label{fig:LcdDisplej}
+Na základě uvedených důvodů a požadavků na rozsah poskytovaných informací byl pro komunikaci s uživatelem zvolen LCD displej.
+
+Konkrétně byl použit 16x2 znakový LCD displej (obrázek \ref{fig:LcdDisplej}) zakoupený v internetovém obchodě LaskaKit \cite{laskakit_16x2_lcd}. Tento model je vybaven připájeným I2C převodníkem, což zjednodušuje jeho připojení na pouhé čtyři vodiče: dva pro I2C sběrnici (Serial Data (SDA) a Serial Clock (SCL)), jeden pro napájení $5V$ a jeden zemnící vodič (GND). Výhodou zvoleného displeje je také dostupnost knihovny pro Arduino framework, což usnadňuje jeho softwarovou implementaci ve firmwaru mikrokontroleru.
+\cite{laskakit_16x2_lcd}
+
+\begin{figure}[hptb]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\includegraphics[width=1\textwidth]{images/predni_LCD_s_I2C.jpg}
+		\caption{Přední strana}
+		\label{fig:PredniLCDDisplej}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\includegraphics[width=1\textwidth]{images/zadni_LCD_s_I2C.jpg}
+		\caption{Zadní strana}
+		\label{fig:ZadniLCDDisplej}
+	\end{subfigure}
+	\caption{LCD displej s I2C převodníkem \cite{laskakit_16x2_lcd}}
+	\label{fig:LcdDisplej}
 \end{figure}
 
-\subsection{Ochrana relé pomocí diody (0.5 strany)}
-\purpose{Tady můžu vysvětlit že abych mohl ovládat 100mA relé pomocí 10mA proudu z vývojové desky tak musím použít tranzistory. Bázi tranzistoru spínám 3.3V napětím z vývojové desky (Vývojová deska má jako vstup 5V ale je interně udělaná na 3.3V). Dále tady můžu zmínit jak mají relé uvnitř cívku a tak musí mít protekční diodu. Já tuhle diodu zvolil jako Schottkyho. Taky můžu zmínit jak postupovat při tom návrhu - jaký zvolit závěrný napětí diody, atd. napětí v závěrným směru musí být víc než to 5V napájecí napětí (aby nebyla defaultně otevřená)}
+Vzhledem k citlivosti komunikace po I2C sběrnici na elektromagnetické rušení a přeslechy byly při návrhu desky plošných spojů dodrženy zásady pro minimalizaci smyčkové plochy mezi signálovými cestami SDA a SCL. Tento postup snižuje indukované napětí a přispívá ke spolehlivosti přenosu dat na sběrnici.
+\cite{CurrentLoopsBlog}
 
-\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
+Pro jednoduchost výměny LCD displeje bylo také zvoleno, že nebude přímo připájený v desce, ale podobně jako vývojová deska bude připojený skrz kolíkové lišty. Tohle zjednodušuje výměnu nebo upravení parametrů LCD displeje jako je jas zobrazených písmen.
 
-Další problém který bylo potřeba vyřešit v rámci návrhu desky je...
+% Tyhle veci nebudu popisovat, protože stačilo napsat, že mám ten převodník napětí co mění z 24V na 5V a je galvanicky oddělený. Není potřeba víc to rozepisovat
+%\subsection{Převodník napětí 24V-5V (1 strana)}
+%\purpose{Tady vysvětlím že používám tenhle převodník napětí, nějaký jeho specifikace, podle kterých jsem si ho zvolil. }
+%\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
+%
+%\subsection{LC Filtr napájecího napětí (1 strana)}
+%\purpose{Sem napsat jak jsem navrhoval LC filtr za napájecím napětí, proč jsem se rozhodl použít LC filtr a třeba by se sem mohl hodit nějakej grafík přenosové funkce kdybych se nudil. Zvolil jsem si cutoff aby byl alespoň 1/10 hodnoty na které měnič dělá šum a díky tomu by měla hodnota tohoto šumu být o 20dB menší.}
+%\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
 
-
+\oldtext
 
 \section{Firmware ve vývojové desce ($\Sigma$ = 8 stran)}
 \purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.}

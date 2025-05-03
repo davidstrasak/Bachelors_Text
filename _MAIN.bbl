@@ -279,6 +279,38 @@
       \verb https://www.laskakit.cz/16x2-lcd-displej-1602-i2c-prevodnik/
       \endverb
     \endentry
+    \entry{CurrentLoopsBlog}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=89c628092849cce0ee234e766719b99e}{%
+           family={Wit},
+           familyi={W\bibinitperiod},
+           given={Sjors},
+           giveni={S\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{89c628092849cce0ee234e766719b99e}
+      \strng{fullhash}{89c628092849cce0ee234e766719b99e}
+      \strng{fullhashraw}{89c628092849cce0ee234e766719b99e}
+      \strng{bibnamehash}{89c628092849cce0ee234e766719b99e}
+      \strng{authorbibnamehash}{89c628092849cce0ee234e766719b99e}
+      \strng{authornamehash}{89c628092849cce0ee234e766719b99e}
+      \strng{authorfullhash}{89c628092849cce0ee234e766719b99e}
+      \strng{authorfullhashraw}{89c628092849cce0ee234e766719b99e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{title}{Jitter | Electronic Design and Consultancy}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://jitter.nl/blog/2020/09/29/think-in-current-loops-the-key-to-reliable-pcb-layout/
+      \endverb
+      \verb{url}
+      \verb https://jitter.nl/blog/2020/09/29/think-in-current-loops-the-key-to-reliable-pcb-layout/
+      \endverb
+    \endentry
     \entry{CapacitorDocumentationFAQ}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=f2b00b9e4a462ab3f2e1c97495e8bb3f}{%

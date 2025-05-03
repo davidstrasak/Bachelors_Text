@@ -13,15 +13,18 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Vysílat příkazy zařízení bude mobilní aplikace připojená přes hotspot}}{25}{figure.caption.14}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Blokové schéma desky plošných spojů}}{26}{figure.caption.15}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Návrh desky plošných spojů v KiCAD}}{27}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces LCD displej s I2C převodníkem \blx@tocontentsinit {0}\cite {laskakit_16x2_lcd}}}{28}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Začátek stavového diagramu}}{33}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Strana stavového diagramu s lokálního ovládáním}}{33}{figure.caption.20}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Strana stavového diagramu s dálkovým ovládáním}}{34}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Popis designu hlavní stránky aplikace}}{41}{figure.caption.31}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Model schránky pro desku plošných spojů}}{43}{figure.caption.34}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Finální podoba desky plošných spojů}}{44}{figure.caption.35}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Elektrické schéma ovládání relé}}{28}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces LCD displej s I2C převodníkem \blx@tocontentsinit {0}\cite {laskakit_16x2_lcd}}}{29}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Začátek stavového diagramu}}{34}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Strana stavového diagramu s lokálního ovládáním}}{35}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Strana stavového diagramu s dálkovým ovládáním}}{36}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Popis designu hlavní stránky aplikace}}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Model schránky pro desku plošných spojů}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Finální podoba desky plošných spojů}}{46}{figure.caption.36}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ukázka Brněnské haly pro testování dopravníků společnosti Honeywell \blx@tocontentsinit {0}\cite {HoneywellHala}}}{47}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ukázka Brněnské haly pro testování dopravníků společnosti Honeywell \blx@tocontentsinit {0}\cite {HoneywellHala}}}{49}{figure.caption.37}%
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 

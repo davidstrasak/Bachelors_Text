@@ -2428,9 +2428,12 @@
     <bcf:citekey order="32" intorder="1">laskakit_16x2_lcd</bcf:citekey>
     <bcf:citekey order="33" intorder="1">laskakit_16x2_lcd</bcf:citekey>
     <bcf:citekey order="34" intorder="1">CurrentLoopsBlog</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">HoneywellHala</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">PlatformIOWeb</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">CppObjectAndClassArticle</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">EnkapsulaceVCppArikl</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">HoneywellHala</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

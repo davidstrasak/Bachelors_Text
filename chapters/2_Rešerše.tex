@@ -1,6 +1,6 @@
 % Co udělal někdo jinej
-\chapter{Rešerše ($\sum$ = 9 stran)} \label{chap:Rešerše}
-\section{Frekvenční měniče a jejich role v řízení dopravníků (6,5 stran)}\label{sec:FrekvencniMeniceAJejichRole}
+\chapter{Rešerše} \label{chap:Rešerše}
+\section{Frekvenční měniče a jejich role v řízení dopravníků}\label{sec:FrekvencniMeniceAJejichRole}
 %\purpose{Vysvětlit s jakým systémem už pracuji}
 
 Dopravníkové systémy byly kdysi pouze robustní mechanické konstrukce s jednoduchým asynchronním motorem napojený na jednu hodnotu síťového napětí a s nemotornou regulací rychlosti například pomocí přidáním odporu do sekundárního vinutí. V dnešní době jsme v éře průmyslu 4.0. a s tím je v každém mechatronickém systému důraz na automatizaci a digitalizaci spojených procesů. Díky velkému pokroku v oblasti výkonové elektrotechniky a řídících systémů vznikly nové možnosti precizního řízení otáček asynchronních motorů. Důležitým prvkem této transformace se staly frekvenční měniče - zařízení které umí na vstupu brát síťové napětí a na výstupu poskytovat jinou amplitudu a frekvenci napětí, což umožňuje efektivně řídit otáčky jakýchkoliv asynchronních motorů. Tohle umožnilo vznik dopravníkových systémů u kterých je možné přesně a efektivně řídit otáčky. Když se k tomuto systému přidají ještě řídící systémy, je možné znát v každé chvíli polohu balíků na lince a inteligentně tento tok balíků řídit.
@@ -163,7 +163,7 @@ Vzhledem k tomu, že frekvenční měnič pracuje ve výkonové části s usměr
 
 Po rozpojení napájení výkonové části zůstává na ovládacím panelu napětí $24V$. Tohle nízké napětí je ale chráněno šroubovacími gumovými krytkami, které zakrývají veškeré digitální vstupy a výstupy ovládacího panelu kde se toto napětí nachází.
 
-\section{Open-source vývojové desky ($\Sigma$ = 2.5 strany)}
+\section{Open-source vývojové desky}
 %\purpose{Zde bude úvod do open source vývojových desek.}
 
 Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
@@ -178,7 +178,7 @@ Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotov�
 
 Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
 
-\subsection{Proč WEMOS vývojové desky (1 strana)}
+\subsection{Proč WEMOS vývojové desky}
 %\purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
 
 Arduino v dnešní době není jediná firma, která vyrábí open-source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS, která je výrobce vývojových desek které jsou podobné Arduino deskám, ale jejich zaměření je specificky ve vytváření kompaktních desek které mají integrovanou bezdrátovou konektivitu (WiFi a bluetooth) pomocí populárních mikrokontrolérů ESP32 a ESP8266 od společnosti Espressif Systems.
@@ -202,7 +202,7 @@ Všechny vývojové desky WEMOS s mikrokontroléry ESP8266 a EPS32 lze programov
 	\label{fig:WEMOSD1MiniPro}
 \end{figure}
 
-\subsection{Technické specifikace WEMOS D1 Mini Pro (1.5 strany)}
+\subsection{Technické specifikace WEMOS D1 Mini Pro}
 % \purpose{Rozvinout co jsou specifikace D1 Mini Pro a co ty jednotlivé věci znamenají - počet GPIO, I2C, PWM, paměť, typ mikrokontrolleru, atd. - nějaký základní basic informace}
 
 Na základě požadavků projektu a srovnání s alternativami je pro realizaci hardwarového návrhu nejefektivnější vývojová deska WEMOS D1 Mini Pro. Tato sekce popisuje její technické parametry s jejich využitím v návrhu. Samotná deska je postavena na mikrokontroléru ESP-8266EX a je velmi kompaktní, zatímco ale stále poskytuje dost funkcionalit a vstupních a výstupních pinů pro provoz zařízení.

@@ -1,6 +1,6 @@
 % Co jsem udělal já
-\chapter{Návrh zařízení ($\Sigma$ = 22 stran)}
-\section{Princip funkce navrženého systému ($\sum$ = 3 strany)}\label{sec:PopisFunkceSystemu}
+\chapter{Návrh zařízení}
+\section{Princip funkce navrženého systému}\label{sec:PopisFunkceSystemu}
 % \purpose{Tady bych rád popsal, jak to bude celé fungovat.}
 
 Celý systém je primárně navržen kolem mobilní aplikace, jelikož požadavek na dálkové řízení dopravníků je jeden ze základních požadavků navrženého systému.
@@ -74,7 +74,7 @@ Zde jsou požadavky, které by implementace navrženého zařízení měla splň
     Systém by měl být uživatelsky přívětivý a jeho nastavení by mělo být jednoduše dostupné pro uživatele spolu se všemi informacemi jak s ním pracovat.
 \end{itemize}
 
-\section{Hardware ($\Sigma$ = 3 strany)}\label{sec:Hardware}
+\section{Hardware}\label{sec:Hardware}
 % \purpose{Jak jsem postupoval při návrhu a jak ta finální verze vypadá}
 
 Základní stavební kámen celého systému je jeho hardware společně s deskou plošných spojů (DPS) ve které je umístěn. Celé zapojení bylo nejdříve navržené jako elektrické schéma. To bylo postupně vylepšováno, později předěláno do schématu v programu pro tvorbu DPS a nakonec bylo vytvořené rozložení komponentů přímo na desce. Pozdější verze návrhu byly provedeny v počítačovém programu na návrh desek plošných spojů jménem KiCAD. Blokové schéma funkčnosti desky lze vidět na obrázku \ref{fig:SchemaDesky}.
@@ -133,7 +133,7 @@ Na obrázku \ref{fig:OvladaniRele} je schéma zapojení tohoto způsobu ovládá
 	\label{fig:OvladaniRele}
 \end{figure}
 
-\subsection{LCD display s I2C převodníkem (1 strana)}
+\subsection{LCD display s I2C převodníkem}
 Aby bylo možné celý systém ovládat přes ESP8266 WebServer, je potřebné nějakým způsobem komunikovat s uživatelem IP adresu, kterou má vývojová deska připojená na hotspot mobilního zařízení. Tohle by bylo možné udělat například skrz nastavení multicast DNS na specifickou adresu a tu potom fyzicky napsat na schránku desky. Toto řešení by sice umožnilo přístup k WebServeru, ale neposkytovalo by to další funkce jako systém může mít se zabudovaným LCD displejem do desky plošných spojů.
 
 Použití LCD displeje v systému může uživateli dodávat tyto informace:
@@ -180,52 +180,54 @@ Pro jednoduchost výměny LCD displeje bylo také zvoleno, že nebude přímo p�
 %\purpose{Sem napsat jak jsem navrhoval LC filtr za napájecím napětí, proč jsem se rozhodl použít LC filtr a třeba by se sem mohl hodit nějakej grafík přenosové funkce kdybych se nudil. Zvolil jsem si cutoff aby byl alespoň 1/10 hodnoty na které měnič dělá šum a díky tomu by měla hodnota tohoto šumu být o 20dB menší.}
 %\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
 
-\oldtext
+\section{Firmware ve vývojové desce}
+% \purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.}
 
-\section{Firmware ve vývojové desce ($\Sigma$ = 8 stran)}
-\purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.}
+Jak bylo již napsáno v kapitole \ref{sec:ArduinoFrameworkForESP8266} tento projekt byl programovaný v prostředí PlatformIO. Tohle programovací prostředí má tu výhodu v tom, že pro programování vývojových desek si stačí vybrat typ vývojové desky, kterou programuji a dané prostředí se nakonfiguruje tak, aby to bylo možné (V případě WEMOS D1 Mini Pro byl implementován Arduino framework pro ESP8266). Z tohoto prostředí tedy lze programovat jakékoliv vývojové desky a programovat je jakýmkoliv jazykem mezi které patří například Arduino jazyk anebo MicroPython. Pro firmware v tomto projektu byl zvolený Arduino framework a tak je programovací jazyk Arduino verze C++.
+\cite{PlatformIOWeb}
 
-Software je anglicky protože Honeywell je anglická firma.
+Honeywell je anglicky mluvící firma a tak je celý firmware i software v mobilní aplikaci programovaný anglicky.
 
-\subsection{ConveyorController objekt (4 strany)}\label{sec:ConveyorController}
-\purpose{V kódu všechno ovládám pomocí tohoto objektu, který obsahuje hodně public a private funkcí. Tady bych chtěl vysvětlit z jakýho důvodu jsem se rozhodl vývojovou desku ovládat tímto způsobem a dále vysvětlit co jednotlivé důležité metody a proměnné dělají.}
+V C++ programovacím jazyku se běžně objevují dva hlavní typy souborů. Jsou to hlavičkové soubory (s koncovkou \textit{.h}) a zdrojové soubory (s koncovkou \textit{.cpp}). Zatímco hlavičkové soubory obsahují deklarace, jako jsou prototypy funkcí nebo definice globálních proměnných, zdrojové soubory obsahují implementace a kód který je následně kompilován a prováděn na mikrokontroleru. V tomto projektu jsou dva hlavičkové a dva zdrojové soubory.
 
-Tady je hlavičkový soubor mého ConveyorController objektu který má všechny funkce které zahrnuje:
+Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupních a vstupních piny GPIO vývojové desky aby bylo jednodušší se orientovat v kódu. Dále je zde soubor \textbf{main.cpp}, který kompilátor přirozeně vyhledává aby v něm nastavil začátek provádění kódu. Nakonec je zde zdrojový a hlavičkový soubor s názvem \textbf{ConveyorController} který definuje třídu a zdrojový kód objektu který celý systém řídí.
+
+\subsection{Třída a objekt ConveyorController}\label{sec:ConveyorController}
+% \purpose{V kódu všechno ovládám pomocí tohoto objektu, který obsahuje hodně public a private funkcí. Tady bych chtěl vysvětlit z jakýho důvodu jsem se rozhodl vývojovou desku ovládat tímto způsobem a dále vysvětlit co jednotlivé důležité metody a proměnné dělají.}
+
+C++ je objektově orientovaný program a tak má rozsáhlé funkce pro definici vlastních tříd. Kvůli tomu je důležité rozlišovat mezi pojmy třída a objekt. Třída v C++ slouží jako abstraktní definice pro vytvoření nového uživatelsky definovaného datového typu. Objekt je na druhou stranu konkrétní instance třídy a tak má alokované místo v RAM paměti a je sledovaný jeho unikátní stav během provádění kódu.
+\cite{CppObjectAndClassArticle}
+
+Hlavní výhodou proč byl v práci použitý objektově orientovaný přístup je kvůli zavedení takzvané \textbf{enkapsulace} uvnitř kódu. Jinými slovy, umožňuje to separaci řídící logiky dopravníku od zbytku aplikačního kódu. Během implementace firmwaru vyvstala potřeba, aby určité proměnné, jako například proměnná \textit{conveyorSpeed} reprezentující aproximaci rychlosti dopravníku či proměnná \textit{remoteLocalState} indikující stav řízení (vzdálené/lokální), byly přístupné napříč několika funkcemi. Běžně by bylo možné tyto proměnné řešit pomocí globálních proměnných, ale to je v komplexnějších firmwarech považováno za rizikové.
+\cite{EnkapsulaceVCppArikl}
+
+V takovém případě se pro bezpečnější provádění kódu může přejít k využívání objektů. Samotný objekt je sice definovaný globálně, ale uvnitř má tři definice přístupu: \textbf{veřejný, privátní a chráněný}. Tímto způsobem se může pro jakékoliv proměnné uvnitř objektu určit, v jakých částech kódu budou dostupné, s tím, že pokud je proměnná definovaná jako veřejná, dá se získat i mimo daný objekt a na druhou stranu pokud je proměnná privátní, je možné ji získat pouze uvnitř metod objektu. Metoda je taková funkce, kterou je možné uvnitř objektu se stejnými přístupy definovat a je to kus kódu co bude provedený pokud bude metoda zavolaná. Metody které jsou veřejné je tedy možné spouštět ze skriptu \textit{main.cpp} ve kterém existuje globální instance objektu, ale privátní metody už není možné z hlavního skriptu spouštět.
+
+Kvůli této funkcionalitě bylo od začátku rozhodnuto, že bude kód programovaný tímto způsobem. Většina kódu bude obsažena v conveyorController objektu a v hlavním zdrojovém kódu budou pouze volány veřejné metody této globální instance třídy ConveyorController.
+
+Aby bylo možné představit jaké funkce jsou v ConveyorController třídě obsaženy, zde je její definice v hlavičkovém souboru \textit{ConveyorController.h}:
 
 \input{codes/ConveyorControllerHeader}
 
-Tento hlavičkový soubor obsahuje:
+Z této definice lze vidět, že pro přehlednost je celkový kód rozdělený do různých metod tak, aby měla každá metoda svůj účel. Tyto metody jsou seřazené podle pořadí provedení až do funkce startTicker, po které se už funkce provádějí periodicky. Účely které zajišťují metody jsou:
+
 \begin{itemize}
-    \item Include příkazy, které zbytku umožní používat zbytek potřebných knihoven.
-    \item Prototyp ConveyorController classy, která má:
-    \begin{itemize}
-        \item Public definice proměnných a metod, které je možné zavolat zvenku ConveyorController objektu.
-        \item Private definice proměnných a metod, které je možné zavolat pouze uvnitř ConveyorController objektu.
-    \end{itemize}
+	\item \textbf{initIO} - Nastavuje piny vývojové desky na vstupy a výstupy pomocí PinMode příkazu a dále inicializuje výstupní piny na nízkou hodnotu.
+	\item \textbf{initLCD} - Inicializuje používání LCD displeje.
+	\item \textbf{initWeb} - Začne hledání webové sítě, která by odpovídala parametrům nastaveného jména (SSID) a hesla. Také informuje o hledání sítě na LCD displeji a přes serial komunikaci, kterou se hodí mít při debugování firmware.
+	\item \textbf{assignRoutes} - Přiřadí WebServeru odpovědi na jednotlivé adresy. Tyto odpovědi obsahují nejdříve nastavení \textit{<head>} části odpověďi (dále vysvětlené v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}), poté provádění C++ kódu a nakonec odesílání odpovědí na požadavky.
+	\item \textbf{startWebServer} - Spustí WebServer, který bude nyní přijímat požadavky.
+	\item \textbf{startTicker} - Nastaví Ticker (časovač) pro periodické spouštění hlavní funkce \textbf{updateState} a funkce pro aktualizaci LCD.
+	\item \textbf{handleClient} - Sleduje webové požadavky.
+	\item \textbf{updateLCD} - Aktualizuje na LCD displeji hodnotu IP adresy a hodnotu rychlosti dopravníku.
+	\item \textbf{updateState} - Tato funkce řídí relé na desce plošných spojů a tak i ovládá celý dopravník. Chová se dle stavového diagramu, který je popsaný v kapitole \ref{sec:UpdateStateStavovyDiagram}.
 \end{itemize}
 
-Výhoda používání takové class pro provádění scriptu je právě taková, že mi umožňuje k některým věcem znemožnit přístup v hlavním kódu a tak se bude ve hlavním kódu volat pouze to, co chci. V rámci skriptu bylo potřebné mít některé proměnné globálního typu - tedy je potřeba k nim mít přístup z velkého množství funkcí. Tyhle proměnné jsou například rychlost dopravníku conveyorSpeed nebo stav lokálního nebo dálkového ovládání remoteLocalState. Je ale obecně nebezpečné mít globální proměnné. Proto jsou tyhle proměnné definované přímo v private sekci classy a tak jsou dostupné ve všech funkcích v ConveyorController objektu, ale už nejsou dostupné z main.cpp souboru, který kód na mikrokontrolleru spouští. Díky tomu jsou proměnné definované globálně, ale zároveň nesou menší riziko spojené s globální definicí (rizika jakože např. budou přepsané z jiných částí programu).
+Hlavičkový soubor dále obsahuje i několik prototypů privátních metod které urychlují psaní kódu při opakovaných úkonech a proměnných které jsou používáné uvnitř metod (všechny proměnné používané uvnitř třídy jsou privátní). Specifické privátní metody které je potřeba poukázat jsou metody \textbf{mainRoute} a \textbf{unknownRouteReponse}. Tyhle metody zahrnují vytváření HTML řetězce kterým se odpovídá na webové požadavky, co přichází na WebServer. Je to podobný způsob jak odpovídat na webové požadavky jako byl v ukázce kódu \ref{lst:NastaveniWebServeru}.
 
-Hlavičkový soubor dále obsahuje public definice metod, které je možné zavolat z main souboru. Kód na mikrokontrolleru je kvůli přehlednosti rozdělen do více funkcí, kde každá funkce má svůj účel.
-
-\purpose{Tady bych dál popsal každou jednotlivou metodu a jaký účel zajišťuje.}
-\begin{itemize}
-    \item Funkce initIO nastavuje piny vývojové desky na vstupy a výstupy pomocí PinMode příkazu a také inicializuje hodnotu výstupních pinů na LOW.
-    \item \dots
-\end{itemize}
-
-\subsubsection{Implementace ConveyorController v hlavním skriptu}\label{sec:ImplementaceConveyorControllerVeMainCpp}
-\purpose{Prakticky ukázat co jsou hlavní funkce v main.cpp skriptu. Popsat jaké má každý funkce vstupy, výstupy a co se během ní děje co je důležité.}
-
-Tímto způsobem je ConveyorController objekt zaimplementován uvnitř hlavního skriptu (soubor jménem main.cpp) který běží na mikrokontrolleru.
-
-\input{codes/main}
-
-Proměnná conveyorController je globální instance objektu ConveyorController a díky tomu je možné jeho funkce volat i ze setup i z loop funkce. Jinak je uvnitř setup funkce inicializovaný objekt a všechny jeho metody související s inicializací.
-
-V rámci loop funkce je volaná metoda handleClient, která odpovídá na webové požadavky na adresách které hostuje nodeMCU. Tohle je jediná funkce co v loopu provádí a díky tomu je mikokontroller schopný velmi rychle odpovídat na veškeré webové požadavky.
-
-Loop funkce nezahrnuje privátní metody getState a updateLCD protože jsou tyhle funkce vykonávány pomocí Ticker knihovny, která, podobně jako třeba timer u Microchip mikrokontrollerů, provádí určité funkce periodicky za nastavené časové intervaly. Tyhle ticker funkce jsou nastavené v setup pomocí metody startTicker.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\oldtext
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Stavový diagram logiky systému (5 stran)}\label{sec:UpdateStateStavovyDiagram}
 \purpose{Vysvětlit jak funguje funkce v kódu která se chová na základě stavového diagramu}

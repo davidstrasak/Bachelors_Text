@@ -225,47 +225,60 @@ Z této definice lze vidět, že pro přehlednost je celkový kód rozdělený d
 
 Hlavičkový soubor dále obsahuje i několik prototypů privátních metod které urychlují psaní kódu při opakovaných úkonech a proměnných které jsou používáné uvnitř metod (všechny proměnné používané uvnitř třídy jsou privátní). Specifické privátní metody které je potřeba poukázat jsou metody \textbf{mainRoute} a \textbf{unknownRouteReponse}. Tyhle metody zahrnují vytváření HTML řetězce kterým se odpovídá na webové požadavky, co přichází na WebServer. Je to podobný způsob jak odpovídat na webové požadavky jako byl v ukázce kódu \ref{lst:NastaveniWebServeru}.
 
+\subsection{Stavový diagram logiky systému (5 stran)}\label{sec:UpdateStateStavovyDiagram}
+%\purpose{Vysvětlit jak funguje funkce v kódu která se chová na základě stavového diagramu}
+
+Aby bylo možné řídit dopravník pomocí ConveyorController objektu, je potřebné implementovat v kódu logiku, která sleduje stav ovládání dopravníku a podle stavu ovládání bude spínat tranzistory co spouští relé v desce plošných spojů. Do téhle funkcionality se navíc dalo přidat i některé další funkce jako je aproximace rychlosti dopravníku blíže popsaná v kapitole \ref{sec:AproximaceRychlostiDopravniku}. Tato veřejná metoda objektu ConveyorController se jmenuje updateState a je pomocí knihovny Ticker prováděna každých 300 milisekund.
+
+V tomhle systému je na tuto část kódu nahlíženo jako na stavový diagram Harelova typu. Pro přehlednost je zde stavový diagram rozdělený do tří různých částí (byl ale navrhován jako jeden celek):
+\begin{itemize}
+	\item \textbf{Začátek stavového diagramu} - kde se rozhoduje hlavně jestli je dopravník řízený lokálně nebo dálkově.
+	\item \textbf{Dálkové ovládání dopravníku}
+	\item \textbf{Lokální ovládání dopravníku}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_top.drawio.pdf}
+	\caption{Začátek stavového diagramu}
+	\label{fig:StateFlow_Firmwaru_top}
+\end{figure}
+
+Zde je vstup do stavového diagramu funkce updateState. Na začátku se přečte hodnota vstupního pinu vývojové desky ke kterému je připojený přepínač pro lokální nebo dálkové ovládání. Na základě této hodnoty se určí, jestli je systém ve stavu lokálního nebo dálkového ovládání. Podle této hodnoty se stavový diagram větví do diagramů pro lokální nebo dálkové ovládání.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_left.drawio.pdf}
+	\caption{Strana stavového diagramu s lokálního ovládáním}
+	\label{fig:StateFlow_Firmwaru_left}
+\end{figure}
+
+Ve stavu s lokálním ovládáním se nastaví výstupní pin vývojové desky ovládající tranzistor, který vypne relé, které přepíná mezi lokálním a dálkovým ovládáním. Následně se rovněž nastaví tranzistor ovládající dálkové ovládání, jelikož není potřeba toto relé mít zapnuté, když je tato větev obvodu deaktivována. Nakonec se nastaví proměnné dálkového ovládání na FALSE, aby byly vynulovány nastavené příkazy z WebServeru. Na konci provedení těchto bloků kódu se přečtou stavy tlačítek a přepínačů umístěných fyzicky na desce a na základě těchto stavů se pokračuje v provádění kódu.
+
+V tomto stavu působí mikrokontroler spíše jako pouhý pozorovatel stavu tlačítek, než aby přímo spínal nějaké z relé. V blokovém schématu systému na obrázku \ref{fig:SchemaDesky} lze vidět, že tomu tak je protože je relé pro přepínání lokálního nebo dálkového ovládání připojené přímo k tlačítku, které bez žádného digitálního zpracování spíná nebo rozepíná 24V linku napětí pro ovládací panel. Toto vychází z požadavku na systém \textbf{Systém musí mít ovládání které je čistě analogové}.
+
+Ze začátku se může pokračovat do větve \textbf{Dopravník je lokálně vypnutý}, a to v případě, že je hodnota přepínače, který lokálně ovládá stav ON/OFF, vyhodnocena LOW. V tomto stavu se pouze odečte hodnota rychlosti dopravníku, pokud je rychlost vyšší než 0 \footnote{rychlost dopravníku sledovaná v proměnné conveyorSpeed je pouze aproximace, která se zobrazuje v mobilní aplikaci a na LCD displeji. Není to vstup do ovládacího panelu.}.
+
+Alternativně je možné pokračovat do větve \textbf{Dopravník je lokálně zapnutý}, pokud je hodnota přepínače ON/OFF vyhodnocena jako HIGH. V tomto případě se sleduje, jakým způsobem je dopravník ovládán, a na základě toho se přičte nebo odečte hodnota rychlosti dopravníku.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_right.drawio.pdf}
+	\caption{Strana stavového diagramu s dálkovým ovládáním}
+	\label{fig:StateFlow_Firmwaru_right}
+\end{figure}
+
+Ve stavu s dálkovým ovládáním se nastaví výstupní pin, který ovládá relé pro dálkové nebo lokální ovládání, na úroveň HIGH. V rámci tohoto stavu už není nic dalšího provedeno, jelikož se proměnné, na základě kterých se ve stavovém diagramu pokračuje, nastaví při zpracování GET požadavků, které přicházejí na WebServer.
+
+WebServer tedy nastavuje proměnné, na základě kterých se v tomto stavovém diagramu pokračuje v provádění kódu. Tyto proměnné jsou inicializovány na hodnotu FALSE, a proto se po přepnutí do režimu dálkového ovládání dopravník vypne. Během provádění stavového diagramu dálkového ovládání nejsou tyto hodnoty vynulovány, a je proto nutné přes WebServer nastavit proměnné jak na hodnotu TRUE, tak na hodnotu FALSE.
+
+Pokud přes WebServer bude proměnná ON/OFF nastavena na hodnotu FALSE, poté se vypne relé, které ovládá dálkové ovládání, a sníží se hodnota rychlosti dopravníku až na 0.
+
+Pokud se přes WebServer proměnná ON/OFF nastaví na hodnotu TRUE, sepne se tranzistor, který přivede proud do relé pro dálkové ovládání. Podobně se spustí relé, které zrychluje nebo zpomaluje dopravník přes ovládací panel, pokud jsou jejich specifické proměnné nastavené na hodnotu TRUE. Také zde se zvyšuje nebo snižuje hodnota aproximace rychlosti.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \oldtext
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Stavový diagram logiky systému (5 stran)}\label{sec:UpdateStateStavovyDiagram}
-\purpose{Vysvětlit jak funguje funkce v kódu která se chová na základě stavového diagramu}
-
-Jedna z nejdůležitějších metod v ConveyorController objektu je private metoda updateState, která ovládá relé a pomocí něj spojuje nebo rozpojuje digitální inputy ovládacího panelu Sinamics frekvenčního měniče. Dále také aktualizuje informace o rychlosti dopravníku, které jsou zobrazené jak v mobilní aplikaci tak na LCD displayi na samotném zařízení (samotná aktualizace LCD probíhá ve funkci updateLCD která neprobíhá tak často jako updateState). Tahle metoda je nastavená v Tickeru aby se prováděla každých 300 sekund.
-
-Celý UpdateState kód je reprezentován stavovým diagramem logiky systému\footnote{Pokud je v diagramu něco napsané velkými písmeny a obsahuje podtržítka jako třeba $\text{PIN\_IN\_LOCALREMOTE}$, značí to jeden z vstupních nebo výstupních pinů vývojové desky. Pokud je něco napsáno v camelCase jako třeba remoteLocalState, je to proměnná působící uvnitř kódu.} který jsem se snažil navrhnout aby to byl Harelův typ.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_top.drawio.pdf}
-    \caption{Začátek stavového diagramu}
-    \label{fig:StateFlow_Firmwaru_top}
-\end{figure}
-
-Zde je vstup do stavového diagramu. Na začátku se přečte hodnota vstupního pinu který sleduje přepínač nastavující lokální nebo dálkové ovládání, který je fyzicky umístěn na desce. Na základě hodnoty se pokračuje buď to stavu kdy je zařízení ovládané lokálně nebo dálkově.
-
-\dots
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_left.drawio.pdf}
-    \caption{Strana stavového diagramu s lokálního ovládáním}
-    \label{fig:StateFlow_Firmwaru_left}
-\end{figure}
-
-Ve stavu Local\_Controlled se nejdřív nastaví výstupní pin PIN\_OUT\_LOCALREMOTE. Nastavení výstupního pinu lokálního nebo dálkového ovládání vývojové desky na nízkou hodnotu zajistí, že ty tři přepínací (Form-C) relé na dolní straně blokového elektrického diagramu \ref{fig:SchemaDesky} budou připojené k lokální větvi ovládání. Dále se v tomto stavu nastaví všechny proměnné související s dálkovým ovládáním na false hodnotu. Nakonec se přečte stav vstupních pinů do vývojové desky související se stavem vypnuto/zapnuto, zrychlováním a zpomalováním a tyto stavy se uloží do proměnných, na základě kterých se bude rozhodovat co se dále stane ve stavovém diagramu.
-
-\comment{Má cenu to takhle popisovat nebo je to zbytečné? }
-
-\purpose{Pokud je tohle dobře popsané a má to cenu takhle popisovat tak zde i dál vysvětlím co se dál nachází ve zbylých částech stavového diagramu.}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/StateFlow_Firmwaru_right.drawio.pdf}
-    \caption{Strana stavového diagramu s dálkovým ovládáním}
-    \label{fig:StateFlow_Firmwaru_right}
-\end{figure}
-\dots
 
 \subsubsection{Jak aplikace aproximuje rychlost dopravníku}\label{sec:AproximaceRychlostiDopravniku}
 \purpose{Vysvětlit jak se pomocí Tickeru aproximuje rychlost dopravníku}

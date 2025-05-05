@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {2.2.2}LCD display s I2C převodníkem}{29}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Firmware ve vývojové desce}{30}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Třída a objekt ConveyorController}{30}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Stavový diagram logiky systému (5 stran)}{34}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Stavový diagram logiky systému (5 stran)}{33}{subsection.2.3.2}%
 \contentsline {subsubsection}{Jak aplikace aproximuje rychlost dopravníku}{36}{subsubsection*.22}%
 \contentsline {section}{\numberline {2.4}Software v mobilní aplikaci ($\Sigma $ = 5 stran)}{37}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Architektura aplikace}{37}{subsection.2.4.1}%
@@ -32,10 +32,10 @@
 \contentsline {subsubsection}{Tailwind}{38}{subsubsection*.25}%
 \contentsline {subsubsection}{DaisyUI}{38}{subsubsection*.26}%
 \contentsline {subsubsection}{Lucide for React}{38}{subsubsection*.27}%
-\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s NodeMCU servery}{38}{subsection.2.4.3}%
-\contentsline {subsubsection}{Co je to GET požadavek }{38}{subsubsection*.28}%
+\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s NodeMCU servery}{39}{subsection.2.4.3}%
+\contentsline {subsubsection}{Co je to GET požadavek }{39}{subsubsection*.28}%
 \contentsline {subsubsection}{Implementování GET requestů do aplikace}{40}{subsubsection*.29}%
-\contentsline {subsection}{\numberline {2.4.4}Funkčnost aplikace (hodně stran)}{41}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.4}Funkčnost aplikace (hodně stran)}{42}{subsection.2.4.4}%
 \contentsline {subsubsection}{Co funkci sendCommand používá}{42}{subsubsection*.30}%
 \contentsline {subsection}{\numberline {2.4.5}Design aplikace (1 strana)}{42}{subsection.2.4.5}%
 \contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace (0.5 strany)}{43}{subsection.2.4.6}%

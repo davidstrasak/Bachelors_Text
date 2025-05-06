@@ -54,7 +54,7 @@ Na obrázku \ref{fig:MobilniAppScreenshots} je finální vzhled mobilní aplikac
 	\label{fig:MobilniAppScreenshots}
 \end{figure}
 
-\subsection{Požadavky na systém (0.5 strany)}\label{sec:PozadavkyNaSystem}
+\subsection{Požadavky na systém}\label{sec:PozadavkyNaSystem}
 Pro zajištění funkčnosti a smysluplnosti návrhu je nutné si stanovit některé požadavky, které by systém měl splňovat. Tyto požadavky reflektují nejenom požadavky od společnosti Honeywell, ale i požadavky na základní spolehlivost, jednoduchost a bezpečnost ovládání dopravníků tímto způsobem.
 
 Zde jsou požadavky, které by implementace navrženého zařízení měla splňovat:
@@ -225,7 +225,7 @@ Z této definice lze vidět, že pro přehlednost je celkový kód rozdělený d
 
 Hlavičkový soubor dále obsahuje i několik prototypů privátních metod které urychlují psaní kódu při opakovaných úkonech a proměnných které jsou používáné uvnitř metod (všechny proměnné používané uvnitř třídy jsou privátní). Specifické privátní metody které je potřeba poukázat jsou metody \textbf{mainRoute} a \textbf{unknownRouteReponse}. Tyhle metody zahrnují vytváření HTML řetězce kterým se odpovídá na webové požadavky, co přichází na WebServer. Je to podobný způsob jak odpovídat na webové požadavky jako byl v ukázce kódu \ref{lst:NastaveniWebServeru}.
 
-\subsection{Stavový diagram logiky systému (5 stran)}\label{sec:UpdateStateStavovyDiagram}
+\subsection{Stavový diagram logiky systému}\label{sec:UpdateStateStavovyDiagram}
 %\purpose{Vysvětlit jak funguje funkce v kódu která se chová na základě stavového diagramu}
 
 Aby bylo možné řídit dopravník pomocí ConveyorController objektu, je potřebné implementovat v kódu logiku, která sleduje stav ovládání dopravníku a podle stavu ovládání bude spínat tranzistory co spouští relé v desce plošných spojů. Do téhle funkcionality se navíc dalo přidat i některé další funkce jako je aproximace rychlosti dopravníku blíže popsaná v kapitole \ref{sec:AproximaceRychlostiDopravniku}. Tato veřejná metoda objektu ConveyorController se jmenuje updateState a je pomocí knihovny Ticker prováděna každých 300 milisekund.
@@ -276,30 +276,96 @@ Pokud přes WebServer bude proměnná ON/OFF nastavena na hodnotu FALSE, poté s
 
 Pokud se přes WebServer proměnná ON/OFF nastaví na hodnotu TRUE, sepne se tranzistor, který přivede proud do relé pro dálkové ovládání. Podobně se spustí relé, které zrychluje nebo zpomaluje dopravník přes ovládací panel, pokud jsou jejich specifické proměnné nastavené na hodnotu TRUE. Také zde se zvyšuje nebo snižuje hodnota aproximace rychlosti.
 
+\subsubsection{Jak aplikace aproximuje rychlost dopravníku}\label{sec:AproximaceRychlostiDopravniku}
+%\purpose{Vysvětlit jak se pomocí Tickeru aproximuje rychlost dopravníku}
+V předchozí kapitole byla zmíněna proměnná \textit{conveyorSpeed} která si udržuje aproximovanou hodnotu rychlosti dopravníku. Aproximace rychlosti vychází z předpokladu, že frekvenční měnič zrychluje asynchronní motory dopravníku lineárně. Tento předpoklad je smysluplný, jelikož bývají frekvenční měniče v praxi často konfigurovány s lineárními rampami pro zrychlení a zpomalení ovládaných motorů. Tento předpoklad byl ověřen přímo na frekvenčním měniči v hale společnosti Honeywell a bylo tedy zkontrolováno, že platí.
+
+Při testování bylo také zjištěno, že frekvenční měnič zrychluje o 500 otáček za 10 sekund. Zrychlení frekvenčního měniče je tedy $50ot/min$ za sekundu, což je z maximální hodnoty $1500ot/min$ (definovaná při nastavení ovládacího panelu v kapitole \ref{sec:NastaveniOvladacihoPanelu}) zrychlení $3.33\%/s$ neboli $1\%$ za $300ms$. Dopravník stejnou rychlostí i zrychluje i zpomaluje.
+
+Samotná aproximace rychlosti dopravníků je tedy provedena tím způsobem, že se veřejná metoda \texttt{updateState} provádí každých $300ms$ a během každého provedení končí každá větev stavového diagramu aktualizací hodnoty \texttt{conveyorSpeed} Tato aktualizace je vždy provedena tím způsobem, aby hodnota patřila do intervalu $<0,100>$ \% z maximální rychlosti.
+
+Volat funkci \texttt{updateState} každých $300ms$ by mělo být pro aproximaci dostatečně pravidelné. Jediný způsob jak by aproximace mohla nabývat špatných hodnot je pokud by byl systém ovládaný v lokálním režimu ovládání, tlačítko zrychlení by bylo sepnuté po dobu těsně menší než $300ms$ a zrovna tato doba vyšla na dobu mezi volání funkce \texttt{updateState}. Tohle je obecně chyba která může nastat u vzorkování. Pokud by se tak stalo i opakovaně, stejně by byla chyba v řádu jednotek procent, což je zanedbatelné.
+
+Naopak častější volání funkce \texttt{updateState} než $300ms$ by mělo vyšší spotřebu energie a bralo by to zbytečně výpočetní výkon vývojové desky, která ho spíše může využít pro odpovídání na webové požadavky co přichází na WebServer.
+
+Způsob jakým je funkce \texttt{updateState} spuštěna každých $300ms$ je pomocí nastavení časovače skrz framework jménem \texttt{Ticker}. \texttt{Ticker} je open-source knihovna, která může být vložena do jakéhokoliv projektu založeném na Arduino framework. Zde je příklad kódu pro nastavení \texttt{Ticker} knihovny:
+
+\begin{lstlisting}[language=C++, caption={Způsob používání \texttt{Ticker} knihovny}, label={lst:TickerKnihovnaExample}]
+#include "Ticker.h"
+
+void blink() {
+	digitalWrite(LED_BUILTIN, ledState);
+	ledState = !ledState;
+}
+
+void setup() {
+	Ticker timer(blink, 500);
+	timer.start();
+}
+
+void loop() {
+	timer.update();
+}
+\end{lstlisting}
+
+Používání \texttt{Ticker} knihovny tedy spočívá v tom, že si stačí zaobalit kód, který má být vykonáván, do samostatné callback funkce. Následně je možné vytvořit \texttt{Ticker} objekt ve kterém jsou vstupy tato callback funkce a čas který určuje jak často má být kód vykonáván. Pro kontrolu se doporučuje ještě přidat \texttt{update} metodu vytvořeného \texttt{Ticker} objektu do \texttt{loop} funkce.
+
+Díky možnosti nastavit pomocí knihovny \texttt{Ticker} metodu \texttt{updateState} vzniká dobrý způsob jak dávat uživatelům systému vědět, jakou má dopravník aktuální rychlost i bez toho, aby bylo připojené zařízení Sinamics IOP-2 kterým se ovládací panel programuje (popsáno v kapitole \ref{sec:NastaveniOvladacihoPanelu}).
+
+\section{Software v mobilní aplikaci ($\Sigma$ = 5 stran)}\label{sec:SoftwareVMobilniAplikaci}
+% \purpose{V téhle sekci popíšu jak přesně funguje mobilní aplikace kterou jsem vytvořil a poznatky s tím spojené.}
+
+Jak už bylo nastíněno v sekci \ref{sec:PopisFunkceSystemu}, primární důvod proč bylo rozhodnuto, že bude systém ovládaný přes mobilní aplikaci je, že není potřeba mít další dedikované zařízení, které bude fungovat jako dedikovaný hardwarový ovladač systému. Díky tomu je celkový systém přenositelnější a jednodušší ovládat, jelikož mobilní zařízení musí uživatelé mít už i kvůli zapisování dat z kontroly dopravníků. Komunikace mobilní aplikace a vývojové desky je realizována pomocí bezdrátové technologie WiFI, což umožňuje komunikaci v řádech desítek metrů (u nejnovějšího WiFi protokolu do 90 metrů).
+\cite{DosahWIFIProtokolu}
+
+Vzhledem k požadavku na systém \textbf{Uživatelská přívětivost systému} je navíc velmi výhodné mít systém ovládaný mobilní aplikací, jelikož je možné mít prakticky veškeré informace ohledně nastavování ovládacího panelu frekvenčního měniče na jednom místě. Tohle výrazně zlepšuje uživatelské používání systému, protože uživatelé nemusí hledat dokumentaci, když je na stejném místě jako ovládací prvky systému.
+
+Mobilní aplikace není technicky vzato pro systém potřebná. WebServer je možné ovládat i přes webový prohlížeč. Poté by ale systém ztrácel další funkce, které mobilní aplikace nabízí. To je třeba zmiňovaná dokumentace uvnitř aplikace, nebo možnost mít automaticky aktualizovanou hodnotu rychlosti dopravníku a stavu ovládání. Velká výhoda aplikace je také ovládání více dopravníků najednou.
+
+\subsection{Architektura aplikace}
+%\purpose{Vysvětlit jakým způsobem jsem navrhoval architekturu aplikace a proč. Architektura = statická frontendová webová aplikace převedená do mobilní podoby pomocí WebView. Výhody jsou jednoduchost implementace GET requestů ve webové aplikaci. Zde taky přestavit React a Capacitor.}
+
+Navržená mobilní aplikace vůbec není mobilní aplikace v tradičním slova smyslu, ale spíše jde o webovou aplikaci. Tuto webovou aplikace lze pomocí některých knihoven a rozšíření spolehlivě konvertovat do mobilní aplikace. Zde budou popsány důvody tohoto rozhodnutí.
+
+Běžná webová aplikace má dvě hlavní části:
+
+První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools}, které kterémukoliv uživateli ukážou celý front-end kód webové aplikace.
+
+Druhá hlavní část webové aplikace se jmenuje \textbf{back-end} a je to část aplikace kterou běžný uživatel nevidí. Obsahuje data seřazená v databázích, které je možné si pomocí různých příkazů načíst do front-end části. Také umí využívat server pro provádění různých výpočtů, které jsou buďto moc náročné, anebo musí být z určitých důvodů schované před běžnými uživateli.
+
+Z hlediska softwarové architektury byla aplikace koncipována jako statická webová aplikace - tedy čistě front-endová aplikace bez back-end části. Aplikace byla postavená na knihovně jazyka JavaScript jménem \textbf{React}, což je dlouhodobě jedno z nejpopulárnějších rozhraní pro tvorbu webových aplikací (jak tvrdí studie nejpoužívanějších jazyků pro webové programování \cite{ReactWebDeveloperPopularity}). Specificky byla použita \textbf{Vite} verze Reactu, která je optimalizována pro rychlost aplikace.
+\cite{ViteReactWeb}
+
+Aby bylo možné programovat webové aplikace, je potřeba mít nainstalovanou aplikaci \textbf{Node.js}, která mimo jiné usnadňuje programování webové aplikace tím, že umí v reálném čase ukazovat jak každá změna React kódu ovlivnila aplikaci pomocí takzvaného "development" serveru co je dostupný na lokální síti počítače, na kterém je node.js spuštěný.
+
+Každá verze webové aplikace byla testována tím způsobem, že se překonvertovala do statických souborů (obsahující pouze HTML, CSS a JS soubory) pomocí příkazu \texttt{vite build}. Ten přeloží syntax jazyka React do souborů, které jsou ekvivalentní, ale narozdíl od React syntaxu jim rozumí každý webový prohlížeč.
+
+Když existuje tato "čistá" verze aplikace, je možné použít framework jménem \textbf{Capacitor}, který je vytvořený specificky pro to aby bylo možné ho pomocí node.js nainstalovat do knihoven pro webové programování jako je React. Následně je možné pomocí několika příkazů Capacitor frameworku přeložit tuto verzi aplikace do souborů mobilní aplikace.
+\cite{CapacitorDocs}
+
+Nakonec je možné si tuto složku konvertované mobilní aplikace otevřít v prostředí \textbf{Android Studio} a tam si z daného projektu vytvořit soubor o příponě \texttt{.apk}, který si umí nainstalovat každé android zařízení. Pomocí capacitor je možné konvertovat i do mobilní aplikace pro zařízení firmy Apple. Na konvertování do instalačního souboru je ale potřebné mít i stolní počítač značky Apple, kde je možné aplikaci konvertovat pomocí \textbf{Xcode}.
+
+\subsubsection{Proč webová aplikace?}
+Důvod proč byla webová aplikace programována jako webová a ne přímo mobilní je jelikož hlavní účel dané aplikace je posílat GET požadavky na IP adresu vývojové desky. To je úkol, na který je jakákoliv knihovna pro tvoření webových aplikací přímo optimalizována.
+
+Každá větší webová aplikace hostuje front-end část a v jejím rámci posílá webové požadavky na svůj server, kde je spuštěný back-end aplikace. Tyto požadavky jsou spojené s dynamicky objevujícím se obsahem, který může být:
+\begin{itemize}
+	\item Načtení reklamy na sociální síti.
+	\item Potvrzení objednávky na e-shopu.
+	\item Provádění náročnějších kalkulací pomocí výkonu co poskytuje server.
+	\item A další.
+\end{itemize}
+
+V případě navrženého systému sice nemá mobilní aplikace vlastní back-end server, ale zato má WebServer hostovaný na mikrokontroleru. Ten přijímá příkazy jako "zrychlit dopravník" a naopak vysílá informace jako je rychlost dopravníku.
+
+Z těchto důvodů je mnohem snažší navrhnout nejdříve webovou aplikaci, implementovat komunikaci obou částí webového systému a následně konvertovat webovou aplikaci do mobilní aplikace. Pokud by byla mobilní aplikace programovaná od základu v knihovnách pro tvorbu mobilních aplikací, zmizel by jednoduše vyřešitelný problém konverze webové aplikace do mobilní, ale přibyl by problém implementace webové komunikace uvnitř mobilní aplikace.
+
+\subsubsection{Adresy webové aplikace}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \oldtext
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Jak aplikace aproximuje rychlost dopravníku}\label{sec:AproximaceRychlostiDopravniku}
-\purpose{Vysvětlit jak se pomocí Tickeru aproximuje rychlost dopravníku}
-
-Aplikace aproximuje rychlost dopravníku tak, že předpokládá že dopravník ovládaný frekvenčním měničem zrychluje lineárně - což je běžná praxe pro frekvenční měniče kvůli důvodům popsané v kapitole \ref{sec:JakFungujiFrekvencniMenice} a je to něco co jsem si potvrdil když jsem na dopravníku zkoušel funkčnost zařízení. Dává to smysl, protože tohle zrychlování je čistě softwarová záležitost frekvenčního měniče a tak není důvod proč by nebylo lineární. Během testování jsem zjistil, že frekvenční měnič má ramp up time sice nastavený na 10 sekund, ale za těch 10 sekund dosáhne $500 ot/min$. Pokud bych chtěl tedy zrychlit dopravník z nulové rychlosti na maximální rychlost 1500 otáček za minutu, musím počkat čas 3x větší než je jeden ramp up time. Dopravník stejnou rychlostí i zabrzďuje.
-
-Samotná aproximace rychlosti je implementována ve funkci updateState, která je blíže vysvětlená ve kapitole \ref{sec:UpdateStateStavovyDiagram}. Aproximace je provedena hned po nastavení výstupních pinů v rámci updateState vývojové desky tím, že se přičte nebo odečte hodnota proměnné conveyorSpeed. Proměnná conveyorSpeed je nastavená jako celé číslo a reprezentuje procento rychlosti z maximální rychlosti. Jelikož se funkce updateState volá každých 0.3 sekundy a během každého zavolání se buďto zvýší conveyorSpeed pokud se zrychluje, nebo sníží conveyorSpeed pokud se zpomaluje, dosáhne maximální hodnoty 100 za 30 sekund, což je čas potřebný pro dosáhnutí maximální rychlosti dopravníku.
-
-Funkce updateState se volá zaokrouhleně 3x za sekundu a takové rozlišení by mělo stačit pro to aby aproximace nenabývala hodnot drasticky mimo z důvodu např. rozpojení tlačítka těsně předtím než se provede updateState.
-
-Tahle funkcionalita dává inženýrům co kontrolují dopravníky důležité informace o rychlosti i bez toho aby k dopravníku museli mít připojené zařízení jako BOP-2 z kapitoly \ref{sec:NastaveniOvladacihoPanelu} vysvětlující nastavení ovládacího panelu dopravníku.
-
-\section{Software v mobilní aplikaci ($\Sigma$ = 5 stran)}\label{sec:SoftwareVMobilniAplikaci}
-\purpose{V téhle sekci popíšu jak přesně funguje mobilní aplikace kterou jsem vytvořil a poznatky s tím spojené.}
-
-Jak už jsem nastínil v \ref{sec:PopisFunkceSystemu} tak hlavní motivace proč navrhuji mobilní aplikaci je kvůli tomu aby nebylo potřeba mít extra zařízení pro ovládání dopravníků. Díky mobilní aplikaci můžu vytvořit zařízení které umožní dopravníky ovládat na vzdálenost 10-100 metrů (vzdálenost WiFi protokolu - \source{zdroj needed}) a stačí mi navrhnovat jenom zařízení které se připojí na dopravník a už nemusím navrhovat zařízení, které signály vysílá. To zmenšuje počet krabiček co musí zaměstnanci software tahat s sebou.
-
-Výhodou mobilní aplikace je taková, že můžu na jedno místo dát všechny návody - můžu tak mít setup i všechno ovládání v rámci jedné aplikace což je rozhodně lepší než to mít v pdf dokumentu někde mimo. Pomáhá mi to tak na jeden z požadavků kdy jsem chtěl aby byl systém jednoduchý a intuitivní na používání.
-
-\subsection{Architektura aplikace}
-\purpose{Vysvětlit jakým způsobem jsem navrhoval architekturu aplikace a proč. Architektura = statická frontendová webová aplikace převedená do mobilní podoby pomocí WebView. Výhody jsou jednoduchost implementace GET requestů ve webové aplikaci. Zde taky přestavit React a Capacitor.}
 
 Ta aplikace samotná je čistě frontendová (statická) webová aplikace postavná na Vite verzi Reactu. Capacitor tuhle aplikaci převádí do mobilní aplikace a kvůli tomu potřebuju používat některý balíčky spojený s capacitorem aby mi to umožnilo posílat webové požadavky na IP adresy nodeMCU serverů.
 

@@ -2431,9 +2431,13 @@
     <bcf:citekey order="35" intorder="1">PlatformIOWeb</bcf:citekey>
     <bcf:citekey order="36" intorder="1">CppObjectAndClassArticle</bcf:citekey>
     <bcf:citekey order="37" intorder="1">EnkapsulaceVCppArikl</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">HoneywellHala</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">DosahWIFIProtokolu</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">ReactWebDeveloperPopularity</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">ViteReactWeb</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">CapacitorDocs</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">CapacitorDocumentationFAQ</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">HoneywellHala</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

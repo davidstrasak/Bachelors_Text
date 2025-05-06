@@ -353,6 +353,62 @@
       \verb https://www.geeksforgeeks.org/encapsulation-in-cpp/
       \endverb
     \endentry
+    \entry{DosahWIFIProtokolu}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Wifi - draft 802.11n - NMS}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://nms.fjfi.cvut.cz/wiki/Wifi_-_draft_802.11n
+      \endverb
+      \verb{url}
+      \verb https://nms.fjfi.cvut.cz/wiki/Wifi_-_draft_802.11n
+      \endverb
+    \endentry
+    \entry{ReactWebDeveloperPopularity}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Technology | 2024 Stack Overflow Developer Survey}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://survey.stackoverflow.co/2024/technology
+      \endverb
+      \verb{url}
+      \verb https://survey.stackoverflow.co/2024/technology
+      \endverb
+    \endentry
+    \entry{ViteReactWeb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Getting Started | Vite}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://vite.dev/guide/
+      \endverb
+      \verb{url}
+      \verb https://vite.dev/guide/
+      \endverb
+    \endentry
+    \entry{CapacitorDocs}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Capacitor - Cross-platform Native Runtime for Web Apps | Capacitor Documentation}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://capacitorjs.com/docs
+      \endverb
+      \verb{url}
+      \verb https://capacitorjs.com/docs
+      \endverb
+    \endentry
     \entry{CapacitorDocumentationFAQ}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=f2b00b9e4a462ab3f2e1c97495e8bb3f}{%
@@ -367,8 +423,8 @@
       \strng{authornamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
       \strng{authorfullhashraw}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}
@@ -397,8 +453,8 @@
       \strng{authornamehash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhashraw}{e6f60ca6c699bf2730946bc0494c5cbe}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}

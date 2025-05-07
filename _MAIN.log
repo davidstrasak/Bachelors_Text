@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  6 MAY 2025 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  7 MAY 2025 22:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1652,8 +1652,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 [8] (chapters/1_Uvod.tex
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-3.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+.
 
 (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1662,7 +1662,6 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 [9
 
-{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
 ]
 Kapitola 1.
 
@@ -1680,6 +1679,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Package babel Info: 'czech' activates 'czech' shorthands.
 (babel)             Reported  on input line 50.
 [11{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+nc}{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.e
 nc}]
 <images/ProvozniRezimyAMSFrekvencnimMenicem.png, id=309, 899.61093pt x 462.9796
 9pt>
@@ -1969,22 +1969,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [36 <./images/StateFlow_Firmwaru_right.drawio.pdf>]
 
 [37]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 315.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 315.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Sigma' on input line 315.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 315.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1998,62 +1982,98 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [41]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 429.
+            Default family used instead on input line 436.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 429.
+            Default family used instead on input line 436.
 
 
 [42]
+Overfull \hbox (71.6179pt too wide) in paragraph at lines 457--458
+\T1/lmr/m/n/12 HTML kÛd webovÈ str·nky, kter· je na-kon-fi-gu-ro-v·na jako hlav
+nÌ od-po-v•§ ve t∞Ìd• \T1/lmtt/m/n/12 ConveyorController\T1/lmr/m/n/12 . 
+ []
+
+<images/WebServerLandingPage.png, id=861, 405.76593pt x 431.36156pt>
+File: images/WebServerLandingPage.png Graphic file (type png)
+<use images/WebServerLandingPage.png>
+Package pdftex.def Info: images/WebServerLandingPage.png  used on input line 46
+3.
+(pdftex.def)             Requested size: 273.14923pt x 290.38638pt.
+
+
+[43 <./images/WebServerLandingPage.png>]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 459.
+            Default family used instead on input line 485.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-459.
- (C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+485.
+
+(C:\Users\David\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 475.
+            Default family used instead on input line 501.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 475.
+            Default family used instead on input line 501.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-[43]
 
 [44]
-<images/LandingPage_Annot.png, id=889, 1003.75pt x 789.95125pt>
+Overfull \hbox (57.74786pt too wide) in paragraph at lines 515--516
+[]\T1/lmr/m/n/12 Pokud \T1/lmtt/m/n/12 sendCommand \T1/lmr/m/n/12 ne-zÌsk· od-p
+o-v•§ do 3 sekund, kÛd apli-kace po-mocÌ funkce \T1/lmtt/m/n/12 fetchWithTimeou
+t
+ []
+
+
+Underfull \vbox (badness 2762) has occurred while \output is active []
+
+
+
+[45]
+<images/LandingPage_Annot.png, id=920, 1003.75pt x 789.95125pt>
 File: images/LandingPage_Annot.png Graphic file (type png)
 <use images/LandingPage_Annot.png>
-Package pdftex.def Info: images/LandingPage_Annot.png  used on input line 512.
+Package pdftex.def Info: images/LandingPage_Annot.png  used on input line 544.
 (pdftex.def)             Requested size: 409.71692pt x 322.44771pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[45 <./images/LandingPage_Annot.png>]
-
 [46]
-<images/krabickaTop.png, id=903, 950.04938pt x 606.76688pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[47 <./images/LandingPage_Annot.png>]
+
+[48]
+<images/krabickaTop.png, id=939, 950.04938pt x 606.76688pt>
 File: images/krabickaTop.png Graphic file (type png)
 <use images/krabickaTop.png>
-Package pdftex.def Info: images/krabickaTop.png  used on input line 571.
+Package pdftex.def Info: images/krabickaTop.png  used on input line 603.
 (pdftex.def)             Requested size: 218.51521pt x 139.55344pt.
-<images/KrabickaZBoku.png, id=904, 956.82469pt x 607.51968pt>
+<images/KrabickaZBoku.png, id=940, 956.82469pt x 607.51968pt>
 File: images/KrabickaZBoku.png Graphic file (type png)
 <use images/KrabickaZBoku.png>
-Package pdftex.def Info: images/KrabickaZBoku.png  used on input line 577.
+Package pdftex.def Info: images/KrabickaZBoku.png  used on input line 609.
 (pdftex.def)             Requested size: 218.51521pt x 138.74396pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[47 <./images/krabickaTop.png> <./images/KrabickaZBoku.png>]
-<images/PCB_Final_annotated.jpg, id=912, 3011.25pt x 3794.175pt>
+
+
+[49 <./images/krabickaTop.png> <./images/KrabickaZBoku.png>]
+<images/PCB_Final_annotated.jpg, id=949, 3011.25pt x 3794.175pt>
 File: images/PCB_Final_annotated.jpg Graphic file (type jpg)
 <use images/PCB_Final_annotated.jpg>
-Package pdftex.def Info: images/PCB_Final_annotated.jpg  used on input line 594
+Package pdftex.def Info: images/PCB_Final_annotated.jpg  used on input line 626
 .
 (pdftex.def)             Requested size: 432.48051pt x 544.90186pt.
 
@@ -2061,10 +2081,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[48]) (chapters/4_Ovƒõ≈ôen√≠ funkƒçnosti n√°vrhu.tex
+[50 <./images/PCB_Final_annotated.jpg>])
+(chapters/4_Ovƒõ≈ôen√≠ funkƒçnosti n√°vrhu.tex
 
-[49{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
-nc} <./images/PCB_Final_annotated.jpg>]
+[51{C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
+nc}]
 Kapitola 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2082,7 +2103,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <24.88> on input line 2.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <20.74> on input line 2.
-<images/BrnenskaHoneywellHala.png, id=925, 1606.0pt x 903.375pt>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <17.28> on input line 2.
+<images/BrnenskaHoneywellHala.png, id=961, 1606.0pt x 903.375pt>
 File: images/BrnenskaHoneywellHala.png Graphic file (type png)
 <use images/BrnenskaHoneywellHala.png>
 Package pdftex.def Info: images/BrnenskaHoneywellHala.png  used on input line 1
@@ -2093,7 +2116,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[50
+[52
 
 ]
 Overfull \hbox (6.42874pt too wide) in paragraph at lines 30--30
@@ -2106,15 +2129,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[51 <./images/BrnenskaHoneywellHala.png (PNG copy)>]) (chapters/5_Z√°vƒõr.tex
+[53 <./images/BrnenskaHoneywellHala.png (PNG copy)>]) (chapters/5_Z√°vƒõr.tex
 
-[52]) (chapters/seznamy.tex
+[54]) (chapters/seznamy.tex
 
-[53
+[55
 
 ]
 
-[54
+[56
 
 ]
 Overfull \hbox (8.03394pt too wide) in paragraph at lines 28--28
@@ -2130,17 +2153,19 @@ Overfull \hbox (9.34853pt too wide) in paragraph at lines 28--28
 
 
 
-[55
+[57
 
 ]
 
-[56] (_MAIN.lof)
+[58]
+
+[59] (_MAIN.lof)
 \tf@lof=\write8
 \openout8 = `_MAIN.lof'.
 
 
 
-[57
+[60
 
 ] (_MAIN.lot)
 \tf@lot=\write9
@@ -2148,11 +2173,11 @@ Overfull \hbox (9.34853pt too wide) in paragraph at lines 28--28
 
 
 
-[58
+[61
 
 ])
 
-[59
+[62
 
 ] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -2162,16 +2187,16 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `_MAIN.out' has not changed.
-(rerunfilecheck)             Checksum: D49A28F005006A20034304469B5BA2A3;9061.
+(rerunfilecheck)             Checksum: 5C5F9259E48443DE18DA535DF3E4E1E1;8635.
 Package logreq Info: Writing requests to '_MAIN.run.xml'.
 \openout1 = `_MAIN.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39048 strings out of 473523
- 735198 string characters out of 5714630
- 1842616 words of memory out of 5000000
- 61211 multiletter control sequences out of 15000+600000
+ 39100 strings out of 473523
+ 736760 string characters out of 5714630
+ 1841256 words of memory out of 5000000
+ 61248 multiletter control sequences out of 15000+600000
  676739 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,17n,98p,1295b,3114s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2193,9 +2218,9 @@ fb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb
 ><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.p
 fb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a
 .pfb>
-Output written on _MAIN.pdf (59 pages, 16363507 bytes).
+Output written on _MAIN.pdf (62 pages, 16392096 bytes).
 PDF statistics:
- 1198 PDF objects out of 1200 (max. 8388607)
- 362 named destinations out of 1000 (max. 500000)
- 493 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1257 PDF objects out of 1440 (max. 8388607)
+ 377 named destinations out of 1000 (max. 500000)
+ 498 words of extra memory for PDF output out of 10000 (max. 10000000)
 

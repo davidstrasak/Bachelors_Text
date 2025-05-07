@@ -282,11 +282,11 @@ V předchozí kapitole byla zmíněna proměnná \textit{conveyorSpeed} která s
 
 Při testování bylo také zjištěno, že frekvenční měnič zrychluje o 500 otáček za 10 sekund. Zrychlení frekvenčního měniče je tedy $50ot/min$ za sekundu, což je z maximální hodnoty $1500ot/min$ (definovaná při nastavení ovládacího panelu v kapitole \ref{sec:NastaveniOvladacihoPanelu}) zrychlení $3.33\%/s$ neboli $1\%$ za $300ms$. Dopravník stejnou rychlostí i zrychluje i zpomaluje.
 
-Samotná aproximace rychlosti dopravníků je tedy provedena tím způsobem, že se veřejná metoda \texttt{updateState} provádí každých $300ms$ a během každého provedení končí každá větev stavového diagramu aktualizací hodnoty \texttt{conveyorSpeed} Tato aktualizace je vždy provedena tím způsobem, aby hodnota patřila do intervalu $<0,100>$ \% z maximální rychlosti.
+Samotná aproximace rychlosti dopravníků je tedy provedena tím způsobem, že se veřejná metoda \texttt{updateState} provádí každých $300ms$ a během každého provedení končí každá větev stavového diagramu aktualizací hodnoty \texttt{conveyorSpeed} Tato aktualizace je vždy provedena tím způsobem, aby hodnota patřila do intervalu $<0,100>\%$ z maximální rychlosti.
 
-Volat funkci \texttt{updateState} každých $300ms$ by mělo být pro aproximaci dostatečně pravidelné. Jediný způsob jak by aproximace mohla nabývat špatných hodnot je pokud by byl systém ovládaný v lokálním režimu ovládání, tlačítko zrychlení by bylo sepnuté po dobu těsně menší než $300ms$ a zrovna tato doba vyšla na dobu mezi volání funkce \texttt{updateState}. Tohle je obecně chyba která může nastat u vzorkování. Pokud by se tak stalo i opakovaně, stejně by byla chyba v řádu jednotek procent, což je zanedbatelné.
+Volat funkci \texttt{updateState} každých $300ms$ by mělo být pro aproximaci dostatečně pravidelné. Jediný způsob jak by aproximace mohla nabývat špatných hodnot je pokud by byl systém ovládaný v lokálním režimu ovládání, tlačítko zrychlení by bylo sepnuté po dobu těsně menší než $300ms$ a zrovna tato doba vyšla na dobu mezi volání funkce \texttt{updateState}. Toto je chyba která může nastat obecně u jakéhokoliv vzorkování. Pokud by se tak stalo i opakovaně, stejně by byla chyba v řádu jednotek procent, což je zanedbatelné.
 
-Naopak častější volání funkce \texttt{updateState} než $300ms$ by mělo vyšší spotřebu energie a bralo by to zbytečně výpočetní výkon vývojové desky, která ho spíše může využít pro odpovídání na webové požadavky co přichází na WebServer.
+Naopak častější volání funkce \texttt{updateState} než $300ms$ by vyžadovalo vyšší spotřebu energie a bralo by to zbytečně výpočetní výkon vývojové desky, která ho spíše může využít pro odpovídání na webové požadavky co přichází na WebServer.
 
 Způsob jakým je funkce \texttt{updateState} spuštěna každých $300ms$ je pomocí nastavení časovače skrz framework jménem \texttt{Ticker}. \texttt{Ticker} je open-source knihovna, která může být vložena do jakéhokoliv projektu založeném na Arduino framework. Zde je příklad kódu pro nastavení \texttt{Ticker} knihovny:
 
@@ -312,15 +312,15 @@ Používání \texttt{Ticker} knihovny tedy spočívá v tom, že si stačí zao
 
 Díky možnosti nastavit pomocí knihovny \texttt{Ticker} metodu \texttt{updateState} vzniká dobrý způsob jak dávat uživatelům systému vědět, jakou má dopravník aktuální rychlost i bez toho, aby bylo připojené zařízení Sinamics IOP-2 kterým se ovládací panel programuje (popsáno v kapitole \ref{sec:NastaveniOvladacihoPanelu}).
 
-\section{Software v mobilní aplikaci ($\Sigma$ = 5 stran)}\label{sec:SoftwareVMobilniAplikaci}
+\section{Software v mobilní aplikaci}\label{sec:SoftwareVMobilniAplikaci}
 % \purpose{V téhle sekci popíšu jak přesně funguje mobilní aplikace kterou jsem vytvořil a poznatky s tím spojené.}
 
-Jak už bylo nastíněno v sekci \ref{sec:PopisFunkceSystemu}, primární důvod proč bylo rozhodnuto, že bude systém ovládaný přes mobilní aplikaci je, že není potřeba mít další dedikované zařízení, které bude fungovat jako dedikovaný hardwarový ovladač systému. Díky tomu je celkový systém přenositelnější a jednodušší ovládat, jelikož mobilní zařízení musí uživatelé mít už i kvůli zapisování dat z kontroly dopravníků. Komunikace mobilní aplikace a vývojové desky je realizována pomocí bezdrátové technologie WiFI, což umožňuje komunikaci v řádech desítek metrů (u nejnovějšího WiFi protokolu do 90 metrů).
+Jak už bylo nastíněno v sekci \ref{sec:PopisFunkceSystemu}, primární důvod proč bylo rozhodnuto, že bude systém ovládaný přes mobilní aplikaci je, že není potřeba mít další zařízení, které bude fungovat jako dedikovaný hardwarový ovladač systému. Díky tomu je celkový systém přenositelnější a jednodušší ovládat, jelikož mobilní zařízení musí uživatelé mít už i kvůli zapisování dat z kontroly dopravníků. Komunikace mobilní aplikace a vývojové desky je realizována pomocí bezdrátové technologie WiFi, což umožňuje komunikaci v řádech desítek metrů (u nejnovějšího WiFi protokolu do 90 metrů).
 \cite{DosahWIFIProtokolu}
 
-Vzhledem k požadavku na systém \textbf{Uživatelská přívětivost systému} je navíc velmi výhodné mít systém ovládaný mobilní aplikací, jelikož je možné mít prakticky veškeré informace ohledně nastavování ovládacího panelu frekvenčního měniče na jednom místě. Tohle výrazně zlepšuje uživatelské používání systému, protože uživatelé nemusí hledat dokumentaci, když je na stejném místě jako ovládací prvky systému.
+Vzhledem k požadavku na systém s názvem \textbf{Uživatelská přívětivost systému} je navíc velmi výhodné mít systém ovládaný mobilní aplikací, jelikož je možné mít prakticky veškeré informace ohledně nastavování ovládacího panelu frekvenčního měniče na jednom místě. Tohle výrazně zlepšuje uživatelské používání systému, protože uživatelé nemusí hledat dokumentaci, když je na stejném místě jako ovládací prvky systému.
 
-Mobilní aplikace není technicky vzato pro systém potřebná. WebServer je možné ovládat i přes webový prohlížeč. Poté by ale systém ztrácel další funkce, které mobilní aplikace nabízí. To je třeba zmiňovaná dokumentace uvnitř aplikace, nebo možnost mít automaticky aktualizovanou hodnotu rychlosti dopravníku a stavu ovládání. Velká výhoda aplikace je také ovládání více dopravníků najednou.
+Mobilní aplikace není technicky vzato pro systém potřebná. WebServer je možné ovládat i přes webový prohlížeč. S takovým ovládáním by ale systém ztrácel další funkce, které mobilní aplikace nabízí. To je třeba zmiňovaná dokumentace uvnitř aplikace, nebo možnost mít automaticky aktualizovanou hodnotu rychlosti dopravníku a stavu ovládání. Velká výhoda aplikace je také ovládání více dopravníků najednou.
 
 \subsection{Architektura aplikace}
 %\purpose{Vysvětlit jakým způsobem jsem navrhoval architekturu aplikace a proč. Architektura = statická frontendová webová aplikace převedená do mobilní podoby pomocí WebView. Výhody jsou jednoduchost implementace GET requestů ve webové aplikaci. Zde taky přestavit React a Capacitor.}
@@ -329,26 +329,26 @@ Navržená mobilní aplikace vůbec není mobilní aplikace v tradičním slova 
 
 Běžná webová aplikace má dvě hlavní části:
 
-První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools}, které kterémukoliv uživateli ukážou celý front-end kód webové aplikace.
+První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools}, které umí kterémukoliv uživateli ukázat celý front-end kód webové aplikace.
 
 Druhá hlavní část webové aplikace se jmenuje \textbf{back-end} a je to část aplikace kterou běžný uživatel nevidí. Obsahuje data seřazená v databázích, které je možné si pomocí různých příkazů načíst do front-end části. Také umí využívat server pro provádění různých výpočtů, které jsou buďto moc náročné, anebo musí být z určitých důvodů schované před běžnými uživateli.
 
 Z hlediska softwarové architektury byla aplikace koncipována jako statická webová aplikace - tedy čistě front-endová aplikace bez back-end části. Aplikace byla postavená na knihovně jazyka JavaScript jménem \textbf{React}, což je dlouhodobě jedno z nejpopulárnějších rozhraní pro tvorbu webových aplikací (jak tvrdí studie nejpoužívanějších jazyků pro webové programování \cite{ReactWebDeveloperPopularity}). Specificky byla použita \textbf{Vite} verze Reactu, která je optimalizována pro rychlost aplikace.
 \cite{ViteReactWeb}
 
-Aby bylo možné programovat webové aplikace, je potřeba mít nainstalovanou aplikaci \textbf{Node.js}, která mimo jiné usnadňuje programování webové aplikace tím, že umí v reálném čase ukazovat jak každá změna React kódu ovlivnila aplikaci pomocí takzvaného "development" serveru co je dostupný na lokální síti počítače, na kterém je node.js spuštěný.
+Aby bylo možné programovat webové aplikace, je potřeba mít nainstalovanou aplikaci \textbf{Node.js}, která mimo jiné usnadňuje programování webové aplikace tím, že umí v reálném čase ukazovat jak každá změna React kódu ovlivnila aplikaci pomocí takzvaného "development" serveru, který je dostupný na lokální síti počítače, na kterém je node.js spuštěný.
 
-Každá verze webové aplikace byla testována tím způsobem, že se překonvertovala do statických souborů (obsahující pouze HTML, CSS a JS soubory) pomocí příkazu \texttt{vite build}. Ten přeloží syntax jazyka React do souborů, které jsou ekvivalentní, ale narozdíl od React syntaxu jim rozumí každý webový prohlížeč.
+Programování webové aplikace probíhalo tím způsobem, že se každá verze webové aplikace testovala tím způsobem, že se překonvertovala do statických souborů (obsahující pouze HTML, CSS a JS soubory) pomocí příkazu \texttt{vite build}. Ten přeloží syntax jazyka React do souborů, které jsou ekvivalentní, ale narozdíl od React syntaxu jim rozumí každý webový prohlížeč.
 
 Když existuje tato "čistá" verze aplikace, je možné použít framework jménem \textbf{Capacitor}, který je vytvořený specificky pro to aby bylo možné ho pomocí node.js nainstalovat do knihoven pro webové programování jako je React. Následně je možné pomocí několika příkazů Capacitor frameworku přeložit tuto verzi aplikace do souborů mobilní aplikace.
 \cite{CapacitorDocs}
 
 Nakonec je možné si tuto složku konvertované mobilní aplikace otevřít v prostředí \textbf{Android Studio} a tam si z daného projektu vytvořit soubor o příponě \texttt{.apk}, který si umí nainstalovat každé android zařízení. Pomocí capacitor je možné konvertovat i do mobilní aplikace pro zařízení firmy Apple. Na konvertování do instalačního souboru je ale potřebné mít i stolní počítač značky Apple, kde je možné aplikaci konvertovat pomocí \textbf{Xcode}.
 
-\subsubsection{Proč webová aplikace?}
-Důvod proč byla webová aplikace programována jako webová a ne přímo mobilní je jelikož hlavní účel dané aplikace je posílat GET požadavky na IP adresu vývojové desky. To je úkol, na který je jakákoliv knihovna pro tvoření webových aplikací přímo optimalizována.
+\subsubsection{Proč webová aplikace?}\label{sec:ProcWebovaAplikace}
+Důvod, proč byla mobilní aplikace programována jako webová a ne přímo mobilní, je ten, že jejím hlavním účelem je posílat GET požadavky na IP adresu vývojové desky. Na tento úkol jsou moderní webové aplikace velmi dobře optimalizovány.
 
-Každá větší webová aplikace hostuje front-end část a v jejím rámci posílá webové požadavky na svůj server, kde je spuštěný back-end aplikace. Tyto požadavky jsou spojené s dynamicky objevujícím se obsahem, který může být:
+Každá větší webová aplikace dostupná na internetu má front-end část a v jejím rámci posílá webové požadavky na svůj server, kde je spuštěn back-end aplikace. Tyto požadavky souvisejí s dynamickým obsahem, který může být:
 \begin{itemize}
 	\item Načtení reklamy na sociální síti.
 	\item Potvrzení objednávky na e-shopu.
@@ -356,103 +356,129 @@ Každá větší webová aplikace hostuje front-end část a v jejím rámci pos
 	\item A další.
 \end{itemize}
 
-V případě navrženého systému sice nemá mobilní aplikace vlastní back-end server, ale zato má WebServer hostovaný na mikrokontroleru. Ten přijímá příkazy jako "zrychlit dopravník" a naopak vysílá informace jako je rychlost dopravníku.
+V případě navrženého systému sice nemá mobilní aplikace vlastní back-end server, ale zato má WebServer hostovaný na mikrokontroleru. Ten přijímá příkazy jako "zrychlit dopravník" a naopak vysílá informace jako rychlost dopravníku.
 
-Z těchto důvodů je mnohem snažší navrhnout nejdříve webovou aplikaci, implementovat komunikaci obou částí webového systému a následně konvertovat webovou aplikaci do mobilní aplikace. Pokud by byla mobilní aplikace programovaná od základu v knihovnách pro tvorbu mobilních aplikací, zmizel by jednoduše vyřešitelný problém konverze webové aplikace do mobilní, ale přibyl by problém implementace webové komunikace uvnitř mobilní aplikace.
+Z těchto důvodů je mnohem snazší navrhnout nejdříve webovou aplikaci, implementovat komunikaci obou částí webového systému a následně webovou aplikaci konvertovat do mobilní. Pokud by byla mobilní aplikace programovaná od základu pomocí knihoven pro tvorbu mobilních aplikací, zmizel by sice snadno řešitelný problém konverze webové aplikace do mobilní, ale vznikl by problém implementace webové komunikace uvnitř mobilní aplikace.
 
 \subsubsection{Adresy webové aplikace}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\oldtext
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Ta aplikace samotná je čistě frontendová (statická) webová aplikace postavná na Vite verzi Reactu. Capacitor tuhle aplikaci převádí do mobilní aplikace a kvůli tomu potřebuju používat některý balíčky spojený s capacitorem aby mi to umožnilo posílat webové požadavky na IP adresy nodeMCU serverů.
-
-\textbf{Webová aplikace má tři URL adresy:}
+Webová aplikace má tři URL adresy:
 \begin{itemize}
-    \item Vstupní stránka - Tato stránka obsahuje hlavní část aplikace která umožňuje ovládání dopravníků.
-    \item Setup - Tato stránka obsahuje návod jak dopravník nastavit aby s tímto zařízením správně fungoval.
-    \item Help - Tato stránka obsahuje časté chyby které můžou nastat při používání zařízení a při nastavování dopravníků a snaží se poskytnout rady aby pomohla s vyřešením problémů.
+	\item \textbf{Vstupní stránka (adresa "/")} – Tato stránka obsahuje hlavní část aplikace, která umožňuje ovládání dopravníků.
+	\item \textbf{Setup (adresa "/setup")} – Tato stránka obsahuje návod, jak dopravník nastavit, aby s tímto zařízením správně fungoval.
+	\item \textbf{Help (adresa "/help")} – Tato stránka obsahuje popis častých chyb, které mohou nastat při používání zařízení a při nastavování dopravníků, a rady k jejich vyřešení.
 \end{itemize}
-Tyto URL adresy jsou převedené i do adres dostupných na mobilní aplikaci. Navigaci na tyto adresy zajišťuje header s navbarem jelikož v android WebView nelze zadávat URL adresy a tak musí navigace probíhat přes tlačítka na webu.
 
-\purpose{Co je to React a proč se hodí na návrh této webové aplikace. Co je to HTML, CSS a JS. Co je to reaktivnost komponentů. Jak se react využívá. Možná sem přidat co je to tailwind a Lucide for React.}
+Tyto URL adresy zůstávají stejné i při převedení do mobilní aplikace. Je ovšem potřeba mít v aplikaci nějaký způsob, jak se pomocí tlačítek mezi těmito adresami navigovat, protože při převedení webové aplikace do mobilní chybí adresní řádek, kde by bylo možné tyto adresy zadat. Tuto navigaci v mobilní aplikaci zajišťuje hlavička s navigačním panelem, která obsahuje tyto odkazy.
 
-React je web developmentovej framework a hodí se na návrh, protože přes node package manager už existují frameworky, který mi umožní webový aplikace portovat do mobilní aplikace - tenhle framework se jmenuje capacitor. Capacitor používá WebView (pro Android) nebo WKWebView (pro iOS) a díky tomu umožňuje zobrazit si webové aplikace na zařízení.\cite{CapacitorDocumentationFAQ}
+%Tohle nepřidávám, protože si myslím že není třeba zdlouhavě popisovat jak funguje React uvnitř praktické části.
+%\purpose{Co je to React a proč se hodí na návrh této webové aplikace. Co je to HTML, CSS a JS. Co je to reaktivnost komponentů. Jak se react využívá. Možná sem přidat co je to tailwind a Lucide for React.}
+%React je web developmentovej framework a hodí se na návrh, protože přes node package manager už existují frameworky, který mi umožní webový aplikace portovat do mobilní aplikace - tenhle framework se jmenuje capacitor. Capacitor používá WebView (pro Android) nebo WKWebView (pro iOS) a díky tomu umožňuje zobrazit si webové aplikace na zařízení.\cite{CapacitorDocumentationFAQ}
+%Webovou aplikaci navrhuji, protože to, co chci aby dělala je aby jenom posílala GET požadavků na IP adresu mikrokontrolleru kterou hostuje NodeMCU, což je hodně jednoduchá věc na implementaci ve webové aplikaci.
+%\source{React může mít zase jako zdroj nějakou odbornou literaturu zaměřenou na react (pokud něco takového najdu) anebo online dokumentaci.}
 
-Webovou aplikaci navrhuji, protože to, co chci aby dělala je aby jenom posílala GET požadavků na IP adresu mikrokontrolleru kterou hostuje NodeMCU, což je hodně jednoduchá věc na implementaci ve webové aplikaci.
-
-\source{React může mít zase jako zdroj nějakou odbornou literaturu zaměřenou na react (pokud něco takového najdu) anebo online dokumentaci.}
-
-\subsection{Použité knihovny a technologie v aplikaci (0.5 strany)}
-\purpose{Vysvětlit co za frameworky (knihovny) jsem při developování aplikace použil aby to fungovalo co nejlépe}
+\subsection{Použité knihovny a technologie v aplikaci}
+% \purpose{Vysvětlit co za frameworky (knihovny) jsem při developování aplikace použil aby to fungovalo co nejlépe}
+Při programování webové aplikace bylo použito několik knihoven, které webovým developerům pomáhají při návrhu aplikací. Zde je krátký popis každé z těchto technologií a role, jakou zastaly při programování webové aplikace.
 
 \subsubsection{HTML, CSS a JS}
+HyperText Markup Language neboli HTML je jeden z prvních jazyků, které stály u zrodu internetu. Definuje strukturu webových stránek a obsahuje veškerý text. Dále je zde Cascading Style Sheets neboli CSS, které popisuje vzhled dokumentu napsaného v HTML. JavaScript neboli JS je odlehčený programovací jazyk s just-in-time kompilací, který je nejvíce známý tím, že dodává funkčnost webovým stránkám. Je to ale i skriptovací jazyk pro aplikace mimo webové prostředí, jako například Node.js nebo Adobe Acrobat.
+\cite{HTMLweb, CSSweb, JSweb}
+
+Tyto technologie jsou stále využívány na této webové stránce, ačkoli se v nich přímo neprogramovalo. Tyto programovací jazyky jsou základní stavební kameny prohlížeče, a proto je nutné každou aplikaci konvertovat do souborů těchto tří jazyků. Bez toho by nebylo možné zobrazit webovou stránku jak ve webové aplikaci, tak v mobilní aplikaci.
+
+\subsubsection{React}\label{sec:React}
+React je knihovna pro webový front-end založená na komponentech. Uvnitř těchto komponent je možné vkládat i HTML, což umožňuje spojit funkcionalitu s textem a strukturou.
+
+React si zakládá na interaktivitě a reaktivnosti. U statických webových stránek, které jsou napsané přímo v HTML, CSS a JS, se jakákoliv změna projeví tím, že se musí znovu načíst celá stránka. Na druhou stranu React umí aktualizovat pouze ty části webové stránky, kde změna proběhla. Tomuto se říká reaktivnost webové stránky.
+\cite{ReactWeb}
 
 \subsubsection{TypeScript}
+TypeScript je nadstavba JavaScriptu, která řeší jeho nedostatky. JavaScript například nemá implementovanou silnou typovou kontrolu, a tak je možné jakékoliv proměnné přiřadit jakoukoliv hodnotu. To může vytvářet chyby v kódu i přesto, že editor při psaní kódu žádnou chybu přímo neoznačil.
+
+TypeScript je navíc vždy možné kompilovat do JavaScriptu, který je spustitelný v prohlížeči, a proto je velmi užitečný nástroj při programování složitějších aplikací.
+\cite{TSweb}
 
 \subsubsection{Tailwind}
+Tailwind umožňuje developerům webových aplikací definovat vzhled prvků přímo v HTML kódu, čímž odpadá potřeba samostatných souborů se styly, jako je běžné u CSS.
+\cite{Tailwindweb}
 
 \subsubsection{DaisyUI}
+DaisyUI přidává speciální klíčová slova pro rozšíření knihovny Tailwind. Zatímco Tailwind poskytuje většinou specifická klíčová slova, která zpravidla přímo odpovídají jednotlivým vlastnostem CSS, DaisyUI funguje jinak. Tato knihovna umožňuje pod jedním klíčovým slovem sdružit více tailwind stylů.
+\cite{daisyuiweb}
+
+Díky tomu DaisyUI poskytuje styly pro celé komponenty, jako jsou například tlačítka nebo alert boxy. Také poskytuje ovládání barevného schématu celé webové stránky, díky čemuž je s trochou konfigurace možné pomocí přibližně 20 barev ovládat celkový vzhled stránky.
 
 \subsubsection{Lucide for React}
+Poslední použitou knihovnou je Lucide, knihovna ikon vytvořená pro React. V běžné webové stránce by vložení ikony, jako například koš pro odstranění dopravníku, vyžadovalo stažení souboru s příponou například \texttt{.svg} a jeho následnou úpravu a vložení do stránky.
 
-V rámci programování jsem používal několik rozšíření, které web developerům pomáhají v designu aplikací. Tím je \textbf{Tailwind}, což je rozšíření které umožňuje stylizovat kód webové aplikace pomocí vlastnosti className, kterou mají veškeré HTML prvky a tím není potřeba mít samostatné soubory v CSS (jazyk který webům dává jejich design). Na Tailwind navazuje rozšíření \textbf{DaisyUI}, které zjednodušuje celkový design aplikace tím, že mi umožňuje si nadefinovat barvy motivu aplikace v různých proměnných, díky čemuž je možné motiv měnit skrz změnu jedné promenné nastaveného motivu. Také umožňuje mít vlastní styl aplikace pokud má mobilní zařízení temný režim nebo světlý režim. S designem aplikace ještě pomáhalo rozšíření \textbf{Lucide pro React}, které obsahuje velké množství ikon pro různé prvky uživatelského rozhraní, jako je třeba ve tlačítkách ON/OFF, Add Conveyor, zrychlení, atd.
-
-Aplikace ještě používá TypeScript, což je nadstavba JavaScriptu, která umožňuje definovat typy proměnných, což zvyšuje bezpečnost programu a zlepšuje zážitek z programování, vzhledem k tomu, že programátory upozorňuje na chyby v kódu, na které by JavaScript běžně neupozornil.
+S Lucide však stačí pouze použít předpřipravené React komponenty, které obsahují většinu často používaných ikon.
+\cite{lucideWeb}
 
 \subsection{Princip komunikace s NodeMCU servery}
-\purpose{Co je to GET požadavek a jak se dá implementovat v JavaScriptu.}
+%\purpose{Co je to GET požadavek a jak se dá implementovat v JavaScriptu.}
 
-\purpose{Jak se GET požadavek mění když používám capacitor}
+Jak bylo nastíněno v kapitole \ref{sec:ProcWebovaAplikace}, způsob, kterým spolu komunikují mobilní aplikace a ESP8266 WebServer, spočívá ve využití webových GET požadavků.
 
-\subsubsection{Co je to GET požadavek }
-\purpose{Vysvětlit obecně jak fungují GET požadavky z web developmentu}
+GET požadavek je základní nástroj pro komunikaci mezi klienty a servery webové infrastruktury. Například při zadání URL adresy webové stránky do prohlížeče odešle prohlížeč GET požadavek na server nacházející se na dané webové adrese. Server tento požadavek zaregistruje a odpoví zasláním obsahu webové stránky (front-endu).
 
-Aplikace bude ovládat nodeMCU servery přes posílání webových GET požadavků. GET požadavek je typicky například když do prohlížeče na PC zadám do URL adresy jakýkoliv název webu - tak to provádím GET požadavek na server, který je na IP adrese hostován. V tomhle případě jsou servery moje nodeMCU servery a místo PC zadávám požadavky přes webovou aplikaci.
+Přesně tímto způsobem komunikuje i mobilní aplikace s WebServerem běžícím na vývojové desce. Protože je vývojová deska připojena k hotspotu hostovanému mobilním zařízením s aplikací, může mobilní aplikace komunikovat s WebServerem jako s jakýmkoliv jiným serverem, a proto může podávat požadavky na různé adresy. Nastavení vývojové desky navíc umožňuje spustit různé bloky kódu po přijetí těchto GET požadavků.
 
-V rámci nodeMCU se nastavují adresy na kterých server nějakým způsobem odpovídá. Během tohoto nastavení můžu nejenom určit jaká stránka se ukáže po zadání požadavku na získání informací z webové adresy, ale můžu tím spouštět i jakýkoliv jiný kód.
+V JavaScriptu se GET požadavky implementují tímto způsobem:
+\cite{JavaScriptGET}
 
-Typický test této funkce je pomocí GET požadavku na IP adresu rozsvítit LED diodu, která přes breadboard zapojená do výstupního pinu vývojové desky WEMOS D1 mini pro. Pokud je deska připojená ke stejné WiFi síti jako můj počítač, můžu na počítači zadat například adresu 192.168.0.144/ledON. NodeMCU server na tuto adresu odpoví tím, že změní stav LED diody v desce a až poté pošle zpátky HTML kód, který se mi zobrazí v prohlížeči. Takto je možné provádět jakýkoliv kód, který je nastaven aby se prováděl v rámci GET požadavků na jakoukoliv adresu.
-
-V reactu se běžně GET požadavky provádí pomocí asynchronní funkce fetch. Asynchronní funkce jsou speciální funkce, během kterých můžeme používat speciální slovo "await". Tohle slovo způsobí, že Javascript počká než se daný příkaz dokončí a až poté bude pokračovat v provádění funkce. Tohle zamezuje vznik chyb v kódu, které můžou vznikat pokud se snažím dělat operace s proměnnými, které jsou zatím prázdné (jelikož ty data ještě například neposlal server).
-
-V běžné react aplikaci by bylo možné posílat GET požadavky na nodeMCU server tímto způsobem:
-
-\begin{lstlisting}[language=JavaScript, caption={Základní způsob posílání GET požadavků v JavaScriptu}, label={lst:JavaScriptFetchFunkce}]
-async function getData() {
-  const url = "https://example.org/products.json";
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const json = await response.json();
-    console.log(json);
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+\begin{lstlisting}[language=JavaScript, caption={Základní způsob posílání GET požadavků v JavaScriptu }, label={lst:JavaScriptFetchFunkce}]
+	async function getData() {
+		const url = "https://example.org/products.json";
+		try {
+			const response = await fetch(url);
+			if (!response.ok) {
+				throw new Error(`Response status: ${response.status}`);
+			}
+			const json = await response.json();
+			console.log(json);
+		} catch (error) {
+			console.error(error.message);
+		}
+	}
 \end{lstlisting}
 
-\source{MDN web docs}
+Níže jsou popsány tři hlavní způsoby využití GET požadavků pro ovládání systému:
 
-\subsubsection{Implementování GET requestů do aplikace}
-\purpose{Vysvětlit proč normální GET requesty nefungují (Omezení z WebView) a jak je tedy implementovat. Taky zmínit že jsou implementované ve funkci sendCommand.}
+\subsubsection{Jak dálkově spouštět dopravník}
+V mobilní aplikaci je možné mít tlačítko, na něž lze kliknout, čímž se odešle GET požadavek na adresu \texttt{192.168.0.144/conveyorOn}\footnote{\texttt{192.168.0.144} je náhodně přiřazená lokální IP adresa mikrokontroleru, která se s každou vývojovou deskou mění.}. Po kliknutí na tlačítko vývojová deska zaregistruje tento požadavek a provede kód definovaný ve třídě \texttt{ConveyorController} (v kapitole \ref{sec:ConveyorController}). Tento kód nastaví proměnnou, na jejímž základě v další iteraci metody \texttt{updateState} dojde k sepnutí relé na desce plošných spojů, čímž se na ovládací panel frekvenčního měniče nastaví vysoká logická hodnota pro spuštění dopravníku.
 
-GET požadavky není kvůli capacitoru možné posílat běžným způsbem, protože v android aplikaci nefunguje fetch funkce tak, jak se od ní očekává. Je ale možné použít balíček vytvořený komunitou capacitoru který se jmenuje CapacitorHttp (což bylo nedávno přidané do základního capacitor balíčku). je to balíček, který zjednodušuje posílání GET požadavků na servery v rámci Capacitor aplikací tím, že má metodu GET, která funguje jako běžný fetch požadavek typu GET, ale je upravený aby fungoval ve WebView mobilním prostředí.
+\subsubsection{Jak získat data o rychlosti dopravníku}
+Další možností je periodické vysílání GET požadavku funkcí. GET požadavky se zasílají na \texttt{192.168.0.144/getData}. Vývojová deska tento požadavek zaregistruje a odešle zpět odpověď ve formátu JSON. Tento přijatý soubor obsahuje informace o rychlosti dopravníku (v procentech) a o stavu ovládání (lokální nebo dálkové). Data v tomto formátu lze ve webových aplikacích snadno konvertovat do TypeScript objektu, který lze zobrazit v HTML kódu mobilní aplikace.
 
-Tímto způsobem se v aplikaci posílají GET požadavky:
-\begin{lstlisting}[language=JavaScript, caption={Funkce sendCommand dostupná uvnitř vstupní stránky aplikace}, label={lst:SendCommandFunkce}]
+Pokud by React nebyl reaktivní (jak bylo vysvětleno v kapitole \ref{sec:React}), pak by se s každým přijetím dat musela celá webová stránka obnovit. S využitím funkce React knihovny lze však aktualizovat pouze rychlostní a ovládací data na stránce.
+
+\subsubsection{Jak ovládat vývojovou desku bez mobilní aplikace}\label{sec:JakOvladatBezMobilniAplikace}
+Nakonec není ani nutné používat mobilní aplikaci, ale stačí použít webový prohlížeč v mobilním telefonu k ovládání desky. V tom případě lze do URL adresy zadat \texttt{192.168.0.144/} bez další cesty. WebServer zde znovu zaregistruje požadavek a tentokrát odešle zpět HTML kód webové stránky, která je nakonfigurována jako hlavní odpověď ve třídě \texttt{ConveyorController}.
+
+Tato webová stránka umožňuje ovládat vývojovou desku pomocí tlačítek, jež jsou nakonfigurována k odesílání GET požadavků na příslušné adresy vývojové desky. Tato stránka ovšem není reaktivní, protože se jedná o statickou HTML stránku. Kvůli tomu se aktuální hodnoty rychlosti a stavu ovládání zobrazí pouze po jejím načtení. Na obrázku \ref{fig:WebServerLandingPage} je zobrazen vzhled této webové stránky.
+
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/WebServerLandingPage.png}
+	\caption{Ukázka stránky pro ovládání vývojové desky bez mobilní aplikace}
+	\label{fig:WebServerLandingPage}
+\end{figure}
+
+\subsubsection{Implementování GET požadavků do aplikace}
+%\purpose{Vysvětlit proč normální GET requesty nefungují (Omezení z WebView) a jak je tedy implementovat. Taky zmínit že jsou implementované ve funkci sendCommand.}
+
+GET požadavky není kvůli konverzi webové aplikace do mobilní pomocí Capacitoru možné posílat běžným způsobem. Je tomu tak, protože v prostředí Android aplikace funkce \texttt{fetch} nefunguje stejně jako v prostředí webového prohlížeče. Tento problém je však již vyřešen komunitou Capacitoru, která pro tento účel vyvinula balíček s názvem CapacitorHttp. Tento balíček zjednodušuje posílání GET požadavků v rámci Capacitor aplikací tím, že poskytuje vlastní metodu GET, která má mírně odlišnou syntaxi upravenou tak, aby fungovala v mobilním prostředí WebView (konverze do mobilní aplikace je popsána v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}).
+
+GET požadavky se v aplikaci používají tímto způsobem:
+\begin{lstlisting}[language=JavaScript, caption={Rozšířený způsob posílání GET požadavků pro Capacitor mobilní aplikace}, label={lst:SendCommandFunkce}]
     // pred zacatkem komponentu:
     import { CapacitorHttp } from "@capacitor/core";
     import { HttpOptions } from "@capacitor/core/types/core-plugins";
 
     // uvnitr komponentu se strankou aplikace:
 
-      // Send a command to a specific conveyor and update its status
+      // Posilani prikazu specifickemu dopravniku
   const sendCommand = async (ip: string, command: string) => {
     try {
       const options: HttpOptions = {
@@ -461,7 +487,7 @@ Tímto způsobem se v aplikaci posílají GET požadavky:
 
       const response: any = await fetchWithTimeout(
         CapacitorHttp.get(options),
-        3000 // Fail fast if conveyor is unresponsive
+        3000 // Nastaveni rychleho selhani pokud neni ziskana odpoved
       );
 
       setErrorMessage(null);
@@ -474,7 +500,7 @@ Tímto způsobem se v aplikaci posílají GET požadavky:
       console.error("Command failed:", error);
       setErrorMessage(`Command failed for ${ip}: ${error.message}`);
 
-      // Immediately mark the conveyor as offline when a command fails
+      // Kdyz selze odpoved tak se ihned nastavi dopravnik jako nedostupny
       setConveyors((prevConveyors) =>
         prevConveyors.map((conv) =>
           conv.ip === ip ? { ...conv, isOnline: false } : conv
@@ -482,14 +508,20 @@ Tímto způsobem se v aplikaci posílají GET požadavky:
       );
     }
 \end{lstlisting}
-Nejdřív je nutné si importovat HttpOptions a CapacitorHttp z capacitoru. Následně pokračuje definice komponentu, který obsahuje celou vstupní stránku aplikace. Uvnitř stránky aplikace je definovná funkce sendCommand.
+Nejdříve je nutné si importovat \texttt{HttpOptions} a \texttt{CapacitorHttp} z nainstalované Reactové Capacitor knihovny. Následně pokračuje definice komponentu, který obsahuje celou vstupní stránku aplikace a který je v rámci React aplikace zobrazován. Uvnitř stránky aplikace je definována funkce \texttt{sendCommand}.
 
-Funkce sendCommand má jako vstupy IP adresu a adresu na kterou bude posílat GET požadavek. Princip je takový, že se do HttpOptions nastaví jako URL celá IP adresa i s adresou požadavku a to se pomocí CapacitorHttp.get funkce pokusí získat. Pokud byl požadavek úspěšně doručen, aplikace se bude pokoušet přeložit odpověď přes json syntaxi, ale to se často pokazí, protože aplikace v rámci některých odpověďí odpovídá i HTML kódem aby bylo možné ji ovládat i přes webový prohlížeč. Pokud se tedy přeložit odpověď nepovede, není to žádný problém a proto je v pořádku mít řádek s přeložením ze json souboru ve try catch bloku, který jakýkoliv error potlačí.
+Funkce \texttt{sendCommand} má jako vstupy IP adresu vývojové desky a adresu, na kterou bude posílat GET požadavek. Princip je takový, že se do \texttt{HttpOptions} nastaví jako URL celá IP adresa i s adresou požadavku a aplikace se poté pomocí funkce \texttt{CapacitorHttp.get} pokusí odeslat požadavek. Pokud byl požadavek úspěšně doručen, aplikace se bude pokoušet parsovat odpověď jako JSON. To se pro většinu odpovědí nezdaří, jelikož aplikace v rámci některých odpovědí zasílá i HTML kód, aby bylo možné ji ovládat i přes webový prohlížeč (popsáno v kapitole \ref{sec:JakOvladatBezMobilniAplikace}). Pokud se ale nepodaří parsovat odpověď, nijak to neovlivňuje funkčnost aplikace a je tak přijatelné mít řádek pro parsování odpovědi jako JSON ve try-catch bloku, který případnou chybu potlačí.
 
-Pokud funkce nezíská odpověď do 3 sekund, kód aplikace pomocí fetchWithTimeout (moje vlastní funkce definovaná jinde v kódu) vyšle error, který do konsole vypíše, že požadavek z nějakého důvodu nebyl doručen a zároveň zobrazí i error v uživatelském rozhraní aplikace. Tohle je obzvlášť důležitá funkce, protože se uživateli v aplikaci ukáže error pokud v rámci času 3 sekund nodeMCU server neodpoví na požadavek - informuje to tedy o tom, že uživatel buďto zadal špatnou adresu, anebo odešel z dosahu ve kterém je nodeMCU server schopný se připojit na WiFi hotspot jeho mobilního zařízení. Tato implementace také vypíná možnost mačkat tlačítka, které ovládají dopravník, vzhledem k tomu, že by tlačítko vůbec nic nedělaly.
+Pokud \texttt{sendCommand} nezíská odpověď do 3 sekund, kód aplikace pomocí funkce \texttt{fetchWithTimeout} signalizuje chybu, která se zobrazí v uživatelském rozhraní. Toto je obzvlášť důležitá funkce, protože se tato chyba uživateli v aplikaci ukáže, pokud během 3 sekund webový server neodpoví na požadavek. To se může stát hlavně pokud uživatel opustí dosah, ve kterém je webový server schopen komunikovat, a má tak jasnou vizuální indikaci, že by se pro ovládání dopravníku měl přiblížit. Tato implementace také vypíná možnost stisknout tlačítka, která ovládají dopravník, jelikož by na ně vývojová deska nereagovala.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\oldtext
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Funkčnost aplikace (hodně stran)}
 \purpose{Tady už vůbec neřešit jak ta aplikace vypadá, ale zaměřit se na to co ta aplikace dokáže a jak to dělá. Struktura hlavní stránky, správa seznamu dopravníků, ovládání dopravníků je zahrnuto v sendCommand, získávání a zobrazování stavu skrz sendCommand a stránky Setup a Help. TOHLE BUDE HLAVNÍ MEAT TÉHLE KAPITOLY}
+
+přidat sem něco o tom že to je reaktivní. Já nevim. teď jsem si tenhle blok textu nečetl.
 
 Základ hlavní stránky je využívání reaktivnosti Reactu. Jelikož je aplikace dělaná v Reactu, je možné plynule přidávat dopravníky do seznamu bez toho aby se aplikace musela načítat pořád znovu. React nám také dává možnost ukládat IP adresy dopravníků do lokální paměti stránky a tak si aplikace vždy při spuštění načte data o dopravnících, které v aplikaci byly při posledním ukončení. React také umožňuje veškeré další funkce jako implementace GET požadavků a na základě těchto GET požadavků upravovat vzhled aplikace - jako například, že pokud GET požadavek nedostane úspěšnou odpověď do tří sekund, aplikace vyhodnotí daný nodeMCU server jako nefunkční a na základě toho uživatele vizuálně upozorní a vypne možnost se pokoušet o spojení s zařízením.
 

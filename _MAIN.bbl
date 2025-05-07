@@ -409,32 +409,130 @@
       \verb https://capacitorjs.com/docs
       \endverb
     \endentry
-    \entry{CapacitorDocumentationFAQ}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=f2b00b9e4a462ab3f2e1c97495e8bb3f}{%
-           family={Capacitor},
-           familyi={C\bibinitperiod}}}%
-      }
-      \strng{namehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{fullhash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{fullhashraw}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{bibnamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{authorbibnamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{authornamehash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{authorfullhash}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
-      \strng{authorfullhashraw}{f2b00b9e4a462ab3f2e1c97495e8bb3f}
+    \entry{HTMLweb}{misc}{}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{4}
-      \field{title}{Frequently Asked Questions | Capacitor Documentation}
+      \field{month}{5}
+      \field{title}{HTML: HyperText Markup Language | MDN}
       \field{year}{2025}
       \verb{urlraw}
-      \verb https://capacitorjs.com/docs/getting-started/faqs
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTML
       \endverb
       \verb{url}
-      \verb https://capacitorjs.com/docs/getting-started/faqs
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTML
+      \endverb
+    \endentry
+    \entry{CSSweb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{CSS: Cascading Style Sheets | MDN}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/CSS
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/CSS
+      \endverb
+    \endentry
+    \entry{JSweb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{JavaScript | MDN}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript
+      \endverb
+    \endentry
+    \entry{ReactWeb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{React}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://react.dev/
+      \endverb
+      \verb{url}
+      \verb https://react.dev/
+      \endverb
+    \endentry
+    \entry{TSweb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{TypeScript: JavaScript With Syntax For Types.}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.typescriptlang.org/
+      \endverb
+      \verb{url}
+      \verb https://www.typescriptlang.org/
+      \endverb
+    \endentry
+    \entry{Tailwindweb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://v2.tailwindcss.com/
+      \endverb
+      \verb{url}
+      \verb https://v2.tailwindcss.com/
+      \endverb
+    \endentry
+    \entry{daisyuiweb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{daisyUI — Tailwind CSS Components ( version 5 update is here )}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://daisyui.com/
+      \endverb
+      \verb{url}
+      \verb https://daisyui.com/
+      \endverb
+    \endentry
+    \entry{lucideWeb}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Lucide React | Lucide}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://lucide.dev/guide/packages/lucide-react
+      \endverb
+      \verb{url}
+      \verb https://lucide.dev/guide/packages/lucide-react
+      \endverb
+    \endentry
+    \entry{JavaScriptGET}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{GET - HTTP | MDN}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET
       \endverb
     \endentry
     \entry{HoneywellHala}{misc}{}{}

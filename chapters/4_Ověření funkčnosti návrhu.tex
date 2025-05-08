@@ -1,5 +1,5 @@
 % jakým způsobem jsem testovat, že co jsem udělal já funguje
-\chapter{Ověření funkčnosti návrhu}
+\chapter{Ověření návrhu}
 Tato kapitola se věnuje ověření funkčnosti návrhu a praktické implementace navrženého systému pro ovládání dopravníkové linky. Cílem provedených testů bylo potvrdit správnou činnost jednotlivých komponent i celkové integrace systému do prostředí typické dopravníkové linky a otestovat chování v reálném provozu.
 
 \subsubsection{Způsob testování a prostředí}
@@ -19,11 +19,7 @@ Způsob, jakým byl systém prvně otestován je skrz konfiguraci ovládacího p
 
 Po otestování správnosti zapojení a konfigurace pomocí lokálního zapojení byla provedena zkouška s vypnutou výkonovou částí frekvenčního měniče a následně i se zapnutou výkonovou částí frekvenčního měniče, kde se dopravník začal pohybovat, jak bylo předpokládáno. Při uvádění dopravníku do provozu se zapnutou výkonovou částí je potřebné zajistit, aby v systému nebyla načtená hodnota aproximace rychlosti dopravníku jiná než 0. Zanedbání tohoto kroku vede k tomu, že bude systém ukazovat v mobilní aplikaci i na LCD displeji posunutou hodnotu rychlosti.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\oldtext
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Ověření funkčnosti lokálního ovládání}
+\section{Ověření lokálního ovládání}
 % \purpose{Tady bych se chtěl zaměřit na to, jestli je možné dopravník ovládat přes tlačítka rovnou umístěná na desce.}
 
 Funkčnost lokálního ovládání byla ověřena tím způsobem, že se nejdříve otestovalo, že je možné ovládat dopravník s vypnutou deskou a poté se deska připojila a znovu se testovalo jestli je možné dopravník ovládat s připojenou deskou, která je nastavená na lokální režim ovládání.
@@ -32,7 +28,7 @@ Při připojení systému na dopravník bez připojení napájecího kabelu bylo
 
 Při připojení systému na dopravník s připojením napájecího kabelu se ihned spustil LCD displej a bylo vidět, že se vývojová deska snaží připojit na hotspot. Po připojení bylo možné vidět IP adresu vývojové desky i v mobilní aplikaci. Při nastavení přepínače na polohu ve kterém je deska lokálně ovládaná bylo stále možné ovládat dopravník pomocí tlačítek na schránce. Potvrdilo se tedy, že v tomto módu ovládání deska neposílá žádné napětí na sepnutí MOSFET transistorů co spínají relé a tak systém stále funguje plně analogově. Při tomto módu zapojení je ale dostupná informace o rychlosti dopravníku jak na LCD displeji tak i v mobilní aplikaci.
 
-\section{Ověření funkčnosti mobilní aplikace}
+\section{Ověření mobilní aplikace}
 %\purpose{Tady jenom potvrdím že mobilní aplikace opravdu funguje}
 
 Po úspěšném otestování analogového ovládání desky bylo přistoupeno k testování mobilní aplikace. Mobilní aplikace se už částečně otestovala při předchozím testu, kdy bylo vidět, že pokud je vývojová deska přidaná se správnou IP adresou do aplikace, lze vidět rychlost a způsob ovládání dopravníku i pokud systém není přepnutý do dálkového ovládání.
@@ -41,23 +37,31 @@ Pro další testování byl systém přepnutý do stavu dálkového ovládání 
 
 Při přepnutí do dálkového stavu ovládání bylo také v mobilní aplikaci vidět, že se typ ovládání změnil na variantu "Remote".
 
-\section{Ověření spolehlivosti dálkové komunikace}
+\section{Spolehlivost dálkové komunikace}
 %\purpose{Potvrdit že jsem schopný odejít na několik desítek metrů bez toho abych ztratil signál}
 
-Při zapojení systému s dálkovým ovládáním bylo možné otestovat i vzdálenost komunikace, kterou je možné se systémem dosáhnout. Pro otestování dosažitelné vzdálenosti bylo zvoleno jít směrem dále od druhé spuštěné dopravníkové linky, aby bylo méně pravděpodobné, že se WiFi signál zaruší. V rámci testování byl také celý systém umístěn tak, aby byla z pozice mobilní aplikace viditelná anténa vycházející ze schránky. Tímto způsobem byl dosažen dosah WiFi komunikace kolem 35 metrů.
+Při zapojení systému s dálkovým ovládáním bylo možné otestovat zároveň i vzdálenost komunikace, které je možné se systémem dosáhnout. Pro otestování dosažitelné vzdálenosti bylo zvoleno jít směrem pryč od druhé spuštěné dopravníkové linky, aby bylo méně pravděpodobné, že se WiFi signál zaruší. V rámci testování byl také celý systém umístěn tak, aby byla zajištěna přímá viditelnost na anténu vycházející ze schránky. Použité mobilní zařízení bylo během testování Nothing Phone 1. verze. Tímto způsobem byl dosažen dosah WiFi komunikace kolem 35 metrů.
 
-Tento dosah je přijatelný, protože dálkové ovládání bude mít nějvětší přínos například pokud budou mechanické zkoušky prováděny na dopravnících, které jsou instalované pod stropem skladové haly. V těchto případech se výška dopravníků může pohybovat kolem 10 metrů a tak je dosah 35 metrů dostatečný i pro tyto případy.
+Tento dosah není tak velký, jak bylo předpokládáno, jelikož se předpokládal WiFi dosah až 90 metrů. Dosah systému je menší, jelikož je omezený mobilním zařízením – dosah hotspotů není u běžných Android zařízení parametr, který by se výrobci snažili optimalizovat na maximální hodnotu. Tento dosah je ale pro systém stále přijatelný. Dálkové ovládání je v systému navrženo například pro případy, kdy budou mechanické zkoušky prováděny na dopravnících nainstalovaných pod stropem skladové haly. V těchto případech se výška dopravníků může pohybovat kolem 10 metrů, a tak by měl být dosah 35 metrů dostatečný i pro tyto případy.
 
-\section{Ověření funkčnosti zapojení více desek}
-\purpose{Tady bych se rád zaměřil na nějaké testy, při kterých zkouším, jestli je opravdu možné ovládat víc desek zároveň.}
+Do maximální vzdálenosti nebyly zaznamenány žádné problémy s komunikací. Vývojová deska reagovala okamžitě. Tohle se dalo předpokládat, vzhledem k tomu, že vývojová deska odpovídá na WebServerové požadavky velmi často a jinak není zatížená dlouhými výpočty, které by výrazně zvyšovaly dobu prodlení mezi požadavkem a zpracováním.
 
-Pro otestování jsem nastavil a zapojil dvě desky podle návodu u dvou dopravníků několik metrů od sebe. Následně jsem testoval vzdálenost kde se mi podařilo si zachovat spojení s obouma deskami na X metrů. Tohle bylo znovu testované v Brněnské Honeywell hale. Při testování jsem sledoval jestli se dopravníky hýbou tím, že jsem si na dopravník položil testovací balík a u toho bylo vidět, jestli se při dané vzdálenosti hýbe anebo už ne.
+\section{Ověření zapojení více desek}
+%\purpose{Tady bych se rád zaměřil na nějaké testy, při kterých zkouším, jestli je opravdu možné ovládat víc desek zároveň.}
+
+V rámci tohoto testu byly nakonfigurovány a zapojeny dvě desky dle standardního postupu s tím, že každá deska byla zapojena k samostatnému dopravníku. Dopravníky byly zvoleny tak, aby od sebe byly frekvenční měniče vzdálené v rámci několika metrů a aby bylo možné z jednoho místa vidět antény obou schránek. Obě schránky byly pomocí přepínačů nastaveny na dálkový režim ovládání a IP adresy obou WebServerů byly přidané do mobilní aplikace.
+
+Následně bylo nejdříve s vypnutou výkonovou částí frekvenčního měniče potvrzeno, že aplikace posílá správné GET požadavky na správné WebServery a tak je možné tímto způsobem ovládat oba dopravníky z jedné mobilní aplikace. Toto bylo potvrzeno ještě jednou se zapnutou výkonovou částí frekvenčního měniče s tím, že byly na dopravníky položeny testovací balíky, aby bylo možné vidět, kdy se dopravníky pohybují.
+
+I v případě zapojení více desek komunikovaly WebServery promptně a bez jakýchkoli problémů s komunikací.
 
 \section{Posouzení z hlediska bezpečnosti}\label{sec:PosouzeniZHlediskaBezpecnosti}
-\purpose{Tady bude nějaký moje zamyšlení nad bezpečností téhle desky. }
+%\purpose{Tady bude nějaký moje zamyšlení nad bezpečností téhle desky. }
 
-Ta deska už ze své podstaty má umožňovat ovládat dopravník na dálku a někdy i třeba hodinu - aby si sedly všechny součásti a tak bylo vidět, jestli je dopravník opravdu v pořádku za chodu. Tohle může být inherentně nebezpečná věc pokud by operátor přišel o spojení s deskou ve špatný okamžik a nemohl tak dopravník zastavit. Je možný, že by měla obsahovat nějakej test (třeba každou sekundu), jestli je otevřená aplikace na mobilu, ale to by kazilo user experience uživatelů, který dělají ty testy, protože oni musí při používání aplikace ještě psát informace o zkouškách do excelu. Pokud by se aplikace zavřela, tak přestane komunikovat s deskou a ta by pak chtěla ten dopravník vypnout. Tenhle bezpečnostní mechanismus tedy nemá smysl implementovat, protože by příliš kazil používání systému jako takového.
+Navržený systém už ze své podstaty umožňuje dálkové ovládání dopravníkových linek, a to i na delší časové úseky – například při zahořovacích testech, kdy se ověřuje, že je dopravník schopný nepřetržitého provozu. Takovýto způsob ovládání může představovat inherentní riziko v případě ztráty komunikačního spojení mezi mobilní aplikací a vývojovou deskou v kritickém okamžiku, kdy by operátor nemohl dopravník bezprostředně zastavit.
 
-Myšlenku žádný takový mechanismus nevytvářet také podporuje fakt, že navržený systém přebírá bezpečnost z těch už nainstalovaných dopravníků. Dopravníky už při této fázi kontroly kvality mají kolem sebe E-STOP lanko a E-STOP tlačítka, které jsou nastavené aby dopravníku přikázali pohotovostní zastavení, jak vyžaduje bezpečnost na pracovišti.
+Z tohoto důvodu byla zvažována implementace mechanismu periodické kontroly aktivního spojení (například periodický „ping“ dotaz), který by inicioval zastavení dopravníku, pokud by vývojová deska tento požadavek neobdržela ve stanoveném intervalu. Od implementace takového mechanismu však bylo upuštěno, jelikož by příliš negativně ovlivňoval používání aplikace uživateli. Během provádění těchto dynamických zkoušek uživatelé hledají chyby instalace dopravníkového systému a tyto chyby se běžně zapisují do dokumentace v jiných aplikacích. Dá se tedy předpokládat, že aplikace běžně nebude na mobilním zařízení stále aktivní.
 
-V rámci bezpečnosti je také důležité správně vyškolit obsluhu systému pro bezpečné používání systému. Obsluha by měla například vědět, že je potřebné vypnout výkonovou část frekvenčního měniče pomocí nainstalovaného vypínače při veškeré manipulaci s ovládacím panelem. Obsluha by také měla vědět jak správně systém nastavit a jak řešit časté problémy - obě témata obsahuje mobilní aplikace na adresách Setup a Help.
+Toto rozhodnutí je ovšem podpořeno tím, že navržený systém se spoléhá na již existující bezpečnostní prvky instalované na samotných dopravníkových linkách a přebírá je. Dopravníkové linky mají hned po instalaci standardní bezpečnostní prvky, jako jsou tlačítko nouzového zastavení (E-STOP) a bezpečnostní lanka po celé délce dopravníku.
+
+V kontextu bezpečného provozu je rovněž důležité adekvátní proškolení uživatelů systému. Uživatel musí být seznámen s postupy bezpečného používání systému – hlavně s nutností deaktivace výkonové části frekvenčního měniče pomocí příslušného vypínače před jakoukoliv manipulací s ovládacím panelem. Uživatel musí být dále informován o správném postupu konfigurace systému a o způsobu řešení běžných provozních problémů. Tyto informace jsou obsaženy v mobilní aplikaci na stránkách Setup a Help.

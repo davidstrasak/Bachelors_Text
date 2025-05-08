@@ -30,32 +30,29 @@
 \contentsline {subsubsection}{Adresy webové aplikace}{40}{subsubsection*.24}%
 \contentsline {subsection}{\numberline {2.4.2}Použité knihovny a technologie v aplikaci}{40}{subsection.2.4.2}%
 \contentsline {subsubsection}{HTML, CSS a JS}{40}{subsubsection*.25}%
-\contentsline {subsubsection}{React}{40}{subsubsection*.26}%
+\contentsline {subsubsection}{React}{41}{subsubsection*.26}%
 \contentsline {subsubsection}{TypeScript}{41}{subsubsection*.27}%
 \contentsline {subsubsection}{Tailwind}{41}{subsubsection*.28}%
 \contentsline {subsubsection}{DaisyUI}{41}{subsubsection*.29}%
 \contentsline {subsubsection}{Lucide for React}{41}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s NodeMCU servery}{41}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s WebServery}{41}{subsection.2.4.3}%
 \contentsline {subsubsection}{Jak dálkově spouštět dopravník}{42}{subsubsection*.31}%
 \contentsline {subsubsection}{Jak získat data o rychlosti dopravníku}{42}{subsubsection*.32}%
 \contentsline {subsubsection}{Jak ovládat vývojovou desku bez mobilní aplikace}{43}{subsubsection*.33}%
-\contentsline {subsubsection}{Implementování GET požadavků do aplikace}{43}{subsubsection*.35}%
-\contentsline {subsection}{\numberline {2.4.4}Funkčnost aplikace (hodně stran)}{45}{subsection.2.4.4}%
-\contentsline {subsubsection}{Co funkci sendCommand používá}{46}{subsubsection*.36}%
-\contentsline {subsection}{\numberline {2.4.5}Design aplikace (1 strana)}{46}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace (0.5 strany)}{47}{subsection.2.4.6}%
-\contentsline {subsubsection}{Požadavky na React aplikaci aby se dala konvertovat}{48}{subsubsection*.38}%
-\contentsline {subsubsection}{Postup konvertování webové aplikace}{48}{subsubsection*.39}%
-\contentsline {section}{\numberline {2.5}Vytvoření schránky pro desku (1 strana)}{48}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Kompletace řešení (2 strany)}{49}{section.2.6}%
+\contentsline {subsection}{\numberline {2.4.4}Implementování GET požadavků s Capacitor}{43}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Design aplikace}{45}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace}{47}{subsection.2.4.6}%
+\contentsline {subsubsection}{Postup konvertování webové aplikace}{48}{subsubsection*.36}%
+\contentsline {section}{\numberline {2.5}Vytvoření schránky pro desku}{48}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Kompletace řešení}{49}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Ověření funkčnosti návrhu ($\Sigma $ = 4 strany)}{52}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Ověření funkčnosti lokálního ovládání (0.5 strany)}{52}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Ověření funkčnosti mobilní aplikace (1 strana)}{52}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Ověření funkčnosti zapojení více desek (0.5 strany)}{53}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Posouzení z hlediska bezpečnosti (1 strana)}{53}{section.3.4}%
-\contentsline {chapter}{Závěr (1 strana)}{55}{chapter*.43}%
-\contentsline {chapter}{Seznam zkratek a symbolů}{56}{chapter*.44}%
-\contentsline {chapter}{Seznam zdrojů}{57}{chapter*.45}%
+\contentsline {chapter}{Závěr (1 strana)}{55}{chapter*.40}%
+\contentsline {chapter}{Seznam zkratek a symbolů}{56}{chapter*.41}%
+\contentsline {chapter}{Seznam zdrojů}{57}{chapter*.42}%
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
@@ -106,6 +103,14 @@
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
-\contentsline {chapter}{Seznam obr\'azk\r {u}}{60}{chapter*.46}%
-\contentsline {chapter}{Seznam tabulek}{61}{chapter*.47}%
-\contentsline {chapter}{Seznam příloh}{62}{chapter*.48}%
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\contentsline {chapter}{Seznam obr\'azk\r {u}}{60}{chapter*.43}%
+\contentsline {chapter}{Seznam tabulek}{61}{chapter*.44}%
+\contentsline {chapter}{Seznam příloh}{62}{chapter*.45}%

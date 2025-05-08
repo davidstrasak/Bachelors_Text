@@ -1,5 +1,5 @@
 % Test, že co jsem udělal já funguje
-\chapter{Ověření funkčnosti návrhu ($\Sigma$ = 4 strany)}
+\chapter{Ověření funkčnosti návrhu}
 Pro testování funkčnosti systému jsem zkusil celý systém nastavit přesně podle instrukcí obsažených v Setup stránce dostupné v mobilní aplikace. Poté jsem připojil celý systém na digitální vstupy do ovládacího panelu frekvenčního měniče a připojil jsem systém na napájecí napětí 24V OUT vycházející z ovládacího panelu. Jak jsem zkontroloval, že je všechno nastavené jak má být, otestoval jsem, jestli lokální ovládání spíná digitální vstupy ovládacího panelu. Po kontrole, že tomu tak je, je možné zapnout výkonovou část frekvenčního měniče (tedy část mimo ovládací panel). Tohle spustí dopravník.
 
 Při zapínání výkonové části frekvenčního měniče je důležité si dát pozor, aby aproximace rychlosti začínala na nule, protože jinak bude začínat aproximaci na posunuté hodnotě.
@@ -13,12 +13,12 @@ Všechno testování bylo provedeno v Brněnské hale společnosti Honeywell. V 
     \label{fig:BrnenskaHoneywellHala}
 \end{figure}
 
-\section{Ověření funkčnosti lokálního ovládání (0.5 strany)}
+\section{Ověření funkčnosti lokálního ovládání}
 \purpose{Tady bych se chtěl zaměřit na to, jestli je možné dopravník ovládat přes tlačítka rovnou umístěná na desce.}
 
 Tohle jsem už testoval a funguje to jak má. Ty tlačítka spínají přímo těch 24V z ovládacího panelu dopravníku, takže fungují i když se vůbec nepřipojí ten mikrokontroller - tudíž deska funguje i bez připojení kabelu který vede na 24V OUT port, ale potom nefunguje LCD displej pro aproximaci rychlosti dopravníku.
 
-\section{Ověření funkčnosti mobilní aplikace (1 strana)}
+\section{Ověření funkčnosti mobilní aplikace}
 \purpose{Tady jenom potvrdím že mobilní aplikace opravdu funguje}
 
 Po zapojení dopravníku a otestování lokálního ovládání byla testována mobilní aplikace.
@@ -27,12 +27,12 @@ Pro používání mobilní aplikace jsem zapnul systém do stavu pro dálkové o
 
 V rámci tohoto testu jsem šel na X metrů daleko a zkontroloval že ta deska funguje i na nějakou vzdálenost.
 
-\section{Ověření funkčnosti zapojení více desek (0.5 strany)}
+\section{Ověření funkčnosti zapojení více desek}
 \purpose{Tady bych se rád zaměřil na nějaké testy, při kterých zkouším, jestli je opravdu možné ovládat víc desek zároveň.}
 
 Pro otestování jsem nastavil a zapojil dvě desky podle návodu u dvou dopravníků několik metrů od sebe. Následně jsem testoval vzdálenost kde se mi podařilo si zachovat spojení s obouma deskami na X metrů. Tohle bylo znovu testované v Brněnské Honeywell hale. Při testování jsem sledoval jestli se dopravníky hýbou tím, že jsem si na dopravník položil testovací balík a u toho bylo vidět, jestli se při dané vzdálenosti hýbe anebo už ne.
 
-\section{Posouzení z hlediska bezpečnosti (1 strana)}\label{sec:PosouzeniZHlediskaBezpecnosti}
+\section{Posouzení z hlediska bezpečnosti}\label{sec:PosouzeniZHlediskaBezpecnosti}
 \purpose{Tady bude nějaký moje zamyšlení nad bezpečností téhle desky. }
 
 Ta deska už ze své podstaty má umožňovat ovládat dopravník na dálku a někdy i třeba hodinu - aby si sedly všechny součásti a tak bylo vidět, jestli je dopravník opravdu v pořádku za chodu. Tohle může být inherentně nebezpečná věc pokud by operátor přišel o spojení s deskou ve špatný okamžik a nemohl tak dopravník zastavit. Je možný, že by měla obsahovat nějakej test (třeba každou sekundu), jestli je otevřená aplikace na mobilu, ale to by kazilo user experience uživatelů, který dělají ty testy, protože oni musí při používání aplikace ještě psát informace o zkouškách do excelu. Pokud by se aplikace zavřela, tak přestane komunikovat s deskou a ta by pak chtěla ten dopravník vypnout. Tenhle bezpečnostní mechanismus tedy nemá smysl implementovat, protože by příliš kazil používání systému jako takového.
@@ -40,6 +40,3 @@ Ta deska už ze své podstaty má umožňovat ovládat dopravník na dálku a n�
 Myšlenku žádný takový mechanismus nevytvářet také podporuje fakt, že navržený systém přebírá bezpečnost z těch už nainstalovaných dopravníků. Dopravníky už při této fázi kontroly kvality mají kolem sebe E-STOP lanko a E-STOP tlačítka, které jsou nastavené aby dopravníku přikázali pohotovostní zastavení, jak vyžaduje bezpečnost na pracovišti.
 
 V rámci bezpečnosti je také důležité správně vyškolit obsluhu systému pro bezpečné používání systému. Obsluha by měla například vědět, že je potřebné vypnout výkonovou část frekvenčního měniče pomocí nainstalovaného vypínače při veškeré manipulaci s ovládacím panelem. Obsluha by také měla vědět jak správně systém nastavit a jak řešit časté problémy - obě témata obsahuje mobilní aplikace na adresách Setup a Help.
-
-% \section{Spolehlivost bezdrátové komunikace (0.5 strany)}
-% \purpose{Tady bych rád otestoval, kolik metrů bude dosah WiFi ve skladu Honeywellu.}

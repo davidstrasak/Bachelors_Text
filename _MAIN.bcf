@@ -2444,8 +2444,12 @@
     <bcf:citekey order="46" intorder="1">daisyuiweb</bcf:citekey>
     <bcf:citekey order="47" intorder="1">lucideWeb</bcf:citekey>
     <bcf:citekey order="48" intorder="1">JavaScriptGET</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">HoneywellHala</bcf:citekey>
-    <bcf:citekey order="50" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">DaisyUIthemeGenerator</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">CapacitorHowItWorks</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">CORShowItWorks</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">cleartextTraffic</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">HoneywellHala</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">HoneywellHala</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

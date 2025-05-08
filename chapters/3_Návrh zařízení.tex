@@ -329,7 +329,7 @@ Navržená mobilní aplikace vůbec není mobilní aplikace v tradičním slova 
 
 Běžná webová aplikace má dvě hlavní části:
 
-První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools}, které umí kterémukoliv uživateli ukázat celý front-end kód webové aplikace.
+První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools} (Více popsané v kapitole \ref{sec:DesignAplikace}), které umí kterémukoliv uživateli ukázat celý front-end kód webové aplikace.
 
 Druhá hlavní část webové aplikace se jmenuje \textbf{back-end} a je to část aplikace kterou běžný uživatel nevidí. Obsahuje data seřazená v databázích, které je možné si pomocí různých příkazů načíst do front-end části. Také umí využívat server pro provádění různých výpočtů, které jsou buďto moc náročné, anebo musí být z určitých důvodů schované před běžnými uživateli.
 
@@ -360,7 +360,7 @@ V případě navrženého systému sice nemá mobilní aplikace vlastní back-en
 
 Z těchto důvodů je mnohem snazší navrhnout nejdříve webovou aplikaci, implementovat komunikaci obou částí webového systému a následně webovou aplikaci konvertovat do mobilní. Pokud by byla mobilní aplikace programovaná od základu pomocí knihoven pro tvorbu mobilních aplikací, zmizel by sice snadno řešitelný problém konverze webové aplikace do mobilní, ale vznikl by problém implementace webové komunikace uvnitř mobilní aplikace.
 
-\subsubsection{Adresy webové aplikace}
+\subsubsection{Adresy webové aplikace}\label{sec:AdresyWeboveAplikace}
 
 Webová aplikace má tři URL adresy:
 \begin{itemize}
@@ -403,11 +403,11 @@ TypeScript je navíc vždy možné kompilovat do JavaScriptu, který je spustite
 Tailwind umožňuje developerům webových aplikací definovat vzhled prvků přímo v HTML kódu, čímž odpadá potřeba samostatných souborů se styly, jako je běžné u CSS.
 \cite{Tailwindweb}
 
-\subsubsection{DaisyUI}
+\subsubsection{DaisyUI}\label{sec:DaisyUI}
 DaisyUI přidává speciální klíčová slova pro rozšíření knihovny Tailwind. Zatímco Tailwind poskytuje většinou specifická klíčová slova, která zpravidla přímo odpovídají jednotlivým vlastnostem CSS, DaisyUI funguje jinak. Tato knihovna umožňuje pod jedním klíčovým slovem sdružit více tailwind stylů.
 \cite{daisyuiweb}
 
-Díky tomu DaisyUI poskytuje styly pro celé komponenty, jako jsou například tlačítka nebo alert boxy. Také poskytuje ovládání barevného schématu celé webové stránky, díky čemuž je s trochou konfigurace možné pomocí přibližně 20 barev ovládat celkový vzhled stránky.
+Díky tomu DaisyUI poskytuje styly pro celé komponenty, jako jsou například tlačítka nebo alert boxy. Také poskytuje ovládání motivu celé webové stránky, díky čemuž je s trochou konfigurace možné jednoduše měnit celkový vzhled stránky.
 
 \subsubsection{Lucide for React}
 Poslední použitou knihovnou je Lucide, knihovna ikon vytvořená pro React. V běžné webové stránce by vložení ikony, jako například koš pro odstranění dopravníku, vyžadovalo stažení souboru s příponou například \texttt{.svg} a jeho následnou úpravu a vložení do stránky.
@@ -415,7 +415,7 @@ Poslední použitou knihovnou je Lucide, knihovna ikon vytvořená pro React. V 
 S Lucide však stačí pouze použít předpřipravené React komponenty, které obsahují většinu často používaných ikon.
 \cite{lucideWeb}
 
-\subsection{Princip komunikace s NodeMCU servery}
+\subsection{Princip komunikace s WebServery}\label{sec:PrincipKomunikaceSeServery}
 %\purpose{Co je to GET požadavek a jak se dá implementovat v JavaScriptu.}
 
 Jak bylo nastíněno v kapitole \ref{sec:ProcWebovaAplikace}, způsob, kterým spolu komunikují mobilní aplikace a ESP8266 WebServer, spočívá ve využití webových GET požadavků.
@@ -465,7 +465,7 @@ Tato webová stránka umožňuje ovládat vývojovou desku pomocí tlačítek, j
 	\label{fig:WebServerLandingPage}
 \end{figure}
 
-\subsubsection{Implementování GET požadavků do aplikace}
+\subsection{Implementování GET požadavků s Capacitor}
 %\purpose{Vysvětlit proč normální GET requesty nefungují (Omezení z WebView) a jak je tedy implementovat. Taky zmínit že jsou implementované ve funkci sendCommand.}
 
 GET požadavky není kvůli konverzi webové aplikace do mobilní pomocí Capacitoru možné posílat běžným způsobem. Je tomu tak, protože v prostředí Android aplikace funkce \texttt{fetch} nefunguje stejně jako v prostředí webového prohlížeče. Tento problém je však již vyřešen komunitou Capacitoru, která pro tento účel vyvinula balíček s názvem CapacitorHttp. Tento balíček zjednodušuje posílání GET požadavků v rámci Capacitor aplikací tím, že poskytuje vlastní metodu GET, která má mírně odlišnou syntaxi upravenou tak, aby fungovala v mobilním prostředí WebView (konverze do mobilní aplikace je popsána v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}).
@@ -514,121 +514,123 @@ Funkce \texttt{sendCommand} má jako vstupy IP adresu vývojové desky a adresu,
 
 Pokud \texttt{sendCommand} nezíská odpověď do 3 sekund, kód aplikace pomocí funkce \texttt{fetchWithTimeout} signalizuje chybu, která se zobrazí v uživatelském rozhraní. Toto je obzvlášť důležitá funkce, protože se tato chyba uživateli v aplikaci ukáže, pokud během 3 sekund webový server neodpoví na požadavek. To se může stát hlavně pokud uživatel opustí dosah, ve kterém je webový server schopen komunikovat, a má tak jasnou vizuální indikaci, že by se pro ovládání dopravníku měl přiblížit. Tato implementace také vypíná možnost stisknout tlačítka, která ovládají dopravník, jelikož by na ně vývojová deska nereagovala.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\oldtext
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tahle část mi přijde, že opakuje předešlé body, nepřidává nic moc navíc a ani nevím jak bych ji pojmenoval :D. Takže je asi tento generickej popis jak funguje aplikace zbytečnej, když to mám cca popsaný v ostatních kapitolách. Navíc nemá smysl vysvětlovat jak funguje aplikace bez toho abych vysvětloval jak funguje React - a to by bylo už moc textu pro tuhle práci.
+%\subsection{Funkčnost aplikace (hodně stran)}
+%\purpose{Tady už vůbec neřešit jak ta aplikace vypadá, ale zaměřit se na to co ta aplikace dokáže a jak to dělá. Struktura hlavní stránky, správa seznamu dopravníků, ovládání dopravníků je zahrnuto v sendCommand, získávání a zobrazování stavu skrz sendCommand a stránky Setup a Help. TOHLE BUDE HLAVNÍ MEAT TÉHLE KAPITOLY}
+%
+%Základ hlavní stránky je využívání reaktivnosti Reactu. Jelikož je aplikace dělaná v Reactu, je možné plynule přidávat dopravníky do seznamu bez toho aby se aplikace musela načítat pořád znovu. React nám také dává možnost ukládat IP adresy dopravníků do lokální paměti stránky a tak si aplikace vždy při spuštění načte data o dopravnících, které v aplikaci byly při posledním ukončení. React také umožňuje veškeré další funkce jako implementace GET požadavků a na základě těchto GET požadavků upravovat vzhled aplikace - jako například, že pokud GET požadavek nedostane úspěšnou odpověď do tří sekund, aplikace vyhodnotí daný nodeMCU server jako nefunkční a na základě toho uživatele vizuálně upozorní a vypne možnost se pokoušet o spojení s zařízením.
+%
+%\subsubsection{Co funkci sendCommand používá}
+%\purpose{Vysvětlit proč je funkce sendCommand tak důležitá}
+%
+%Funkci sendCommand používají všechny tlačítka aplikace, které je možné vidět na obrázku \ref{fig:MobilniAppScreenshots} (tlačítka ON/OFF, zrychlení a zpomalení dopravníku).
+%
+%Funkce sendCommand se ale navíc sama provádí každé 2 sekundy pro každý dopravník přidaný do vstupní stránky aplikace. Provádí se tam GET požadavek na adresu /getData na adrese každého nodeMCU serveru. Tato adresa odpovídá s aktuální (aproximovanou) rychlostí dopravníku a s aktuálním stavem jestli je dopravník ovládaný lokálně nebo dálkově. Tato adresa už odpovídá pouze json souborem a díky tomu je důležité se i v rámci sendCommand pokoušet o přeložení odpovědi do javascript objektu pomocí příkazu $response.json()$. V případě těchto požadavků už program neselže s chybou a díky tomu uživatelské rozhraní aplikace získává informaci o rychlosti a stavu dopravníků, kterou může zobrazovat ve vstupní stránce jak je vidět na obrázku \ref{fig:MobilniAppScreenshots}.
 
-\subsection{Funkčnost aplikace (hodně stran)}
-\purpose{Tady už vůbec neřešit jak ta aplikace vypadá, ale zaměřit se na to co ta aplikace dokáže a jak to dělá. Struktura hlavní stránky, správa seznamu dopravníků, ovládání dopravníků je zahrnuto v sendCommand, získávání a zobrazování stavu skrz sendCommand a stránky Setup a Help. TOHLE BUDE HLAVNÍ MEAT TÉHLE KAPITOLY}
+\subsection{Design aplikace}\label{sec:DesignAplikace}
+% \purpose{Zde vysvětlit jak jsem postupoval při designování aplikace. Vysvětlit co je to header aplikace a že mám nějakej styling kterej je pro každý React komponenty aplikovanej automaticky.}
 
-přidat sem něco o tom že to je reaktivní. Já nevim. teď jsem si tenhle blok textu nečetl.
+Tato mobilní aplikace sice byla naprogramována jako webová, ale její design byl od začátku koncipován s ohledem na optimální vzhled při používání na mobilních zařízeních. Jelikož je v dnešní době kladen velký důraz na to, aby i webové stránky vypadaly dobře na mobilních zařízeních, existují pro tento účel nástroje, jako jsou Chrome Developer Tools.
 
-Základ hlavní stránky je využívání reaktivnosti Reactu. Jelikož je aplikace dělaná v Reactu, je možné plynule přidávat dopravníky do seznamu bez toho aby se aplikace musela načítat pořád znovu. React nám také dává možnost ukládat IP adresy dopravníků do lokální paměti stránky a tak si aplikace vždy při spuštění načte data o dopravnících, které v aplikaci byly při posledním ukončení. React také umožňuje veškeré další funkce jako implementace GET požadavků a na základě těchto GET požadavků upravovat vzhled aplikace - jako například, že pokud GET požadavek nedostane úspěšnou odpověď do tří sekund, aplikace vyhodnotí daný nodeMCU server jako nefunkční a na základě toho uživatele vizuálně upozorní a vypne možnost se pokoušet o spojení s zařízením.
+\textbf{Chrome Developer Tools} je soubor nástrojů pro webové vývojáře dostupný pro každého uživatele prohlížeče Google Chrome. V rámci těchto nástrojů je možné změnit vzhled webové stránky na jakékoli rozlišení za účelem testování vzhledu na tabletech a mobilních zařízeních různých velikostí. Chrome Developer Tools však kromě této funkce obsahuje i velké množství dalších užitečných nástrojů pro webové vývojáře, jako například konzole (kde se zobrazují chybové zprávy), nástroje pro analýzu rychlosti aplikace, náhled celého HTML kódu a mnoho dalších.
 
-\subsubsection{Co funkci sendCommand používá}
-\purpose{Vysvětlit proč je funkce sendCommand tak důležitá}
+Všechny barvy aplikace jsou definovány pomocí klíčových slov v rámci správy motivů poskytované knihovnou DaisyUI (rozšíření, krátce představeného v kapitole \ref{sec:DaisyUI}). Tato klíčová slova jsou například \texttt{base, primary, secondary, accent} a další. Nastavení aplikace tímto způsobem dává možnost parametrizace barev, jelikož se určuje spíše účel barvy než její přímá hodnota. Díky tomuto nastavení je možné měnit motiv stránky na jeden z 30 přednastavených motivů od DaisyUI, nebo si nastavit vlastní barvy. Navíc je možné nastavit různé motivy pro světlé i temné rozhraní mobilního zařízení. V \cite{DaisyUIthemeGenerator} lze vidět, jaká všechna nastavení DaisyUI poskytuje v rámci správy motivů.
 
-Funkci sendCommand používají všechny tlačítka aplikace, které je možné vidět na obrázku \ref{fig:MobilniAppScreenshots} (tlačítka ON/OFF, zrychlení a zpomalení dopravníku).
+V obrázku \ref{fig:LandingPageAnnotated} je zobrazen vzhled hlavní stránky aplikace pro světlé rozhraní telefonu.
 
-Funkce sendCommand se ale navíc sama provádí každé 2 sekundy pro každý dopravník přidaný do vstupní stránky aplikace. Provádí se tam GET požadavek na adresu /getData na adrese každého nodeMCU serveru. Tato adresa odpovídá s aktuální (aproximovanou) rychlostí dopravníku a s aktuálním stavem jestli je dopravník ovládaný lokálně nebo dálkově. Tato adresa už odpovídá pouze json souborem a díky tomu je důležité se i v rámci sendCommand pokoušet o přeložení odpovědi do javascript objektu pomocí příkazu $response.json()$. V případě těchto požadavků už program neselže s chybou a díky tomu uživatelské rozhraní aplikace získává informaci o rychlosti a stavu dopravníků, kterou může zobrazovat ve vstupní stránce jak je vidět na obrázku \ref{fig:MobilniAppScreenshots}.
-
-\subsection{Design aplikace (1 strana)}
-\purpose{Zde vysvětlit jak jsem postupoval při designování aplikace. Vysvětlit co je to header aplikace a že mám nějakej styling kterej je pro každý React komponenty aplikovanej automaticky.}
-
-I přesto, že je aplikace programovaná jako webová aplikace jsem aplikaci designoval tak, aby vypadala v pořádku na mobilním zařízení. Vždy, když jsem aplikaci upravoval z grafické stránky, díval jsem se na ni přes \textit{Chrome developer tools}, ve kterých lze nastavit aby se web zobrazoval jako na mobilním zařízení. Tohle usnadnilo programování uživatelského rozhraní.
-
-Aplikace má motiv pro světlé rozhraní telefonu (light mode) i pro temné rozhraní (dark mode). Zde je zobrazeno světlé rozhraní.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{images/LandingPage_Annot.png}
-    \caption{Popis designu hlavní stránky aplikace}
-    \label{fig:LandingPageAnnotated}
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=1\linewidth]{images/LandingPage_Annot.drawio.pdf}
+	\caption{Popis designu hlavní stránky aplikace}
+	\label{fig:LandingPageAnnotated}
 \end{figure}
 
-\subsection{Konvertování webové aplikace do mobilní aplikace (0.5 strany)}\label{sec:KonvertovaniWeboveAplikaceDoMobilni}
+Tento obrázek aplikace byl pořízen na počítači v rozhraní Chrome Developer Tools. Na hlavní stránce aplikace lze nahoře vidět hlavičku, která obsahuje tlačítko navigace. Po stisknutí tohoto tlačítka se zobrazí odkazy na další stránky obsažené v aplikaci, jak bylo popsáno v kapitole \ref{sec:AdresyWeboveAplikace}. Lze také vidět chybovou zprávu, která se však zobrazí pouze v případě, že se nepodařilo spojit s některým webovým serverem.
 
-\purpose{Zmínit že je možné react aplikaci pomocí Android Studia portnout do .apk souboru který používá WebView a dále co je to CORS a že operační systém androidu defaultně zakazuje HTTP requesty.}
+Uprostřed stránky je následně vidět část aplikace určenou k přidávání IP adres vývojových desek, čímž se v dolní části aplikace vytvoří rozhraní pro jejich ovládání. Zde je možné zadat IP adresu desky tak, jak je napsaná na LCD displeji fyzické desky připojené k dopravníku. Dále je zde poznámka, která je v aplikaci pouze pro identifikaci dopravníku a na funkci nemá žádný vliv. Po stisknutí tlačítka pro přidání dopravníku se přidají informace o dopravníku do matice objektů obsahující všechny dopravníky.
 
-V téhle části asi jenom zmíním, že je možné tuhle react aplikaci přes android studio portnout do .apk souboru, který se dá nainstalovat na android telefonech. Přes android studio je i možné aplikaci certifikovat a uploadnout na play store, ale to nemám zapotřebí, protože nechci aby tuhle aplikaci měli lidi co nejsou z Honeywellu.
+V dolní části aplikace je pak oblast obsahující tlačítka pro ovládání takto přidaných dopravníků. Jak bylo popsáno v kapitole \ref{sec:PrincipKomunikaceSeServery}, tato tlačítka jsou nastavena pro posílání GET požadavků na adresy vývojové desky. Na jakou adresu se požadavek odešle, záleží na tom, zda již bylo tlačítko stisknuto. Například pokud dopravník nebyl ještě spuštěn pomocí aplikace, tlačítko \texttt{ON/OFF} bude ve stavu \texttt{OFF}, bude mít červenou barvu a bude posílat GET požadavek na adresu "/conveyorOn". Po stisknutí se okamžitě změní jeho stav na \texttt{ON}, bude mít zelenou barvu a bude posílat GET požadavek na adresu "/conveyorOff". V aplikaci je pro tyto účely implementována lokální paměť a při zavření se ukládá, které dopravníky byly dostupné a jak byly ovládány.
 
-Tady taky můžu zmínit co je to CORS (Cross Origin Resource Sharing), což je protokol který zamezuje serverům jako je nodeMCU v komunikaci s ostatními klienty kvůli bezpečnosti. Vzhledem k tomu, že IP adresu nodeMCU serverů může být úplně jakákoliv, musím CORS nastavit na možnost odpovídat na jakékoliv GET requesty z jakékoliv adresy, což teoreticky není doporučované kvůli snížení bezpečnosti proti útokům. V praxi to je ale úplně jedno, protože ten nodeMCU server je jenom na mém hotspotu a odjinud z internetu není dostupný.
+\subsection{Konvertování webové aplikace do mobilní aplikace}\label{sec:KonvertovaniWeboveAplikaceDoMobilni}
+% \purpose{Zmínit že je možné react aplikaci pomocí Android Studia portnout do .apk souboru který používá WebView a dále co je to CORS a že operační systém androidu defaultně zakazuje HTTP requesty.}
 
-Druhá věc co můžu zmínit je, že operační systém android zařízení defaultně zakazuje všechny HTTP requesty a umožňuje jenom HTTPS requesty. HTTPS ale také nemá cenu zavádět na nodeMCU serveru protože je na lokální síti. V rámci aplikace musím ale HTTP requesty povolit tím, že to napíšu do AndroidManifest.xml filu.
+Aplikace byla konvertována v základní verzi programu \textbf{Android Studio} verze 2024.3.1 a pro konverzi nebylo potřeba instalovat žádné další balíčky.
 
-\source{Tady budou zdroje asi jenom online - capacitor dokumentace, android studio dokumentace, CORS dokumentace}
+Způsob konverze React aplikace do její mobilní podoby spočívá v zapouzdření webového obsahu do nativní komponenty. V případě zařízení s Androidem se k tomu využívá \textbf{WebView}, který zobrazuje webový obsah v simulovaném webovém prohlížeči, a díky tomu je možné některé funkce webové aplikace přímo integrovat do mobilní verze, zatímco některé funkce (jako třeba zasílání GET požadavků) je možné implementovat pomocí knihoven Capacitoru, jelikož v původní syntaxi ve WebView nefungují.
+\cite{CapacitorHowItWorks}
 
-\subsubsection{Požadavky na React aplikaci aby se dala konvertovat}\label{sec:PozadavkyNaReactAplikaceAbySeDalaKonvertovat}
-\purpose{Vysvětlit co je potřeba splnit aby se aplikace dala konvertovat do .apk}
+Před samotným zapouzdřením aplikace je potřeba aplikaci připravit do tzv. "produkční verze". Pro vytvoření této verze stačí v moderních JavaScriptových knihovnách, jako je React, zkompilovat zdrojový kód. Výsledkem této konverze jsou statické soubory HTML, CSS a JS.
 
-Abych tu react aplikaci mohl konvertovat pomocí kapacitoru, musí to být statická webová aplikace - tedy jen aplikace s frontendem bez serverových endpointů. Na každou routu musí existovat nějaký odkaz v navigaci aplikace (protože v capacitor aplikaci nemůžu jen tak zadat URL). A možná další věci.
+Aby bylo možné úspěšně komunikovat s webovými servery, je nutné splnit některé bezpečnostní aspekty v případech, kdy web komunikuje se serverem, specificky mechanismus \textbf{Cross-Origin Resource Sharing} neboli CORS. To je protokol, který pro servery z bezpečnostních důvodů omezuje, která zařízení mají právo na tento server zasílat požadavky, jako je GET požadavek. Mobilní aplikace je jiné zařízení než webový server a je na jiné lokální IP adrese, a tak je potřeba tento bezpečnostní aspekt vyřešit, jinak spolu nebudou moct tato dvě zařízení komunikovat. To bylo nakonec vyřešeno tak, že jsou na každé webové adrese webového serveru nastaveny CORS hlavičky v HTML kódu tak, aby přijímal jakékoli GET požadavky z jakékoli IP adresy. Toto rozhodnutí bylo provedeno, jelikož mobilní zařízení může mít jakoukoli IP adresu na lokální síti. Tímto způsobem je ale komunikace stále bezpečná, jelikož webový server je dostupný pouze lokálně, a tak by na něj mohl být útok proveden pouze v případě, že by byl útočník také připojen k hotspotu mobilního zařízení.
+\cite{CORShowItWorks}
 
-Kvůli těm URL adresám musí v aplikaci i být header s navbarem. Header obecný název pro tu část aplikace co je hned nahoře a většinou obsahuje navigační prvky - jako navbar, což je část aplikace která obsahuje tlačítka přes které se lze dostat na další stránky.
+Dalším důležitým aspektem specifickým pro platformu Android je výchozí konfigurace síťové bezpečnosti. U novějších verzí Androidu už operační systém standardně zakazuje komunikaci pomocí nešifrovaného protokolu HTTP a preferuje zabezpečený protokol HTTPS. Jelikož webový server v této implementaci využívá pro komunikaci nešifrovaný protokol HTTP, bylo nutné tuto restrikci obejít. Povolení komunikace přes HTTP bylo provedeno pro všechny lokální domény modifikací konfiguračního souboru \texttt{AndroidManifest.xml} mobilní aplikace, který je generován při konverzi pomocí Capacitoru. Zavedení protokolu HTTPS na webovém serveru by v kontextu lokální sítě nepřineslo žádné bezpečnostní benefity.
+\cite{cleartextTraffic}
 
-Ještě zmínit jakým způsobem mají být řešení odkazy v single page aplikaci aby bylo možný se skrz ni navigovat plynule - tedy že nepoužívat anchor tagy.
-
-\source{Asi capacitor docs.}
+Výsledkem konverze aplikace je spustitelný soubor ve formátu \texttt{.apk}, který lze nainstalovat na mobilních zařízeních s Androidem. Konverzi je možné provést bez certifikace pro distribuci přes Google Play Store, ale v takovém případě se na zařízení zobrazuje jako "neověřená". V rámci testování ale aplikace prošla úspěšně standardní virovou kontrolou Google Play, což potvrdilo, že během procesu konverze v aplikaci nepřibyl žádný virus. Vzhledem k tomu, že je aplikace určená pro interní použití v rámci společnosti Honeywell a nebude veřejně distribuována, není zapotřebí provádět kroky nezbytné pro publikaci v Google Play Storu.
 
 \subsubsection{Postup konvertování webové aplikace}
-\purpose{Už nepsat teorii jak by se dala aplikace zkonvertovat jako ve kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni} ale specificky napsat jak jsem postupoval při konvertování aplikace krok za krokem.}
+% \purpose{Už nepsat teorii jak by se dala aplikace zkonvertovat jako ve kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni} ale specificky napsat jak jsem postupoval při konvertování aplikace krok za krokem.}
 
-Pro konvertování jsem použil android studio verze x.x. atd.
+Pro konvertování je potřeba mít nainstalované Android Studio a Node.js. Dále musí být inicializována React aplikace a v ní nainstalovaný a nastavený Capacitor. Složka webové aplikace by měla být vzhledem k Android Studiu mimo složky s českou diakritikou a mimo složky synchronizované pomocí cloudových aplikací.
 
-Konvertování webové aplikace do mobilní aplikace je postup o několika krocích který využívá kapacitor inicializovaný v projektu a následně Android Studio, které je potřeba pro překonvertování projektu z kapacitoru do souboru instalovaného na android zařízeních o příponě .apk.
+Specifický postup konvertování webové aplikace do mobilní je následující:
 
-\begin{itemize}
-    \item Začíná se v nejnovější verzi React webové aplikace.
-    \item Tuto aplikaci člověk musí nejdříve postavit do produkční verze pomocí příkazu \textit{npm run build}.
-    \item Dále je potřeba aplikaci zesynchronizovat s kapacitorem pomocí příkazu \textit{npx cap sync}.
-    \item Nyní je potřeba si otevřít nainstalovaný program android studio, co je možné udělat rovnou z konsole pomocí příkazu \textit{npx cap open android}.
-    \item Nakonec je v android studio potřeba znovu postavit aplikaci do produkční verze pomocí příkazu build.
-\end{itemize}
+\begin{enumerate}
+	\item Začíná se v nejnovější verzi React webové aplikace.
+	\item Sestavení do "produkční verze webové aplikace" se provádí pomocí příkazu \texttt{npm run build}.
+	\item Dále je potřeba aplikaci synchronizovat s Capacitorem pomocí příkazu \texttt{npx cap sync}.
+	\item Nyní je potřeba otevřít složku jménem "android", která byla vytvořena, pomocí Android Studia. To je možné udělat rovnou z konzole pomocí příkazu \texttt{npx cap open android}.
+	\item V Android Studiu je možné aplikaci sestavit do "produkční verze mobilní aplikace" pomocí volby "Build".
+	\item Android Studio vygeneruje složku se soubory aplikace, ve které je obsažen soubor \texttt{main.apk}.
+\end{enumerate}
 
-Na konci tohoto procesu je dostupný soubor přípony \textit{.apk}, který je možné si poslat na android mobilní zařízení a tam nainstalovat.
+Na konci tohoto procesu je možné dostupný soubor \texttt{main.apk} poslat na zařízení s Androidem a tam nainstalovat. Pro konverzi není potřeba žádné další nastavování ani podpůrné balíčky.
 
-Aplikace nevyžaduje žádné další nastavování.
+\section{Vytvoření schránky pro desku}
+%\purpose{V téhle sekci bude popis jak jsem postupoval při návrhu schránky pro desku, která obsahuje i tlačítka.}
 
-\section{Vytvoření schránky pro desku (1 strana)}
-\purpose{V téhle sekci bude popis jak jsem postupoval při návrhu schránky pro desku, která obsahuje i tlačítka.}
+Myšlenka při návrhu schránky pro desku byla taková, aby bylo možné ji vytisknout v běžných podmínkách pomocí technologie 3D tisku - specificky byla zamýšlena pro tiskárnu Bambu Lab A1 Mini, která má tiskový objem 18x18x18 cm. Hlavním důvodem, proč byl 3D tisk zvolenou technologií, byl malý počet vytištěných schránek (předpokládá se 5 kusů) a nenáročné podmínky provozu. Navíc je 3D tisk pro schránky na osazené desky plošných spojů levné řešení, které dosahuje dostatečné kvality provedení. Nároky na schránku jsou základní - je důležité mít možnost ji rozdělat, pro možnost údržby desky, ale jinak nemá zvláštní nároky, jelikož bude systém využívaný pár týdnů v roce při kontrole kvality dopravníků.
 
-Myšlenka při návrhu schránek pro desku byla taková abych ji mohl vytisknout v běžných podmínkách pomocí 3D tiskárny Bambu Lab A1 Mini, kterou mám doma. Hlavní důvod proč jsem zvolil 3D tisk jako technologii bylo, že těchto schránek bude ve finále vytisknutých asi 5 kusů a tak není potřeba zajišťovat sériovou výrobu. Navíc je to pro schránky na desky plošných spojů levné řešení, které dosahuje dostatečné kvality provedení. Nároky na schránku jsou základní - je důležité mít možnost ji rozdělat aby byla možná údržba desky, ale jinak nemá zvláštní nároky, vzhledem k tomu, že bude vytažená pár týdnů do roku.
+Pro návrh schránky byl vybrán cloudový CAD software Onshape. Do tohoto prostředí byl importován 3D model desky plošných spojů ve formátu \texttt{.stl}, který byl vygenerován v prostředí KiCAD pomocí integrovaného 3D prohlížeče. Na základě tohoto referenčního modelu bylo přistoupeno k modelování schránky na míru. Koncepčně byla schránka navržena jako dvoudílná s cílem eliminovat použití šroubových spojů pro snadnou manipulaci se systémem a možnost rychlého prototypování a úprav. Zároveň byl ale kladen důraz na spolehlivé uzavření schránky během provozu, kdy není vyžadován přístup k vnitřním komponentám.
 
-Modelovací software pro návrh schránky pro desku jsem zvolil online CAD Onshape. Do toho jsem si nahrál 3D model desky plošných spojů v .STL formátu který mi vygeneroval KiCAD pomocí 3D prohlížeče a na základě tohoto modelu jsem začal modelovat schránku na míru pro moji desku. Rozhodl jsem se, že schránka bude vytvořena ze dvou hlavních částí a že bude bez šroubů, aby bylo možné na ni jednodušeji prototypovat zařízení, ale zároveň bylo cílem aby stále držela dohromady během používání, pokud zrovna není potřeba ji otevírat.
+Toho bylo dosaženo použitím dvou komplementárních částí. Spodní část schránky je konstruována tak, aby bylo možné do ní zasunout osazenou desku plošných spojů, díky čemuž je deska dobře zafixována uvnitř schránky. V této části je navíc otvor pro kabely, které se připojují na ovládací panel frekvenčního měniče a kterými je deska napájena. Spodní část je během používání zasunuta do horní části schránky. Horní část je dostatečně velká, aby měla dostatek prostoru pro umístění tlačítek, LCD displeje a také obsahuje otvor pro našroubování externí WiFi antény dostatečně blízko vývojové desky. Posledním prvkem návrhu schránky je zajišťovací prvek (západka), která slouží pro fixaci spodní části v horní části a zabraňuje tak nechtěnému vysunutí. Tato západka je držena na místě pomocí tření s horní částí schránky.
 
-To se mi povedlo pomocí dvou částí. Do dolní části je možné zajet desku plošných spojů a díky tomu deska ve schránce dobře drží. V dolní části je také otvor na kabely které jsou uchycené v desce plošných spojů. poté je možné vzít celou dolní část a zajet ji do horní části schránky, která obsahuje prostor pro tlačítka, LCD display a díru na našroubování antény pro zlepšení připojení k WiFI. Nakonec schránka obsahuje ještě jednu část a to je brána, který dolní část desky zajistí aby nevyjížděla z horní části.
+Celou schránku lze vidět na obrázku \ref{fig:krabickaObaPohledy}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/krabickaTop.png}
-        \caption{Pohled shora na schránku}
-        \label{fig:krabickaTop}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/KrabickaZBoku.png}
-        \caption{Pohled z boku na schránku}
-        \label{fig:KrabickaZBoku}
-    \end{subfigure}
-    \caption{Model schránky pro desku plošných spojů}
-    \label{fig:krabickaObaPohledy}
+\begin{figure}[hptb]
+	\centering
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{images/krabickaTop.png}
+		\caption{Pohled shora na schránku}
+		\label{fig:krabickaTop}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}[t]{0.48\textwidth}
+		\includegraphics[width=\textwidth]{images/KrabickaZBoku.png}
+		\caption{Pohled z boku na schránku}
+		\label{fig:KrabickaZBoku}
+	\end{subfigure}
+	\caption{Model schránky pro desku plošných spojů}
+	\label{fig:krabickaObaPohledy}
 \end{figure}
 
-Po vytvoření modelů v Onshape jsem si pomocí Bambu Studio do tiskárny poslal desku a vytiskl jsem ji z bílého PETG materiálu značky SUNLU, který jsem vybral díky jeho vyšší robustnosti než PLA, ale zároveň nepotřebuje složitější procesy a hardware pro tisknutí. Během tisknutí jsem filament sušil kvůli notoricky známým problémům PETG a vlhkosti filamentu.
+Po dokončení modelů v prostředí Onshape byly tiskové soubory exportovány do softwaru Bambu Studio a následně odeslány k tisku na zmíněnou tiskárnu. Pro tisk byl zvolen bílý PETG filament značky SUNLU. Tento materiál byl preferován pro svou vyšší mechanickou odolnost ve srovnání s PLA, přičemž jeho zpracování nevyžaduje náročné tiskové podmínky ani hardware. Během tisku byl tento filament vysoušen kvůli známým problémům s vlhkostí uvnitř PETG filamentu.
 
-\section{Kompletace řešení (2 strany)}
-\purpose{Tady bude postup kompletace celého zařízení a k tomu obrázky, které blíže popisují kde jsou jednotlivé části.}
+\section{Kompletace řešení}
+%\purpose{Tady bude postup kompletace celého zařízení a k tomu obrázky, které blíže popisují kde jsou jednotlivé části.}
 
-Při kompletaci jsem připájel všechny součástky na desku a vložil jsem do desky dvě součástky, které jsou vyjímatelné - vývojovou desku WEMOS D1 Mini Pro a LCD Displej. Tyto součástky jsou vyjímatelné protože to jsou složité součástky sestavené z více různých částí, ale nejsou ve formě uzavřených integrovaných obvodů. Kvůli tomu existuje riziko, že by nebyly správně kompletované a v tom případě se hodí mít možnost je jednoduše oddělat a odstranit na nich problémy. Vývojová deska se navíc musí často oddělávat aby bylo možné na ni nahrávat kód při tvoření a LCD má zezdola trimmer, kterým se mění viditelnost textu.
+Během kompletace systému byly nejdříve připájeny veškeré osazované součástky na desku plošných spojů. Následně došlo k připojení dvou komponent, které jsou navržené jako vyjímatelné moduly – vývojová deska WEMOS D1 Mini Pro a LCD displej. Tyto součástky byly navrženy jako snadno vyjímatelné primárně kvůli tomu, že to nejsou standardní zapouzdřené integrované obvody určené přímo k pájení. Jelikož jsou tyto součástky komplexnější, je dobré mít možnost je jednodušeji diagnostikovat a vyměnit, protože můžou vyžadovat složitější nastavení pro optimální funkčnost. Kromě toho je při prototypování vývojová deska často vyjímána kvůli nahrávání firmwaru a ladění kódu během vývoje, zatímco modul LCD displeje disponuje na spodní straně trimrem, který mění kontrast, a ten se typicky také nastavuje až po osazení modulu na desce.
+
+Finální podobu desky plošných spojů lze vidět na obrázku \ref{fig:PCBFinal}.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{images/PCB_Final_annotated.jpg}
-    \caption{Finální podoba desky plošných spojů}
-    \label{fig:PCBFinal}
+	\centering
+	\includegraphics[width=0.95\linewidth]{images/PCB_Final_annotated.jpg}
+	\caption{Finální podoba desky plošných spojů}
+	\label{fig:PCBFinal}
 \end{figure}
 
-Následně stačí jen přidělat kabely do desky na šroubovací konektory a složit schránku na desku. V tomto stavu by mělo zařízení být připravené na připojení na dopravník jako to je v obrázku \ref{fig:PrincipFunkceZarizeni}. Desku je možné napájet buďto z ovládacího panelu frekvenčního měniče, což je doporučené, jelikož jsou do tohoto ovládacího panelu připojené i další kabely vycházející ze zařízení, ale je možné desku napájet i z jakéhokoliv zdroje napětí, který má napětí mezi $9-48V$ a je schopný dodávat proud do hodnot asi $0.5A$.
+Po osazení komponent na DPS je dalším krokem připojení kabelů, které komunikují s ovládacím panelem frekvenčního měniče a napájí vývojovou desku. Tyto kabely se připojují do šroubovacích svorkovnic na spodní straně desky plošných spojů. Následně byla tlačítka umístěna na schránku pro desku a k těmto tlačítkům byly připojeny kabely do šroubovacích konektorů, které jsou umístěné uprostřed desky. Poté je možné upevnit desku ve schránce.
 
-
-
+V této fázi je deska připravená pro připojení k dopravníkovému systému, jehož princip je zobrazen na začátku návrhové kapitoly na obrázku \ref{fig:PrincipFunkceZarizeni}. Napájení desky je možné realizovat buď z ovládacího panelu frekvenčního měniče, což je doporučený způsob napájení kvůli jednoduchosti, vzhledem k tomu, že jsou veškeré ostatní kabely také připojené k frekvenčnímu měniči. Systém ale bude fungovat i v případě, že nebude napájen z frekvenčního měniče – desku je možné napojit na libovolný externí zdroj poskytující stejnosměrné napětí v rozsahu $9–48V$. Špičková hodnota proudu, kterou je možné v extrémním případě na DPS zaznamenat, je asi $1,3A$ při $5V$ napájení, takže na vstupu musí zdroj poskytovat při napětí $24V$ kolem $300mA$ proudu.

@@ -535,6 +535,62 @@
       \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET
       \endverb
     \endentry
+    \entry{DaisyUIthemeGenerator}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{daisyUI and Tailwind CSS theme generator — Tailwind CSS Components ( version 5 update is here )}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://daisyui.com/theme-generator
+      \endverb
+      \verb{url}
+      \verb https://daisyui.com/theme-generator
+      \endverb
+    \endentry
+    \entry{CapacitorHowItWorks}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Capacitor Blog - How Capacitor Works}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://capacitorjs.jp/blog/how-capacitor-works
+      \endverb
+      \verb{url}
+      \verb https://capacitorjs.jp/blog/how-capacitor-works
+      \endverb
+    \endentry
+    \entry{CORShowItWorks}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Cross-Origin Resource Sharing (CORS) - HTTP | MDN}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
+      \endverb
+    \endentry
+    \entry{cleartextTraffic}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Android – Cleartext HTTP Traffic Not Permitted | GeeksforGeeks}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.geeksforgeeks.org/android-cleartext-http-traffic-not-permitted/
+      \endverb
+      \verb{url}
+      \verb https://www.geeksforgeeks.org/android-cleartext-http-traffic-not-permitted/
+      \endverb
+    \endentry
     \entry{HoneywellHala}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=e6f60ca6c699bf2730946bc0494c5cbe}{%
@@ -551,8 +607,8 @@
       \strng{authornamehash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhash}{e6f60ca6c699bf2730946bc0494c5cbe}
       \strng{authorfullhashraw}{e6f60ca6c699bf2730946bc0494c5cbe}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{4}

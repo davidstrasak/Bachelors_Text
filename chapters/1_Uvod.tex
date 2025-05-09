@@ -1,6 +1,24 @@
 \chapter*{Úvod}\label{chap:uvod}\addcontentsline{toc}{chapter}{Úvod}
 
+V dnešní době jsme svědky ohromného boomu rychlosti světové logistiky s primárním cílem minimalizovat čas mezi objednáním a doručením zboží zákazníkovi. Tento trend je umožněn nejenom ambiciózním přístupem e-commerce firem a dodavatelů, ale i firmami, které vyvinuly systémy pro vyšší efektivitu v rámci logistiky – systémy jako například chytré dopravníkové linky ve skladech.
 
+Společnost Honeywell Technology Solutions, s.r.o. (dále jen Honeywell) je jedním z významných aktérů v oblasti automatizace systémů – zejména její divize, která se zaměřuje na industriální automatizaci. Brněnská pobočka této divize se specializuje na návrh a realizaci chytrých dopravníkových systémů, které jsou základním stavebním kamenem chytrých skladů. Na vývoji těchto systémů se podílí multidisciplinární týmy složené z odborníků na strojní inženýrství, elektrotechniků, PLC programátorů a softwarových vývojářů.
+
+Po dokončení návrhu je fyzická instalace těchto dopravníkových linek provedena ve skladech zákazníků externími dodavateli, kvůli čemuž je potřebné, aby inženýři, kteří návrh vytvořili, přijeli zkontrolovat instalaci. Jako první se kontroluje mechanická instalace, během které se provádí dynamické zkoušky dopravníků ve spuštěném stavu.
+
+V dnešní době ale neexistuje jednoduché řešení, jak by mohli inženýři mechanického týmu dopravníky spouštět a ovládat. Momentálně je většinou pro vyřešení tohoto problému nutné angažovat PLC vývojáře, kteří mají know-how pro inicializaci komunikace s PLC, díky čemuž umí ovládat dopravníky přes specializovaný software od výrobců frekvenčních měničů. Toto řešení je však neefektivní, časově náročné a repetitivní.
+
+Z tohoto důvodu vznikla tato bakalářská práce se souhrnným cílem navrhnout, realizovat a otestovat systém, který poskytne inženýrům mechanického týmu jednoduchou a efektivní cestu, jak dopravník ovládat pomocí ovládacího panelu frekvenčního měniče. Systém ale nebude ovladatelný pouze z místa ovládacího panelu, ale i z okolí pomocí bezdrátové komunikace.
+
+Pro účely tohoto návrhu je nejdříve nutné začít od frekvenčních měničů a jejich role v řízení dopravníků. V této části je popsán teoretický základ a také způsob ovládání frekvenčního měniče Sinamics G120D, který je hojně využívaný v dopravnících společnosti Honeywell. Následně je provedena rešerše vývojových desek, vzhledem k tomu, že bylo použití vývojové desky shledáno nejlepším způsobem implementace mikrokontroléru do systému.
+
+Navržený systém obsahuje tři hlavní bloky: Návrh elektroniky, firmware v mikrokontroléru a software v mobilní aplikaci.
+
+Navržený elektronický obvod musí být chytře navržen tak, aby bylo možné ovládat dopravník lokálně i dálkově. Důležité je však, aby lokální ovládání bylo čistě analogové – tedy aby bylo možné dopravník ovládat i bez napájení mikrokontroléru (byť s méně funkcemi). Pro tento elektronický obvod je navržena i deska plošných spojů.
+
+Firmware v mikrokontroléru musí být schopen co nejlépe reagovat na příkazy, které přicházejí přes WiFi. Systém by měl být nakonfigurován tak, aby bylo možné ovládat pomocí jedné mobilní aplikace více správně nastavených dopravníků. Firmware je implementován pomocí objektově orientovaného programování a kód složitějších funkcí je modelován ve stavovém diagramu.
+
+Mobilní aplikace by měla být přehledná a jednoduchá k používání. Výhodou použití mobilní aplikace je možnost mít na jednom místě stránku pro ovládání dopravníků a také informace o správném nastavení frekvenčního měniče. Programování mobilní aplikace pomocí Reactu umožňuje implementovat do aplikace moderní funkcionality pro zlepšení kvality používání, jako například vizuální indikace toho, že si mobilní aplikace nemůže udržet WiFi komunikaci (což se může stát například, pokud se uživatel příliš vzdálí od vývojové desky).
 
 %\section*{Vysvětlivka značení:}
 %

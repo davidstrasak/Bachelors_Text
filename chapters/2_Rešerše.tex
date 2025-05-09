@@ -49,7 +49,7 @@ Pokud zanedbáme statorový odpor a budeme tedy uvažovat, že celé statorové 
 Princip podmínky konstantního sycení tedy spočívá v tom, že chceme mít konstantní spřažený magnetický tok. Tohle se dělá z důvodu, že na sycení motoru závisí například magnetizační proudy. Křivka sycení není lineární a má bod zvratu, kdy se menší změna sycení projeví ve mnohem větším zvýšení magnetizačního proudu než tomu bylo před bodem zvratu. Konstantní sycení je nastaveno proto, abychom zůstali před bodem zvratu a díky tomu bude magnetizační proud růst pomaleji a rozumně.
 
 \subsubsection{Režimy funkce frekvenčního měniče}
-Asynchronní motor, který je napájen z frekvenčního měniče má dva provozní režimy ve kterých se může nacházet. Těmi jsou oblast konstantního momentu a oblast konstantního výkonu zobrazené v grafu \ref{fig:provoznirezimyamsfrekvencnimmenicem}.
+Asynchronní motor, který je napájen z výkonové části frekvenčního měniče má dva provozní režimy ve kterých se může nacházet. Těmi jsou oblast konstantního momentu a oblast konstantního výkonu zobrazené v grafu \ref{fig:provoznirezimyamsfrekvencnimmenicem}.
 
 \begin{figure}[hptb]
 	\centering
@@ -65,7 +65,7 @@ V levé části grafu je oblast konstantního momentu s plným sycením motoru. 
 \end{equation}
 až do maximální hodnoty výkonu která je v bodě $n$ - jmenovitý bod motoru.
 
-Je také dobré podotknout, že levá část grafu nemůže jít takto od nulového napětí (tento graf je spíše idealizovaný případ), ale jde zpravidla od 10\% jmenovité hodnoty napětí, jelikož se musí pokrýt ztráty které vznikají na odporu statorového vinutí $R_S$. \cite{SkriptaRizeniOtacekAM}
+Je také dobré podotknout, že levá část grafu nemůže jít od nulového napětí jako to je v grafu zakresleno (tento graf je spíše idealizovaný případ), ale jde zpravidla od 10\% jmenovité hodnoty napětí, jelikož se musí pokrýt ztráty které vznikají na odporu statorového vinutí $R_S$. \cite{SkriptaRizeniOtacekAM}
 
 V pravé části grafu je oblast konstantního výkonu ve kterém se motor odbuzuje. Zde už není splněna podmínka z rovnice \ref{eq:PodminkaKonstantnihoSyceni} a tak motoru klesá moment. Vzhledem k tomu, že frekvence statorového napětí stále roste, tak rostou stále i otáčky rotoru.
 
@@ -163,7 +163,7 @@ Vzhledem k tomu, že frekvenční měnič pracuje ve výkonové části s usměr
 
 Po rozpojení napájení výkonové části zůstává na ovládacím panelu napětí $24V$. Tohle nízké napětí je ale chráněno šroubovacími gumovými krytkami, které zakrývají veškeré digitální vstupy a výstupy ovládacího panelu kde se toto napětí nachází.
 
-\section{Open-source vývojové desky}
+\section{Open-source vývojové desky}\label{sec:OpenSourceVyvojoveDesky}
 %\purpose{Zde bude úvod do open source vývojových desek.}
 
 Mikrokontroller, mozek praktické části bakalářské práce, není integrován přímo na desce s výkonovou částí zařízení. Využita byla možnost open-source vývojové desky, přičemž toto označení je dnes často synonymem pro Arduino, značku s největším přínosem v této oblasti.
@@ -181,7 +181,7 @@ Nakonec je důvodem zvolení open source vývojových desek do systému i jejich
 \subsection{Proč WEMOS vývojové desky}
 %\purpose{Tady bude popsané co jsou WEMOS desky a proč je používám. Taky tady bude důvod proč jsem si vybral WEMOS D1 Mini pro a srovnání s wemos D1 mini a arduino UNO}
 
-Arduino v dnešní době není jediná firma, která vyrábí open-source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS, která je výrobce vývojových desek které jsou podobné Arduino deskám, ale jejich zaměření je specificky ve vytváření kompaktních desek které mají integrovanou bezdrátovou konektivitu (WiFi a bluetooth) pomocí populárních mikrokontrolérů ESP32 a ESP8266 od společnosti Espressif Systems.
+Arduino v dnešní době není jediná firma, která vyrábí open-source vývojové desky. Pro tuhle bakalářskou práci byla zvolena vývojová deska od společnosti WEMOS, která je výrobce vývojových desek které jsou podobné Arduino deskám, ale jejich zaměření je specificky ve vytváření kompaktních desek které mají integrovanou bezdrátovou konektivitu (hlavně WiFi, ale některé z nich i Bluetooth) pomocí populárních mikrokontrolérů \textbf{ES}P32 a \textbf{ESP8266} od společnosti Espressif Systems.
 
 Mít možnost používat WiFi je důležitý požadavek, který musí vývojová deska splňovat. Pokud bude systém možné ovládat přes WiFi, je možné pro ovládání použít jakékoliv zařízení, které má WiFi technologii, což je v dnešní době většina chytrých zařízení. Kvůli tomu lze dopravník ovládat širokým spektrem chytrých zařízení a tak není potřeba aby s sebou uživatelé nosili dedikovaný vysílač.
 
@@ -209,28 +209,28 @@ Na základě požadavků projektu a srovnání s alternativami je pro realizaci 
 
 Technické specifikace této vývojové desky jsou následující: \cite{ESP8266EXDatasheet, D1MiniProDokumentace}
 \begin{itemize}
-	\item Mikrokontrolér: ESP-8266EX
-	\item Napájecí napětí: $5V$
-	\item Provozní napětí: $3,3V$
-	\item Počet digitálních I/O pinů (GPIO): 11. Tyto piny slouží pro digitální vstupní a výstupní signály které budou ovládat dopravník a na základě kterých se bude aproximovat rychlost dopravníku.
-	\item Podpora periferií na GPIO pinech: Většina digitálních pinů podporuje funkce jako:
+	\item \textbf{Mikrokontrolér}: ESP-8266EX
+	\item \textbf{Napájecí napětí}: $5V$
+	\item \textbf{Provozní napětí}: $3,3V$
+	\item \textbf{Počet digitálních I/O pinů (GPIO)}: 11. Tyto piny slouží pro digitální vstupní a výstupní signály které budou ovládat dopravník a na základě kterých se bude aproximovat rychlost dopravníku.
+	\item \textbf{Podpora periferií na GPIO pinech}: Většina digitálních pinů podporuje funkce jako:
 	\begin{itemize}
-		\item Přerušení (Interrupt): Umožňuje reakci mikrokontroléru na externí události.
-		\item PWM (Pulse Width Modulation): Pro generování semi-analogového signálu nebo snížení střední hodnoty napětí. Až 10 pinů má podporu PWM.
-		\item I2C: Dvouvodičová sériová sběrnice používaná pro komunikaci s periferiemi, jako je v tomto projektu použitý LCD displej. Deska disponuje dedikovanými piny pro tuto sběrnici na pinech D1 a D2.
-		\item One-wire: Sériová sběrnice pro komunikaci s některými typy senzorů.
+		\item \textbf{Přerušení (Interrupt)}: Umožňuje reakci mikrokontroléru na externí události.
+		\item \textbf{PWM (Pulse Width Modulation)}: Pro generování semi-analogového signálu nebo snížení střední hodnoty napětí. Až 10 pinů má podporu PWM.
+		\item \textbf{I2C}: Dvouvodičová sériová sběrnice používaná pro komunikaci s periferiemi, jako je v tomto projektu použitý LCD displej. Deska disponuje dedikovanými piny pro tuto sběrnici na pinech D1 a D2.
+		\item \textbf{One-wire}: Sériová sběrnice pro komunikaci s některými typy senzorů.
 	\end{itemize}
-	\item Analogový vstupní pin: 1. Tento pin umožňuje měřit analogové napětí, například z některých typů senzorů. Maximální vstupní napětí pro tento pin je 3.2V.
-	\item Paměť:
+	\item \textbf{Analogový vstupní pin}: 1. Tento pin umožňuje měřit analogové napětí, například z některých typů senzorů. Maximální vstupní napětí pro tento pin je 3.2V.
+	\item \textbf{Paměť}:
 	\begin{itemize}
-		\item Flash paměť: 16 MB. Tato velká kapacita Flash paměti je důležitá pro uložení aplikačního kódu, rozšiřujících knihoven (jako je WebServer) a webových souborů co jsou hostované na serveru.
-		\item RAM: 50 kB. Slouží pro běh programu a ukládání proměnných.
+		\item \textbf{Flash paměť}: 16 MB. Tato velká kapacita Flash paměti je důležitá pro uložení aplikačního kódu, rozšiřujících knihoven (jako je WebServer) a webových souborů co jsou hostované na serveru.
+		\item \textbf{RAM}: 50 kB. Slouží pro běh programu a ukládání proměnných.
 	\end{itemize}
-	\item Bezdrátová konektivita: Integrovaná WiFi na frekvenci 2.4 GHz.
-	\item Anténa: Možnost připojení externí antény prostřednictvím IPEX1 / SMA konektoru nebo využití vestavěné keramické antény pro testování. Pro zvýšení spolehlivosti a dosahu v industriálním prostředí je využita možnost externí antény.
-	\item Napájení a programování: Micro USB konektor. Deska může být napájena přes USB nebo přes 5V pin.
-	\item Napájení z baterie: Rozhraní pro připojení lithiové baterie s nabíjecím proudem až 500mA. Toto rozhraní ale v tomto projektu není využíváno a navržená deska plošných spojů není pro používání baterie uspořádána.
-	\item Kompatibilita: Deska je kompatibilní s vývojovými prostředími a firmwary jako Arduino, MicroPython a NodeMCU, což poskytuje flexibilitu při vývoji firmwaru.
+	\item \textbf{Bezdrátová konektivita}: Integrovaná WiFi na frekvenci 2.4 GHz.
+	\item \textbf{Anténa}: Možnost připojení externí antény prostřednictvím IPEX1 / SMA konektoru nebo využití vestavěné keramické antény pro testování. Pro zvýšení spolehlivosti a dosahu v industriálním prostředí je využita možnost externí antény.
+	\item \textbf{Napájení a programování}: Micro USB konektor. Deska může být napájena přes USB nebo přes 5V pin.
+	\item \textbf{Napájení z baterie}: Rozhraní pro připojení lithiové baterie s nabíjecím proudem až 500mA. Toto rozhraní ale v tomto projektu není využíváno a navržená deska plošných spojů není pro používání baterie uspořádána.
+	\item \textbf{Kompatibilita}: Deska je kompatibilní s vývojovými prostředími a firmwary jako Arduino, MicroPython a NodeMCU, což poskytuje flexibilitu při vývoji firmwaru.
 \end{itemize}
 
 Zapojení vývojové desky do navrhnuté desky plošných spojů je popsáno v kapitole \ref{sec:Hardware}.
@@ -238,7 +238,7 @@ Zapojení vývojové desky do navrhnuté desky plošných spojů je popsáno v k
 \subsection{Arduino framework pro ESP8266}\label{sec:ArduinoFrameworkForESP8266}
 % \purpose{Trochu uvést do kontextu jak funguje arduino framework for esp8266 a jak specificky řeším provozování webserveru na mým MCU.}
 
-Pro programování mikrokontrolerů z řad EPS8266 je možné využít jejich nativního software development kitu (SDK) anebo takzvaný "Arduino framework" pro tuto platformu. Tato knihovna je portace SDK pro platformu Arduino a díky tomu je možné používat prostředí jako je Arduino IDE nebo Platformio pro programování ESP8266 mikrokontrolerů. Tohle všechno je možné i přesto, že mají ESP8266 i Arduino přirozeně různé základy, které spolu ve výchozím stavu nejsou kompatibilní. Tato podpora umožňuje velkému množství hobby i profesionálním programátorům programovat ESP8266 mikrokontrolery ve stejném prostředí jako ve kterém programovali své Arduino projekty. To všechno bez ztráty hardwarových nebo síťových periferií.
+Pro programování mikrokontrolerů z řad ESP8266 je možné využít jejich nativního software development kitu (SDK) anebo takzvaný \textbf{Arduino framework} pro tuto platformu. Tato knihovna je portace SDK pro platformu Arduino a díky tomu je možné používat prostředí jako je \textbf{Arduino IDE} nebo \textbf{Platformio} pro programování ESP8266 mikrokontrolerů. Tohle všechno je možné i přesto, že mají ESP8266 i Arduino přirozeně různé základy, které spolu ve výchozím stavu nejsou kompatibilní. Tato podpora umožňuje velkému množství hobby i profesionálním programátorům programovat ESP8266 mikrokontrolery ve stejném prostředí jako ve kterém programovali své Arduino projekty. To všechno bez ztráty hardwarových nebo síťových periferií.
 
 "Arduino framework pro ESP8266 je podpora ESP8266 mikrokontroleru pro Arduino prostředí. To vývojářům umožňuje používat známé Arduino funkce a knihovny, které je možné spouštět přímo na ESP8266 mikrokontrolleru." \cite{ESP8266ArduinoFrameworkGithub}
 
@@ -254,15 +254,15 @@ V této práci byl kód mikrokontroleru programován uvnitř programovacího pro
 \subsubsection{Knihovny pro webové funkce}
 %\purpose{Popsat co dělají knihovny ESP8266WiFi, WiFiClient, ESP8266WebServer a ESP8266mDNS}
 
-Využití Arduino frameworku pro ESP8266 plně umožňuje využít i WiFi funkcionality tohoto mikrokontroleru. Knihovny co jsou využité jsou knihovny ESP8266WiFi, ESP8266WebServer a ESP8266mDNS.
+Využití Arduino frameworku pro ESP8266 plně umožňuje využít i WiFi funkcionality tohoto mikrokontroleru. Knihovny co jsou využité jsou knihovny \texttt{ESP8266WiFi}, \texttt{ESP8266WebServer} a \texttt{ESP8266mDNS}.
 
-Knihovna \textbf{ESP8266WiFi} je základní stavební kámen veškeré síťové komunikace. Bez této knihovny by se mikrokontroler nemohl připojit k existující bezdrátové síti nebo si vytvořit vlastní hotspot. V kódu se implementuje pomocí příkazů jako je \textit{WiFi.begin(jmeno,heslo)}.
+Knihovna \textbf{ESP8266WiFi} je základní stavební kámen veškeré síťové komunikace. Bez této knihovny by se mikrokontroler nemohl připojit k existující bezdrátové síti nebo si vytvořit vlastní hotspot. V kódu se implementuje pomocí příkazů jako je \texttt{WiFi.begin(jmeno,heslo)}.
 
-Funkcionalitu web serveru, která je velmi důležitá pro tento projekt implementuje knihovna \textbf{ESP8266WebServer}. Tato knihovna poskytuje funkce pro definování plně funkčního HTTP serveru a odpovědi na jeho webové požadavky (např. GET pro získání dat, POST pro doesílání dat a další). Tento webový server umí servírovat statické webové stránky, ale umí v rámci jejich provádění i spouštět jakékoliv další funkce mikrokontroleru. Tohle umožňuje ovládat mikrokontroler skrz odpovědi na webové adresy.
+Funkcionalitu web serveru, která je velmi důležitá pro tento projekt implementuje knihovna \textbf{ESP8266WebServer}. Tato knihovna poskytuje funkce pro definování plně funkčního HTTP serveru a odpovědi na jeho webové požadavky (např. GET pro získání dat, POST pro odesílání dat a další). Tento webový server umí servírovat statické webové stránky, ale umí v rámci jejich provádění i spouštět jakékoliv další funkce mikrokontroleru. Tohle umožňuje ovládat mikrokontroler skrz odpovědi na webové adresy.
 
 Knihovna \textbf{ESP8266mDNS} neboli ESP8266 multicast DNS je knihovna, který umožňuje ukládat IP adresu mikrokontroleru na jakýchkoliv předem definovaných adresách která stačí zadat do prohlížeče na zařízení, které má server mikrokontroleru k dispozici.
 
-Tyto tři knihovny se dohromady dají nastavit například tak, aby se pomocí jedné webové stránky dostupné na IP adrese \textit{espwebserver} dala ovládala LED dioda na mikrokontroleru.
+Tyto tři knihovny se dohromady dají nastavit například tak, aby se pomocí jedné webové stránky dostupné na IP adrese \texttt{http://espwebserver} dala ovládala LED dioda na mikrokontroleru.
 
 \begin{figure}[H]
 	\centering
@@ -331,11 +331,11 @@ Tyto tři knihovny se dohromady dají nastavit například tak, aby se pomocí j
 	}
 \end{lstlisting}
 
-V ukázce kódu \ref{lst:NastaveniWebServeru} lze z webových funkcionalit vidět hlavně globální objekt typu ESP8266WebServer s názvem server, pomocí kterého lze odpovídat na webové požadavky definované ve funkci \textit{setup()}. Funkce \textit{zpravaHlavni} je funkce kterou se odpovídá na většinu webových GET požadavků a tak je lépe definovaná a obsahuje dodatečné informace o stavu LED diody a času od spuštění. Tato funkce také rovnou obsahuje kód v jazyce HTML, ve kterém se píšou webové stránky.
+V ukázce kódu \ref{lst:NastaveniWebServeru} lze z webových funkcionalit vidět hlavně globální objekt typu \texttt{ESP8266WebServer} s názvem \texttt{server}, pomocí kterého lze odpovídat na webové požadavky definované ve funkci \texttt{setup()}. Funkce \texttt{zpravaHlavni} obsahuje HTML kód který se na počítači načte pokud je IP adresa vývojové desky zadaná do prohlížeče. Jelikož je to hlavní stránka, je definovaná ve vlastní funkci a obsahuje dodatečné informace o stavu LED diody a času od spuštění.
 
-Kód dále obsahuje připojení na WiFi pod zadaným názvem a heslem s tím že čeká na připojení a až poté bude provádět zbytek kódu. Zbytek \textit{setup()} funkce obsahuje odpovědi na webové požadavky. Každá odpověď na webový požadavek odpoví tím, že zpět pošle HTML kód z funkce \textit{zpravaHlavni} (který zobrazuje informace jako jsou v obrázku \ref{fig:espwebserverukazka}), ale v případě adres \textit{/ledON} a \textit{/ledOFF} stránka ještě nastaví vysokou nebo nízkou hodnotu na LED diodu na vývojové desce.
+Kód dále obsahuje připojení na WiFi pod zadaným názvem a heslem s tím že čeká na připojení a až poté bude provádět zbytek kódu. Zbytek \texttt{setup()} funkce obsahuje odpovědi na webové požadavky. Každá odpověď na webový požadavek odpoví tím, že zpět pošle HTML kód z funkce \texttt{zpravaHlavni} (který zobrazuje informace jako jsou v obrázku \ref{fig:espwebserverukazka}), ale v případě adres "ledON" a "/ledOFF" stránka ještě nastaví vysokou nebo nízkou hodnotu na LED diodu na vývojové desce.
 
-Nakonec je zde funkce \textit{loop()}, která se každých 10 milisekund snaží odpovídat na webové požadavky. Na základě zadaných adres odpovídá prováděním bloků kódu které byly nastaveny v \textit{setup()} funkci.
+Nakonec je zde funkce \texttt{loop()}, která se každých 10 milisekund snaží odpovídat na webové požadavky. Na základě zadaných adres odpovídá prováděním bloků kódu které byly nastaveny v \texttt{setup()} funkci.
 
 % Na doporučení vedoucího tyhle kapitoly už nedělám, protože se budu moct lépe vyřádit v té praktické části
 %\subsubsection{Architektura ESP8266EX}

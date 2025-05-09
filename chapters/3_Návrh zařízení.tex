@@ -89,15 +89,15 @@ Základní stavební kámen celého systému je jeho hardware společně s desko
 Při tvorbě desky se vycházelo z požadavků na systém. Nejdřív se vycházelo z toho, že desku musí být možné napájet z ovládacího panelu, který má výstupní port na kterém je $24V$ a který je schopný dodat maximálně $8A$. Ze začátku se tedy počítalo s $24V$ napětím, pro které bylo potřeba zvolit dobrý převodník napětí co je schopný napětí přeměnit na $5V$ kterým se napájí vývojová deska. Nakonec byl zvolený převodník napětí s galvanicky oddělenou zemí aby se minimalizovala šance, že by kvůli nějaké chybě v návrhu desky byl zničený ovládací panel frekvenčního měniče.
 \cite{SiemensG120DGettingStarted}
 
-Dále se při návrhu vycházelo z myšlenky že systém musí mít i lokální i dálkové ovládání, s tím, že lokální ovládání musí být dostupné i bez napájení mikrokontroleru. Tohle bylo vyřešeno návrhem dvou přepínačů. \textit{Relé pro lokální a dálkové ovládání} je přepínač, který je normálně v poloze lokálního ovládání (aby byl splněný požadavek čistě analogového ovládání), ale pokud se na něj přidá napětí, přepne se do stavu dálkového ovládání. Následně je v desce \textit{Relé pro dálkové ovládání}, což je běžné SPST relé které sepne kontakty pokud je na něj přivedeno napětí.
+Dále se při návrhu vycházelo z myšlenky že systém musí mít i lokální i dálkové ovládání, s tím, že lokální ovládání musí být dostupné i bez napájení mikrokontroleru. Tohle bylo vyřešeno návrhem dvou přepínačů. \textit{Relé pro lokální a dálkové ovládání} je přepínač, který je normálně v poloze lokálního ovládání (aby byl splněný požadavek čistě analogového ovládání), ale pokud se na něj přidá napětí a dostatečný proud, přepne se do stavu dálkového ovládání. Následně je v desce \textit{Relé pro dálkové ovládání}, což je běžné SPST relé, které sepne kontakty pokud je na něj přivedeno napětí a dostatečný proud.
 
 Po dokončení schématu se přešlo na návrh umístění součástek na DPS. Finální návrh lze vidět v obrázku \ref{fig:PCBbothSides}. Při rozmisťování součástek po desce byl kladen důraz na několik kritérií:
 \begin{itemize}
-	\item Aby měla deska co nejmenší rozměry a měla jen dvě vrstvy
-	\item Aby byly všechny součástky na jedné straně desky (jednodušší pájení komponentů na desku)
-	\item Aby byly trasy co nejkratší
-	\item Aby měla deska co nejméně vertikálních cest (pro zmenšení efektů parazitní kapacity a parazitní indukčnosti)
-	\item Aby byly filtrační kondenzátory co nejblíž filtrovaných napájecích vstupů
+	\item Aby měla deska co nejmenší rozměry a jen dvě vrstvy.
+	\item Aby byly všechny součástky na jedné straně desky (jednodušší pájení komponentů na desku).
+	\item Aby byly trasy co nejkratší.
+	\item Aby měla deska co nejméně vertikálních cest (pro zmenšení efektů parazitní kapacity a parazitní indukčnosti).
+	\item Aby byly filtrační kondenzátory co nejblíž filtrovaných napájecích vstupů.
 \end{itemize}
 
 \begin{figure}[hptb]
@@ -180,7 +180,7 @@ Pro jednoduchost výměny LCD displeje bylo také zvoleno, že nebude přímo p�
 %\purpose{Sem napsat jak jsem navrhoval LC filtr za napájecím napětí, proč jsem se rozhodl použít LC filtr a třeba by se sem mohl hodit nějakej grafík přenosové funkce kdybych se nudil. Zvolil jsem si cutoff aby byl alespoň 1/10 hodnoty na které měnič dělá šum a díky tomu by měla hodnota tohoto šumu být o 20dB menší.}
 %\purpose{Vysvětlit jaký specifický hardware součásti jsem do desky dal a proč jsem se rozhodl je tam dát.}
 
-\section{Firmware ve vývojové desce}
+\section{Firmware ve vývojové desce}\label{sec:Firmware}
 % \purpose{Tady bych rád trochu vysvětlil jak funguje software ve vývojové desce.}
 
 Jak bylo již napsáno v kapitole \ref{sec:ArduinoFrameworkForESP8266} tento projekt byl programovaný v prostředí PlatformIO. Tohle programovací prostředí má tu výhodu v tom, že pro programování vývojových desek si stačí vybrat typ vývojové desky, kterou programuji a dané prostředí se nakonfiguruje tak, aby to bylo možné (V případě WEMOS D1 Mini Pro byl implementován Arduino framework pro ESP8266). Z tohoto prostředí tedy lze programovat jakékoliv vývojové desky a programovat je jakýmkoliv jazykem mezi které patří například Arduino jazyk anebo MicroPython. Pro firmware v tomto projektu byl zvolený Arduino framework a tak je programovací jazyk Arduino verze C++.
@@ -188,9 +188,9 @@ Jak bylo již napsáno v kapitole \ref{sec:ArduinoFrameworkForESP8266} tento pro
 
 Honeywell je anglicky mluvící firma a tak je celý firmware i software v mobilní aplikaci programovaný anglicky.
 
-V C++ programovacím jazyku se běžně objevují dva hlavní typy souborů. Jsou to hlavičkové soubory (s koncovkou \textit{.h}) a zdrojové soubory (s koncovkou \textit{.cpp}). Zatímco hlavičkové soubory obsahují deklarace, jako jsou prototypy funkcí nebo definice globálních proměnných, zdrojové soubory obsahují implementace a kód který je následně kompilován a prováděn na mikrokontroleru. V tomto projektu jsou dva hlavičkové a dva zdrojové soubory.
+V C++ programovacím jazyku se běžně objevují dva hlavní typy souborů. Jsou to hlavičkové soubory (s koncovkou \texttt{.h}) a zdrojové soubory (s koncovkou \texttt{.cpp}). Zatímco hlavičkové soubory obsahují deklarace, jako jsou prototypy funkcí nebo definice globálních proměnných, zdrojové soubory obsahují implementace a kód který je následně kompilován a prováděn na mikrokontroleru. V tomto projektu jsou dva hlavičkové a dva zdrojové soubory.
 
-Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupních a vstupních piny GPIO vývojové desky aby bylo jednodušší se orientovat v kódu. Dále je zde soubor \textbf{main.cpp}, který kompilátor přirozeně vyhledává aby v něm nastavil začátek provádění kódu. Nakonec je zde zdrojový a hlavičkový soubor s názvem \textbf{ConveyorController} který definuje třídu a zdrojový kód objektu který celý systém řídí.
+Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupních a vstupních piny GPIO vývojové desky aby bylo jednodušší se orientovat v kódu. Dále je zde soubor \textbf{main.cpp}, který kompilátor přirozeně vyhledává aby v něm nastavil začátek provádění kódu. Nakonec je zde zdrojový a hlavičkový soubor s názvem \texttt{ConveyorController} který definuje třídu a zdrojový kód objektu který celý systém řídí.
 
 \subsection{Třída a objekt ConveyorController}\label{sec:ConveyorController}
 % \purpose{V kódu všechno ovládám pomocí tohoto objektu, který obsahuje hodně public a private funkcí. Tady bych chtěl vysvětlit z jakýho důvodu jsem se rozhodl vývojovou desku ovládat tímto způsobem a dále vysvětlit co jednotlivé důležité metody a proměnné dělají.}
@@ -198,37 +198,37 @@ Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupn
 C++ je objektově orientovaný program a tak má rozsáhlé funkce pro definici vlastních tříd. Kvůli tomu je důležité rozlišovat mezi pojmy třída a objekt. Třída v C++ slouží jako abstraktní definice pro vytvoření nového uživatelsky definovaného datového typu. Objekt je na druhou stranu konkrétní instance třídy a tak má alokované místo v RAM paměti a je sledovaný jeho unikátní stav během provádění kódu.
 \cite{CppObjectAndClassArticle}
 
-Hlavní výhodou proč byl v práci použitý objektově orientovaný přístup je kvůli zavedení takzvané \textbf{enkapsulace} uvnitř kódu. Jinými slovy, umožňuje to separaci řídící logiky dopravníku od zbytku aplikačního kódu. Během implementace firmwaru vyvstala potřeba, aby určité proměnné, jako například proměnná \textit{conveyorSpeed} reprezentující aproximaci rychlosti dopravníku či proměnná \textit{remoteLocalState} indikující stav řízení (vzdálené/lokální), byly přístupné napříč několika funkcemi. Běžně by bylo možné tyto proměnné řešit pomocí globálních proměnných, ale to je v komplexnějších firmwarech považováno za rizikové.
+Hlavní výhodou proč byl v práci použitý objektově orientovaný přístup je kvůli zavedení takzvané \textbf{enkapsulace} uvnitř kódu. Jinými slovy, umožňuje to separaci řídící logiky dopravníku od zbytku aplikačního kódu. Během implementace firmwaru vyvstala potřeba, aby určité proměnné, jako například proměnná \texttt{conveyorSpeed} reprezentující aproximaci rychlosti dopravníku či proměnná \texttt{remoteLocalState} indikující stav řízení (vzdálené/lokální), byly přístupné napříč několika funkcemi. Běžně by bylo možné tyto proměnné řešit pomocí globálních proměnných, ale to je v komplexnějších firmwarech považováno za rizikové.
 \cite{EnkapsulaceVCppArikl}
 
-V takovém případě se pro bezpečnější provádění kódu může přejít k využívání objektů. Samotný objekt je sice definovaný globálně, ale uvnitř má tři definice přístupu: \textbf{veřejný, privátní a chráněný}. Tímto způsobem se může pro jakékoliv proměnné uvnitř objektu určit, v jakých částech kódu budou dostupné, s tím, že pokud je proměnná definovaná jako veřejná, dá se získat i mimo daný objekt a na druhou stranu pokud je proměnná privátní, je možné ji získat pouze uvnitř metod objektu. Metoda je taková funkce, kterou je možné uvnitř objektu se stejnými přístupy definovat a je to kus kódu co bude provedený pokud bude metoda zavolaná. Metody které jsou veřejné je tedy možné spouštět ze skriptu \textit{main.cpp} ve kterém existuje globální instance objektu, ale privátní metody už není možné z hlavního skriptu spouštět.
+V takovém případě se pro bezpečnější provádění kódu může přejít k využívání objektů. Samotný objekt je sice definovaný globálně, ale uvnitř má tři definice přístupu: \textbf{veřejný, privátní a chráněný}. Tímto způsobem se může pro jakékoliv proměnné uvnitř objektu určit, v jakých částech kódu budou dostupné, s tím, že pokud je proměnná definovaná jako veřejná, dá se získat i mimo daný objekt a na druhou stranu pokud je proměnná privátní, je možné ji získat pouze uvnitř metod objektu. Metoda je taková funkce, kterou je možné uvnitř objektu se stejnými přístupy definovat a je to kus kódu co bude provedený pokud bude metoda zavolaná. Metody které jsou veřejné je tedy možné spouštět ze skriptu \texttt{main.cpp} ve kterém existuje globální instance objektu, ale privátní metody už není možné z hlavního skriptu spouštět.
 
-Kvůli této funkcionalitě bylo od začátku rozhodnuto, že bude kód programovaný tímto způsobem. Většina kódu bude obsažena v conveyorController objektu a v hlavním zdrojovém kódu budou pouze volány veřejné metody této globální instance třídy ConveyorController.
+Kvůli této funkcionalitě bylo od začátku rozhodnuto, že bude kód programovaný tímto způsobem. Většina kódu bude obsažena v \texttt{conveyorController} objektu a v hlavním zdrojovém kódu budou pouze volány veřejné metody této globální instance třídy \texttt{ConveyorController}.
 
-Aby bylo možné představit jaké funkce jsou v ConveyorController třídě obsaženy, zde je její definice v hlavičkovém souboru \textit{ConveyorController.h}:
+Aby bylo možné představit jaké funkce jsou v \texttt{ConveyorController} třídě obsaženy, zde je její definice v hlavičkovém souboru \texttt{ConveyorController.h}:
 
 \input{codes/ConveyorControllerHeader}
 
-Z této definice lze vidět, že pro přehlednost je celkový kód rozdělený do různých metod tak, aby měla každá metoda svůj účel. Tyto metody jsou seřazené podle pořadí provedení až do funkce startTicker, po které se už funkce provádějí periodicky. Účely které zajišťují metody jsou:
+Z této definice lze vidět, že pro přehlednost je celkový kód rozdělený do různých metod tak, aby měla každá metoda svůj účel. Tyto metody jsou seřazené podle pořadí provedení až do funkce \texttt{startTicker}, po které se už funkce provádějí periodicky. Účely které zajišťují metody jsou:
 
 \begin{itemize}
-	\item \textbf{initIO} - Nastavuje piny vývojové desky na vstupy a výstupy pomocí PinMode příkazu a dále inicializuje výstupní piny na nízkou hodnotu.
+	\item \textbf{initIO} - Nastavuje piny vývojové desky na vstupy a výstupy pomocí \texttt{PinMode} příkazu a dále inicializuje výstupní piny na nízkou hodnotu.
 	\item \textbf{initLCD} - Inicializuje používání LCD displeje.
 	\item \textbf{initWeb} - Začne hledání webové sítě, která by odpovídala parametrům nastaveného jména (SSID) a hesla. Také informuje o hledání sítě na LCD displeji a přes serial komunikaci, kterou se hodí mít při debugování firmware.
-	\item \textbf{assignRoutes} - Přiřadí WebServeru odpovědi na jednotlivé adresy. Tyto odpovědi obsahují nejdříve nastavení \textit{<head>} části odpověďi (dále vysvětlené v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}), poté provádění C++ kódu a nakonec odesílání odpovědí na požadavky.
+	\item \textbf{assignRoutes} - Přiřadí WebServeru odpovědi na jednotlivé adresy. Tyto odpovědi obsahují nejdříve nastavení \texttt{<head>} části odpověďi (dále vysvětlené v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}), poté provádění C++ kódu a nakonec odesílání odpovědí na požadavky.
 	\item \textbf{startWebServer} - Spustí WebServer, který bude nyní přijímat požadavky.
-	\item \textbf{startTicker} - Nastaví Ticker (časovač) pro periodické spouštění hlavní funkce \textbf{updateState} a funkce pro aktualizaci LCD.
+	\item \textbf{startTicker} - Nastaví \texttt{Ticker} (časovač) pro periodické spouštění hlavní funkce \texttt{updateState} a funkce pro aktualizaci LCD.
 	\item \textbf{handleClient} - Sleduje webové požadavky.
 	\item \textbf{updateLCD} - Aktualizuje na LCD displeji hodnotu IP adresy a hodnotu rychlosti dopravníku.
 	\item \textbf{updateState} - Tato funkce řídí relé na desce plošných spojů a tak i ovládá celý dopravník. Chová se dle stavového diagramu, který je popsaný v kapitole \ref{sec:UpdateStateStavovyDiagram}.
 \end{itemize}
 
-Hlavičkový soubor dále obsahuje i několik prototypů privátních metod které urychlují psaní kódu při opakovaných úkonech a proměnných které jsou používáné uvnitř metod (všechny proměnné používané uvnitř třídy jsou privátní). Specifické privátní metody které je potřeba poukázat jsou metody \textbf{mainRoute} a \textbf{unknownRouteReponse}. Tyhle metody zahrnují vytváření HTML řetězce kterým se odpovídá na webové požadavky, co přichází na WebServer. Je to podobný způsob jak odpovídat na webové požadavky jako byl v ukázce kódu \ref{lst:NastaveniWebServeru}.
+Hlavičkový soubor dále obsahuje i několik prototypů privátních metod které urychlují psaní kódu při opakovaných úkonech a proměnných které jsou používáné uvnitř metod (všechny proměnné používané uvnitř třídy jsou privátní). Specifické privátní metody které je potřeba poukázat jsou metody \texttt{mainRoute} a \texttt{unknownRouteReponse}. Tyhle metody zahrnují vytváření HTML řetězce kterým se odpovídá na webové požadavky, co přichází na WebServer. Je to podobný způsob jak odpovídat na webové požadavky jako byl v ukázce kódu \ref{lst:NastaveniWebServeru}.
 
 \subsection{Stavový diagram logiky systému}\label{sec:UpdateStateStavovyDiagram}
 %\purpose{Vysvětlit jak funguje funkce v kódu která se chová na základě stavového diagramu}
 
-Aby bylo možné řídit dopravník pomocí ConveyorController objektu, je potřebné implementovat v kódu logiku, která sleduje stav ovládání dopravníku a podle stavu ovládání bude spínat tranzistory co spouští relé v desce plošných spojů. Do téhle funkcionality se navíc dalo přidat i některé další funkce jako je aproximace rychlosti dopravníku blíže popsaná v kapitole \ref{sec:AproximaceRychlostiDopravniku}. Tato veřejná metoda objektu ConveyorController se jmenuje updateState a je pomocí knihovny Ticker prováděna každých 300 milisekund.
+Aby bylo možné řídit dopravník pomocí \texttt{ConveyorController} objektu, je potřebné implementovat v kódu logiku, která sleduje stav ovládání dopravníku a podle stavu ovládání bude spínat tranzistory co spouští relé v desce plošných spojů. Do téhle funkcionality se navíc dalo přidat i některé další funkce jako je aproximace rychlosti dopravníku blíže popsaná v kapitole \ref{sec:AproximaceRychlostiDopravniku}. Tato veřejná metoda objektu \texttt{ConveyorController} se jmenuje \texttt{updateState} a je pomocí knihovny Ticker prováděna každých 300 milisekund.
 
 V tomhle systému je na tuto část kódu nahlíženo jako na stavový diagram Harelova typu. Pro přehlednost je zde stavový diagram rozdělený do tří různých částí (byl ale navrhován jako jeden celek):
 \begin{itemize}
@@ -257,7 +257,7 @@ Ve stavu s lokálním ovládáním se nastaví výstupní pin vývojové desky o
 
 V tomto stavu působí mikrokontroler spíše jako pouhý pozorovatel stavu tlačítek, než aby přímo spínal nějaké z relé. V blokovém schématu systému na obrázku \ref{fig:SchemaDesky} lze vidět, že tomu tak je protože je relé pro přepínání lokálního nebo dálkového ovládání připojené přímo k tlačítku, které bez žádného digitálního zpracování spíná nebo rozepíná 24V linku napětí pro ovládací panel. Toto vychází z požadavku na systém \textbf{Systém musí mít ovládání které je čistě analogové}.
 
-Ze začátku se může pokračovat do větve \textbf{Dopravník je lokálně vypnutý}, a to v případě, že je hodnota přepínače, který lokálně ovládá stav ON/OFF, vyhodnocena LOW. V tomto stavu se pouze odečte hodnota rychlosti dopravníku, pokud je rychlost vyšší než 0 \footnote{rychlost dopravníku sledovaná v proměnné conveyorSpeed je pouze aproximace, která se zobrazuje v mobilní aplikaci a na LCD displeji. Není to vstup do ovládacího panelu.}.
+Ze začátku se může pokračovat do větve \textbf{Dopravník je lokálně vypnutý}, a to v případě, že je hodnota přepínače, který lokálně ovládá stav ON/OFF, vyhodnocena LOW. V tomto stavu se pouze odečte hodnota rychlosti dopravníku, pokud je rychlost vyšší než 0 \footnote{rychlost dopravníku sledovaná v proměnné \texttt{conveyorSpeed} je pouze aproximace, která se zobrazuje v mobilní aplikaci a na LCD displeji. Není to vstup do ovládacího panelu.}.
 
 Alternativně je možné pokračovat do větve \textbf{Dopravník je lokálně zapnutý}, pokud je hodnota přepínače ON/OFF vyhodnocena jako HIGH. V tomto případě se sleduje, jakým způsobem je dopravník ovládán, a na základě toho se přičte nebo odečte hodnota rychlosti dopravníku.
 

@@ -53,8 +53,8 @@
 \contentsline {section}{\numberline {3.4}Ověření zapojení více desek}{54}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Posouzení z hlediska bezpečnosti}{54}{section.3.5}%
 \contentsline {chapter}{Závěr (1 strana)}{56}{chapter*.41}%
-\contentsline {chapter}{Seznam zkratek a symbolů}{57}{chapter*.42}%
-\contentsline {chapter}{Seznam zdrojů}{58}{chapter*.43}%
+\contentsline {chapter}{Seznam zkratek a symbolů}{58}{chapter*.42}%
+\contentsline {chapter}{Seznam zdrojů}{59}{chapter*.43}%
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
@@ -113,6 +113,6 @@
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
-\contentsline {chapter}{Seznam obr\'azk\r {u}}{61}{chapter*.44}%
-\contentsline {chapter}{Seznam tabulek}{62}{chapter*.45}%
-\contentsline {chapter}{Seznam příloh}{63}{chapter*.46}%
+\contentsline {chapter}{Seznam obr\'azk\r {u}}{62}{chapter*.44}%
+\contentsline {chapter}{Seznam tabulek}{63}{chapter*.45}%
+\contentsline {chapter}{Seznam příloh}{64}{chapter*.46}%

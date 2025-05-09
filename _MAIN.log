@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  8 MAY 2025 22:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.10)  9 MAY 2025 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2111,13 +2111,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [54]) (chapters/5_ZÃ¡vÄ›r.tex
 
-[55]) (chapters/seznamy.tex
+[55]
 
 [56
 
-]
+]) (chapters/seznamy.tex
 
-[57
+[57]
+
+[58
 
 ]
 Overfull \hbox (8.03394pt too wide) in paragraph at lines 28--28
@@ -2133,11 +2135,11 @@ Overfull \hbox (9.34853pt too wide) in paragraph at lines 28--28
 
 
 
-[58
+[59
 
 ]
 
-[59]
+[60]
 Overfull \hbox (15.33029pt too wide) in paragraph at lines 28--28
 []\T1/lmr/m/it/12 Capacitor Blog - How Ca-pa-ci-tor Works\T1/lmr/m/n/12 . 2025.
  []Do-stupné také z[]: [][]$\T1/lmtt/m/n/12 https : / / capacitorjs .
@@ -2145,13 +2147,13 @@ Overfull \hbox (15.33029pt too wide) in paragraph at lines 28--28
 
 
 
-[60] (_MAIN.lof)
+[61] (_MAIN.lof)
 \tf@lof=\write8
 \openout8 = `_MAIN.lof'.
 
 
 
-[61
+[62
 
 ] (_MAIN.lot)
 \tf@lot=\write9
@@ -2159,11 +2161,11 @@ Overfull \hbox (15.33029pt too wide) in paragraph at lines 28--28
 
 
 
-[62
+[63
 
 ])
 
-[63
+[64
 
 ] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -2179,8 +2181,8 @@ Package logreq Info: Writing requests to '_MAIN.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39104 strings out of 473523
- 737296 string characters out of 5714630
+ 39105 strings out of 473523
+ 737303 string characters out of 5714630
  1841650 words of memory out of 5000000
  61244 multiletter control sequences out of 15000+600000
  653828 words of font info for 115 fonts, out of 8000000 for 9000
@@ -2202,9 +2204,9 @@ b><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pf
 b><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.
 pfb><C:/Users/David/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8
 a.pfb>
-Output written on _MAIN.pdf (63 pages, 16548297 bytes).
+Output written on _MAIN.pdf (64 pages, 16552565 bytes).
 PDF statistics:
- 1291 PDF objects out of 1440 (max. 8388607)
- 387 named destinations out of 1000 (max. 500000)
+ 1295 PDF objects out of 1440 (max. 8388607)
+ 388 named destinations out of 1000 (max. 500000)
  506 words of extra memory for PDF output out of 10000 (max. 10000000)
 

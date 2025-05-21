@@ -1,5 +1,6 @@
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
 \contentsline {chapter}{Úvod}{9}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Rešerše}{11}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Frekvenční měniče a jejich role v řízení dopravníků}{11}{section.1.1}%
@@ -26,35 +27,34 @@
 \contentsline {subsubsection}{Jak aplikace aproximuje rychlost dopravníku}{38}{subsubsection*.22}%
 \contentsline {section}{\numberline {2.4}Software v mobilní aplikaci}{39}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Architektura aplikace}{40}{subsection.2.4.1}%
-\contentsline {subsubsection}{Proč webová aplikace?}{41}{subsubsection*.23}%
-\contentsline {subsubsection}{Adresy webové aplikace}{41}{subsubsection*.24}%
+\contentsline {subsubsection}{Proč webová aplikace?}{40}{subsubsection*.23}%
+\contentsline {subsubsection}{Adresy webové aplikace}{40}{subsubsection*.24}%
 \contentsline {subsection}{\numberline {2.4.2}Použité knihovny a technologie v aplikaci}{41}{subsection.2.4.2}%
-\contentsline {subsubsection}{HTML, CSS a JS}{42}{subsubsection*.25}%
-\contentsline {subsubsection}{React}{42}{subsubsection*.26}%
-\contentsline {subsubsection}{TypeScript}{42}{subsubsection*.27}%
+\contentsline {subsubsection}{HTML, CSS a JS}{41}{subsubsection*.25}%
+\contentsline {subsubsection}{React}{41}{subsubsection*.26}%
+\contentsline {subsubsection}{TypeScript}{41}{subsubsection*.27}%
 \contentsline {subsubsection}{Tailwind}{42}{subsubsection*.28}%
 \contentsline {subsubsection}{DaisyUI}{42}{subsubsection*.29}%
-\contentsline {subsubsection}{Lucide for React}{43}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s WebServery}{43}{subsection.2.4.3}%
-\contentsline {subsubsection}{Jak dálkově spouštět dopravník}{44}{subsubsection*.31}%
-\contentsline {subsubsection}{Jak získat data o rychlosti dopravníku}{44}{subsubsection*.32}%
-\contentsline {subsubsection}{Jak ovládat vývojovou desku bez mobilní aplikace}{44}{subsubsection*.33}%
+\contentsline {subsubsection}{Lucide for React}{42}{subsubsection*.30}%
+\contentsline {subsection}{\numberline {2.4.3}Princip komunikace s WebServery}{42}{subsection.2.4.3}%
+\contentsline {subsubsection}{Jak dálkově spouštět dopravník}{43}{subsubsection*.31}%
+\contentsline {subsubsection}{Jak získat data o rychlosti dopravníku}{43}{subsubsection*.32}%
+\contentsline {subsubsection}{Jak ovládat vývojovou desku bez mobilní aplikace}{43}{subsubsection*.33}%
 \contentsline {subsection}{\numberline {2.4.4}Implementování GET požadavků s Capacitor}{44}{subsection.2.4.4}%
 \contentsline {subsection}{\numberline {2.4.5}Design aplikace}{46}{subsection.2.4.5}%
 \contentsline {subsection}{\numberline {2.4.6}Konvertování webové aplikace do mobilní aplikace}{48}{subsection.2.4.6}%
-\contentsline {subsubsection}{Postup konvertování webové aplikace}{49}{subsubsection*.36}%
 \contentsline {section}{\numberline {2.5}Vytvoření schránky pro desku}{49}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Kompletace řešení}{51}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Ověření návrhu}{54}{chapter.3}%
-\contentsline {subsubsection}{Způsob testování a prostředí}{54}{subsubsection*.39}%
-\contentsline {section}{\numberline {3.1}Ověření lokálního ovládání}{55}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Ověření mobilní aplikace}{55}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Spolehlivost dálkové komunikace}{56}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Ověření zapojení více desek}{56}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Posouzení z hlediska bezpečnosti}{56}{section.3.5}%
-\contentsline {chapter}{Závěr}{58}{chapter*.41}%
-\contentsline {chapter}{Seznam zkratek a symbolů}{60}{chapter*.42}%
-\contentsline {chapter}{Seznam zdrojů}{61}{chapter*.43}%
+\contentsline {section}{\numberline {2.6}Kompletace řešení}{50}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Ověření návrhu}{53}{chapter.3}%
+\contentsline {subsubsection}{Způsob testování a prostředí}{53}{subsubsection*.38}%
+\contentsline {section}{\numberline {3.1}Ověření lokálního ovládání}{54}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Ověření mobilní aplikace}{54}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Spolehlivost dálkové komunikace}{55}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Ověření zapojení více desek}{55}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Posouzení z hlediska bezpečnosti}{55}{section.3.5}%
+\contentsline {chapter}{Závěr}{57}{chapter*.40}%
+\contentsline {chapter}{Seznam zkratek a symbolů}{59}{chapter*.41}%
+\contentsline {chapter}{Seznam zdrojů}{60}{chapter*.42}%
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
@@ -111,6 +111,5 @@
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
 \babel@toc {czech}{}\relax 
-\babel@toc {czech}{}\relax 
-\babel@toc {czech}{}\relax 
-\contentsline {chapter}{Seznam obr\'azk\r {u}}{64}{chapter*.44}%
+\contentsline {chapter}{Seznam obr\'azk\r {u}}{63}{chapter*.43}%
+\contentsline {chapter}{Seznam příloh}{64}{chapter*.44}%

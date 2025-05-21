@@ -2434,22 +2434,21 @@
     <bcf:citekey order="38" intorder="1">DosahWIFIProtokolu</bcf:citekey>
     <bcf:citekey order="39" intorder="1">ReactWebDeveloperPopularity</bcf:citekey>
     <bcf:citekey order="40" intorder="1">ViteReactWeb</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">CapacitorDocs</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">HTMLweb</bcf:citekey>
-    <bcf:citekey order="42" intorder="2">CSSweb</bcf:citekey>
-    <bcf:citekey order="42" intorder="3">JSweb</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">ReactWeb</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">TSweb</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">Tailwindweb</bcf:citekey>
-    <bcf:citekey order="46" intorder="1">daisyuiweb</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">lucideWeb</bcf:citekey>
-    <bcf:citekey order="48" intorder="1">JavaScriptGET</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">DaisyUIthemeGenerator</bcf:citekey>
-    <bcf:citekey order="50" intorder="1">CapacitorHowItWorks</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">CORShowItWorks</bcf:citekey>
-    <bcf:citekey order="52" intorder="1">cleartextTraffic</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">HTMLweb</bcf:citekey>
+    <bcf:citekey order="41" intorder="2">CSSweb</bcf:citekey>
+    <bcf:citekey order="41" intorder="3">JSweb</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">ReactWeb</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">TSweb</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">Tailwindweb</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">daisyuiweb</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">lucideWeb</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">JavaScriptGET</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">DaisyUIthemeGenerator</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">CapacitorHowItWorks</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">CORShowItWorks</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">cleartextTraffic</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">HoneywellHala</bcf:citekey>
     <bcf:citekey order="53" intorder="1">HoneywellHala</bcf:citekey>
-    <bcf:citekey order="54" intorder="1">HoneywellHala</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

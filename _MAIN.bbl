@@ -395,20 +395,6 @@
       \verb https://vite.dev/guide/
       \endverb
     \endentry
-    \entry{CapacitorDocs}{misc}{}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labeltitlesource}{title}
-      \field{month}{5}
-      \field{title}{Capacitor - Cross-platform Native Runtime for Web Apps | Capacitor Documentation}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://capacitorjs.com/docs
-      \endverb
-      \verb{url}
-      \verb https://capacitorjs.com/docs
-      \endverb
-    \endentry
     \entry{HTMLweb}{misc}{}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
@@ -550,8 +536,8 @@
       \endverb
     \endentry
     \entry{CapacitorHowItWorks}{misc}{}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{month}{5}
       \field{title}{Capacitor Blog - How Capacitor Works}

@@ -19,7 +19,7 @@ V kontextu těchto zkoušek není nezbytné, aby frekvenční měniče komunikov
 
 Jak již bylo naznačeno v kapitole \ref{sec:FrekvencniMeniceAJejichRole}, frekvenční měniče se pro řízení asynchronních motorů teoreticky používat nemusí, ale poté by měl dopravník jenom omezený výběr z nastavitelných rychlostí a celé řízení by bylo mnohem složitější. V dnešní době jsou frekvenční měniče technicky nejvýhodnější způsob regulace motorů jak z hlediska technických parametrů (regulační rozsah a přesnost), tak i z energetického hlediska (regulace je bezeztrátová). Kvůli těmto důvodům jsou frekvenční měniče tak časté.  \cite{FrekvencniMeniceZeSkriptElektrickeRegulovanePohony}
 
-Frekvenční měnič Sinamics G120D je sice vektorově řízený, ale princip funkce frekvenčního měniče se dá lépe vysvětlit na měniči se skalárním řízením.
+Frekvenční měnič Sinamics G120D je sice vektorově řízený, ale princip funkce frek\-ven\-ční\-ho měniče se dá lépe vysvětlit na měniči se skalárním řízením.
 
 Rozdíl mezi těmito dvěma způsoby řízení spočívá v efektivitě. Vektorové řízení cíleně reguluje proud v cívkách asynchronního motoru tak, aby statorové magnetické pole bylo prostorově optimálně natočené vůči poli rotorovému (úhel závisí na počtu pólů). Díky tomu je dosaženo efektivnějšího pohonu rotoru požadovanou rychlostí a směrem. Skalární řízení naopak tento vzájemný úhel nesleduje, a proto není z hlediska řízení optimální. Vektorové řízení je zkrátka složitější, ale efektivnější a má další výhodu že umožňuje přímé řízení momentu.
 \cite{FrekvencniMeniceZeSkriptElektrickeRegulovanePohony}
@@ -90,7 +90,7 @@ Sinamics G120D se v rámci systémů společnosti Siemens dá používat s tří
 Tento frekvenční měnič je tvořen dvěma hlavními částmi - výkonová část a ovládací panel. Ovládací panel ovládá a monitoruje výkonovou část frekvenčního měniče pomocí několika kontrolních systémů na bází uzavřených smyček a díky tomu může kontrolovat bezpečný stav frekvenčního měniče a taky znemožnit ovládání, pokud by s měničem bylo něco v nepořádku. Také je schopný rekuperace energie z brždění linek a vracet ji do sítě, což zákazníkům snižuje náklady na provoz.
 \cite{SinamicsG120D}
 
-Všechny tyto funkcionality je možné ovládat přes průmyslové sběrnice PROFINET, PROFIBUS anebo běžnou sběrnicí EtherNet. Tímto způsobem dává PLC příkazy frekvenčnímu měniči v běžném režimu ovládání dopravníků.
+Všechny tyto funkcionality je možné ovládat přes průmyslové sběrnice PROFINET, PROFIBUS anebo běžnou sběrnicí EtherNet. Tímto způsobem dává PLC příkazy frek\-ven\-ční\-mu měniči v běžném režimu ovládání dopravníků.
 
 \subsection{Nastavení ovládacího panelu}\label{sec:NastaveniOvladacihoPanelu}
 %\purpose{Vysvětlit jak se dají dopravníky nastavit aby fungovaly s mým systémem}
@@ -174,7 +174,7 @@ Myšlenka vývojových desek jako jsou Arduino desky začala myšlenkou minimali
 Rychlou adaptaci veřejností umožnil nejenom kvalitní design desek, ale i software pro programování Arduino desek na počítači. Na rozdíl od předchozího proprietárního softwaru, který nebyl dostupný pro všechny operační systémy, je programovací prostředí Arduina open-source a spustitelné na všech systémech s podporou Java aplikací.
 \cite{KnihaOArduinu}
 
-Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotových vývojových desek namísto přímé integrace mikrokontrolleru v prototypování a vývoji. Mezi hlavní výhody patří možnost připojení vývojové desky pomocí kolíkových lišt, což umožňuje snadné vyjmutí pro přeprogramování nebo výměnu. Přímá integrace by v případě poruchy vyžadovala odpájení. Díky tomu vývojová deska celkově usnadňuje prototypování a opravitelnost.
+Kromě výhod ekosystému Arduino existují obecné důvody pro použití hotových vývojových desek namísto přímé integrace mikrokontrolleru v prototypování a vývoji. Mezi hlavní výhody patří možnost připojení vývojové desky pomocí kolíkových lišt, což umožňuje snadné vyjmutí pro přeprogramování nebo výměnu. Přímá integrace by v případě poruchy vyžadovala odpájení. Díky tomu vývojová deska celkově usnadňuje prototypování a o\-pra\-vi\-tel\-nost.
 
 Nakonec je důvodem zvolení open source vývojových desek do systému i jejich dostupnost a flexibilita kterou nabízejí. Jelikož jsou schémata zapojení desek veřejně dostupná, může je vyrábět jakýkoliv výrobce. Navíc je také možné používat veřejně dostupná schémata zapojení desek při návrhu vlastních desek plošných spojů do kterých jsou vývojové desky integrované a díky tomu známá přesná propojení jednotlivých komponentů v celé navržené desce plošných spojů.
 
@@ -216,7 +216,7 @@ Technické specifikace této vývojové desky jsou následující: \cite{ESP8266
 	\item \textbf{Podpora periferií na GPIO pinech}: Většina digitálních pinů podporuje funkce jako:
 	\begin{itemize}
 		\item \textbf{Přerušení (Interrupt)}: Umožňuje reakci mikrokontroléru na externí události.
-		\item \textbf{PWM (Pulse Width Modulation)}: Pro generování semi-analogového signálu nebo snížení střední hodnoty napětí. Až 10 pinů má podporu PWM.
+		\item \textbf{PWM (Pulse Width Modulation)}: Pro generování semi-analogového sig\-ná\-lu nebo snížení střední hodnoty napětí. Až 10 pinů má podporu PWM.
 		\item \textbf{I2C}: Dvouvodičová sériová sběrnice používaná pro komunikaci s periferiemi, jako je v tomto projektu použitý LCD displej. Deska disponuje dedikovanými piny pro tuto sběrnici na pinech D1 a D2.
 		\item \textbf{One-wire}: Sériová sběrnice pro komunikaci s některými typy senzorů.
 	\end{itemize}
@@ -254,13 +254,13 @@ V této práci byl kód mikrokontroleru programován uvnitř programovacího pro
 \subsubsection{Knihovny pro webové funkce}
 %\purpose{Popsat co dělají knihovny ESP8266WiFi, WiFiClient, ESP8266WebServer a ESP8266mDNS}
 
-Využití Arduino frameworku pro ESP8266 plně umožňuje využít i WiFi funkcionality tohoto mikrokontroleru. Knihovny co jsou využité jsou knihovny \texttt{ESP8266WiFi}, \texttt{ESP8266WebServer} a \texttt{ESP8266mDNS}.
+Využití Arduino frameworku pro ESP8266 plně umožňuje využít i WiFi funkcionality tohoto mikrokontroleru. Knihovny co jsou využité jsou knihovny \texttt{ESP8266WiFi}, \texttt{ESP\-8266\-Web\-Ser\-ver} a \texttt{ESP8266mDNS}.
 
-Knihovna \textbf{ESP8266WiFi} je základní stavební kámen veškeré síťové komunikace. Bez této knihovny by se mikrokontroler nemohl připojit k existující bezdrátové síti nebo si vytvořit vlastní hotspot. V kódu se implementuje pomocí příkazů jako je \texttt{WiFi.begin(jmeno,heslo)}.
+Knihovna \textbf{ESP8266WiFi} je základní stavební kámen veškeré síťové komunikace. Bez této knihovny by se mikrokontroler nemohl připojit k existující bezdrátové síti nebo si vytvořit vlastní hotspot. V kódu se implementuje pomocí příkazů jako je \texttt{WiFi.be\-gin\-(jme\-no\-,hes\-lo)}.
 
 Funkcionalitu web serveru, která je velmi důležitá pro tento projekt implementuje knihovna \textbf{ESP8266WebServer}. Tato knihovna poskytuje funkce pro definování plně funkčního HTTP serveru a odpovědi na jeho webové požadavky (např. GET pro získání dat, POST pro odesílání dat a další). Tento webový server umí servírovat statické webové stránky, ale umí v rámci jejich provádění i spouštět jakékoliv další funkce mikrokontroleru. Tohle umožňuje ovládat mikrokontroler skrz odpovědi na webové adresy.
 
-Knihovna \textbf{ESP8266mDNS} neboli ESP8266 multicast DNS je knihovna, který umožňuje ukládat IP adresu mikrokontroleru na jakýchkoliv předem definovaných adresách která stačí zadat do prohlížeče na zařízení, které má server mikrokontroleru k dispozici.
+Knihovna \textbf{ESP8266mDNS} neboli ESP8266 multicast DNS je knihovna, který u\-mož\-ňu\-je ukládat IP adresu mikrokontroleru na jakýchkoliv předem definovaných adresách která stačí zadat do prohlížeče na zařízení, které má server mikrokontroleru k dispozici.
 
 Tyto tři knihovny se dohromady dají nastavit například tak, aby se pomocí jedné webové stránky dostupné na IP adrese \texttt{http://espwebserver} dala ovládala LED dioda na mikrokontroleru.
 

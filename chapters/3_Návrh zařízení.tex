@@ -166,7 +166,7 @@ Konkrétně byl použit 16x2 znakový LCD displej (obrázek \ref{fig:LcdDisplej}
 	\label{fig:LcdDisplej}
 \end{figure}
 
-Vzhledem k citlivosti komunikace po I2C sběrnici na elektromagnetické rušení a přeslechy byly při návrhu desky plošných spojů dodrženy zásady pro minimalizaci smyčkové plochy mezi signálovými cestami SDA a SCL. Tento postup snižuje indukované napětí a přispívá ke spolehlivosti přenosu dat na sběrnici.
+Vzhledem k citlivosti komunikace po I2C sběrnici na elektromagnetické rušení a pře\-sle\-chy byly při návrhu desky plošných spojů dodrženy zásady pro minimalizaci smyčkové plochy mezi signálovými cestami SDA a SCL. Tento postup snižuje indukované napětí a přispívá ke spolehlivosti přenosu dat na sběrnici.
 \cite{CurrentLoopsBlog}
 
 Pro jednoduchost výměny LCD displeje bylo také zvoleno, že nebude přímo připájený v desce, ale podobně jako vývojová deska bude připojený skrz kolíkové lišty. Tohle zjednodušuje výměnu nebo upravení parametrů LCD displeje jako je jas zobrazených písmen.
@@ -190,7 +190,7 @@ Honeywell je anglicky mluvící firma a tak je celý firmware i software v mobil
 
 V C++ programovacím jazyku se běžně objevují dva hlavní typy souborů. Jsou to hlavičkové soubory (s koncovkou \texttt{.h}) a zdrojové soubory (s koncovkou \texttt{.cpp}). Zatímco hlavičkové soubory obsahují deklarace, jako jsou prototypy funkcí nebo definice globálních proměnných, zdrojové soubory obsahují implementace a kód který je následně kompilován a prováděn na mikrokontroleru. V tomto projektu jsou dva hlavičkové a dva zdrojové soubory.
 
-Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupních a vstupních piny GPIO vývojové desky aby bylo jednodušší se orientovat v kódu. Dále je zde soubor \textbf{main.cpp}, který kompilátor přirozeně vyhledává aby v něm nastavil začátek provádění kódu. Nakonec je zde zdrojový a hlavičkový soubor s názvem \texttt{ConveyorController} který definuje třídu a zdrojový kód objektu který celý systém řídí.
+Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupních a vstupních piny GPIO vývojové desky aby bylo jednodušší se orientovat v kódu. Dále je zde soubor \textbf{main.cpp}, který kompilátor přirozeně vyhledává aby v něm nastavil začátek provádění kódu. Nakonec je zde zdrojový a hlavičkový soubor s názvem \texttt{Con\-ve\-yor\-Con\-tro\-ller} který definuje třídu a zdrojový kód objektu který celý systém řídí.
 
 \subsection{Třída a objekt ConveyorController}\label{sec:ConveyorController}
 % \purpose{V kódu všechno ovládám pomocí tohoto objektu, který obsahuje hodně public a private funkcí. Tady bych chtěl vysvětlit z jakýho důvodu jsem se rozhodl vývojovou desku ovládat tímto způsobem a dále vysvětlit co jednotlivé důležité metody a proměnné dělají.}
@@ -198,12 +198,12 @@ Jeden hlavičkový soubor obsahuje definice alternativních názvů pro výstupn
 C++ je objektově orientovaný program a tak má rozsáhlé funkce pro definici vlastních tříd. Kvůli tomu je důležité rozlišovat mezi pojmy třída a objekt. Třída v C++ slouží jako abstraktní definice pro vytvoření nového uživatelsky definovaného datového typu. Objekt je na druhou stranu konkrétní instance třídy a tak má alokované místo v RAM paměti a je sledovaný jeho unikátní stav během provádění kódu.
 \cite{CppObjectAndClassArticle}
 
-Hlavní výhodou proč byl v práci použitý objektově orientovaný přístup je kvůli zavedení takzvané \textbf{enkapsulace} uvnitř kódu. Jinými slovy, umožňuje to separaci řídící logiky dopravníku od zbytku aplikačního kódu. Během implementace firmwaru vyvstala potřeba, aby určité proměnné, jako například proměnná \texttt{conveyorSpeed} reprezentující aproximaci rychlosti dopravníku či proměnná \texttt{remoteLocalState} indikující stav řízení (vzdálené/lokální), byly přístupné napříč několika funkcemi. Běžně by bylo možné tyto proměnné řešit pomocí globálních proměnných, ale to je v komplexnějších firmwarech považováno za rizikové.
+Hlavní výhodou proč byl v práci použitý objektově orientovaný přístup je kvůli zavedení takzvané \textbf{enkapsulace} uvnitř kódu. Jinými slovy, umožňuje to separaci řídící logiky dopravníku od zbytku aplikačního kódu. Během implementace firmwaru vyvstala potřeba, aby určité proměnné, jako například proměnná \texttt{conveyorSpeed} reprezentující aproximaci rychlosti dopravníku či proměnná \texttt{remoteLocalState} indikující stav řízení (vzdá\-le\-né\-/\-lo\-kál\-ní), byly přístupné napříč několika funkcemi. Běžně by bylo možné tyto proměnné řešit pomocí globálních proměnných, ale to je v komplexnějších firmwarech považováno za rizikové.
 \cite{EnkapsulaceVCppArikl}
 
 V takovém případě se pro bezpečnější provádění kódu může přejít k využívání objektů. Samotný objekt je sice definovaný globálně, ale uvnitř má tři definice přístupu: \textbf{veřejný, privátní a chráněný}. Tímto způsobem se může pro jakékoliv proměnné uvnitř objektu určit, v jakých částech kódu budou dostupné, s tím, že pokud je proměnná definovaná jako veřejná, dá se získat i mimo daný objekt a na druhou stranu pokud je proměnná privátní, je možné ji získat pouze uvnitř metod objektu. Metoda je taková funkce, kterou je možné uvnitř objektu se stejnými přístupy definovat a je to kus kódu co bude provedený pokud bude metoda zavolaná. Metody které jsou veřejné je tedy možné spouštět ze skriptu \texttt{main.cpp} ve kterém existuje globální instance objektu, ale privátní metody už není možné z hlavního skriptu spouštět.
 
-Kvůli této funkcionalitě bylo od začátku rozhodnuto, že bude kód programovaný tímto způsobem. Většina kódu bude obsažena v \texttt{conveyorController} objektu a v hlavním zdrojovém kódu budou pouze volány veřejné metody této globální instance třídy \texttt{ConveyorController}.
+Kvůli této funkcionalitě bylo od začátku rozhodnuto, že bude kód programovaný tímto způsobem. Většina kódu bude obsažena v \texttt{conveyorController} objektu a v hlavním zdrojovém kódu budou pouze volány veřejné metody této globální instance třídy \texttt{Con\-ve\-yor\-Con\-tro\-ller}.
 
 Aby bylo možné představit jaké funkce jsou v \texttt{ConveyorController} třídě obsaženy, zde je její definice v hlavičkovém souboru \texttt{ConveyorController.h}:
 
@@ -315,7 +315,7 @@ Díky možnosti nastavit pomocí knihovny \texttt{Ticker} metodu \texttt{updateS
 \section{Software v mobilní aplikaci}\label{sec:SoftwareVMobilniAplikaci}
 % \purpose{V téhle sekci popíšu jak přesně funguje mobilní aplikace kterou jsem vytvořil a poznatky s tím spojené.}
 
-Jak už bylo nastíněno v sekci \ref{sec:PopisFunkceSystemu}, primární důvod proč bylo rozhodnuto, že bude systém ovládaný přes mobilní aplikaci je, že není potřeba mít další zařízení, které bude fungovat jako dedikovaný hardwarový ovladač systému. Díky tomu je celkový systém přenositelnější a jednodušší ovládat, jelikož mobilní zařízení musí uživatelé mít už i kvůli zapisování dat z kontroly dopravníků. Komunikace mobilní aplikace a vývojové desky je realizována pomocí bezdrátové technologie WiFi, což umožňuje komunikaci v řádech desítek metrů (u nejnovějšího WiFi protokolu do 90 metrů).
+Jak už bylo nastíněno v kapitole \ref{sec:PopisFunkceSystemu} tak primární důvod, proč bylo rozhodnuto, že bude systém ovládaný přes mobilní aplikaci je, že není potřeba mít další zařízení, které bude fungovat jako dedikovaný hardwarový ovladač systému. Díky tomu je celkový systém přenositelnější a jednodušší ovládat, jelikož mobilní zařízení musí uživatelé mít už i kvůli zapisování dat z kontroly dopravníků. Komunikace mobilní aplikace a vývojové desky je realizována pomocí bezdrátové technologie WiFi, což umožňuje komunikaci v řádech desítek metrů (u nejnovějšího WiFi protokolu do 90 metrů).
 \cite{DosahWIFIProtokolu}
 
 Vzhledem k požadavku na systém s názvem \textbf{Uživatelská přívětivost systému} je navíc velmi výhodné mít systém ovládaný mobilní aplikací, jelikož je možné mít prakticky veškeré informace ohledně nastavování ovládacího panelu frekvenčního měniče na jednom místě. Tohle výrazně zlepšuje uživatelské používání systému, protože uživatelé nemusí hledat dokumentaci, když je na stejném místě jako ovládací prvky systému.
@@ -327,34 +327,30 @@ Mobilní aplikace není technicky vzato pro systém potřebná. WebServer je mo�
 
 Navržená mobilní aplikace vůbec není mobilní aplikace v tradičním slova smyslu, ale spíše jde o webovou aplikaci. Tuto webovou aplikace lze pomocí některých knihoven a rozšíření spolehlivě konvertovat do mobilní aplikace. Zde budou popsány důvody tohoto rozhodnutí.
 
-Běžná webová aplikace má dvě hlavní části:
+%Běžná webová aplikace má dvě hlavní části:
 
-První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools} (Více popsané v kapitole \ref{sec:DesignAplikace}), které umí kterémukoliv uživateli ukázat celý front-end kód webové aplikace.
+%První část se jmenuje \textbf{front-end} a je to uživatelská část aplikace - obsahuje veškerý kód, který je prováděn u uživatele v prohlížeči. To většinou bývají jednodušší JavaScriptové bloky kódu, veškerá struktura a obsah aplikace (psaná v jazyce HTML) a veškeré formátování aplikace (běžné psané v jazyce CSS). Všechno ve front-end části jakékoliv webové aplikace je možné si dohledat pomocí rozhraní jako jsou \textbf{Chrome Developer Tools} (Více popsané v kapitole \ref{sec:DesignAplikace}), které umí kterémukoliv uživateli ukázat celý front-end kód webové aplikace.
 
-Druhá hlavní část webové aplikace se jmenuje \textbf{back-end} a je to část aplikace kterou běžný uživatel nevidí. Obsahuje data seřazená v databázích, které je možné si pomocí různých příkazů načíst do front-end části. Také umí využívat server pro provádění různých výpočtů, které jsou buďto moc náročné, anebo musí být z určitých důvodů schované před běžnými uživateli.
+%Druhá hlavní část webové aplikace se jmenuje \textbf{back-end} a je to část aplikace kterou běžný uživatel nevidí. Obsahuje data seřazená v databázích, které je možné si pomocí různých příkazů načíst do front-end části. Také umí využívat server pro provádění různých výpočtů, které jsou buďto moc náročné, anebo musí být z určitých důvodů schované před běžnými uživateli.
 
 Z hlediska softwarové architektury byla aplikace koncipována jako statická webová aplikace - tedy čistě front-endová aplikace bez back-end části. Aplikace byla postavená na knihovně jazyka JavaScript jménem \textbf{React}, což je dlouhodobě jedno z nejpopulárnějších rozhraní pro tvorbu webových aplikací (jak tvrdí studie nejpoužívanějších jazyků pro webové programování \cite{ReactWebDeveloperPopularity}). Specificky byla použita \textbf{Vite} verze Reactu, která je optimalizována pro rychlost aplikace.
 \cite{ViteReactWeb}
 
-Aby bylo možné programovat webové aplikace, je potřeba mít nainstalovanou aplikaci \textbf{Node.js}, která mimo jiné usnadňuje programování webové aplikace tím, že umí v reálném čase ukazovat jak každá změna React kódu ovlivnila aplikaci pomocí takzvaného "development" serveru, který je dostupný na lokální síti počítače, na kterém je node.js spuštěný.
+Aby bylo možné programovat webové aplikace, je potřeba mít nainstalovanou aplikaci \textbf{Node.js}, která mimo jiné usnadňuje programování webové aplikace tím, že umí v reálném čase ukazovat jak každá změna React kódu ovlivnila aplikaci pomocí takzvaného "development" serveru, který je dostupný na lokální síti počítače, na kterém je node.js spuštěný. 
 
-Programování webové aplikace probíhalo tím způsobem, že se každá verze webové aplikace testovala tím způsobem, že se překonvertovala do statických souborů (obsahující pouze HTML, CSS a JS soubory) pomocí příkazu \texttt{vite build}. Ten přeloží syntax jazyka React do souborů, které jsou ekvivalentní, ale narozdíl od React syntaxu jim rozumí každý webový prohlížeč.
+Aplikace byla programována tak, že se konvertovala do statických webových souborů (HTML, CSS a JS). Následně byly tyto soubory pomocí \textbf{Capacitoru} převedeny do projektu, který je možné zkompilovat skrze \textbf{Android Studio} (dále popsané v kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni}).
 
-Když existuje tato "čistá" verze aplikace, je možné použít framework jménem \textbf{Capacitor}, který je vytvořený specificky pro to aby bylo možné ho pomocí node.js nainstalovat do knihoven pro webové programování jako je React. Následně je možné pomocí několika příkazů Capacitor frameworku přeložit tuto verzi aplikace do souborů mobilní aplikace.
-\cite{CapacitorDocs}
-
-Nakonec je možné si tuto složku konvertované mobilní aplikace otevřít v prostředí \textbf{Android Studio} a tam si z daného projektu vytvořit soubor o příponě \texttt{.apk}, který si umí nainstalovat každé android zařízení. Pomocí capacitor je možné konvertovat i do mobilní aplikace pro zařízení firmy Apple. Na konvertování do instalačního souboru je ale potřebné mít i stolní počítač značky Apple, kde je možné aplikaci konvertovat pomocí \textbf{Xcode}.
+%Programování webové aplikace probíhalo tím způsobem, že se každá verze webové aplikace testovala tak, že se překonvertovala do statických souborů (obsahující pouze HTML, CSS a JS soubory) pomocí příkazu \texttt{vite build}. Ten přeloží syntax jazyka React do souborů, které jsou ekvivalentní, ale narozdíl od React syntaxu jim rozumí každý webový prohlížeč.
+%
+%Když existuje tato "čistá" verze aplikace, je možné použít framework jménem \textbf{Capacitor}, který je vytvořený specificky pro to aby bylo možné ho pomocí node.js nainstalovat do knihoven pro webové programování jako je React. Následně je možné pomocí několika příkazů Capacitor frameworku přeložit tuto verzi aplikace do souborů mobilní aplikace.
+%\cite{CapacitorDocs}
+%
+%Nakonec je možné si tuto složku konvertované mobilní aplikace otevřít v prostředí \textbf{Android Studio} a tam si z daného projektu vytvořit soubor o příponě \texttt{.apk}, který si umí nainstalovat každé android zařízení. Pomocí capacitor je možné konvertovat i do mobilní aplikace pro zařízení firmy Apple. Na konvertování do instalačního souboru je ale potřebné mít i stolní počítač značky Apple, kde je možné aplikaci konvertovat pomocí \textbf{Xcode}.
 
 \subsubsection{Proč webová aplikace?}\label{sec:ProcWebovaAplikace}
 Důvod, proč byla mobilní aplikace programována jako webová a ne přímo mobilní, je ten, že jejím hlavním účelem je posílat GET požadavky na IP adresu vývojové desky. Na tento úkol jsou moderní webové aplikace velmi dobře optimalizovány.
 
-Každá větší webová aplikace dostupná na internetu má front-end část a v jejím rámci posílá webové požadavky na svůj server, kde je spuštěn back-end aplikace. Tyto požadavky souvisejí s dynamickým obsahem, který může být:
-\begin{itemize}
-	\item Načtení reklamy na sociální síti.
-	\item Potvrzení objednávky na e-shopu.
-	\item Provádění náročnějších kalkulací pomocí výkonu co poskytuje server.
-	\item A další.
-\end{itemize}
+Každá větší webová aplikace dostupná na internetu má front-end část a v jejím rámci posílá webové požadavky na svůj server, kde je spuštěn back-end aplikace. Tyto požadavky souvisejí s dynamickým obsahem, který může být načtení reklamy na sociální síti, potvrzení objednávky na e-shopu, a další.
 
 V případě navrženého systému sice nemá mobilní aplikace vlastní back-end server, ale zato má WebServer hostovaný na mikrokontroleru. Ten přijímá příkazy jako "zrychlit dopravník" a naopak vysílá informace jako rychlost dopravníku.
 
@@ -385,7 +381,7 @@ Při programování webové aplikace bylo použito několik knihoven, které web
 HyperText Markup Language neboli HTML je jeden z prvních jazyků, které stály u zrodu internetu. Definuje strukturu webových stránek a obsahuje veškerý text. Dále je zde Cascading Style Sheets neboli CSS, které popisuje vzhled dokumentu napsaného v HTML. JavaScript neboli JS je odlehčený programovací jazyk s just-in-time kompilací, který je nejvíce známý tím, že dodává funkčnost webovým stránkám. Je to ale i skriptovací jazyk pro aplikace mimo webové prostředí, jako například Node.js nebo Adobe Acrobat.
 \cite{HTMLweb, CSSweb, JSweb}
 
-Tyto technologie jsou stále využívány na této webové stránce, ačkoli se v nich přímo neprogramovalo. Tyto programovací jazyky jsou základní stavební kameny prohlížeče, a proto je nutné každou aplikaci konvertovat do souborů těchto tří jazyků. Bez toho by nebylo možné zobrazit webovou stránku jak ve webové aplikaci, tak v mobilní aplikaci.
+Tyto technologie jsou stále využívány na této webové stránce, ačkoli se v nich přímo neprogramovalo. Jsou to základní stavební kameny prohlížeče, a proto je nutné každou aplikaci konvertovat do souborů těchto tří jazyků. Bez toho by nebylo možné zobrazit webovou stránku jak ve webové aplikaci, tak v mobilní aplikaci.
 
 \subsubsection{React}\label{sec:React}
 React je knihovna pro webový front-end založená na komponentech. Uvnitř těchto komponent je možné vkládat i HTML, což umožňuje spojit funkcionalitu s textem a strukturou.
@@ -454,7 +450,7 @@ Další možností je periodické vysílání GET požadavku funkcí. GET požad
 Pokud by React nebyl reaktivní (jak bylo vysvětleno v kapitole \ref{sec:React}), pak by se s každým přijetím dat musela celá webová stránka obnovit. S využitím funkce React knihovny lze však aktualizovat pouze rychlostní a ovládací data na stránce.
 
 \subsubsection{Jak ovládat vývojovou desku bez mobilní aplikace}\label{sec:JakOvladatBezMobilniAplikace}
-Nakonec není ani nutné používat mobilní aplikaci, ale stačí použít webový prohlížeč v mobilním telefonu k ovládání desky. V tom případě lze do URL adresy zadat \texttt{192.168.0.144/} bez další cesty. WebServer zde znovu zaregistruje požadavek a tentokrát odešle zpět HTML kód webové stránky, která je nakonfigurována jako hlavní odpověď ve třídě \texttt{ConveyorController}.
+Nakonec není ani nutné používat mobilní aplikaci, ale stačí použít webový prohlížeč v mobilním telefonu k ovládání desky. V tom případě lze do URL adresy zadat \texttt{192.168.0.144/} bez další cesty. WebServer zde znovu zaregistruje požadavek a tentokrát odešle zpět HTML kód webové stránky, která je nakonfigurována jako hlavní odpověď ve třídě \texttt{Con\-ve\-yor\-Con\-tro\-ller}.
 
 Tato webová stránka umožňuje ovládat vývojovou desku pomocí tlačítek, jež jsou nakonfigurována k odesílání GET požadavků na příslušné adresy vývojové desky. Tato stránka ovšem není reaktivní, protože se jedná o statickou HTML stránku. Kvůli tomu se aktuální hodnoty rychlosti a stavu ovládání zobrazí pouze po jejím načtení. Na obrázku \ref{fig:WebServerLandingPage} je zobrazen vzhled této webové stránky.
 
@@ -512,7 +508,7 @@ Nejdříve je nutné si importovat \texttt{HttpOptions} a \texttt{CapacitorHttp}
 
 Funkce \texttt{sendCommand} má jako vstupy IP adresu vývojové desky a adresu, na kterou bude posílat GET požadavek. Princip je takový, že se do \texttt{HttpOptions} nastaví jako URL celá IP adresa i s adresou požadavku a aplikace se poté pomocí funkce \texttt{CapacitorHttp.get} pokusí odeslat požadavek. Pokud byl požadavek úspěšně doručen, aplikace se bude pokoušet parsovat odpověď jako JSON. To se pro většinu odpovědí nezdaří, jelikož aplikace v rámci některých odpovědí zasílá i HTML kód, aby bylo možné ji ovládat i přes webový prohlížeč (popsáno v kapitole \ref{sec:JakOvladatBezMobilniAplikace}). Pokud se ale nepodaří parsovat odpověď, nijak to neovlivňuje funkčnost aplikace a je tak přijatelné mít řádek pro parsování odpovědi jako JSON ve try-catch bloku, který případnou chybu potlačí.
 
-Pokud \texttt{sendCommand} nezíská odpověď do 3 sekund, kód aplikace pomocí funkce \texttt{fetchWithTimeout} signalizuje chybu, která se zobrazí v uživatelském rozhraní. Toto je obzvlášť důležitá funkce, protože se tato chyba uživateli v aplikaci ukáže, pokud během 3 sekund webový server neodpoví na požadavek. To se může stát hlavně pokud uživatel opustí dosah, ve kterém je webový server schopen komunikovat, a má tak jasnou vizuální indikaci, že by se pro ovládání dopravníku měl přiblížit. Tato implementace také vypíná možnost stisknout tlačítka, která ovládají dopravník, jelikož by na ně vývojová deska nereagovala.
+Pokud \texttt{sendCommand} nezíská odpověď do 3 sekund, kód aplikace pomocí funkce \texttt{fetch\-With\-Time\-out} signalizuje chybu, která se zobrazí v uživatelském rozhraní. Toto je obzvlášť důležitá funkce, protože se tato chyba uživateli v aplikaci ukáže, pokud během 3 sekund webový server neodpoví na požadavek. To se může stát hlavně pokud uživatel opustí dosah, ve kterém je webový server schopen komunikovat, a má tak jasnou vizuální indikaci, že by se pro ovládání dopravníku měl přiblížit. Tato implementace také vypíná možnost stisknout tlačítka, která ovládají dopravník, jelikož by na ně vývojová deska nereagovala.
 
 % Tahle část mi přijde, že opakuje předešlé body, nepřidává nic moc navíc a ani nevím jak bych ji pojmenoval :D. Takže je asi tento generickej popis jak funguje aplikace zbytečnej, když to mám cca popsaný v ostatních kapitolách. Navíc nemá smysl vysvětlovat jak funguje aplikace bez toho abych vysvětloval jak funguje React - a to by bylo už moc textu pro tuhle práci.
 %\subsection{Funkčnost aplikace (hodně stran)}
@@ -530,15 +526,15 @@ Pokud \texttt{sendCommand} nezíská odpověď do 3 sekund, kód aplikace pomoc�
 \subsection{Design aplikace}\label{sec:DesignAplikace}
 % \purpose{Zde vysvětlit jak jsem postupoval při designování aplikace. Vysvětlit co je to header aplikace a že mám nějakej styling kterej je pro každý React komponenty aplikovanej automaticky.}
 
-Tato mobilní aplikace sice byla naprogramována jako webová, ale její design byl od začátku koncipován s ohledem na optimální vzhled při používání na mobilních zařízeních. Jelikož je v dnešní době kladen velký důraz na to, aby i webové stránky vypadaly dobře na mobilních zařízeních, existují pro tento účel nástroje, jako jsou Chrome Developer Tools.
+Tato mobilní aplikace sice byla programovaná jako webová, ale její design byl od začátku koncipován s ohledem na nejlepší vzhled při používání na mobilních zařízeních. Jelikož je v dnešní době kladen velký důraz na to, aby i webové stránky vypadaly dobře na mobilních zařízeních, existují pro tento účel nástroje, jako jsou \textbf{Chrome Developer Tools}, které například umožňují i na počítači vidět aplikaci z rozlišení mobilního zařízení.
 
-\textbf{Chrome Developer Tools} je soubor nástrojů pro webové vývojáře dostupný pro každého uživatele prohlížeče Google Chrome. V rámci těchto nástrojů je možné změnit vzhled webové stránky na jakékoli rozlišení za účelem testování vzhledu na tabletech a mobilních zařízeních různých velikostí. Chrome Developer Tools však kromě této funkce obsahuje i velké množství dalších užitečných nástrojů pro webové vývojáře, jako například konzole (kde se zobrazují chybové zprávy), nástroje pro analýzu rychlosti aplikace, náhled celého HTML kódu a mnoho dalších.
+%\textbf{Chrome Developer Tools} je soubor nástrojů pro webové vývojáře dostupný pro každého uživatele prohlížeče Google Chrome. V rámci těchto nástrojů je možné změnit vzhled webové stránky na jakékoli rozlišení za účelem testování vzhledu na tabletech a mobilních zařízeních různých velikostí. Chrome Developer Tools však kromě této funkce obsahuje i velké množství dalších užitečných nástrojů pro webové vývojáře, jako například konzole (kde se zobrazují chybové zprávy), nástroje pro analýzu rychlosti aplikace, náhled celého HTML kódu a mnoho dalších.
 
 Všechny barvy aplikace jsou definovány pomocí klíčových slov v rámci správy motivů poskytované knihovnou DaisyUI (rozšíření, krátce představeného v kapitole \ref{sec:DaisyUI}). Tato klíčová slova jsou například \texttt{base, primary, secondary, accent} a další. Nastavení aplikace tímto způsobem dává možnost parametrizace barev, jelikož se určuje spíše účel barvy než její přímá hodnota. Díky tomuto nastavení je možné měnit motiv stránky na jeden z 30 přednastavených motivů od DaisyUI, nebo si nastavit vlastní barvy. Navíc je možné nastavit různé motivy pro světlé i temné rozhraní mobilního zařízení. V \cite{DaisyUIthemeGenerator} lze vidět, jaká všechna nastavení DaisyUI poskytuje v rámci správy motivů.
 
 V obrázku \ref{fig:LandingPageAnnotated} je zobrazen vzhled hlavní stránky aplikace pro světlé rozhraní telefonu.
 
-\begin{figure}[hptb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{images/LandingPage_Annot.drawio.pdf}
 	\caption{Popis designu hlavní stránky aplikace}
@@ -569,23 +565,23 @@ Dalším důležitým aspektem specifickým pro platformu Android je výchozí k
 
 Výsledkem konverze aplikace je spustitelný soubor ve formátu \texttt{.apk}, který lze nainstalovat na mobilních zařízeních s Androidem. Konverzi je možné provést bez certifikace pro distribuci přes Google Play Store, ale v takovém případě se na zařízení zobrazuje jako "neověřená". V rámci testování ale aplikace prošla úspěšně standardní virovou kontrolou Google Play, což potvrdilo, že během procesu konverze v aplikaci nepřibyl žádný virus. Vzhledem k tomu, že je aplikace určená pro interní použití v rámci společnosti Honeywell a nebude veřejně distribuována, není zapotřebí provádět kroky nezbytné pro publikaci v Google Play Storu.
 
-\subsubsection{Postup konvertování webové aplikace}
+%\subsubsection{Postup konvertování webové aplikace}
 % \purpose{Už nepsat teorii jak by se dala aplikace zkonvertovat jako ve kapitole \ref{sec:KonvertovaniWeboveAplikaceDoMobilni} ale specificky napsat jak jsem postupoval při konvertování aplikace krok za krokem.}
 
-Pro konvertování je potřeba mít nainstalované Android Studio a Node.js. Dále musí být inicializována React aplikace a v ní nainstalovaný a nastavený Capacitor. Složka webové aplikace by měla být vzhledem k Android Studiu mimo složky s českou diakritikou a mimo složky synchronizované pomocí cloudových aplikací.
-
-Specifický postup konvertování webové aplikace do mobilní je následující:
-
-\begin{enumerate}
-	\item Začíná se v nejnovější verzi React webové aplikace.
-	\item Sestavení do "produkční verze webové aplikace" se provádí pomocí příkazu \texttt{npm run build}.
-	\item Dále je potřeba aplikaci synchronizovat s Capacitorem pomocí příkazu \texttt{npx cap sync}.
-	\item Nyní je potřeba otevřít složku jménem "android", která byla vytvořena, pomocí Android Studia. To je možné udělat rovnou z konzole pomocí příkazu \texttt{npx cap open android}.
-	\item V Android Studiu je možné aplikaci sestavit do "produkční verze mobilní aplikace" pomocí volby "Build".
-	\item Android Studio vygeneruje složku se soubory aplikace, ve které je obsažen soubor \texttt{main.apk}.
-\end{enumerate}
-
-Na konci tohoto procesu je možné dostupný soubor \texttt{main.apk} poslat na zařízení s Androidem a tam nainstalovat. Pro konverzi není potřeba žádné další nastavování ani podpůrné balíčky.
+%Pro konvertování je potřeba mít nainstalované Android Studio a Node.js. Dále musí být inicializována React aplikace a v ní nainstalovaný a nastavený Capacitor. Složka webové aplikace by měla být vzhledem k Android Studiu mimo složky s českou diakritikou a mimo složky synchronizované pomocí cloudových aplikací.
+%
+%Specifický postup konvertování webové aplikace do mobilní je následující:
+%
+%\begin{enumerate}
+%	\item Začíná se v nejnovější verzi React webové aplikace.
+%	\item Sestavení do "produkční verze webové aplikace" se provádí pomocí příkazu \texttt{npm run build}.
+%	\item Dále je potřeba aplikaci synchronizovat s Capacitorem pomocí příkazu \texttt{npx cap sync}.
+%	\item Nyní je potřeba otevřít složku jménem "android", která byla vytvořena, pomocí Android Studia. To je možné udělat rovnou z konzole pomocí příkazu \texttt{npx cap open android}.
+%	\item V Android Studiu je možné aplikaci sestavit do "produkční verze mobilní aplikace" po\-mo\-cí volby "Build"	.
+%	\item Android Studio vygeneruje složku se soubory aplikace, ve které je obsažen soubor \texttt{main.apk}.
+%\end{enumerate}
+%
+%Na konci tohoto procesu je možné dostupný soubor \texttt{main.apk} poslat na zařízení s Androidem a tam nainstalovat. Pro konverzi není potřeba žádné další nastavování ani podpůrné balíčky.
 
 \section{Vytvoření schránky pro desku}
 %\purpose{V téhle sekci bude popis jak jsem postupoval při návrhu schránky pro desku, která obsahuje i tlačítka.}
